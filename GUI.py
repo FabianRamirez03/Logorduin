@@ -14,7 +14,7 @@ xTurtle = xCanvas / 2
 yTurtle = yCanvas / 2
 
 skin_path = "Imagenes"
-turtle_skin = "\shrek2.png"
+turtle_skin = "pacman.png"
 
 # Constantes logicas
 file_path = ""
@@ -52,6 +52,21 @@ def clean_canvas():
         turtle_canvas.delete(i)
 
 
+def update_skin(name):
+    global turtle
+    turtle = PhotoImage(file=skin_path + "/" + name)
+    turtle_canvas.itemconfigure(turtleImage, image=turtle)
+    turtle_canvas.update()
+
+
+def shrekAux():
+    update_skin("shrek.png")
+
+
+def pacManAux():
+    update_skin("pacman.png")
+
+
 # ___________________________________-Aplicacion Grafica_____________________________________________
 
 root = Tk()
@@ -65,12 +80,18 @@ menu.add_cascade(label="Archivo", menu=subMenu)
 subMenu.add_command(label="Nuevo Archivo", command=doNothing)
 subMenu.add_command(label="Abrir Archivo", command=open_file)
 subMenu.add_command(label="Guardar", command=save_file)
-subMenu.add_separator()
 
-editMenu = Menu(menu)
-menu.add_cascade(label="Canvas", menu=editMenu)
-editMenu.add_command(label="Limpiar", command=clean_canvas)
+canvasMenu = Menu(menu)
+menu.add_cascade(label="Canvas", menu=canvasMenu)
+canvasMenu.add_command(label="Limpiar", command=clean_canvas)
 
+# Menu para cambiar la skin de la tortuga
+viewMenu = Menu(menu)
+menu.add_cascade(label="Vista", menu=viewMenu)
+skinMenu = Menu(viewMenu)
+viewMenu.add_cascade(label="Skin", menu=skinMenu)
+skinMenu.add_command(label="Shrek", command=shrekAux)
+skinMenu.add_command(label="Pacman", command=pacManAux)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
@@ -115,11 +136,11 @@ turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas)
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
-turtle = PhotoImage(file=skin_path + turtle_skin)
-turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
+turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
+turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar")
+compileButton = Button(buttons_Frame, text="Compilar", command=doNothing())
 compileButton.place(height=30, width=60, x=55, y=30)
 executeButton = Button(buttons_Frame, text="Ejecutar", command=makeLine)
 executeButton.place(height=30, width=60, x=55, y=75)
