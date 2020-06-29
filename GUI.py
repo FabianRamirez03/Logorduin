@@ -9,6 +9,32 @@ yCanvas = 500
 xCanvasCenter = xCanvas / 2
 yCanvasCenter = yCanvas / 2
 
+# Constantes logicas
+file_path = ""
+
+
+# ______________________________Funciones de la interfaz grafica_______________________________________
+
+def doNothing():
+    print("Test")
+
+
+def open_file():
+    Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
+    filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
+    global file_path
+    file_path = filename
+    with open(file_path, "r") as text_file:
+        file_content = text_file.read()
+        codeText.delete('1.0', END)
+        codeText.insert(INSERT, file_content)
+
+
+def save_file():
+    file_to_write = open(file_path, "w")
+    file_to_write.write(codeText.get('1.0', END))
+    file_to_write.close()
+
 
 root = Tk()
 root.title("Logorduin")
@@ -19,8 +45,8 @@ root.config(menu=menu)
 subMenu = Menu(menu)
 menu.add_cascade(label="Archivo", menu=subMenu)
 subMenu.add_command(label="Nuevo Archivo", command=doNothing)
-subMenu.add_command(label="Abrir Archivo", command=doNothing)
-subMenu.add_command(label="Guardar", command=doNothing)
+subMenu.add_command(label="Abrir Archivo", command=open_file)
+subMenu.add_command(label="Guardar", command=save_file)
 subMenu.add_separator()
 
 editMenu = Menu(menu)
@@ -91,12 +117,5 @@ consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
 consoleText.pack(fill="y")
-
-#______________________________Funciones de la interfaz grafica_______________________________________
-
-def doNothing():
-    print("Test")
-
-
 
 root.mainloop()
