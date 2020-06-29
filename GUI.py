@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 import sys
+import Drawing
 
 # Constantes Graficas
 xCanvas = 935
@@ -8,6 +9,12 @@ yCanvas = 500
 
 xCanvasCenter = xCanvas / 2
 yCanvasCenter = yCanvas / 2
+
+xTurtle = xCanvas / 2
+yTurtle = yCanvas / 2
+
+skin_path = "Imagenes"
+turtle_skin = "\shrek2.png"
 
 # Constantes logicas
 file_path = ""
@@ -24,7 +31,7 @@ def open_file():
     filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
     global file_path
     file_path = filename
-    with open(file_path, "r") as text_file:
+    with open(filename, "r") as text_file:
         file_content = text_file.read()
         codeText.delete('1.0', END)
         codeText.insert(INSERT, file_content)
@@ -35,6 +42,17 @@ def save_file():
     file_to_write.write(codeText.get('1.0', END))
     file_to_write.close()
 
+
+def makeLine():
+    Drawing.line(turtle_canvas)
+
+
+def clean_canvas():
+    for i in Drawing.figuresLists:
+        turtle_canvas.delete(i)
+
+
+# ___________________________________-Aplicacion Grafica_____________________________________________
 
 root = Tk()
 root.title("Logorduin")
@@ -51,7 +69,7 @@ subMenu.add_separator()
 
 editMenu = Menu(menu)
 menu.add_cascade(label="Canvas", menu=editMenu)
-editMenu.add_command(label="Limpiar", command=doNothing)
+editMenu.add_command(label="Limpiar", command=clean_canvas)
 
 # ________________________________________Frames para organizar los elementos
 
@@ -97,13 +115,13 @@ turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas)
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
-turtle = PhotoImage(file='Imagenes\shrek2.png')
-turtle_canvas.create_image(xCanvasCenter, yCanvasCenter, image=turtle)
+turtle = PhotoImage(file=skin_path + turtle_skin)
+turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
 compileButton = Button(buttons_Frame, text="Compilar")
 compileButton.place(height=30, width=60, x=55, y=30)
-executeButton = Button(buttons_Frame, text="Ejecutar")
+executeButton = Button(buttons_Frame, text="Ejecutar", command=makeLine)
 executeButton.place(height=30, width=60, x=55, y=75)
 
 # Text Area de la consola
