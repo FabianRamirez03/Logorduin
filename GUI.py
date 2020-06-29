@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.filedialog import askopenfilename
 import sys
 
 # Constantes Graficas
@@ -7,10 +8,6 @@ yCanvas = 500
 
 xCanvasCenter = xCanvas / 2
 yCanvasCenter = yCanvas / 2
-
-
-def doNothing():
-    print("Test")
 
 
 root = Tk()
@@ -56,7 +53,7 @@ console_Frame.pack(side=LEFT)
 buttons_Frame = Frame(left_Botom_Frame, width=185, height=150, bg="white", bd=2)
 buttons_Frame.pack(side=LEFT)
 
-# ______________________________________________Elementos de la interfaz__________________________________
+# _________________________Elementos de la interfaz__________________________________
 
 # Text Area para el codigo
 codeText = Text(code_Frame, width=30,
@@ -94,5 +91,12 @@ consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
 consoleText.pack(fill="y")
+
+#______________________________Funciones de la interfaz grafica_______________________________________
+
+def doNothing():
+    print("Test")
+
+
 
 root.mainloop()
