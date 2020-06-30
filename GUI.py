@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 import sys
 import Drawing
@@ -26,6 +27,7 @@ def doNothing():
     print("Test")
 
 
+# Abre un archivo de texto en el codigo a compilar
 def open_file():
     Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
     filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
@@ -36,15 +38,21 @@ def open_file():
         codeText.delete('1.0', END)
         codeText.insert(INSERT, file_content)
 
-
+#En caso de que haya un archivo abierto, lo reescribe con la informacion en el texto del codigo
 def save_file():
-    file_to_write = open(file_path, "w")
-    file_to_write.write(codeText.get('1.0', END))
-    file_to_write.close()
+    if file_path != "":
+        file_to_write = open(file_path, "w")
+        file_to_write.write(codeText.get('1.0', END))
+        file_to_write.close()
+    else:
+        messagebox.showerror(message="No hay archivo para guardar", title="Error")
 
 
 def makeLine():
     Drawing.line(turtle_canvas)
+
+def avanzaAux():
+    Drawing.avanza(turtle_canvas, turtleImage, 100)
 
 
 def clean_canvas():
@@ -52,11 +60,14 @@ def clean_canvas():
         turtle_canvas.delete(i)
 
 
+
+# Logica de las skins___________________________________
 def update_skin(name):
     global turtle
     turtle = PhotoImage(file=skin_path + "/" + name)
     turtle_canvas.itemconfigure(turtleImage, image=turtle)
     turtle_canvas.update()
+
 
 
 def shrekAux():
@@ -140,7 +151,7 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar", command=doNothing())
+compileButton = Button(buttons_Frame, text="Compilar", command=avanzaAux)
 compileButton.place(height=30, width=60, x=55, y=30)
 executeButton = Button(buttons_Frame, text="Ejecutar", command=makeLine)
 executeButton.place(height=30, width=60, x=55, y=75)
