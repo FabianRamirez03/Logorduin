@@ -52,15 +52,19 @@ def save_file():
 
 
 def avanzaAux():
-    DrawController.avanza(turtle_canvas, turtleImage, 30)  # cambiar para que el 100 se obtenga del codigo
+    DrawController.avanza(turtle_canvas, turtleImage, 600, xTurtle, yTurtle)  # cambiar para que el 100 se obtenga del codigo
 
 
 def rotar():
     global turtle
+    grades = 180  # Se deberia conseguir por codigo, cambiar luego
+    gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
     path = skin_path + "/" + turtle_skin
-    turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(45))
-    turtle_canvas.itemconfigure(turtleImage, image=turtle)
-    turtle_canvas.update()
+    if gradesToRotate != 0:
+        turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
+        turtle_canvas.itemconfigure(turtleImage, image=turtle)
+        turtle_canvas.update()
+
 
 def clean_canvas():
     for i in DrawController.figuresLists:
@@ -158,7 +162,7 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar", command = avanzaAux)
+compileButton = Button(buttons_Frame, text="Compilar", command=avanzaAux)
 compileButton.place(height=30, width=60, x=55, y=30)
 executeButton = Button(buttons_Frame, text="Ejecutar", command=rotar)
 executeButton.place(height=30, width=60, x=55, y=75)
