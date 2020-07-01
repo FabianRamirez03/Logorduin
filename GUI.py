@@ -17,7 +17,7 @@ xTurtle = xCanvas / 2
 yTurtle = yCanvas / 2
 
 skin_path = "Imagenes"
-turtle_skin = "shrek.png"
+turtle_skin = "turtle.png"
 
 # Constantes logicas
 file_path = ""
@@ -81,6 +81,10 @@ def update_skin(name):
     turtle_canvas.update()
 
 
+def defaultAux():
+    update_skin("turtle.png")
+
+
 def shrekAux():
     update_skin("shrek.png")
 
@@ -112,6 +116,7 @@ viewMenu = Menu(menu)
 menu.add_cascade(label="Vista", menu=viewMenu)
 skinMenu = Menu(viewMenu)
 viewMenu.add_cascade(label="Skin", menu=skinMenu)
+skinMenu.add_command(label="Default", command=defaultAux)
 skinMenu.add_command(label="Shrek", command=shrekAux)
 skinMenu.add_command(label="Pacman", command=pacManAux)
 # ________________________________________Frames para organizar los elementos
