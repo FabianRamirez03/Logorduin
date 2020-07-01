@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 import sys
-import Drawing
+import DrawController
+from PIL import Image
+from PIL import ImageTk
 
 # Constantes Graficas
 xCanvas = 935
@@ -15,7 +17,7 @@ xTurtle = xCanvas / 2
 yTurtle = yCanvas / 2
 
 skin_path = "Imagenes"
-turtle_skin = "pacman.png"
+turtle_skin = "shrek.png"
 
 # Constantes logicas
 file_path = ""
@@ -38,7 +40,8 @@ def open_file():
         codeText.delete('1.0', END)
         codeText.insert(INSERT, file_content)
 
-#En caso de que haya un archivo abierto, lo reescribe con la informacion en el texto del codigo
+
+# En caso de que haya un archivo abierto, lo reescribe con la informacion en el texto del codigo
 def save_file():
     if file_path != "":
         file_to_write = open(file_path, "w")
@@ -48,26 +51,30 @@ def save_file():
         messagebox.showerror(message="No hay archivo para guardar", title="Error")
 
 
-def makeLine():
-    Drawing.line(turtle_canvas)
-
 def avanzaAux():
-    Drawing.avanza(turtle_canvas, turtleImage, 100)
+    DrawController.avanza(turtle_canvas, turtleImage, 30)  # cambiar para que el 100 se obtenga del codigo
 
+
+def rotar():
+    global turtle
+    path = skin_path + "/" + turtle_skin
+    turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(45))
+    turtle_canvas.itemconfigure(turtleImage, image=turtle)
+    turtle_canvas.update()
 
 def clean_canvas():
-    for i in Drawing.figuresLists:
+    for i in DrawController.figuresLists:
         turtle_canvas.delete(i)
-
 
 
 # Logica de las skins___________________________________
 def update_skin(name):
     global turtle
+    global turtle_skin
+    turtle_skin = name
     turtle = PhotoImage(file=skin_path + "/" + name)
     turtle_canvas.itemconfigure(turtleImage, image=turtle)
     turtle_canvas.update()
-
 
 
 def shrekAux():
@@ -151,9 +158,9 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar")
+compileButton = Button(buttons_Frame, text="Compilar", command = avanzaAux)
 compileButton.place(height=30, width=60, x=55, y=30)
-executeButton = Button(buttons_Frame, text="Ejecutar", command=avanzaAux)
+executeButton = Button(buttons_Frame, text="Ejecutar", command=rotar)
 executeButton.place(height=30, width=60, x=55, y=75)
 
 # Text Area de la consola

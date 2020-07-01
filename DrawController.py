@@ -1,9 +1,13 @@
 import Util
 import math
+from tkinter import PhotoImage
+from PIL import Image
+from PIL import ImageTk
 
-figuresLists = []
 
 seeingTo = 260  # hacia donde está viendo la tortuga en grados
+xBound = 935
+yBound = 500
 
 
 def avanza(canvas, turtle, distance):
@@ -17,7 +21,8 @@ def avanza(canvas, turtle, distance):
     traveledY = 0
 
     if abs(distanceX) > abs(distanceY):  # En caso de que sea mayor el desplazamiento en X
-        proportion = abs(distanceX) / abs(distanceY)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
+        proportion = abs(distanceX) / abs(
+            distanceY)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
         if seeingTo == 360 or seeingTo == 180:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
         while abs(traveledX) < abs(distanceX):
@@ -33,7 +38,8 @@ def avanza(canvas, turtle, distance):
             canvas.after(20)  # Define la velocidad del movimiento
 
     if abs(distanceX) < abs(distanceY):  # En caso de que sea mayor el desplazamiento en Y
-        proportion = abs(distanceY) / abs(distanceX)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
+        proportion = abs(distanceY) / abs(
+            distanceX)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
         if seeingTo == 90 or seeingTo == 270:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
         while abs(traveledY) < abs(distanceY):
@@ -48,5 +54,7 @@ def avanza(canvas, turtle, distance):
             canvas.after(20)  # Define la velocidad del movimiento
 
 
-def line(canvas):
-    figuresLists.append(canvas.create_line(15, 25, 200, 25))
+def ImageRotated(path, grades):
+    global seeingTo
+    seeingTo = grades
+    return PhotoImage(Image.open(path).rotate(grades))
