@@ -51,6 +51,19 @@ def save_file():
         messagebox.showerror(message="No hay archivo para guardar", title="Error")
 
 
+def retroceder(distance):
+    global xTurtle
+    global yTurtle
+    coords = retrocederAux(distance)
+    xTurtle = coords[0]
+    yTurtle = coords[1]
+
+
+def retrocederAux(distance):
+    return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
+                                 yTurtle, -1)
+
+
 def avanza(distance):
     global xTurtle
     global yTurtle
@@ -61,7 +74,9 @@ def avanza(distance):
 
 def avanzaAux(distance):
     return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
-                                 yTurtle)  # cambiar para que el 100 se obtenga del codigo
+                                 yTurtle, 1)  # El numero final depende de la direccion
+    # 1 para avanzar
+    # -1 para retroceder
 
 
 def ponrumbo(grades):
@@ -89,12 +104,10 @@ def subeLapiz():
 def cuadrado(lado):
     grades = DrawController.seeingTo
     cont = 0
-    bajaLapiz()
     while cont < 4:
         ponrumbo(grades + 90 * cont)
         avanza(lado)
         cont = cont + 1
-    subeLapiz()
 
 
 def clean_canvas():
@@ -103,10 +116,8 @@ def clean_canvas():
 
 
 def test():
-    cont = 0
-    while cont < 4:
-        cuadrado(50)
-        cont = cont + 1
+    avanza(100)
+    retroceder(100)
 
 
 # Logica de las skins___________________________________

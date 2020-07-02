@@ -7,7 +7,7 @@ xBound = 935
 yBound = 500
 
 
-def avanza(canvas, turtle, distance, xTurtle, yTurtle):
+def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
     distanceX = distance * math.cos(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje X
     distanceY = distance * -math.sin(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje Y
 
@@ -33,10 +33,10 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle):
                 toMoveY = directionY
 
             if canDraw:  # Dibuja la linea en caso de que el lapiz este bajo
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX, yTurtle + toMoveY)
-            xTurtle = xTurtle + toMoveX
-            yTurtle = yTurtle + toMoveY
-            canvas.move(turtle, toMoveX, toMoveY)  # Mueve la figura
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX*direction, yTurtle + toMoveY*direction)
+            xTurtle = xTurtle + toMoveX*direction
+            yTurtle = yTurtle + toMoveY*direction
+            canvas.move(turtle, toMoveX*direction, toMoveY*direction)  # Mueve la figura
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
 
@@ -52,13 +52,13 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle):
             toMoveX = 0  # Es cero de base en caso que no deba recorrer distancia en Y
             if abs(traveledX) < abs(distanceX):  # En caso de que deba seguirse moviendo en Y
                 traveledX = traveledX + directionX
-                toMoveX = directionX
+                toMoveX = directionX*direction
 
             if canDraw:
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX, yTurtle + toMoveY)
-            xTurtle = xTurtle + toMoveX
-            yTurtle = yTurtle + toMoveY
-            canvas.move(turtle, toMoveX, toMoveY)  # Mueve la figura
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX*direction, yTurtle + toMoveY*direction)
+            xTurtle = xTurtle + toMoveX*direction
+            yTurtle = yTurtle + toMoveY*direction
+            canvas.move(turtle, toMoveX*direction, toMoveY*direction)  # Mueve la figura
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
     return [xTurtle, yTurtle]
