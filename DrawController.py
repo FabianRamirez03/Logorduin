@@ -22,6 +22,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle):
             distanceY)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
         if seeingTo == 360 or seeingTo == 180:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
+            traveledY = 1
         while abs(traveledX) < abs(distanceX) and 15 < yTurtle < yBound - 15 and 15 < xTurtle < xBound - 15:
             traveledX = traveledX + directionX * proportion  # Define cuando se debe mover y se lo suma a la
             # distancia recorrida
@@ -44,6 +45,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle):
             distanceX)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
         if seeingTo == 90 or seeingTo == 270:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
+            traveledX = 1
         while abs(traveledY) < abs(distanceY) and 15 < xTurtle < xBound - 15 and 15 < yTurtle < yBound - 15:
             traveledY = traveledY + directionY * proportion  # Define cuando se debe mover y se lo suma a la distancia recorrida
             toMoveY = directionY * proportion

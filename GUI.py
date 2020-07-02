@@ -231,7 +231,7 @@ consoleText.pack(fill="y")
 # Safe closure
 def on_closing():
     if messagebox.askokcancel("Salir", "Seguros que quieres salir?"):
-        root.after_cancel(root.destroy())
+        root.destroy()
 
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
