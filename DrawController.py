@@ -61,15 +61,15 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle):
             canvas.after(20)  # Define la velocidad del movimiento
     return [xTurtle, yTurtle]
 
+
 def setSeeingTo(grades):
     global seeingTo
-    whereTo = grades - seeingTo
+    whereTo = grades - 90
     seeingTo = grades
     if seeingTo == 0:
         seeingTo = 360
     if seeingTo > 360:
         seeingTo = seeingTo - 360
-    print(seeingTo)
     return whereTo
 
 

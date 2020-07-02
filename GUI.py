@@ -68,7 +68,11 @@ def ponrumbo(grades):
     global turtle
     gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
     path = skin_path + "/" + turtle_skin
-    if gradesToRotate != 0:
+    if grades == 90:
+        turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
+        turtle_canvas.itemconfigure(turtleImage, image=turtle)
+        turtle_canvas.update()
+    elif gradesToRotate != 0:
         turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
         turtle_canvas.itemconfigure(turtleImage, image=turtle)
         turtle_canvas.update()
@@ -100,7 +104,7 @@ def clean_canvas():
 
 def test():
     cont = 0
-    while cont < 1:
+    while cont < 4:
         cuadrado(50)
         cont = cont + 1
 
@@ -206,7 +210,7 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar", command=avanzaAux)
+compileButton = Button(buttons_Frame, text="Compilar")
 compileButton.place(height=30, width=60, x=55, y=30)
 executeButton = Button(buttons_Frame, text="Ejecutar", command=test)
 executeButton.place(height=30, width=60, x=55, y=75)
@@ -226,7 +230,7 @@ consoleText.pack(fill="y")
 
 # Safe closure
 def on_closing():
-    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+    if messagebox.askokcancel("Salir", "Seguros que quieres salir?"):
         root.after_cancel(root.destroy())
 
 
