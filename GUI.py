@@ -100,9 +100,9 @@ def clean_canvas():
 
 def test():
     cont = 0
-    while cont < 20:
+    while cont < 1:
         cuadrado(50)
-        ++cont
+        cont = cont + 1
 
 
 # Logica de las skins___________________________________
