@@ -33,10 +33,10 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
                 toMoveY = directionY
 
             if canDraw:  # Dibuja la linea en caso de que el lapiz este bajo
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX*direction, yTurtle + toMoveY*direction)
-            xTurtle = xTurtle + toMoveX*direction
-            yTurtle = yTurtle + toMoveY*direction
-            canvas.move(turtle, toMoveX*direction, toMoveY*direction)  # Mueve la figura
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction)
+            xTurtle = xTurtle + toMoveX * direction
+            yTurtle = yTurtle + toMoveY * direction
+            canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
 
@@ -52,13 +52,13 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
             toMoveX = 0  # Es cero de base en caso que no deba recorrer distancia en Y
             if abs(traveledX) < abs(distanceX):  # En caso de que deba seguirse moviendo en Y
                 traveledX = traveledX + directionX
-                toMoveX = directionX*direction
+                toMoveX = directionX * direction
 
             if canDraw:
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX*direction, yTurtle + toMoveY*direction)
-            xTurtle = xTurtle + toMoveX*direction
-            yTurtle = yTurtle + toMoveY*direction
-            canvas.move(turtle, toMoveX*direction, toMoveY*direction)  # Mueve la figura
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction)
+            xTurtle = xTurtle + toMoveX * direction
+            yTurtle = yTurtle + toMoveY * direction
+            canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
     return [xTurtle, yTurtle]
@@ -73,6 +73,16 @@ def setSeeingTo(grades):
     if seeingTo > 360:
         seeingTo = seeingTo - 360
     return whereTo
+
+
+def girar(grades, direction):
+    global seeingTo
+    seeingTo = seeingTo + grades*direction
+    if seeingTo < 0:
+        seeingTo = seeingTo + 360
+    if seeingTo > 360:
+        seeingTo = seeingTo - 360
+    return seeingTo - 90
 
 
 def setCanDraw(state):

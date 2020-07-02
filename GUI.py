@@ -93,12 +93,32 @@ def ponrumbo(grades):
         turtle_canvas.update()
 
 
+def giraDerecha(grades):
+    girarAux(DrawController.girar(grades, -1))
+
+
+def giraIzquierda(grades):
+    girarAux(DrawController.girar(grades, 1))
+
+
+def girarAux(gradesToRotate):
+    global turtle
+    path = skin_path + "/" + turtle_skin
+    turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
+    turtle_canvas.itemconfigure(turtleImage, image=turtle)
+    turtle_canvas.update()
+
+
 def bajaLapiz():
     DrawController.setCanDraw(True)
 
 
 def subeLapiz():
     DrawController.setCanDraw(False)
+
+
+def rumbo():
+    return DrawController.seeingTo
 
 
 def cuadrado(lado):
@@ -116,8 +136,11 @@ def clean_canvas():
 
 
 def test():
-    avanza(100)
-    retroceder(100)
+    cont = 0
+    while cont < 10000:
+        giraDerecha(10)
+        turtle_canvas.after(200)
+        cont = cont + 1
 
 
 # Logica de las skins___________________________________
