@@ -51,13 +51,21 @@ def save_file():
         messagebox.showerror(message="No hay archivo para guardar", title="Error")
 
 
-def avanzaAux():
-    DrawController.avanza(turtle_canvas, turtleImage, 600, xTurtle, yTurtle)  # cambiar para que el 100 se obtenga del codigo
+def avanza(distance):
+    global xTurtle
+    global yTurtle
+    coords = avanzaAux(distance)
+    xTurtle = coords[0]
+    yTurtle = coords[1]
 
 
-def rotar():
+def avanzaAux(distance):
+    return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
+                                 yTurtle)  # cambiar para que el 100 se obtenga del codigo
+
+
+def ponrumbo(grades):
     global turtle
-    grades = 180  # Se deberia conseguir por codigo, cambiar luego
     gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
     path = skin_path + "/" + turtle_skin
     if gradesToRotate != 0:
@@ -66,9 +74,35 @@ def rotar():
         turtle_canvas.update()
 
 
+def bajaLapiz():
+    DrawController.setCanDraw(True)
+
+
+def subeLapiz():
+    DrawController.setCanDraw(False)
+
+
+def cuadrado(lado):
+    grades = DrawController.seeingTo
+    cont = 0
+    bajaLapiz()
+    while cont < 4:
+        ponrumbo(grades + 90 * cont)
+        avanza(lado)
+        cont = cont + 1
+    subeLapiz()
+
+
 def clean_canvas():
     for i in DrawController.figuresLists:
         turtle_canvas.delete(i)
+
+
+def test():
+    cont = 0
+    while cont < 20:
+        cuadrado(50)
+        ++cont
 
 
 # Logica de las skins___________________________________
@@ -91,6 +125,10 @@ def shrekAux():
 
 def pacManAux():
     update_skin("pacman.png")
+
+
+def arrowAux():
+    update_skin("arrow.png")
 
 
 # ___________________________________-Aplicacion Grafica_____________________________________________
@@ -119,6 +157,7 @@ viewMenu.add_cascade(label="Skin", menu=skinMenu)
 skinMenu.add_command(label="Default", command=defaultAux)
 skinMenu.add_command(label="Shrek", command=shrekAux)
 skinMenu.add_command(label="Pacman", command=pacManAux)
+skinMenu.add_command(label="Flecha", command=arrowAux)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
@@ -169,7 +208,7 @@ turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 # Botones de compilacion y ejecución
 compileButton = Button(buttons_Frame, text="Compilar", command=avanzaAux)
 compileButton.place(height=30, width=60, x=55, y=30)
-executeButton = Button(buttons_Frame, text="Ejecutar", command=rotar)
+executeButton = Button(buttons_Frame, text="Ejecutar", command=test)
 executeButton.place(height=30, width=60, x=55, y=75)
 
 # Text Area de la consola
@@ -183,5 +222,14 @@ consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
 consoleText.pack(fill="y")
+
+
+# Safe closure
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.after_cancel(root.destroy())
+
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
 
 root.mainloop()
