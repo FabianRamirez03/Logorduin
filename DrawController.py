@@ -11,15 +11,25 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
     distanceX = distance * math.cos(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje X
     distanceY = distance * -math.sin(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje Y
 
-    directionX = distanceX / abs(distanceX)  # Para saber si debe restar o sumarle a la cantidad
-    directionY = distanceY / abs(distanceY)
+    if distanceX != 0:
+        directionX = distanceX / abs(distanceX)  # Para saber si debe restar o sumarle a la cantidad
+    if distanceY != 0:
+        directionY = distanceY / abs(distanceY)
+    if distanceX == 0:
+        directionX = 1
+        distanceX = 0.1
+    if distanceY == 0:
+        distanceY = 0.1
+        directionY = 0
 
     traveledX = 0  # Distancia recorrida
     traveledY = 0
 
     if abs(distanceX) > abs(distanceY):  # En caso de que sea mayor el desplazamiento en X
-        proportion = abs(distanceX) / abs(
-            distanceY)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
+        proportion = 1
+        if not abs(distanceY) < 1:
+            proportion = abs(distanceX) / abs(
+                distanceY)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
         if seeingTo == 360 or seeingTo == 180:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
             traveledY = 1
@@ -41,8 +51,10 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
             canvas.after(20)  # Define la velocidad del movimiento
 
     if abs(distanceX) < abs(distanceY):  # En caso de que sea mayor el desplazamiento en Y
-        proportion = abs(distanceY) / abs(
-            distanceX)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
+        proportion = 1
+        if not abs(distanceX)<1:
+            proportion = abs(distanceY) / abs(
+                distanceX)  # cantidad de unidades que se debe mover X por unidad recorrida en Y
         if seeingTo == 90 or seeingTo == 270:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
             traveledX = 1
@@ -77,7 +89,7 @@ def setSeeingTo(grades):
 
 def girar(grades, direction):
     global seeingTo
-    seeingTo = seeingTo + grades*direction
+    seeingTo = seeingTo + grades * direction
     if seeingTo < 0:
         seeingTo = seeingTo + 360
     if seeingTo > 360:

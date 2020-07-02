@@ -93,6 +93,32 @@ def ponrumbo(grades):
         turtle_canvas.update()
 
 
+def ponpos(coords):
+    global xTurtle
+    global yTurtle
+    turtle_canvas.move(turtleImage, -xTurtle, -yTurtle)
+    xTurtle = coords[0]
+    yTurtle = coords[1]
+    turtle_canvas.move(turtleImage, xTurtle, yTurtle)
+    turtle_canvas.update()
+
+
+def ponx(xCoord):
+    global xTurtle
+    turtle_canvas.move(turtleImage, -xTurtle, 0)
+    xTurtle = xCoord
+    turtle_canvas.move(turtleImage, xTurtle, 0)
+    turtle_canvas.update()
+
+
+def pony(yCoord):
+    global yTurtle
+    turtle_canvas.move(turtleImage, 0, -yTurtle)
+    yTurtle = yCoord
+    turtle_canvas.move(turtleImage, 0, yTurtle)
+    turtle_canvas.update()
+
+
 def giraDerecha(grades):
     girarAux(DrawController.girar(grades, -1))
 
@@ -136,11 +162,9 @@ def clean_canvas():
 
 
 def test():
-    cont = 0
-    while cont < 10000:
-        giraDerecha(10)
-        turtle_canvas.after(200)
-        cont = cont + 1
+    ponx(100)
+    ponrumbo(270)
+    avanza(500)
 
 
 # Logica de las skins___________________________________
