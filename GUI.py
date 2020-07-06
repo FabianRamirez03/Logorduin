@@ -1,6 +1,8 @@
 from tkinter import *
 import sys
 
+
+
 # Constantes Graficas
 xCanvas = 935
 yCanvas = 500
@@ -96,3 +98,11 @@ consoleBar.pack(side=RIGHT, fill="y")
 consoleText.pack(fill="y")
 
 root.mainloop()
+
+#**********************************Compilador*********************************************************
+
+# Build the lexer
+import ply.lex as lex
+lexer = lex.lex()
+import ply.yacc as yacc
+parser = yacc.yacc()
