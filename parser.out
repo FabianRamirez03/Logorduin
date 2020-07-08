@@ -1,0 +1,89 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> var_assign
+Rule 1     var_assign -> NAME EQUALS expression
+Rule 2     expression -> INT
+Rule 3     expression -> FLOAT
+Rule 4     expression -> NAME
+Rule 5     empty -> <empty>
+
+Terminals, with rules where they appear
+
+EQUALS               : 1
+FLOAT                : 3
+INT                  : 2
+NAME                 : 1 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+empty                : 
+expression           : 1
+var_assign           : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . var_assign
+    (1) var_assign -> . NAME EQUALS expression
+
+    NAME            shift and go to state 2
+
+    var_assign                     shift and go to state 1
+
+state 1
+
+    (0) S' -> var_assign .
+
+
+
+state 2
+
+    (1) var_assign -> NAME . EQUALS expression
+
+    EQUALS          shift and go to state 3
+
+
+state 3
+
+    (1) var_assign -> NAME EQUALS . expression
+    (2) expression -> . INT
+    (3) expression -> . FLOAT
+    (4) expression -> . NAME
+
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    NAME            shift and go to state 4
+
+    expression                     shift and go to state 5
+
+state 4
+
+    (4) expression -> NAME .
+
+    $end            reduce using rule 4 (expression -> NAME .)
+
+
+state 5
+
+    (1) var_assign -> NAME EQUALS expression .
+
+    $end            reduce using rule 1 (var_assign -> NAME EQUALS expression .)
+
+
+state 6
+
+    (2) expression -> INT .
+
+    $end            reduce using rule 2 (expression -> INT .)
+
+
+state 7
+
+    (3) expression -> FLOAT .
+
+    $end            reduce using rule 3 (expression -> FLOAT .)
+

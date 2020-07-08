@@ -1,6 +1,6 @@
 import ply.lex as lex
+
 import sys
-lexer = lex.lex()
 
 #lista de variables que son aceptadas
 tokens = [
@@ -39,3 +39,6 @@ def t_NAME(t):
 def t_error(t):
     print("Caracter no aceptado '%s' " % t.value[0] )
     t.lexer.skip(1)
+
+lexer = lex.lex()
+
