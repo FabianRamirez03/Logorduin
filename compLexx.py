@@ -1,5 +1,4 @@
 import ply.lex as lex
-
 import sys
 
 #lista de variables que son aceptadas

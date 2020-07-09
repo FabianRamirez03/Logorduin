@@ -2,44 +2,78 @@ import ply.yacc as yacc
 from compLexx import tokens
 import sys
 
+variables = {}
 
 #Gramatica de asignacion de variables
-def p_var_assign(p):
+def p_statement_assign(p):
     '''
-    var_assign : NAME EQUALS expression
+    statement : NAME EQUALS expression
     '''
     p[0] = ('=', p[1], p[3])
+    variables[p[1]] = p[3]
+    print(variables)
 
-
-
-#Asignacion de numeros
-def p_var_int_float(p):
+#Gramatica de una expresion
+def p_statement_expr(p):
     '''
-    expression : INT
-               | FLOAT
+    statement : expression
+    '''
+    p[0] = p[1]
+    print(p[1])
+
+def p_expression_Number(p):
+    '''expression : INT
+                  | FLOAT
     '''
     p[0] = p[1]
 
-#Asignacion del nombre a la variable
-def p_expression_var(p):
-    '''
-    expression : NAME
-    '''
-    p[0] = ('var', p[1])
-# p_error is another special Ply function.
+def p_expression_name(p):
+    "expression : NAME"
+    try:
+        p[0] = variables[p[1]]
+    except LookupError:
+        print("Variable no definida '%s'" % p[1])
+        p[0] = 0
+
 def p_error(p):
-    print("Syntax error found!")
-#Asignacion de un valor "vacio"
-def p_empty(p):
-    '''
-    empty :
-    '''
-    p[0] = None
+    if p:
+        print("Error de sintaxis de '%s'" % p.value)
+    else:
+        print("Syntax error at EOF")
+
+
+# #Gramatica que se encarga del manejo del inicializacion y creacion de variables
+# def p_initializer_assignOrCreate(p):
+#     """initializer : assign"""
+#
+# #Gramatica vacia
+# def p_initializer_empty(p):
+#     'initializer : '
+#     print("Error, debe al menos tener una variable creada.")
+
+
+
+# def p_expression_assign_empty(p):
+#     'assign : '
+#
+# def p_create(p):
+#     '''
+#      create : NAME
+#     '''
+#
+# def p_create_empty(p):
+#     '''
+#      create :
+#     '''
+
+
 
 parser = yacc.yacc()
+
 while True:
     try:
-        s = input('-> ')
+        s = input('->')
     except EOFError:
         break
+    if not s:continue
     parser.parse(s)

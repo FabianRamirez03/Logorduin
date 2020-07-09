@@ -2,88 +2,103 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Grammar
 
-Rule 0     S' -> var_assign
-Rule 1     var_assign -> NAME EQUALS expression
-Rule 2     expression -> INT
-Rule 3     expression -> FLOAT
-Rule 4     expression -> NAME
-Rule 5     empty -> <empty>
+Rule 0     S' -> statement
+Rule 1     statement -> NAME EQUALS expression
+Rule 2     statement -> expression
+Rule 3     expression -> INT
+Rule 4     expression -> FLOAT
+Rule 5     expression -> NAME
 
 Terminals, with rules where they appear
 
 EQUALS               : 1
-FLOAT                : 3
-INT                  : 2
-NAME                 : 1 4
+FLOAT                : 4
+INT                  : 3
+NAME                 : 1 5
 error                : 
 
 Nonterminals, with rules where they appear
 
-empty                : 
-expression           : 1
-var_assign           : 0
+expression           : 1 2
+statement            : 0
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . var_assign
-    (1) var_assign -> . NAME EQUALS expression
+    (0) S' -> . statement
+    (1) statement -> . NAME EQUALS expression
+    (2) statement -> . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . NAME
 
     NAME            shift and go to state 2
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
 
-    var_assign                     shift and go to state 1
+    statement                      shift and go to state 1
+    expression                     shift and go to state 3
 
 state 1
 
-    (0) S' -> var_assign .
+    (0) S' -> statement .
 
 
 
 state 2
 
-    (1) var_assign -> NAME . EQUALS expression
+    (1) statement -> NAME . EQUALS expression
+    (5) expression -> NAME .
 
-    EQUALS          shift and go to state 3
+    EQUALS          shift and go to state 6
+    $end            reduce using rule 5 (expression -> NAME .)
 
 
 state 3
 
-    (1) var_assign -> NAME EQUALS . expression
-    (2) expression -> . INT
-    (3) expression -> . FLOAT
-    (4) expression -> . NAME
+    (2) statement -> expression .
 
-    INT             shift and go to state 6
-    FLOAT           shift and go to state 7
-    NAME            shift and go to state 4
+    $end            reduce using rule 2 (statement -> expression .)
 
-    expression                     shift and go to state 5
 
 state 4
 
-    (4) expression -> NAME .
+    (3) expression -> INT .
 
-    $end            reduce using rule 4 (expression -> NAME .)
+    $end            reduce using rule 3 (expression -> INT .)
 
 
 state 5
 
-    (1) var_assign -> NAME EQUALS expression .
+    (4) expression -> FLOAT .
 
-    $end            reduce using rule 1 (var_assign -> NAME EQUALS expression .)
+    $end            reduce using rule 4 (expression -> FLOAT .)
 
 
 state 6
 
-    (2) expression -> INT .
+    (1) statement -> NAME EQUALS . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . NAME
 
-    $end            reduce using rule 2 (expression -> INT .)
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 7
 
+    expression                     shift and go to state 8
 
 state 7
 
-    (3) expression -> FLOAT .
+    (5) expression -> NAME .
 
-    $end            reduce using rule 3 (expression -> FLOAT .)
+    $end            reduce using rule 5 (expression -> NAME .)
+
+
+state 8
+
+    (1) statement -> NAME EQUALS expression .
+
+    $end            reduce using rule 1 (statement -> NAME EQUALS expression .)
 

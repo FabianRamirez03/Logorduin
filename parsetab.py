@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'EQUALS FLOAT INT NAME\n    var_assign : NAME EQUALS expression\n    \n    expression : INT\n               | FLOAT\n    \n    expression : NAME\n    \n    empty :\n    '
+_lr_signature = 'EQUALS FLOAT INT NAME\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    expression : INT\n                  | FLOAT\n    expression : NAME'
     
-_lr_action_items = {'NAME':([0,3,],[2,4,]),'$end':([1,4,5,6,7,],[0,-4,-1,-2,-3,]),'EQUALS':([2,],[3,]),'INT':([3,],[6,]),'FLOAT':([3,],[7,]),}
+_lr_action_items = {'NAME':([0,6,],[2,7,]),'INT':([0,6,],[4,4,]),'FLOAT':([0,6,],[5,5,]),'$end':([1,2,3,4,5,7,8,],[0,-5,-2,-3,-4,-5,-1,]),'EQUALS':([2,],[6,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'var_assign':([0,],[1,]),'expression':([3,],[5,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,6,],[3,8,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,10 +26,10 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> var_assign","S'",1,None,None,None),
-  ('var_assign -> NAME EQUALS expression','var_assign',3,'p_var_assign','compYacc.py',9),
-  ('expression -> INT','expression',1,'p_var_int_float','compYacc.py',18),
-  ('expression -> FLOAT','expression',1,'p_var_int_float','compYacc.py',19),
-  ('expression -> NAME','expression',1,'p_expression_var','compYacc.py',26),
-  ('empty -> <empty>','empty',0,'p_empty','compYacc.py',33),
+  ("S' -> statement","S'",1,None,None,None),
+  ('statement -> NAME EQUALS expression','statement',3,'p_statement_assign','compYacc.py',10),
+  ('statement -> expression','statement',1,'p_statement_expr','compYacc.py',19),
+  ('expression -> INT','expression',1,'p_expression_Number','compYacc.py',25),
+  ('expression -> FLOAT','expression',1,'p_expression_Number','compYacc.py',26),
+  ('expression -> NAME','expression',1,'p_expression_name','compYacc.py',31),
 ]
