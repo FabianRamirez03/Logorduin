@@ -6,7 +6,7 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'EQUALS FLOAT INT NAME\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    expression : INT\n                  | FLOAT\n    expression : NAME'
+_lr_signature = 'EQUALS FLOAT INT NAME\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    \n    expression : INT\n               | FLOAT\n    \n    expression : NAME\n    '
     
 _lr_action_items = {'NAME':([0,6,],[2,7,]),'INT':([0,6,],[4,4,]),'FLOAT':([0,6,],[5,5,]),'$end':([1,2,3,4,5,7,8,],[0,-5,-2,-3,-4,-5,-1,]),'EQUALS':([2,],[6,]),}
 
@@ -28,8 +28,8 @@ del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
   ('statement -> NAME EQUALS expression','statement',3,'p_statement_assign','compYacc.py',10),
-  ('statement -> expression','statement',1,'p_statement_expr','compYacc.py',19),
-  ('expression -> INT','expression',1,'p_expression_Number','compYacc.py',25),
-  ('expression -> FLOAT','expression',1,'p_expression_Number','compYacc.py',26),
-  ('expression -> NAME','expression',1,'p_expression_name','compYacc.py',31),
+  ('statement -> expression','statement',1,'p_statement_expr','compYacc.py',20),
+  ('expression -> INT','expression',1,'p_expression_Number','compYacc.py',28),
+  ('expression -> FLOAT','expression',1,'p_expression_Number','compYacc.py',29),
+  ('expression -> NAME','expression',1,'p_expression_name','compYacc.py',35),
 ]

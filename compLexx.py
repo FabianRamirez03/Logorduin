@@ -6,9 +6,10 @@ tokens = [
     'NAME',
     'EQUALS',
     'FLOAT',
-    'INT'
+    'INT',
 ]
 #indica con que simbolo se representan los tokens
+t_ignore = r' '
 t_EQUALS = r'\='
 
 #Comentarios
