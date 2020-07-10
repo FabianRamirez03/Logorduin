@@ -19,7 +19,9 @@ def p_statement_expr(p):
     statement : expression
     '''
     p[0] = p[1]
-    print(p[1])
+    #print(p[1])
+
+
 
 def p_expression_Number(p):
     '''expression : INT
@@ -27,6 +29,7 @@ def p_expression_Number(p):
                   | function
     '''
     p[0] = p[1]
+
 
 def p_expression_name(p):
     "expression : NAME"
@@ -36,10 +39,26 @@ def p_expression_name(p):
         print("Variable no definida '%s'" % p[1])
         p[0] = 0
 
-def p_Suma(p):
-    '''function : Suma Space expression Space expression
+
+def p_operaciones(p):
+    '''
+    operaciones : expression Space expression
+           | expression Space operaciones
+    '''
+    p[0] = (p[1],p[3])
+    #print(p[0])
+def suma(numeros, suma1):
+    if(type(numeros[1])!=tuple):
+        print(suma1+numeros[0]+numeros[1])
+    else:
+        a = numeros[1]
+        b = suma1+numeros[0]
+        suma(a,b)
+
+def p_suma(p):
+    '''function : Suma Space operaciones
                 '''
-    print(p[3]+p[5])
+    suma(p[3],0)
 
 
 def p_error(p):

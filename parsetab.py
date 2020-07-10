@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'Azar Borrapantalla Cuenta Division EQUALS Elegir Elemento FLOAT INT Menos NAME Potencia Pri Producto RC Resto Sen Space Suma Ultimo\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    expression : INT\n                  | FLOAT\n                  | function\n    expression : NAMEfunction : Suma Space expression Space expression\n                '
+_lr_signature = 'Azar Borrapantalla Cuenta Division EQUALS Elegir Elemento FLOAT INT Menos NAME Potencia Pri Producto RC Resto Sen Space Suma Ultimo\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    expression : INT\n                  | FLOAT\n                  | function\n    expression : NAME\n    operaciones : expression Space expression\n           | expression Space operaciones\n    function : Suma Space operaciones\n                '
     
-_lr_action_items = {'NAME':([0,8,9,13,],[2,10,10,10,]),'INT':([0,8,9,13,],[4,4,4,4,]),'FLOAT':([0,8,9,13,],[5,5,5,5,]),'Suma':([0,8,9,13,],[7,7,7,7,]),'$end':([1,2,3,4,5,6,10,11,14,],[0,-6,-2,-3,-4,-5,-6,-1,-7,]),'EQUALS':([2,],[8,]),'Space':([4,5,6,7,10,12,14,],[-3,-4,-5,9,-6,13,-7,]),}
+_lr_action_items = {'NAME':([0,8,9,14,],[2,10,10,10,]),'INT':([0,8,9,14,],[4,4,4,4,]),'FLOAT':([0,8,9,14,],[5,5,5,5,]),'Suma':([0,8,9,14,],[7,7,7,7,]),'$end':([1,2,3,4,5,6,10,11,12,15,16,],[0,-6,-2,-3,-4,-5,-6,-1,-9,-7,-8,]),'EQUALS':([2,],[8,]),'Space':([4,5,6,7,10,12,13,15,16,],[-3,-4,-5,9,-6,-9,14,14,-8,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,8,9,13,],[3,11,12,14,]),'function':([0,8,9,13,],[6,6,6,6,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,8,9,14,],[3,11,13,15,]),'function':([0,8,9,14,],[6,6,6,6,]),'operaciones':([9,14,],[12,16,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -29,9 +29,11 @@ _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
   ('statement -> NAME EQUALS expression','statement',3,'p_statement_assign','compYacc.py',10),
   ('statement -> expression','statement',1,'p_statement_expr','compYacc.py',19),
-  ('expression -> INT','expression',1,'p_expression_Number','compYacc.py',25),
-  ('expression -> FLOAT','expression',1,'p_expression_Number','compYacc.py',26),
-  ('expression -> function','expression',1,'p_expression_Number','compYacc.py',27),
-  ('expression -> NAME','expression',1,'p_expression_name','compYacc.py',32),
-  ('function -> Suma Space expression Space expression','function',5,'p_Suma','compYacc.py',40),
+  ('expression -> INT','expression',1,'p_expression_Number','compYacc.py',27),
+  ('expression -> FLOAT','expression',1,'p_expression_Number','compYacc.py',28),
+  ('expression -> function','expression',1,'p_expression_Number','compYacc.py',29),
+  ('expression -> NAME','expression',1,'p_expression_name','compYacc.py',35),
+  ('operaciones -> expression Space expression','operaciones',3,'p_operaciones','compYacc.py',45),
+  ('operaciones -> expression Space operaciones','operaciones',3,'p_operaciones','compYacc.py',46),
+  ('function -> Suma Space operaciones','function',3,'p_suma','compYacc.py',59),
 ]
