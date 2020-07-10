@@ -24,6 +24,7 @@ def p_statement_expr(p):
 def p_expression_Number(p):
     '''expression : INT
                   | FLOAT
+                  | function
     '''
     p[0] = p[1]
 
@@ -35,37 +36,17 @@ def p_expression_name(p):
         print("Variable no definida '%s'" % p[1])
         p[0] = 0
 
+def p_Suma(p):
+    '''function : Suma Space expression Space expression
+                '''
+    print(p[3]+p[5])
+
+
 def p_error(p):
     if p:
         print("Error de sintaxis de '%s'" % p.value)
     else:
         print("Syntax error at EOF")
-
-
-# #Gramatica que se encarga del manejo del inicializacion y creacion de variables
-# def p_initializer_assignOrCreate(p):
-#     """initializer : assign"""
-#
-# #Gramatica vacia
-# def p_initializer_empty(p):
-#     'initializer : '
-#     print("Error, debe al menos tener una variable creada.")
-
-
-
-# def p_expression_assign_empty(p):
-#     'assign : '
-#
-# def p_create(p):
-#     '''
-#      create : NAME
-#     '''
-#
-# def p_create_empty(p):
-#     '''
-#      create :
-#     '''
-
 
 
 parser = yacc.yacc()

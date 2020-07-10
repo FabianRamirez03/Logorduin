@@ -1,5 +1,22 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    Azar
+    Borrapantalla
+    Cuenta
+    Division
+    Elegir
+    Elemento
+    Menos
+    Potencia
+    Pri
+    Producto
+    RC
+    Resto
+    Sen
+    Ultimo
+
 Grammar
 
 Rule 0     S' -> statement
@@ -7,19 +24,38 @@ Rule 1     statement -> NAME EQUALS expression
 Rule 2     statement -> expression
 Rule 3     expression -> INT
 Rule 4     expression -> FLOAT
-Rule 5     expression -> NAME
+Rule 5     expression -> function
+Rule 6     expression -> NAME
+Rule 7     function -> Suma Space expression Space expression
 
 Terminals, with rules where they appear
 
+Azar                 : 
+Borrapantalla        : 
+Cuenta               : 
+Division             : 
 EQUALS               : 1
+Elegir               : 
+Elemento             : 
 FLOAT                : 4
 INT                  : 3
-NAME                 : 1 5
+Menos                : 
+NAME                 : 1 6
+Potencia             : 
+Pri                  : 
+Producto             : 
+RC                   : 
+Resto                : 
+Sen                  : 
+Space                : 7 7
+Suma                 : 7
+Ultimo               : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-expression           : 1 2
+expression           : 1 2 7 7
+function             : 5
 statement            : 0
 
 Parsing method: LALR
@@ -31,14 +67,18 @@ state 0
     (2) statement -> . expression
     (3) expression -> . INT
     (4) expression -> . FLOAT
-    (5) expression -> . NAME
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (7) function -> . Suma Space expression Space expression
 
     NAME            shift and go to state 2
     INT             shift and go to state 4
     FLOAT           shift and go to state 5
+    Suma            shift and go to state 7
 
     statement                      shift and go to state 1
     expression                     shift and go to state 3
+    function                       shift and go to state 6
 
 state 1
 
@@ -49,10 +89,10 @@ state 1
 state 2
 
     (1) statement -> NAME . EQUALS expression
-    (5) expression -> NAME .
+    (6) expression -> NAME .
 
-    EQUALS          shift and go to state 6
-    $end            reduce using rule 5 (expression -> NAME .)
+    EQUALS          shift and go to state 8
+    $end            reduce using rule 6 (expression -> NAME .)
 
 
 state 3
@@ -67,6 +107,7 @@ state 4
     (3) expression -> INT .
 
     $end            reduce using rule 3 (expression -> INT .)
+    Space           reduce using rule 3 (expression -> INT .)
 
 
 state 5
@@ -74,31 +115,101 @@ state 5
     (4) expression -> FLOAT .
 
     $end            reduce using rule 4 (expression -> FLOAT .)
+    Space           reduce using rule 4 (expression -> FLOAT .)
 
 
 state 6
 
-    (1) statement -> NAME EQUALS . expression
-    (3) expression -> . INT
-    (4) expression -> . FLOAT
-    (5) expression -> . NAME
+    (5) expression -> function .
 
-    INT             shift and go to state 4
-    FLOAT           shift and go to state 5
-    NAME            shift and go to state 7
+    $end            reduce using rule 5 (expression -> function .)
+    Space           reduce using rule 5 (expression -> function .)
 
-    expression                     shift and go to state 8
 
 state 7
 
-    (5) expression -> NAME .
+    (7) function -> Suma . Space expression Space expression
 
-    $end            reduce using rule 5 (expression -> NAME .)
+    Space           shift and go to state 9
 
 
 state 8
 
+    (1) statement -> NAME EQUALS . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (7) function -> . Suma Space expression Space expression
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 10
+    Suma            shift and go to state 7
+
+    expression                     shift and go to state 11
+    function                       shift and go to state 6
+
+state 9
+
+    (7) function -> Suma Space . expression Space expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (7) function -> . Suma Space expression Space expression
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 10
+    Suma            shift and go to state 7
+
+    expression                     shift and go to state 12
+    function                       shift and go to state 6
+
+state 10
+
+    (6) expression -> NAME .
+
+    $end            reduce using rule 6 (expression -> NAME .)
+    Space           reduce using rule 6 (expression -> NAME .)
+
+
+state 11
+
     (1) statement -> NAME EQUALS expression .
 
     $end            reduce using rule 1 (statement -> NAME EQUALS expression .)
+
+
+state 12
+
+    (7) function -> Suma Space expression . Space expression
+
+    Space           shift and go to state 13
+
+
+state 13
+
+    (7) function -> Suma Space expression Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (7) function -> . Suma Space expression Space expression
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 10
+    Suma            shift and go to state 7
+
+    expression                     shift and go to state 14
+    function                       shift and go to state 6
+
+state 14
+
+    (7) function -> Suma Space expression Space expression .
+
+    $end            reduce using rule 7 (function -> Suma Space expression Space expression .)
+    Space           reduce using rule 7 (function -> Suma Space expression Space expression .)
 
