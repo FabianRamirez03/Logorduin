@@ -46,8 +46,9 @@ def p_operaciones(p):
     '''
     operaciones : expression Space expression
                 | expression Space operaciones
-                | expression Space expression Space RightSquareBracket
-    '''
+                '''
+#                | expression Space expression Space RightSquareBracket
+ #   '''
     p[0] = (p[1],p[3])
     print(p[0])
 
@@ -121,6 +122,7 @@ def p_Sen(p):
 def makeList(tupla,lista):
     if (type(tupla[1]) != tuple):
         lista += [tupla[0]] + [tupla[1]]
+        print(lista)
         return lista
     else:
         a = tupla[1]
@@ -128,9 +130,9 @@ def makeList(tupla,lista):
         makeList(a, b)
 
 def p_Elegir(p):
-    '''function : Elegir Space LeftSquareBracket Space operaciones'''
+    '''function : Elegir Space LeftSquareBracket operaciones RightSquareBracket'''
     #Lista= makeList(p[5],[])
-    print(makeList(p[5],[]))
+    print(makeList(p[4],[]))
     num= random.randint(0,len(p[5]))
     print(num)
     #print(Lista[0])

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'Azar Borrapantalla Cuenta Division EQUALS Elegir Elemento FLOAT INT LeftSquareBracket Menos NAME Potencia Pri Producto RC Resto RightSquareBracket Sen Space Suma Ultimo\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    expression : INT\n                  | FLOAT\n                  | function\n    expression : NAME\n    operaciones : expression Space expression\n                | expression Space operaciones\n                | expression Space expression Space RightSquareBracket\n    function : Suma Space operaciones\n                function : Azar Space expressionfunction : Producto Space operaciones\n                function :  Potencia Space expression Space expressionfunction :  Division Space expression Space expressionfunction :  Resto Space expression Space expressionfunction :  RC Space expressionfunction :  Sen Space expressionfunction : Elegir Space LeftSquareBracket Space operacionesfunction :  Borrapantalla'
+_lr_signature = 'Azar Borrapantalla Cuenta Division EQUALS Elegir Elemento FLOAT INT LeftSquareBracket Menos NAME Potencia Pri Producto RC Resto RightSquareBracket Sen Space Suma Ultimo\n    statement : NAME EQUALS expression\n    \n    statement : expression\n    expression : INT\n                  | FLOAT\n                  | function\n    expression : NAME\n    operaciones : expression Space expression\n                | expression Space operaciones\n                function : Suma Space operaciones\n                function : Azar Space expressionfunction : Producto Space operaciones\n                function :  Potencia Space expression Space expressionfunction :  Division Space expression Space expressionfunction :  Resto Space expression Space expressionfunction :  RC Space expressionfunction :  Sen Space expressionfunction : Elegir Space LeftSquareBracket operaciones RightSquareBracketfunction :  Borrapantalla'
     
-_lr_action_items = {'NAME':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[2,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,]),'INT':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,]),'FLOAT':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,]),'Suma':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,]),'Azar':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,]),'Producto':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,]),'Potencia':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,]),'Division':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,]),'Resto':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,]),'RC':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,]),'Sen':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,]),'Elegir':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,]),'Borrapantalla':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,]),'$end':([1,2,3,4,5,6,16,27,28,29,31,32,36,37,44,45,46,47,48,49,51,],[0,-6,-2,-3,-4,-5,-19,-6,-1,-10,-11,-12,-16,-17,-7,-8,-13,-14,-15,-18,-9,]),'EQUALS':([2,],[17,]),'Space':([4,5,6,7,8,9,10,11,12,13,14,15,16,27,29,30,31,32,33,34,35,36,37,38,44,45,46,47,48,49,51,],[-3,-4,-5,18,19,20,21,22,23,24,25,26,-19,-6,-10,39,-11,-12,40,41,42,-16,-17,43,50,-8,-13,-14,-15,-18,-9,]),'LeftSquareBracket':([26,],[38,]),'RightSquareBracket':([50,],[51,]),}
+_lr_action_items = {'NAME':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[2,27,27,27,27,27,27,27,27,27,27,27,27,27,27,]),'INT':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,]),'FLOAT':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,]),'Suma':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,]),'Azar':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,]),'Producto':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,]),'Potencia':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,]),'Division':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,]),'Resto':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,]),'RC':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,]),'Sen':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,]),'Elegir':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,]),'Borrapantalla':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,]),'$end':([1,2,3,4,5,6,16,27,28,29,31,32,36,37,44,45,46,47,48,49,],[0,-6,-2,-3,-4,-5,-18,-6,-1,-9,-10,-11,-15,-16,-7,-8,-12,-13,-14,-17,]),'EQUALS':([2,],[17,]),'Space':([4,5,6,7,8,9,10,11,12,13,14,15,16,27,29,30,31,32,33,34,35,36,37,44,45,46,47,48,49,],[-3,-4,-5,18,19,20,21,22,23,24,25,26,-18,-6,-9,39,-10,-11,40,41,42,-15,-16,39,-8,-12,-13,-14,-17,]),'RightSquareBracket':([4,5,6,16,27,29,31,32,36,37,43,44,45,46,47,48,49,],[-3,-4,-5,-18,-6,-9,-10,-11,-15,-16,49,-7,-8,-12,-13,-14,-17,]),'LeftSquareBracket':([26,],[38,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[3,28,30,31,30,33,34,35,36,37,44,46,47,48,30,44,]),'function':([0,17,18,19,20,21,22,23,24,25,39,40,41,42,43,50,],[6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]),'operaciones':([18,20,39,43,50,],[29,32,45,49,45,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'expression':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[3,28,30,31,30,33,34,35,36,37,30,44,46,47,48,]),'function':([0,17,18,19,20,21,22,23,24,25,38,39,40,41,42,],[6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,]),'operaciones':([18,20,38,39,],[29,32,43,45,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -35,15 +35,14 @@ _lr_productions = [
   ('expression -> NAME','expression',1,'p_expression_name','compYacc.py',37),
   ('operaciones -> expression Space expression','operaciones',3,'p_operaciones','compYacc.py',47),
   ('operaciones -> expression Space operaciones','operaciones',3,'p_operaciones','compYacc.py',48),
-  ('operaciones -> expression Space expression Space RightSquareBracket','operaciones',5,'p_operaciones','compYacc.py',49),
-  ('function -> Suma Space operaciones','function',3,'p_suma','compYacc.py',64),
-  ('function -> Azar Space expression','function',3,'p_Azar','compYacc.py',70),
-  ('function -> Producto Space operaciones','function',3,'p_producto','compYacc.py',90),
-  ('function -> Potencia Space expression Space expression','function',5,'p_Menos','compYacc.py',96),
-  ('function -> Division Space expression Space expression','function',5,'p_Division','compYacc.py',101),
-  ('function -> Resto Space expression Space expression','function',5,'p_Resto','compYacc.py',107),
-  ('function -> RC Space expression','function',3,'p_RC','compYacc.py',112),
-  ('function -> Sen Space expression','function',3,'p_Sen','compYacc.py',117),
-  ('function -> Elegir Space LeftSquareBracket Space operaciones','function',5,'p_Elegir','compYacc.py',131),
-  ('function -> Borrapantalla','function',1,'p_Borrapantalla','compYacc.py',138),
+  ('function -> Suma Space operaciones','function',3,'p_suma','compYacc.py',65),
+  ('function -> Azar Space expression','function',3,'p_Azar','compYacc.py',71),
+  ('function -> Producto Space operaciones','function',3,'p_producto','compYacc.py',91),
+  ('function -> Potencia Space expression Space expression','function',5,'p_Menos','compYacc.py',97),
+  ('function -> Division Space expression Space expression','function',5,'p_Division','compYacc.py',102),
+  ('function -> Resto Space expression Space expression','function',5,'p_Resto','compYacc.py',108),
+  ('function -> RC Space expression','function',3,'p_RC','compYacc.py',113),
+  ('function -> Sen Space expression','function',3,'p_Sen','compYacc.py',118),
+  ('function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket','function',5,'p_Elegir','compYacc.py',132),
+  ('function -> Borrapantalla','function',1,'p_Borrapantalla','compYacc.py',140),
 ]
