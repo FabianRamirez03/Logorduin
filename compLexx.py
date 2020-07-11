@@ -26,7 +26,8 @@ tokens = [
     'LeftSquareBracket',
     'RightSquareBracket',
     'Var',
-    'Inic'
+    'Inic',
+    'Inc'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
@@ -65,6 +66,11 @@ def t_NAME(t):
 def t_var(t):
     r'Var'
     t.type = 'Var'
+    return t
+
+def t_Inc(t):
+    r'Inc'
+    t.type = 'Inc'
     return t
 
 def t_Inic(t):

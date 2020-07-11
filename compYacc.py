@@ -15,6 +15,8 @@ def p_statement_create(p):
         p[0] = ('=', p[3], p[7])
         variables[p[3]] = p[7]
         print(variables)
+    else:
+        print("La variable ya fue creada")
 
 def p_statement_assign(p):
     """statement : Inic Space NAME Space EQUALS Space expression
@@ -77,10 +79,25 @@ def suma(tupla):
     return suma1 + tupla[0] + tupla[1]
 
 def p_suma(p):
-    '''function : Suma Space operaciones
-                '''
+    '''
+    function : Suma Space operaciones
+    '''
     a= suma(p[3])
     p[0] = a
+
+def p_Incrementar(p):
+    """
+    function : Inc Space NAME
+    """
+    variables[p[3]] = variables[p[3]] + 1
+
+
+def p_Incrementar_Num(p):
+    """
+    function : Inc Space NAME Space expression
+    """
+    variables[p[3]] = variables[p[3]] + p[5]
+
 
 #funcion de numero aleatorio
 def p_Azar(p):
