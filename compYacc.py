@@ -119,23 +119,18 @@ def p_Sen(p):
     num = m.sin(m.radians(p[3])) #preeeeguntaaar
     print(num)
 
-def makeList(tupla,lista):
-    if (type(tupla[1]) != tuple):
-        lista += [tupla[0]] + [tupla[1]]
-        print(lista)
-        return lista
-    else:
-        a = tupla[1]
-        b = lista + [tupla[0]]
-        makeList(a, b)
+def makeList(tupla):
+    lista=[]
+    while(type(tupla[1]) == tuple):
+        lista+=[tupla[0]]
+        tupla=tupla[1]
+    return lista+[tupla[0]]+[tupla[1]]
 
 def p_Elegir(p):
     '''function : Elegir Space LeftSquareBracket operaciones RightSquareBracket'''
-    #Lista= makeList(p[5],[])
-    print(makeList(p[4],[]))
-    num= random.randint(0,len(p[5]))
-    print(num)
-    #print(Lista[0])
+    Lista= makeList(p[4])
+    num= random.randint(0,len(Lista))
+    print(Lista[num])
 
 def p_Borrapantalla(p):
     '''function :  Borrapantalla'''
