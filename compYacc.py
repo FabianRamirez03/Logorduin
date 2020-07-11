@@ -125,7 +125,7 @@ def p_producto(p):
     p[0]=producto(p[3])
 
 #funcion para calcular potencia y gramatica
-def p_Menos(p):
+def p_Potencia(p):
     '''function :  Potencia Space expression Space expression'''
     num = p[3]**p[5]
     p[0]=num
@@ -163,6 +163,26 @@ def p_Elegir(p):
     Lista= makeList(p[4])
     num= random.randint(0,len(Lista)-1)
     p[0]=Lista[num]
+
+def p_Cuenta(p):
+    '''function : Cuenta Space LeftSquareBracket operaciones RightSquareBracket'''
+    Lista= makeList(p[4])
+    p[0]=len(Lista)
+
+def p_Ultimo(p):
+    '''function : Ultimo Space LeftSquareBracket operaciones RightSquareBracket'''
+    Lista= makeList(p[4])
+    p[0]=Lista[len(Lista)-1]
+
+def p_Elemento(p):
+    '''function : Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket'''
+    Lista= makeList(p[6])
+    p[0]=Lista[p[3]-1]
+
+def p_Primero(p):
+    '''function : Pri Space LeftSquareBracket operaciones RightSquareBracket'''
+    Lista= makeList(p[4])
+    p[0]=Lista[0]
 
 def p_Borrapantalla(p):
     '''function :  Borrapantalla'''
