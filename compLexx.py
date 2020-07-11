@@ -27,7 +27,20 @@ tokens = [
     'RightSquareBracket',
     'Var',
     'Inic',
-    'Inc'
+    'Inc',
+    'Avanza',
+    'Retrocede',
+    'GiraDerecha',
+    'GiraIzquierda',
+    'OcultaTortuga',
+    'ApareceTortuga',
+    'PonXY',
+    'PonRumbo',
+    'Rumbo',
+    'PonX',
+    'PonY',
+    'BajaLapiz',
+    'SubeLapiz'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
@@ -62,10 +75,74 @@ def t_NAME(t):
     t.type = 'NAME'
     return t
 
-
 def t_var(t):
     r'Var'
     t.type = 'Var'
+    return t
+
+def t_Avanza(t):
+    r'Avanza'
+    t.type = 'Avanza'
+    return t
+
+def t_Retrocede(t):
+    r'Retrocede'
+    t.type = 'Retrocede'
+    return t
+
+def t_GiraDerecha(t):
+    r'GiraDerecha'
+    t.type = 'GiraDerecha'
+    return t
+
+def t_GiraIzquierda(t):
+    r'GiraIzquierda'
+    t.type = 'GiraIzquierda'
+    return t
+
+def t_OcultaTortuga(t):
+    r'OcultaTortuga'
+    t.type = 'OcultaTortuga'
+    return t
+
+def t_ApareceTortuga(t):
+    r'ApareceTortuga'
+    t.type = 'ApareceTortuga'
+    return t
+
+def t_PonXY(t):
+    r'PonXY'
+    t.type = 'PonXY'
+    return t
+
+def t_PonRumbo(t):
+    r'PonRumbo'
+    t.type = 'PonRumbo'
+    return t
+
+def t_Rumbo(t):
+    r'Rumbo'
+    t.type = 'Rumbo'
+    return t
+
+def t_PonX(t):
+    r'PonX'
+    t.type = 'PonX'
+    return t
+
+def t_PonY(t):
+    r'PonY'
+    t.type = 'PonY'
+    return t
+
+def t_BajaLapiz(t):
+    r'BajaLapiz'
+    t.type = 'BajaLapiz'
+    return t
+
+def t_SubeLapiz(t):
+    r'SubeLapiz'
+    t.type = 'SubeLapiz'
     return t
 
 def t_Inc(t):
@@ -124,8 +201,6 @@ def t_Sen(t):
     t.type = 'Sen'
     return t
 
-
-
 def t_Elegir(t):
     r'Elegir'
     t.type = 'Elegir'
@@ -155,7 +230,6 @@ def t_Borrarpantalla(t):
     r'Borrarpantalla'
     t.type = 'Borrarpantalla'
     return t
-
 
 #Error al ingresar un caracter no permitido
 def t_error(t):

@@ -33,32 +33,60 @@ Rule 19    function -> Resto Space expression Space expression
 Rule 20    function -> RC Space expression
 Rule 21    function -> Sen Space expression
 Rule 22    function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket
-Rule 23    function -> Borrapantalla
+Rule 23    function -> Avanza Space expression
+Rule 24    function -> Avanza Space function
+Rule 25    function -> Retrocede Space expression
+Rule 26    function -> Retrocede Space function
+Rule 27    function -> GiraDerecha Space expression
+Rule 28    function -> GiraIzquierda Space expression
+Rule 29    function -> OcultaTortuga
+Rule 30    function -> ApareceTortuga
+Rule 31    function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+Rule 32    function -> PonRumbo Space expression
+Rule 33    function -> Rumbo
+Rule 34    function -> PonX Space expression
+Rule 35    function -> PonY Space expression
+Rule 36    function -> BajaLapiz
+Rule 37    function -> SubeLapiz
+Rule 38    function -> Borrapantalla
 
 Terminals, with rules where they appear
 
+ApareceTortuga       : 30
+Avanza               : 23 24
 Azar                 : 15
-Borrapantalla        : 23
+BajaLapiz            : 36
+Borrapantalla        : 38
 Cuenta               : 
 Division             : 18
 EQUALS               : 1 2 3
 Elegir               : 22
 Elemento             : 
 FLOAT                : 7
+GiraDerecha          : 27
+GiraIzquierda        : 28
 INT                  : 6
 Inc                  : 13 14
 Inic                 : 2 3
-LeftSquareBracket    : 22
+LeftSquareBracket    : 22 31
 Menos                : 
 NAME                 : 1 2 3 4 9 13 14
+OcultaTortuga        : 29
+PonRumbo             : 32
+PonX                 : 34
+PonXY                : 31
+PonY                 : 35
 Potencia             : 17
 Pri                  : 
 Producto             : 16
 RC                   : 20
 Resto                : 19
-RightSquareBracket   : 22
+Retrocede            : 25 26
+RightSquareBracket   : 22 31
+Rumbo                : 33
 Sen                  : 21
-Space                : 1 1 1 2 2 2 3 3 3 4 10 11 12 13 14 14 15 16 17 17 18 18 19 19 20 21 22
+Space                : 1 1 1 2 2 2 3 3 3 4 10 11 12 13 14 14 15 16 17 17 18 18 19 19 20 21 22 23 24 25 26 27 28 31 31 32 34 35
+SubeLapiz            : 37
 Suma                 : 12
 Ultimo               : 
 Var                  : 1 4
@@ -66,8 +94,8 @@ error                :
 
 Nonterminals, with rules where they appear
 
-expression           : 1 2 5 10 10 11 14 15 17 17 18 18 19 19 20 21
-function             : 3 8
+expression           : 1 2 5 10 10 11 14 15 17 17 18 18 19 19 20 21 23 25 27 28 31 31 32 34 35
+function             : 3 8 24 26
 operaciones          : 11 12 16 22
 statement            : 0
 
@@ -96,7 +124,22 @@ state 0
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     Var             shift and go to state 2
     Inic            shift and go to state 5
@@ -113,7 +156,20 @@ state 0
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
     statement                      shift and go to state 1
     expression                     shift and go to state 4
@@ -130,7 +186,7 @@ state 2
     (1) statement -> Var . Space NAME Space EQUALS Space expression
     (4) statement -> Var . Space NAME
 
-    Space           shift and go to state 20
+    Space           shift and go to state 33
 
 
 state 3
@@ -154,7 +210,7 @@ state 5
     (2) statement -> Inic . Space NAME Space EQUALS Space expression
     (3) statement -> Inic . Space NAME Space EQUALS Space function
 
-    Space           shift and go to state 21
+    Space           shift and go to state 34
 
 
 state 6
@@ -188,7 +244,7 @@ state 9
 
     (12) function -> Suma . Space operaciones
 
-    Space           shift and go to state 22
+    Space           shift and go to state 35
 
 
 state 10
@@ -196,91 +252,194 @@ state 10
     (13) function -> Inc . Space NAME
     (14) function -> Inc . Space NAME Space expression
 
-    Space           shift and go to state 23
+    Space           shift and go to state 36
 
 
 state 11
 
     (15) function -> Azar . Space expression
 
-    Space           shift and go to state 24
+    Space           shift and go to state 37
 
 
 state 12
 
     (16) function -> Producto . Space operaciones
 
-    Space           shift and go to state 25
+    Space           shift and go to state 38
 
 
 state 13
 
     (17) function -> Potencia . Space expression Space expression
 
-    Space           shift and go to state 26
+    Space           shift and go to state 39
 
 
 state 14
 
     (18) function -> Division . Space expression Space expression
 
-    Space           shift and go to state 27
+    Space           shift and go to state 40
 
 
 state 15
 
     (19) function -> Resto . Space expression Space expression
 
-    Space           shift and go to state 28
+    Space           shift and go to state 41
 
 
 state 16
 
     (20) function -> RC . Space expression
 
-    Space           shift and go to state 29
+    Space           shift and go to state 42
 
 
 state 17
 
     (21) function -> Sen . Space expression
 
-    Space           shift and go to state 30
+    Space           shift and go to state 43
 
 
 state 18
 
     (22) function -> Elegir . Space LeftSquareBracket operaciones RightSquareBracket
 
-    Space           shift and go to state 31
+    Space           shift and go to state 44
 
 
 state 19
 
-    (23) function -> Borrapantalla .
+    (23) function -> Avanza . Space expression
+    (24) function -> Avanza . Space function
 
-    $end            reduce using rule 23 (function -> Borrapantalla .)
-    Space           reduce using rule 23 (function -> Borrapantalla .)
-    RightSquareBracket reduce using rule 23 (function -> Borrapantalla .)
+    Space           shift and go to state 45
 
 
 state 20
 
-    (1) statement -> Var Space . NAME Space EQUALS Space expression
-    (4) statement -> Var Space . NAME
+    (25) function -> Retrocede . Space expression
+    (26) function -> Retrocede . Space function
 
-    NAME            shift and go to state 32
+    Space           shift and go to state 46
 
 
 state 21
 
-    (2) statement -> Inic Space . NAME Space EQUALS Space expression
-    (3) statement -> Inic Space . NAME Space EQUALS Space function
+    (27) function -> GiraDerecha . Space expression
 
-    NAME            shift and go to state 33
+    Space           shift and go to state 47
 
 
 state 22
+
+    (28) function -> GiraIzquierda . Space expression
+
+    Space           shift and go to state 48
+
+
+state 23
+
+    (29) function -> OcultaTortuga .
+
+    $end            reduce using rule 29 (function -> OcultaTortuga .)
+    Space           reduce using rule 29 (function -> OcultaTortuga .)
+    RightSquareBracket reduce using rule 29 (function -> OcultaTortuga .)
+
+
+state 24
+
+    (30) function -> ApareceTortuga .
+
+    $end            reduce using rule 30 (function -> ApareceTortuga .)
+    Space           reduce using rule 30 (function -> ApareceTortuga .)
+    RightSquareBracket reduce using rule 30 (function -> ApareceTortuga .)
+
+
+state 25
+
+    (31) function -> PonXY . Space LeftSquareBracket expression Space expression RightSquareBracket
+
+    Space           shift and go to state 49
+
+
+state 26
+
+    (32) function -> PonRumbo . Space expression
+
+    Space           shift and go to state 50
+
+
+state 27
+
+    (33) function -> Rumbo .
+
+    $end            reduce using rule 33 (function -> Rumbo .)
+    Space           reduce using rule 33 (function -> Rumbo .)
+    RightSquareBracket reduce using rule 33 (function -> Rumbo .)
+
+
+state 28
+
+    (34) function -> PonX . Space expression
+
+    Space           shift and go to state 51
+
+
+state 29
+
+    (35) function -> PonY . Space expression
+
+    Space           shift and go to state 52
+
+
+state 30
+
+    (36) function -> BajaLapiz .
+
+    $end            reduce using rule 36 (function -> BajaLapiz .)
+    Space           reduce using rule 36 (function -> BajaLapiz .)
+    RightSquareBracket reduce using rule 36 (function -> BajaLapiz .)
+
+
+state 31
+
+    (37) function -> SubeLapiz .
+
+    $end            reduce using rule 37 (function -> SubeLapiz .)
+    Space           reduce using rule 37 (function -> SubeLapiz .)
+    RightSquareBracket reduce using rule 37 (function -> SubeLapiz .)
+
+
+state 32
+
+    (38) function -> Borrapantalla .
+
+    $end            reduce using rule 38 (function -> Borrapantalla .)
+    Space           reduce using rule 38 (function -> Borrapantalla .)
+    RightSquareBracket reduce using rule 38 (function -> Borrapantalla .)
+
+
+state 33
+
+    (1) statement -> Var Space . NAME Space EQUALS Space expression
+    (4) statement -> Var Space . NAME
+
+    NAME            shift and go to state 53
+
+
+state 34
+
+    (2) statement -> Inic Space . NAME Space EQUALS Space expression
+    (3) statement -> Inic Space . NAME Space EQUALS Space function
+
+    NAME            shift and go to state 54
+
+
+state 35
 
     (12) function -> Suma Space . operaciones
     (10) operaciones -> . expression Space expression
@@ -300,7 +459,22 @@ state 22
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -315,21 +489,34 @@ state 22
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    operaciones                    shift and go to state 34
-    expression                     shift and go to state 35
+    operaciones                    shift and go to state 55
+    expression                     shift and go to state 56
     function                       shift and go to state 6
 
-state 23
+state 36
 
     (13) function -> Inc Space . NAME
     (14) function -> Inc Space . NAME Space expression
 
-    NAME            shift and go to state 36
+    NAME            shift and go to state 57
 
 
-state 24
+state 37
 
     (15) function -> Azar Space . expression
     (6) expression -> . INT
@@ -347,7 +534,22 @@ state 24
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -362,12 +564,25 @@ state 24
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 37
+    expression                     shift and go to state 58
     function                       shift and go to state 6
 
-state 25
+state 38
 
     (16) function -> Producto Space . operaciones
     (10) operaciones -> . expression Space expression
@@ -387,7 +602,22 @@ state 25
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -402,13 +632,26 @@ state 25
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    operaciones                    shift and go to state 38
-    expression                     shift and go to state 35
+    operaciones                    shift and go to state 59
+    expression                     shift and go to state 56
     function                       shift and go to state 6
 
-state 26
+state 39
 
     (17) function -> Potencia Space . expression Space expression
     (6) expression -> . INT
@@ -426,7 +669,22 @@ state 26
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -441,12 +699,25 @@ state 26
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 39
+    expression                     shift and go to state 60
     function                       shift and go to state 6
 
-state 27
+state 40
 
     (18) function -> Division Space . expression Space expression
     (6) expression -> . INT
@@ -464,7 +735,22 @@ state 27
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -479,12 +765,25 @@ state 27
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 40
+    expression                     shift and go to state 61
     function                       shift and go to state 6
 
-state 28
+state 41
 
     (19) function -> Resto Space . expression Space expression
     (6) expression -> . INT
@@ -502,7 +801,22 @@ state 28
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -517,12 +831,25 @@ state 28
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 41
+    expression                     shift and go to state 62
     function                       shift and go to state 6
 
-state 29
+state 42
 
     (20) function -> RC Space . expression
     (6) expression -> . INT
@@ -540,7 +867,22 @@ state 29
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -555,12 +897,25 @@ state 29
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 42
+    expression                     shift and go to state 63
     function                       shift and go to state 6
 
-state 30
+state 43
 
     (21) function -> Sen Space . expression
     (6) expression -> . INT
@@ -578,7 +933,22 @@ state 30
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -593,36 +963,520 @@ state 30
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 43
+    expression                     shift and go to state 64
     function                       shift and go to state 6
 
-state 31
+state 44
 
     (22) function -> Elegir Space . LeftSquareBracket operaciones RightSquareBracket
 
-    LeftSquareBracket shift and go to state 44
+    LeftSquareBracket shift and go to state 65
 
 
-state 32
+state 45
+
+    (23) function -> Avanza Space . expression
+    (24) function -> Avanza Space . function
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 66
+    function                       shift and go to state 67
+
+state 46
+
+    (25) function -> Retrocede Space . expression
+    (26) function -> Retrocede Space . function
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 68
+    function                       shift and go to state 69
+
+state 47
+
+    (27) function -> GiraDerecha Space . expression
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 70
+    function                       shift and go to state 6
+
+state 48
+
+    (28) function -> GiraIzquierda Space . expression
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 71
+    function                       shift and go to state 6
+
+state 49
+
+    (31) function -> PonXY Space . LeftSquareBracket expression Space expression RightSquareBracket
+
+    LeftSquareBracket shift and go to state 72
+
+
+state 50
+
+    (32) function -> PonRumbo Space . expression
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 73
+    function                       shift and go to state 6
+
+state 51
+
+    (34) function -> PonX Space . expression
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 74
+    function                       shift and go to state 6
+
+state 52
+
+    (35) function -> PonY Space . expression
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 75
+    function                       shift and go to state 6
+
+state 53
 
     (1) statement -> Var Space NAME . Space EQUALS Space expression
     (4) statement -> Var Space NAME .
 
-    Space           shift and go to state 45
+    Space           shift and go to state 76
     $end            reduce using rule 4 (statement -> Var Space NAME .)
 
 
-state 33
+state 54
 
     (2) statement -> Inic Space NAME . Space EQUALS Space expression
     (3) statement -> Inic Space NAME . Space EQUALS Space function
 
-    Space           shift and go to state 46
+    Space           shift and go to state 77
 
 
-state 34
+state 55
 
     (12) function -> Suma Space operaciones .
 
@@ -631,15 +1485,15 @@ state 34
     RightSquareBracket reduce using rule 12 (function -> Suma Space operaciones .)
 
 
-state 35
+state 56
 
     (10) operaciones -> expression . Space expression
     (11) operaciones -> expression . Space operaciones
 
-    Space           shift and go to state 47
+    Space           shift and go to state 78
 
 
-state 36
+state 57
 
     (13) function -> Inc Space NAME .
     (14) function -> Inc Space NAME . Space expression
@@ -647,12 +1501,12 @@ state 36
   ! shift/reduce conflict for Space resolved as shift
     $end            reduce using rule 13 (function -> Inc Space NAME .)
     RightSquareBracket reduce using rule 13 (function -> Inc Space NAME .)
-    Space           shift and go to state 48
+    Space           shift and go to state 79
 
   ! Space           [ reduce using rule 13 (function -> Inc Space NAME .) ]
 
 
-state 37
+state 58
 
     (15) function -> Azar Space expression .
 
@@ -661,7 +1515,7 @@ state 37
     RightSquareBracket reduce using rule 15 (function -> Azar Space expression .)
 
 
-state 38
+state 59
 
     (16) function -> Producto Space operaciones .
 
@@ -670,28 +1524,28 @@ state 38
     RightSquareBracket reduce using rule 16 (function -> Producto Space operaciones .)
 
 
-state 39
+state 60
 
     (17) function -> Potencia Space expression . Space expression
 
-    Space           shift and go to state 49
+    Space           shift and go to state 80
 
 
-state 40
+state 61
 
     (18) function -> Division Space expression . Space expression
 
-    Space           shift and go to state 50
+    Space           shift and go to state 81
 
 
-state 41
+state 62
 
     (19) function -> Resto Space expression . Space expression
 
-    Space           shift and go to state 51
+    Space           shift and go to state 82
 
 
-state 42
+state 63
 
     (20) function -> RC Space expression .
 
@@ -700,7 +1554,7 @@ state 42
     RightSquareBracket reduce using rule 20 (function -> RC Space expression .)
 
 
-state 43
+state 64
 
     (21) function -> Sen Space expression .
 
@@ -709,7 +1563,7 @@ state 43
     RightSquareBracket reduce using rule 21 (function -> Sen Space expression .)
 
 
-state 44
+state 65
 
     (22) function -> Elegir Space LeftSquareBracket . operaciones RightSquareBracket
     (10) operaciones -> . expression Space expression
@@ -729,7 +1583,22 @@ state 44
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -744,28 +1613,204 @@ state 44
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    operaciones                    shift and go to state 52
-    expression                     shift and go to state 35
+    operaciones                    shift and go to state 83
+    expression                     shift and go to state 56
     function                       shift and go to state 6
 
-state 45
+state 66
+
+    (23) function -> Avanza Space expression .
+
+    $end            reduce using rule 23 (function -> Avanza Space expression .)
+    Space           reduce using rule 23 (function -> Avanza Space expression .)
+    RightSquareBracket reduce using rule 23 (function -> Avanza Space expression .)
+
+
+state 67
+
+    (24) function -> Avanza Space function .
+    (8) expression -> function .
+
+  ! reduce/reduce conflict for $end resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for Space resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for RightSquareBracket resolved using rule 8 (expression -> function .)
+    $end            reduce using rule 8 (expression -> function .)
+    Space           reduce using rule 8 (expression -> function .)
+    RightSquareBracket reduce using rule 8 (expression -> function .)
+
+  ! $end            [ reduce using rule 24 (function -> Avanza Space function .) ]
+  ! Space           [ reduce using rule 24 (function -> Avanza Space function .) ]
+  ! RightSquareBracket [ reduce using rule 24 (function -> Avanza Space function .) ]
+
+
+state 68
+
+    (25) function -> Retrocede Space expression .
+
+    $end            reduce using rule 25 (function -> Retrocede Space expression .)
+    Space           reduce using rule 25 (function -> Retrocede Space expression .)
+    RightSquareBracket reduce using rule 25 (function -> Retrocede Space expression .)
+
+
+state 69
+
+    (26) function -> Retrocede Space function .
+    (8) expression -> function .
+
+  ! reduce/reduce conflict for $end resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for Space resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for RightSquareBracket resolved using rule 8 (expression -> function .)
+    $end            reduce using rule 8 (expression -> function .)
+    Space           reduce using rule 8 (expression -> function .)
+    RightSquareBracket reduce using rule 8 (expression -> function .)
+
+  ! $end            [ reduce using rule 26 (function -> Retrocede Space function .) ]
+  ! Space           [ reduce using rule 26 (function -> Retrocede Space function .) ]
+  ! RightSquareBracket [ reduce using rule 26 (function -> Retrocede Space function .) ]
+
+
+state 70
+
+    (27) function -> GiraDerecha Space expression .
+
+    $end            reduce using rule 27 (function -> GiraDerecha Space expression .)
+    Space           reduce using rule 27 (function -> GiraDerecha Space expression .)
+    RightSquareBracket reduce using rule 27 (function -> GiraDerecha Space expression .)
+
+
+state 71
+
+    (28) function -> GiraIzquierda Space expression .
+
+    $end            reduce using rule 28 (function -> GiraIzquierda Space expression .)
+    Space           reduce using rule 28 (function -> GiraIzquierda Space expression .)
+    RightSquareBracket reduce using rule 28 (function -> GiraIzquierda Space expression .)
+
+
+state 72
+
+    (31) function -> PonXY Space LeftSquareBracket . expression Space expression RightSquareBracket
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 84
+    function                       shift and go to state 6
+
+state 73
+
+    (32) function -> PonRumbo Space expression .
+
+    $end            reduce using rule 32 (function -> PonRumbo Space expression .)
+    Space           reduce using rule 32 (function -> PonRumbo Space expression .)
+    RightSquareBracket reduce using rule 32 (function -> PonRumbo Space expression .)
+
+
+state 74
+
+    (34) function -> PonX Space expression .
+
+    $end            reduce using rule 34 (function -> PonX Space expression .)
+    Space           reduce using rule 34 (function -> PonX Space expression .)
+    RightSquareBracket reduce using rule 34 (function -> PonX Space expression .)
+
+
+state 75
+
+    (35) function -> PonY Space expression .
+
+    $end            reduce using rule 35 (function -> PonY Space expression .)
+    Space           reduce using rule 35 (function -> PonY Space expression .)
+    RightSquareBracket reduce using rule 35 (function -> PonY Space expression .)
+
+
+state 76
 
     (1) statement -> Var Space NAME Space . EQUALS Space expression
 
-    EQUALS          shift and go to state 53
+    EQUALS          shift and go to state 85
 
 
-state 46
+state 77
 
     (2) statement -> Inic Space NAME Space . EQUALS Space expression
     (3) statement -> Inic Space NAME Space . EQUALS Space function
 
-    EQUALS          shift and go to state 54
+    EQUALS          shift and go to state 86
 
 
-state 47
+state 78
 
     (10) operaciones -> expression Space . expression
     (11) operaciones -> expression Space . operaciones
@@ -786,7 +1831,22 @@ state 47
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -801,13 +1861,26 @@ state 47
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 55
-    operaciones                    shift and go to state 56
+    expression                     shift and go to state 87
+    operaciones                    shift and go to state 88
     function                       shift and go to state 6
 
-state 48
+state 79
 
     (14) function -> Inc Space NAME Space . expression
     (6) expression -> . INT
@@ -825,7 +1898,22 @@ state 48
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -840,12 +1928,25 @@ state 48
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 57
+    expression                     shift and go to state 89
     function                       shift and go to state 6
 
-state 49
+state 80
 
     (17) function -> Potencia Space expression Space . expression
     (6) expression -> . INT
@@ -863,7 +1964,22 @@ state 49
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -878,12 +1994,25 @@ state 49
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 58
+    expression                     shift and go to state 90
     function                       shift and go to state 6
 
-state 50
+state 81
 
     (18) function -> Division Space expression Space . expression
     (6) expression -> . INT
@@ -901,7 +2030,22 @@ state 50
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -916,12 +2060,25 @@ state 50
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 59
+    expression                     shift and go to state 91
     function                       shift and go to state 6
 
-state 51
+state 82
 
     (19) function -> Resto Space expression Space . expression
     (6) expression -> . INT
@@ -939,7 +2096,22 @@ state 51
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -954,34 +2126,54 @@ state 51
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 60
+    expression                     shift and go to state 92
     function                       shift and go to state 6
 
-state 52
+state 83
 
     (22) function -> Elegir Space LeftSquareBracket operaciones . RightSquareBracket
 
-    RightSquareBracket shift and go to state 61
+    RightSquareBracket shift and go to state 93
 
 
-state 53
+state 84
+
+    (31) function -> PonXY Space LeftSquareBracket expression . Space expression RightSquareBracket
+
+    Space           shift and go to state 94
+
+
+state 85
 
     (1) statement -> Var Space NAME Space EQUALS . Space expression
 
-    Space           shift and go to state 62
+    Space           shift and go to state 95
 
 
-state 54
+state 86
 
     (2) statement -> Inic Space NAME Space EQUALS . Space expression
     (3) statement -> Inic Space NAME Space EQUALS . Space function
 
-    Space           shift and go to state 63
+    Space           shift and go to state 96
 
 
-state 55
+state 87
 
     (10) operaciones -> expression Space expression .
     (10) operaciones -> expression . Space expression
@@ -990,12 +2182,12 @@ state 55
   ! shift/reduce conflict for Space resolved as shift
     $end            reduce using rule 10 (operaciones -> expression Space expression .)
     RightSquareBracket reduce using rule 10 (operaciones -> expression Space expression .)
-    Space           shift and go to state 47
+    Space           shift and go to state 78
 
   ! Space           [ reduce using rule 10 (operaciones -> expression Space expression .) ]
 
 
-state 56
+state 88
 
     (11) operaciones -> expression Space operaciones .
 
@@ -1004,7 +2196,7 @@ state 56
     RightSquareBracket reduce using rule 11 (operaciones -> expression Space operaciones .)
 
 
-state 57
+state 89
 
     (14) function -> Inc Space NAME Space expression .
 
@@ -1013,7 +2205,7 @@ state 57
     RightSquareBracket reduce using rule 14 (function -> Inc Space NAME Space expression .)
 
 
-state 58
+state 90
 
     (17) function -> Potencia Space expression Space expression .
 
@@ -1022,7 +2214,7 @@ state 58
     RightSquareBracket reduce using rule 17 (function -> Potencia Space expression Space expression .)
 
 
-state 59
+state 91
 
     (18) function -> Division Space expression Space expression .
 
@@ -1031,7 +2223,7 @@ state 59
     RightSquareBracket reduce using rule 18 (function -> Division Space expression Space expression .)
 
 
-state 60
+state 92
 
     (19) function -> Resto Space expression Space expression .
 
@@ -1040,7 +2232,7 @@ state 60
     RightSquareBracket reduce using rule 19 (function -> Resto Space expression Space expression .)
 
 
-state 61
+state 93
 
     (22) function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .
 
@@ -1049,7 +2241,73 @@ state 61
     RightSquareBracket reduce using rule 22 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
-state 62
+state 94
+
+    (31) function -> PonXY Space LeftSquareBracket expression Space . expression RightSquareBracket
+    (6) expression -> . INT
+    (7) expression -> . FLOAT
+    (8) expression -> . function
+    (9) expression -> . NAME
+    (12) function -> . Suma Space operaciones
+    (13) function -> . Inc Space NAME
+    (14) function -> . Inc Space NAME Space expression
+    (15) function -> . Azar Space expression
+    (16) function -> . Producto Space operaciones
+    (17) function -> . Potencia Space expression Space expression
+    (18) function -> . Division Space expression Space expression
+    (19) function -> . Resto Space expression Space expression
+    (20) function -> . RC Space expression
+    (21) function -> . Sen Space expression
+    (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    NAME            shift and go to state 3
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Producto        shift and go to state 12
+    Potencia        shift and go to state 13
+    Division        shift and go to state 14
+    Resto           shift and go to state 15
+    RC              shift and go to state 16
+    Sen             shift and go to state 17
+    Elegir          shift and go to state 18
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
+
+    expression                     shift and go to state 97
+    function                       shift and go to state 6
+
+state 95
 
     (1) statement -> Var Space NAME Space EQUALS Space . expression
     (6) expression -> . INT
@@ -1067,7 +2325,22 @@ state 62
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -1082,12 +2355,25 @@ state 62
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 64
+    expression                     shift and go to state 98
     function                       shift and go to state 6
 
-state 63
+state 96
 
     (2) statement -> Inic Space NAME Space EQUALS Space . expression
     (3) statement -> Inic Space NAME Space EQUALS Space . function
@@ -1106,7 +2392,22 @@ state 63
     (20) function -> . RC Space expression
     (21) function -> . Sen Space expression
     (22) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (23) function -> . Borrapantalla
+    (23) function -> . Avanza Space expression
+    (24) function -> . Avanza Space function
+    (25) function -> . Retrocede Space expression
+    (26) function -> . Retrocede Space function
+    (27) function -> . GiraDerecha Space expression
+    (28) function -> . GiraIzquierda Space expression
+    (29) function -> . OcultaTortuga
+    (30) function -> . ApareceTortuga
+    (31) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (32) function -> . PonRumbo Space expression
+    (33) function -> . Rumbo
+    (34) function -> . PonX Space expression
+    (35) function -> . PonY Space expression
+    (36) function -> . BajaLapiz
+    (37) function -> . SubeLapiz
+    (38) function -> . Borrapantalla
 
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
@@ -1121,26 +2422,46 @@ state 63
     RC              shift and go to state 16
     Sen             shift and go to state 17
     Elegir          shift and go to state 18
-    Borrapantalla   shift and go to state 19
+    Avanza          shift and go to state 19
+    Retrocede       shift and go to state 20
+    GiraDerecha     shift and go to state 21
+    GiraIzquierda   shift and go to state 22
+    OcultaTortuga   shift and go to state 23
+    ApareceTortuga  shift and go to state 24
+    PonXY           shift and go to state 25
+    PonRumbo        shift and go to state 26
+    Rumbo           shift and go to state 27
+    PonX            shift and go to state 28
+    PonY            shift and go to state 29
+    BajaLapiz       shift and go to state 30
+    SubeLapiz       shift and go to state 31
+    Borrapantalla   shift and go to state 32
 
-    expression                     shift and go to state 65
-    function                       shift and go to state 66
+    expression                     shift and go to state 99
+    function                       shift and go to state 100
 
-state 64
+state 97
+
+    (31) function -> PonXY Space LeftSquareBracket expression Space expression . RightSquareBracket
+
+    RightSquareBracket shift and go to state 101
+
+
+state 98
 
     (1) statement -> Var Space NAME Space EQUALS Space expression .
 
     $end            reduce using rule 1 (statement -> Var Space NAME Space EQUALS Space expression .)
 
 
-state 65
+state 99
 
     (2) statement -> Inic Space NAME Space EQUALS Space expression .
 
     $end            reduce using rule 2 (statement -> Inic Space NAME Space EQUALS Space expression .)
 
 
-state 66
+state 100
 
     (3) statement -> Inic Space NAME Space EQUALS Space function .
     (8) expression -> function .
@@ -1150,10 +2471,25 @@ state 66
 
   ! $end            [ reduce using rule 8 (expression -> function .) ]
 
+
+state 101
+
+    (31) function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .
+
+    $end            reduce using rule 31 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
+    Space           reduce using rule 31 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
+    RightSquareBracket reduce using rule 31 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
+
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for Space in state 36 resolved as shift
-WARNING: shift/reduce conflict for Space in state 55 resolved as shift
-WARNING: reduce/reduce conflict in state 66 resolved using rule (statement -> Inic Space NAME Space EQUALS Space function)
-WARNING: rejected rule (expression -> function) in state 66
+WARNING: shift/reduce conflict for Space in state 57 resolved as shift
+WARNING: shift/reduce conflict for Space in state 87 resolved as shift
+WARNING: reduce/reduce conflict in state 67 resolved using rule (expression -> function)
+WARNING: rejected rule (function -> Avanza Space function) in state 67
+WARNING: reduce/reduce conflict in state 69 resolved using rule (expression -> function)
+WARNING: rejected rule (function -> Retrocede Space function) in state 69
+WARNING: reduce/reduce conflict in state 100 resolved using rule (statement -> Inic Space NAME Space EQUALS Space function)
+WARNING: rejected rule (expression -> function) in state 100
+WARNING: Rule (function -> Avanza Space function) is never reduced
+WARNING: Rule (function -> Retrocede Space function) is never reduced
