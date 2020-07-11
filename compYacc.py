@@ -67,75 +67,72 @@ def p_operaciones(p):
                 | expression Space operaciones
                 '''
     p[0] = (p[1],p[3])
-    print(p[0])
 
 #funcion para sumar los digitos de una tupla
-def suma(numeros, suma1):
-    if(type(numeros[1])!=tuple):
-        print(suma1+numeros[0]+numeros[1])
-    else:
-        a = numeros[1]
-        b = suma1+numeros[0]
-        suma(a,b)
+def suma(tupla):
+    suma1=0
+    while (type(tupla[1]) == tuple):
+        suma1 += tupla[0]
+        tupla = tupla[1]
+    return suma1 + tupla[0] + tupla[1]
 
 def p_suma(p):
     '''function : Suma Space operaciones
                 '''
-    a= suma(p[3],0)
+    a= suma(p[3])
     p[0] = a
 
 #funcion de numero aleatorio
 def p_Azar(p):
     '''function : Azar Space expression'''
     num = random.randint(0,p[3])
-    print(num)
+    p[0]=num
 
 #funcion para cambiar de signo
 def p_Menos(p):
     '''function :  Menos Space expression'''
     num = -p[3]
-    print(num)
+    p[0]=num
 
 #funcion para multiplicar los digitos de una tupla
-def producto(numeros, num):
-    if(type(numeros[1])!=tuple):
-        print(num*numeros[0]*numeros[1])
-    else:
-        a = numeros[1]
-        b = num*numeros[0]
-        producto(a,b)
+def producto(tupla):
+    num = 1
+    while (type(tupla[1]) == tuple):
+        num *= tupla[0]
+        tupla = tupla[1]
+    return num * tupla[0] * tupla[1]
 
 def p_producto(p):
     '''function : Producto Space operaciones
                 '''
-    producto(p[3],1)
+    p[0]=producto(p[3])
 
 #funcion para calcular potencia y gramatica
 def p_Menos(p):
     '''function :  Potencia Space expression Space expression'''
     num = p[3]**p[5]
-    print(num)
+    p[0]=num
 
 def p_Division(p):
     '''function :  Division Space expression Space expression'''
     num = p[3]/p[5]
-    print(num)
+    p[0]=num
 
 
 def p_Resto(p):
     '''function :  Resto Space expression Space expression'''
     num = p[3]%p[5]
-    print(num)
+    p[0]=num
 
 def p_RC(p):
     '''function :  RC Space expression'''
     num = m.sqrt(p[3])
-    print(num)
+    p[0]=num
 
 def p_Sen(p):
     '''function :  Sen Space expression'''
     num = m.sin(m.radians(p[3])) #preeeeguntaaar
-    print(num)
+    p[0]=num
 
 def makeList(tupla):
     lista=[]
@@ -148,7 +145,7 @@ def p_Elegir(p):
     '''function : Elegir Space LeftSquareBracket operaciones RightSquareBracket'''
     Lista= makeList(p[4])
     num= random.randint(0,len(Lista)-1)
-    print(Lista[num])
+    p[0]=Lista[num]
 
 def p_Borrapantalla(p):
     '''function :  Borrapantalla'''
