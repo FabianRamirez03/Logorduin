@@ -22,10 +22,14 @@ tokens = [
     'Elemento',
     'Pri',
     'Borrapantalla',
-    'Space'
+    'Space',
+    'LeftSquareBracket',
+    'RightSquareBracket'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
+t_LeftSquareBracket = r'\['
+t_RightSquareBracket = r'\]'
 
 #Comentarios
 def t_Comment(t):

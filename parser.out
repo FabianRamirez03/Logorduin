@@ -2,19 +2,10 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    Azar
-    Borrapantalla
     Cuenta
-    Division
-    Elegir
     Elemento
     Menos
-    Potencia
     Pri
-    Producto
-    RC
-    Resto
-    Sen
     Ultimo
 
 Grammar
@@ -28,37 +19,49 @@ Rule 5     expression -> function
 Rule 6     expression -> NAME
 Rule 7     operaciones -> expression Space expression
 Rule 8     operaciones -> expression Space operaciones
-Rule 9     function -> Suma Space operaciones
+Rule 9     operaciones -> expression Space expression Space RightSquareBracket
+Rule 10    function -> Suma Space operaciones
+Rule 11    function -> Azar Space expression
+Rule 12    function -> Producto Space operaciones
+Rule 13    function -> Potencia Space expression Space expression
+Rule 14    function -> Division Space expression Space expression
+Rule 15    function -> Resto Space expression Space expression
+Rule 16    function -> RC Space expression
+Rule 17    function -> Sen Space expression
+Rule 18    function -> Elegir Space LeftSquareBracket Space operaciones
+Rule 19    function -> Borrapantalla
 
 Terminals, with rules where they appear
 
-Azar                 : 
-Borrapantalla        : 
+Azar                 : 11
+Borrapantalla        : 19
 Cuenta               : 
-Division             : 
+Division             : 14
 EQUALS               : 1
-Elegir               : 
+Elegir               : 18
 Elemento             : 
 FLOAT                : 4
 INT                  : 3
+LeftSquareBracket    : 18
 Menos                : 
 NAME                 : 1 6
-Potencia             : 
+Potencia             : 13
 Pri                  : 
-Producto             : 
-RC                   : 
-Resto                : 
-Sen                  : 
-Space                : 7 8 9
-Suma                 : 9
+Producto             : 12
+RC                   : 16
+Resto                : 15
+RightSquareBracket   : 9
+Sen                  : 17
+Space                : 7 8 9 9 10 11 12 13 13 14 14 15 15 16 17 18 18
+Suma                 : 10
 Ultimo               : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-expression           : 1 2 7 7 8
+expression           : 1 2 7 7 8 9 9 11 13 13 14 14 15 15 16 17
 function             : 5
-operaciones          : 8 9
+operaciones          : 8 10 12 18
 statement            : 0
 
 Parsing method: LALR
@@ -72,12 +75,30 @@ state 0
     (4) expression -> . FLOAT
     (5) expression -> . function
     (6) expression -> . NAME
-    (9) function -> . Suma Space operaciones
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
 
     NAME            shift and go to state 2
     INT             shift and go to state 4
     FLOAT           shift and go to state 5
     Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
 
     statement                      shift and go to state 1
     expression                     shift and go to state 3
@@ -94,7 +115,7 @@ state 2
     (1) statement -> NAME . EQUALS expression
     (6) expression -> NAME .
 
-    EQUALS          shift and go to state 8
+    EQUALS          shift and go to state 17
     $end            reduce using rule 6 (expression -> NAME .)
 
 
@@ -131,49 +152,406 @@ state 6
 
 state 7
 
-    (9) function -> Suma . Space operaciones
+    (10) function -> Suma . Space operaciones
 
-    Space           shift and go to state 9
+    Space           shift and go to state 18
 
 
 state 8
+
+    (11) function -> Azar . Space expression
+
+    Space           shift and go to state 19
+
+
+state 9
+
+    (12) function -> Producto . Space operaciones
+
+    Space           shift and go to state 20
+
+
+state 10
+
+    (13) function -> Potencia . Space expression Space expression
+
+    Space           shift and go to state 21
+
+
+state 11
+
+    (14) function -> Division . Space expression Space expression
+
+    Space           shift and go to state 22
+
+
+state 12
+
+    (15) function -> Resto . Space expression Space expression
+
+    Space           shift and go to state 23
+
+
+state 13
+
+    (16) function -> RC . Space expression
+
+    Space           shift and go to state 24
+
+
+state 14
+
+    (17) function -> Sen . Space expression
+
+    Space           shift and go to state 25
+
+
+state 15
+
+    (18) function -> Elegir . Space LeftSquareBracket Space operaciones
+
+    Space           shift and go to state 26
+
+
+state 16
+
+    (19) function -> Borrapantalla .
+
+    $end            reduce using rule 19 (function -> Borrapantalla .)
+    Space           reduce using rule 19 (function -> Borrapantalla .)
+
+
+state 17
 
     (1) statement -> NAME EQUALS . expression
     (3) expression -> . INT
     (4) expression -> . FLOAT
     (5) expression -> . function
     (6) expression -> . NAME
-    (9) function -> . Suma Space operaciones
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
 
     INT             shift and go to state 4
     FLOAT           shift and go to state 5
-    NAME            shift and go to state 10
+    NAME            shift and go to state 27
     Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
 
-    expression                     shift and go to state 11
+    expression                     shift and go to state 28
     function                       shift and go to state 6
 
-state 9
+state 18
 
-    (9) function -> Suma Space . operaciones
+    (10) function -> Suma Space . operaciones
     (7) operaciones -> . expression Space expression
     (8) operaciones -> . expression Space operaciones
+    (9) operaciones -> . expression Space expression Space RightSquareBracket
     (3) expression -> . INT
     (4) expression -> . FLOAT
     (5) expression -> . function
     (6) expression -> . NAME
-    (9) function -> . Suma Space operaciones
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
 
     INT             shift and go to state 4
     FLOAT           shift and go to state 5
-    NAME            shift and go to state 10
+    NAME            shift and go to state 27
     Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
 
-    operaciones                    shift and go to state 12
-    expression                     shift and go to state 13
+    operaciones                    shift and go to state 29
+    expression                     shift and go to state 30
     function                       shift and go to state 6
 
-state 10
+state 19
+
+    (11) function -> Azar Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 31
+    function                       shift and go to state 6
+
+state 20
+
+    (12) function -> Producto Space . operaciones
+    (7) operaciones -> . expression Space expression
+    (8) operaciones -> . expression Space operaciones
+    (9) operaciones -> . expression Space expression Space RightSquareBracket
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    operaciones                    shift and go to state 32
+    expression                     shift and go to state 30
+    function                       shift and go to state 6
+
+state 21
+
+    (13) function -> Potencia Space . expression Space expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 33
+    function                       shift and go to state 6
+
+state 22
+
+    (14) function -> Division Space . expression Space expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 34
+    function                       shift and go to state 6
+
+state 23
+
+    (15) function -> Resto Space . expression Space expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 35
+    function                       shift and go to state 6
+
+state 24
+
+    (16) function -> RC Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 36
+    function                       shift and go to state 6
+
+state 25
+
+    (17) function -> Sen Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 37
+    function                       shift and go to state 6
+
+state 26
+
+    (18) function -> Elegir Space . LeftSquareBracket Space operaciones
+
+    LeftSquareBracket shift and go to state 38
+
+
+state 27
 
     (6) expression -> NAME .
 
@@ -181,71 +559,381 @@ state 10
     Space           reduce using rule 6 (expression -> NAME .)
 
 
-state 11
+state 28
 
     (1) statement -> NAME EQUALS expression .
 
     $end            reduce using rule 1 (statement -> NAME EQUALS expression .)
 
 
-state 12
+state 29
 
-    (9) function -> Suma Space operaciones .
+    (10) function -> Suma Space operaciones .
 
-    $end            reduce using rule 9 (function -> Suma Space operaciones .)
-    Space           reduce using rule 9 (function -> Suma Space operaciones .)
+    $end            reduce using rule 10 (function -> Suma Space operaciones .)
+    Space           reduce using rule 10 (function -> Suma Space operaciones .)
 
 
-state 13
+state 30
 
     (7) operaciones -> expression . Space expression
     (8) operaciones -> expression . Space operaciones
+    (9) operaciones -> expression . Space expression Space RightSquareBracket
 
-    Space           shift and go to state 14
+    Space           shift and go to state 39
 
 
-state 14
+state 31
+
+    (11) function -> Azar Space expression .
+
+    $end            reduce using rule 11 (function -> Azar Space expression .)
+    Space           reduce using rule 11 (function -> Azar Space expression .)
+
+
+state 32
+
+    (12) function -> Producto Space operaciones .
+
+    $end            reduce using rule 12 (function -> Producto Space operaciones .)
+    Space           reduce using rule 12 (function -> Producto Space operaciones .)
+
+
+state 33
+
+    (13) function -> Potencia Space expression . Space expression
+
+    Space           shift and go to state 40
+
+
+state 34
+
+    (14) function -> Division Space expression . Space expression
+
+    Space           shift and go to state 41
+
+
+state 35
+
+    (15) function -> Resto Space expression . Space expression
+
+    Space           shift and go to state 42
+
+
+state 36
+
+    (16) function -> RC Space expression .
+
+    $end            reduce using rule 16 (function -> RC Space expression .)
+    Space           reduce using rule 16 (function -> RC Space expression .)
+
+
+state 37
+
+    (17) function -> Sen Space expression .
+
+    $end            reduce using rule 17 (function -> Sen Space expression .)
+    Space           reduce using rule 17 (function -> Sen Space expression .)
+
+
+state 38
+
+    (18) function -> Elegir Space LeftSquareBracket . Space operaciones
+
+    Space           shift and go to state 43
+
+
+state 39
 
     (7) operaciones -> expression Space . expression
     (8) operaciones -> expression Space . operaciones
+    (9) operaciones -> expression Space . expression Space RightSquareBracket
     (3) expression -> . INT
     (4) expression -> . FLOAT
     (5) expression -> . function
     (6) expression -> . NAME
     (7) operaciones -> . expression Space expression
     (8) operaciones -> . expression Space operaciones
-    (9) function -> . Suma Space operaciones
+    (9) operaciones -> . expression Space expression Space RightSquareBracket
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
 
     INT             shift and go to state 4
     FLOAT           shift and go to state 5
-    NAME            shift and go to state 10
+    NAME            shift and go to state 27
     Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
 
-    expression                     shift and go to state 15
-    operaciones                    shift and go to state 16
+    expression                     shift and go to state 44
+    operaciones                    shift and go to state 45
     function                       shift and go to state 6
 
-state 15
+state 40
+
+    (13) function -> Potencia Space expression Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 46
+    function                       shift and go to state 6
+
+state 41
+
+    (14) function -> Division Space expression Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 47
+    function                       shift and go to state 6
+
+state 42
+
+    (15) function -> Resto Space expression Space . expression
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 48
+    function                       shift and go to state 6
+
+state 43
+
+    (18) function -> Elegir Space LeftSquareBracket Space . operaciones
+    (7) operaciones -> . expression Space expression
+    (8) operaciones -> . expression Space operaciones
+    (9) operaciones -> . expression Space expression Space RightSquareBracket
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    operaciones                    shift and go to state 49
+    expression                     shift and go to state 30
+    function                       shift and go to state 6
+
+state 44
 
     (7) operaciones -> expression Space expression .
+    (9) operaciones -> expression Space expression . Space RightSquareBracket
     (7) operaciones -> expression . Space expression
     (8) operaciones -> expression . Space operaciones
+    (9) operaciones -> expression . Space expression Space RightSquareBracket
 
   ! shift/reduce conflict for Space resolved as shift
     $end            reduce using rule 7 (operaciones -> expression Space expression .)
-    Space           shift and go to state 14
+    Space           shift and go to state 50
 
   ! Space           [ reduce using rule 7 (operaciones -> expression Space expression .) ]
 
 
-state 16
+state 45
 
     (8) operaciones -> expression Space operaciones .
 
     $end            reduce using rule 8 (operaciones -> expression Space operaciones .)
     Space           reduce using rule 8 (operaciones -> expression Space operaciones .)
 
+
+state 46
+
+    (13) function -> Potencia Space expression Space expression .
+
+    $end            reduce using rule 13 (function -> Potencia Space expression Space expression .)
+    Space           reduce using rule 13 (function -> Potencia Space expression Space expression .)
+
+
+state 47
+
+    (14) function -> Division Space expression Space expression .
+
+    $end            reduce using rule 14 (function -> Division Space expression Space expression .)
+    Space           reduce using rule 14 (function -> Division Space expression Space expression .)
+
+
+state 48
+
+    (15) function -> Resto Space expression Space expression .
+
+    $end            reduce using rule 15 (function -> Resto Space expression Space expression .)
+    Space           reduce using rule 15 (function -> Resto Space expression Space expression .)
+
+
+state 49
+
+    (18) function -> Elegir Space LeftSquareBracket Space operaciones .
+
+    $end            reduce using rule 18 (function -> Elegir Space LeftSquareBracket Space operaciones .)
+    Space           reduce using rule 18 (function -> Elegir Space LeftSquareBracket Space operaciones .)
+
+
+state 50
+
+    (9) operaciones -> expression Space expression Space . RightSquareBracket
+    (7) operaciones -> expression Space . expression
+    (8) operaciones -> expression Space . operaciones
+    (9) operaciones -> expression Space . expression Space RightSquareBracket
+    (3) expression -> . INT
+    (4) expression -> . FLOAT
+    (5) expression -> . function
+    (6) expression -> . NAME
+    (7) operaciones -> . expression Space expression
+    (8) operaciones -> . expression Space operaciones
+    (9) operaciones -> . expression Space expression Space RightSquareBracket
+    (10) function -> . Suma Space operaciones
+    (11) function -> . Azar Space expression
+    (12) function -> . Producto Space operaciones
+    (13) function -> . Potencia Space expression Space expression
+    (14) function -> . Division Space expression Space expression
+    (15) function -> . Resto Space expression Space expression
+    (16) function -> . RC Space expression
+    (17) function -> . Sen Space expression
+    (18) function -> . Elegir Space LeftSquareBracket Space operaciones
+    (19) function -> . Borrapantalla
+
+    RightSquareBracket shift and go to state 51
+    INT             shift and go to state 4
+    FLOAT           shift and go to state 5
+    NAME            shift and go to state 27
+    Suma            shift and go to state 7
+    Azar            shift and go to state 8
+    Producto        shift and go to state 9
+    Potencia        shift and go to state 10
+    Division        shift and go to state 11
+    Resto           shift and go to state 12
+    RC              shift and go to state 13
+    Sen             shift and go to state 14
+    Elegir          shift and go to state 15
+    Borrapantalla   shift and go to state 16
+
+    expression                     shift and go to state 44
+    operaciones                    shift and go to state 45
+    function                       shift and go to state 6
+
+state 51
+
+    (9) operaciones -> expression Space expression Space RightSquareBracket .
+
+    $end            reduce using rule 9 (operaciones -> expression Space expression Space RightSquareBracket .)
+    Space           reduce using rule 9 (operaciones -> expression Space expression Space RightSquareBracket .)
+
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for Space in state 15 resolved as shift
+WARNING: shift/reduce conflict for Space in state 44 resolved as shift
