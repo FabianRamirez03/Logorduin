@@ -7,12 +7,32 @@ import sys
 variables = {}
 
 #Gramatica de asignacion de variables
+def p_statement_create(p):
+    '''
+    statement : Var Space NAME Space EQUALS Space expression
+    '''
+    if p[3] not in variables:
+        p[0] = ('=', p[3], p[7])
+        variables[p[3]] = p[7]
+        print(variables)
+
 def p_statement_assign(p):
+    """statement : Inic Space NAME Space EQUALS Space expression
+                 | Inic Space NAME Space EQUALS Space function
+                 """
+    print(p[7])
+    if p[3] not in variables:
+        print("La variable '%s' no ha sido creada" % p[3])
+    else:
+        variables[p[3]] = p[7]
+
+
+def p_statement_create_empty(p):
     '''
-    statement : NAME EQUALS expression
+    statement : Var Space NAME
     '''
-    p[0] = ('=', p[1], p[3])
-    variables[p[1]] = p[3]
+    p[0] = ('=', p[3], None)
+    variables[p[3]] = None
     print(variables)
 
 #Gramatica de una expresion
@@ -21,8 +41,7 @@ def p_statement_expr(p):
     statement : expression
     '''
     p[0] = p[1]
-    #print(p[1])
-
+    print(p[1])
 
 
 def p_expression_Number(p):
@@ -47,8 +66,6 @@ def p_operaciones(p):
     operaciones : expression Space expression
                 | expression Space operaciones
                 '''
-#                | expression Space expression Space RightSquareBracket
- #   '''
     p[0] = (p[1],p[3])
     print(p[0])
 
@@ -64,7 +81,8 @@ def suma(numeros, suma1):
 def p_suma(p):
     '''function : Suma Space operaciones
                 '''
-    suma(p[3],0)
+    a= suma(p[3],0)
+    p[0] = a
 
 #funcion de numero aleatorio
 def p_Azar(p):

@@ -24,7 +24,9 @@ tokens = [
     'Borrapantalla',
     'Space',
     'LeftSquareBracket',
-    'RightSquareBracket'
+    'RightSquareBracket',
+    'Var',
+    'Inic'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
@@ -57,6 +59,17 @@ def t_INT(t):
 def t_NAME(t):
     r'[a-z][a-zA-Z_0-9&@-]*'
     t.type = 'NAME'
+    return t
+
+
+def t_var(t):
+    r'Var'
+    t.type = 'Var'
+    return t
+
+def t_Inic(t):
+    r'Inic'
+    t.type = 'Inic'
     return t
 
 def t_Suma(t):
