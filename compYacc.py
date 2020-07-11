@@ -129,7 +129,7 @@ def makeList(tupla):
 def p_Elegir(p):
     '''function : Elegir Space LeftSquareBracket operaciones RightSquareBracket'''
     Lista= makeList(p[4])
-    num= random.randint(0,len(Lista))
+    num= random.randint(0,len(Lista)-1)
     print(Lista[num])
 
 def p_Borrapantalla(p):
