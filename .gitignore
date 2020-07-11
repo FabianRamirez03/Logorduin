@@ -1,2 +1,6 @@
 
 parsetab.py
+
+.idea/
+
+__pycache__/
