@@ -72,6 +72,14 @@ def p_operaciones(p):
                 '''
     p[0] = (p[1],p[3])
 
+def p_funciones(p):
+    '''
+    funciones : function Space function
+                | function Space funciones
+                '''
+    p[0] = (p[1],p[3])
+
+
 # funcion para sumar los digitos de una tupla
 def suma(tupla):
     suma1=0
@@ -201,14 +209,16 @@ def p_Centro(p):
 def p_Espera(p):
     '''function :  Espera Space expression'''
     time.sleep(p[3]/60)
-    p[0] = "Wait de " + str(p[3]/60) + " segundos"
+    print("Wait de " + str(p[3]/60) + " segundos")
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta(p):
     '''function :  Ejecuta Space LeftSquareBracket operaciones RightSquareBracket'''
 
 # Funcion que repite ordenes cierta cantidad de veces
 def p_Repite(p):
-    '''function :  Repite Space  operaciones LeftSquareBracket operaciones RightSquareBracket'''
+    '''function :  Repite Space expression LeftSquareBracket function RightSquareBracket'''
+    for x in range(p[3]):
+        p[0] = p[5]
 
 # Ejecuta si se cumple la condicion
 def p_Si(p):
@@ -237,27 +247,34 @@ def y(tupla):
         return "FALSO"
 def p_Y(p):
     '''
-    function : Y Space function
+    function : Y Space function function
     '''
-    res= y(p[3])
+    print(p[3])
+    res= y((p[3],p[4]))
     p[0] = res
+    print(p[0])
 
 # Funcion que devuelve CIERTO si al menos una condicion se cumple
 def O(tupla):
-    if(tupla[0] or tupla[1]):
+    if(tupla[0] == "CIERTO" or tupla[1] == "CIERTO"):
         return "CIERTO"
     else:
         return "FALSO"
 def p_O(p):
     '''
-    function : O Space function
+    function : O Space function function
     '''
-    a= O(p[3])
+    a= O((p[3],p[4]))
     p[0] = a
 
 # Funcion que devuelve CIERTO si n > n1
 def MayorQue(tupla):
-    if(tupla[0] > tupla[1]):
+    if(type(tupla[1]) == tuple):
+        if (tupla[0] > tupla[1][0]):
+            return "CIERTO"
+        else:
+            return "FALSO"
+    elif(tupla[0] > tupla[1]):
         return "CIERTO"
     else:
         return "FALSO"
@@ -267,7 +284,6 @@ def p_MayorQue(p):
     '''
     a= MayorQue(p[3])
     p[0] = a
-
 # Funcion que devuelve Falso si n < n1
 def MenorQue(tupla):
     if(tupla[0] < tupla[1]):
