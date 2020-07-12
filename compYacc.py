@@ -237,10 +237,12 @@ def y(tupla):
         return "FALSO"
 def p_Y(p):
     '''
-    function : Y Space function
+    function : Y Space function function
     '''
-    res= y(p[3])
+    print(p[3])
+    res= y((p[3],p[4]))
     p[0] = res
+    print(p[0])
 
 # Funcion que devuelve CIERTO si al menos una condicion se cumple
 def O(tupla):
@@ -250,14 +252,19 @@ def O(tupla):
         return "FALSO"
 def p_O(p):
     '''
-    function : O Space function
+    function : O Space function function
     '''
-    a= O(p[3])
+    a= O((p[3],p[4]))
     p[0] = a
 
 # Funcion que devuelve CIERTO si n > n1
 def MayorQue(tupla):
-    if(tupla[0] > tupla[1]):
+    if(type(tupla[1]) == tuple):
+        if (tupla[0] > tupla[1][0]):
+            return "CIERTO"
+        else:
+            return "FALSO"
+    elif(tupla[0] > tupla[1]):
         return "CIERTO"
     else:
         return "FALSO"
