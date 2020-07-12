@@ -27,7 +27,22 @@ tokens = [
     'RightSquareBracket',
     'Var',
     'Inic',
-    'Inc'
+    'Inc',
+    'PonCL',
+    'PonColorLapiz',
+    'Centro',
+    'Espera',
+    'Ejecuta',
+    'Repite',
+    'Si',
+    'Iguales',
+    'Y',
+    'O',
+    'MayorQue',
+    'MenorQue',
+    'Redondea',
+    'Cos',
+    'Diferencia'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
@@ -155,7 +170,66 @@ def t_Borrarpantalla(t):
     r'Borrarpantalla'
     t.type = 'Borrarpantalla'
     return t
-
+def t_PonColor(t):
+    r'PonColorLapiz'
+    t.type = 'PonColor'
+    return t
+def t_PonCl(t):
+    r'PonCL'
+    t.type = 'PonCL'
+    return t
+def t_Centro(t):
+    r'Centro'
+    t.type = 'Centro'
+    return t
+def t_Espera(t):
+    r'Espera'
+    t.type = 'Espera'
+    return t
+def t_Ejecuta(t):
+    r'Ejecuta'
+    t.type = 'Ejecuta'
+    return t
+def t_Repite(t):
+    r'Repite'
+    t.type = 'Repite'
+    return t
+def t_Si(t):
+    r'Si'
+    t.type = 'Si'
+    return t
+def t_Iguales(t):
+    r'Iguales'
+    t.type = 'Iguales'
+    return t
+def t_Y(t):
+    r'Y'
+    t.type = 'Y'
+    return t
+def t_O(t):
+    r'O'
+    t.type = 'O'
+    return t
+def t_MayorQue(t):
+    r'MayorQue'
+    t.type = 'MayorQue'
+    return t
+def t_MenorQue(t):
+    r'MenorQue'
+    t.type = 'MenorQue'
+    return t
+def t_Redondea(t):
+    r'Redondea'
+    t.type = 'Redondea'
+    return t
+def t_Cos(t):
+    r'Cos'
+    t.type = 'Cos'
+    return t
+def t_Diferencia(t):
+    r'Diferencia'
+    t.type = 'Diferencia'
+    return t
 
 #Error al ingresar un caracter no permitido
 def t_error(t):
