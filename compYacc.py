@@ -222,7 +222,7 @@ def p_GiraDerecha(p):
     function : GiraDerecha Space expression
     """
     p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la derecha" % p[0][1])
+    print(p[0])
 
 def p_GiraIzquierda(p):
     """
@@ -320,20 +320,6 @@ def p_Espera(p):
 def p_Ejecuta(p):
     '''function :  Ejecuta Space LeftSquareBracket operaciones RightSquareBracket'''
     p[0] = (p[1],p[4])
-
-# Funcion que repite ordenes cierta cantidad de veces
-def p_Repeat(p):
-    '''
-    function : Repeat Space expression LeftSquareBracket funciones RightSquareBracket'''
-            # | Repeat Space expression LeftSquareBracket function RightSquareBracket
-    p[0] = p[5][2]
-    print(p[0])
-
-# Ejecuta si se cumple la condicion
-def p_Si(p):
-    '''function :  Si Space  operaciones LeftSquareBracket operaciones RightSquareBracket'''
-    p[0] = (p[1],p[3],p[5])
-
 
 # Funcion que devuelve True si la dos numeros son iguales
 def iguales(tupla):
@@ -438,6 +424,83 @@ def p_restar(p):
     a= restar(p[3])
     p[0] = (p[1], a, p[3])
 
+def RepeatList(tupla):
+    lista=[]
+    while(type(tupla[1]) == tuple):
+        lista+=[tupla[0]]
+        tupla=tupla[1]
+    print(lista+[tupla])
+    return lista+[tupla]
+
+def repite(tupla):
+    Lista=RepeatList(tupla[1])
+    repeat=tupla[0]-1
+    # while(repet!=0):
+    #     num=0
+    #     while(len(Lista)-1!=num):
+    #         if('inc'):
+    #         elif('Avanza'==Li
+    #         sta[num][0]):
+    #         elif('Retrocede'==Lista[num][0]):
+    #         elif('GiraDerecha'==Lista[num][0]):
+    #         elif('GiraIzquierda'==Lista[num][0]):
+    #         elif('OcultaTortuga'==Lista[num][0]):
+    #         elif('ApareceTortuga'==Lista[num][0]):
+    #         elif('PonXY'==Lista[num][0]):
+    #         elif('PonRumbo'==Lista[num][0]):
+    #         elif('Rumbo'==Lista[num][0]):
+    #         elif('PonX'==Lista[num][0]):
+    #         elif('PonY'==Lista[num][0]):
+    #         elif('BajaLapiz'==Lista[num][0]):
+    #         elif('SubeLapiz'==Lista[num][0]):
+    #         elif('ColorLapiz'==Lista[num][0]):
+    #         elif('Centro'==Lista[num][0]):
+    #         elif('Espera'==Lista[num][0]):
+    #         elif('Ejecuta'==Lista[num][0]):
+    #         elif('Repite'==Lista[num][0]):
+    #         elif('Si'==Lista[num][0]):
+    #         elif('Iguales'==Lista[num][0]):
+    #         elif('Y'==Lista[num][0]):
+    #         elif ('O'==Lista[num][0]):
+    #         elif ('MayorQue'==Lista[num][0]):
+    #         elif ('MenorQue'==Lista[num][0]):
+    #         elif ('Redondea'==Lista[num][0]):
+    #         elif ('Cos'==Lista[num][0]):
+    #         elif ('Diferencia'==Lista[num][0]):
+    #         elif ('Azar'==Lista[num][0]):
+    #         elif ('Menos'==Lista[num][0]):
+    #         elif('Producto'==Lista[num][0]):
+    #         elif('Potencia'==Lista[num][0]):
+    #         elif('Division'==Lista[num][0]):
+    #         elif('Resto'==Lista[num][0]):
+    #         elif('RC'==Lista[num][0]):
+    #         elif('Sen'==Lista[num][0]):
+    #         elif('Suma'==Lista[num][0]):
+    #         elif('Elegir'==Lista[num][0]):
+    #         elif('Cuenta'==Lista[num][0]):
+    #         elif('Ultimo'==Lista[num][0]):
+    #         elif('Elemento'==Lista[num][0]):
+    #         elif('Primero'==Lista[num][0]):
+    #         elif('Borrapantalla'==Lista[num][0]):
+    #     num+=1
+    # repeat-=1
+
+
+
+
+# Funcion que repite ordenes cierta cantidad de veces
+def p_Repeat(p):
+    '''
+    function : Repeat Space expression LeftSquareBracket funciones RightSquareBracket
+            | Repeat Space expression LeftSquareBracket function RightSquareBracket'''
+    p[0] = (p[3][1],p[5])
+    repite(p[0])
+
+# Ejecuta si se cumple la condicion
+def p_Si(p):
+    '''function :  Si Space  operaciones LeftSquareBracket operaciones RightSquareBracket'''
+    p[0] = (p[1],p[3],p[5])
+
 # Retorna error de sintaxis
 def p_error(p):
     if p:
@@ -454,3 +517,5 @@ while True:
         break
     if not s:continue
     parser.parse(s)
+
+
