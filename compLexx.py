@@ -33,7 +33,7 @@ tokens = [
     'Centro',
     'Espera',
     'Ejecuta',
-    'Repite',
+    'Repeat',
     'Si',
     'Iguales',
     'Y',
@@ -43,7 +43,6 @@ tokens = [
     'Redondea',
     'Cos',
     'Diferencia',
-    'Inc',
     'Avanza',
     'Retrocede',
     'GiraDerecha',
@@ -268,9 +267,9 @@ def t_Ejecuta(t):
     r'Ejecuta'
     t.type = 'Ejecuta'
     return t
-def t_Repite(t):
-    r'Repite'
-    t.type = 'Repite'
+def t_Repeat(t):
+    r'Repeat'
+    t.type = 'Repeat'
     return t
 def t_Si(t):
     r'Si'

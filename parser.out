@@ -56,7 +56,7 @@ Rule 46    function -> PonColorLapiz
 Rule 47    function -> Centro
 Rule 48    function -> Espera Space expression
 Rule 49    function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-Rule 50    function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+Rule 50    function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket
 Rule 51    function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
 Rule 52    function -> Iguales Space operaciones
 Rule 53    function -> Y Space function function
@@ -110,14 +110,14 @@ Pri                  : 29
 Producto             : 19
 RC                   : 23
 Redondea             : 57
-Repite               : 50
+Repeat               : 50
 Resto                : 22
 Retrocede            : 32 33
 RightSquareBracket   : 25 26 27 28 29 38 49 50 51
 Rumbo                : 40
 Sen                  : 24
 Si                   : 51
-Space                : 1 1 1 2 2 2 3 3 3 4 10 11 12 13 14 15 16 16 17 18 19 20 20 21 21 22 22 23 24 25 26 27 28 28 29 30 31 32 33 34 35 38 38 39 41 42 48 49 50 50 51 52 53 54 55 56 57 58 59
+Space                : 1 1 1 2 2 2 3 3 3 4 10 11 12 13 14 15 16 16 17 18 19 20 20 21 21 22 22 23 24 25 26 27 28 28 29 30 31 32 33 34 35 38 38 39 41 42 48 49 50 51 52 53 54 55 56 57 58 59
 SubeLapiz            : 44
 Suma                 : 14
 Ultimo               : 27
@@ -183,7 +183,7 @@ state 0
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -232,7 +232,7 @@ state 0
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -267,6 +267,7 @@ state 3
 
     $end            reduce using rule 9 (expression -> NAME .)
     Space           reduce using rule 9 (expression -> NAME .)
+    LeftSquareBracket reduce using rule 9 (expression -> NAME .)
     Suma            reduce using rule 9 (expression -> NAME .)
     Inc             reduce using rule 9 (expression -> NAME .)
     Azar            reduce using rule 9 (expression -> NAME .)
@@ -300,7 +301,7 @@ state 3
     Centro          reduce using rule 9 (expression -> NAME .)
     Espera          reduce using rule 9 (expression -> NAME .)
     Ejecuta         reduce using rule 9 (expression -> NAME .)
-    Repite          reduce using rule 9 (expression -> NAME .)
+    Repeat          reduce using rule 9 (expression -> NAME .)
     Si              reduce using rule 9 (expression -> NAME .)
     Iguales         reduce using rule 9 (expression -> NAME .)
     Y               reduce using rule 9 (expression -> NAME .)
@@ -310,9 +311,8 @@ state 3
     Redondea        reduce using rule 9 (expression -> NAME .)
     Cos             reduce using rule 9 (expression -> NAME .)
     Diferencia      reduce using rule 9 (expression -> NAME .)
-    RightSquareBracket reduce using rule 9 (expression -> NAME .)
     Coma            reduce using rule 9 (expression -> NAME .)
-    LeftSquareBracket reduce using rule 9 (expression -> NAME .)
+    RightSquareBracket reduce using rule 9 (expression -> NAME .)
 
 
 state 4
@@ -336,6 +336,7 @@ state 6
 
     $end            reduce using rule 8 (expression -> function .)
     Space           reduce using rule 8 (expression -> function .)
+    LeftSquareBracket reduce using rule 8 (expression -> function .)
     Suma            reduce using rule 8 (expression -> function .)
     Inc             reduce using rule 8 (expression -> function .)
     Azar            reduce using rule 8 (expression -> function .)
@@ -369,7 +370,7 @@ state 6
     Centro          reduce using rule 8 (expression -> function .)
     Espera          reduce using rule 8 (expression -> function .)
     Ejecuta         reduce using rule 8 (expression -> function .)
-    Repite          reduce using rule 8 (expression -> function .)
+    Repeat          reduce using rule 8 (expression -> function .)
     Si              reduce using rule 8 (expression -> function .)
     Iguales         reduce using rule 8 (expression -> function .)
     Y               reduce using rule 8 (expression -> function .)
@@ -379,9 +380,8 @@ state 6
     Redondea        reduce using rule 8 (expression -> function .)
     Cos             reduce using rule 8 (expression -> function .)
     Diferencia      reduce using rule 8 (expression -> function .)
-    RightSquareBracket reduce using rule 8 (expression -> function .)
     Coma            reduce using rule 8 (expression -> function .)
-    LeftSquareBracket reduce using rule 8 (expression -> function .)
+    RightSquareBracket reduce using rule 8 (expression -> function .)
 
 
 state 7
@@ -390,6 +390,7 @@ state 7
 
     $end            reduce using rule 6 (expression -> INT .)
     Space           reduce using rule 6 (expression -> INT .)
+    LeftSquareBracket reduce using rule 6 (expression -> INT .)
     Suma            reduce using rule 6 (expression -> INT .)
     Inc             reduce using rule 6 (expression -> INT .)
     Azar            reduce using rule 6 (expression -> INT .)
@@ -423,7 +424,7 @@ state 7
     Centro          reduce using rule 6 (expression -> INT .)
     Espera          reduce using rule 6 (expression -> INT .)
     Ejecuta         reduce using rule 6 (expression -> INT .)
-    Repite          reduce using rule 6 (expression -> INT .)
+    Repeat          reduce using rule 6 (expression -> INT .)
     Si              reduce using rule 6 (expression -> INT .)
     Iguales         reduce using rule 6 (expression -> INT .)
     Y               reduce using rule 6 (expression -> INT .)
@@ -433,9 +434,8 @@ state 7
     Redondea        reduce using rule 6 (expression -> INT .)
     Cos             reduce using rule 6 (expression -> INT .)
     Diferencia      reduce using rule 6 (expression -> INT .)
-    RightSquareBracket reduce using rule 6 (expression -> INT .)
     Coma            reduce using rule 6 (expression -> INT .)
-    LeftSquareBracket reduce using rule 6 (expression -> INT .)
+    RightSquareBracket reduce using rule 6 (expression -> INT .)
 
 
 state 8
@@ -444,6 +444,7 @@ state 8
 
     $end            reduce using rule 7 (expression -> FLOAT .)
     Space           reduce using rule 7 (expression -> FLOAT .)
+    LeftSquareBracket reduce using rule 7 (expression -> FLOAT .)
     Suma            reduce using rule 7 (expression -> FLOAT .)
     Inc             reduce using rule 7 (expression -> FLOAT .)
     Azar            reduce using rule 7 (expression -> FLOAT .)
@@ -477,7 +478,7 @@ state 8
     Centro          reduce using rule 7 (expression -> FLOAT .)
     Espera          reduce using rule 7 (expression -> FLOAT .)
     Ejecuta         reduce using rule 7 (expression -> FLOAT .)
-    Repite          reduce using rule 7 (expression -> FLOAT .)
+    Repeat          reduce using rule 7 (expression -> FLOAT .)
     Si              reduce using rule 7 (expression -> FLOAT .)
     Iguales         reduce using rule 7 (expression -> FLOAT .)
     Y               reduce using rule 7 (expression -> FLOAT .)
@@ -487,9 +488,8 @@ state 8
     Redondea        reduce using rule 7 (expression -> FLOAT .)
     Cos             reduce using rule 7 (expression -> FLOAT .)
     Diferencia      reduce using rule 7 (expression -> FLOAT .)
-    RightSquareBracket reduce using rule 7 (expression -> FLOAT .)
     Coma            reduce using rule 7 (expression -> FLOAT .)
-    LeftSquareBracket reduce using rule 7 (expression -> FLOAT .)
+    RightSquareBracket reduce using rule 7 (expression -> FLOAT .)
 
 
 state 9
@@ -634,6 +634,7 @@ state 28
 
     $end            reduce using rule 36 (function -> OcultaTortuga .)
     Space           reduce using rule 36 (function -> OcultaTortuga .)
+    LeftSquareBracket reduce using rule 36 (function -> OcultaTortuga .)
     Suma            reduce using rule 36 (function -> OcultaTortuga .)
     Inc             reduce using rule 36 (function -> OcultaTortuga .)
     Azar            reduce using rule 36 (function -> OcultaTortuga .)
@@ -667,7 +668,7 @@ state 28
     Centro          reduce using rule 36 (function -> OcultaTortuga .)
     Espera          reduce using rule 36 (function -> OcultaTortuga .)
     Ejecuta         reduce using rule 36 (function -> OcultaTortuga .)
-    Repite          reduce using rule 36 (function -> OcultaTortuga .)
+    Repeat          reduce using rule 36 (function -> OcultaTortuga .)
     Si              reduce using rule 36 (function -> OcultaTortuga .)
     Iguales         reduce using rule 36 (function -> OcultaTortuga .)
     Y               reduce using rule 36 (function -> OcultaTortuga .)
@@ -677,9 +678,8 @@ state 28
     Redondea        reduce using rule 36 (function -> OcultaTortuga .)
     Cos             reduce using rule 36 (function -> OcultaTortuga .)
     Diferencia      reduce using rule 36 (function -> OcultaTortuga .)
-    RightSquareBracket reduce using rule 36 (function -> OcultaTortuga .)
     Coma            reduce using rule 36 (function -> OcultaTortuga .)
-    LeftSquareBracket reduce using rule 36 (function -> OcultaTortuga .)
+    RightSquareBracket reduce using rule 36 (function -> OcultaTortuga .)
 
 
 state 29
@@ -688,6 +688,7 @@ state 29
 
     $end            reduce using rule 37 (function -> ApareceTortuga .)
     Space           reduce using rule 37 (function -> ApareceTortuga .)
+    LeftSquareBracket reduce using rule 37 (function -> ApareceTortuga .)
     Suma            reduce using rule 37 (function -> ApareceTortuga .)
     Inc             reduce using rule 37 (function -> ApareceTortuga .)
     Azar            reduce using rule 37 (function -> ApareceTortuga .)
@@ -721,7 +722,7 @@ state 29
     Centro          reduce using rule 37 (function -> ApareceTortuga .)
     Espera          reduce using rule 37 (function -> ApareceTortuga .)
     Ejecuta         reduce using rule 37 (function -> ApareceTortuga .)
-    Repite          reduce using rule 37 (function -> ApareceTortuga .)
+    Repeat          reduce using rule 37 (function -> ApareceTortuga .)
     Si              reduce using rule 37 (function -> ApareceTortuga .)
     Iguales         reduce using rule 37 (function -> ApareceTortuga .)
     Y               reduce using rule 37 (function -> ApareceTortuga .)
@@ -731,9 +732,8 @@ state 29
     Redondea        reduce using rule 37 (function -> ApareceTortuga .)
     Cos             reduce using rule 37 (function -> ApareceTortuga .)
     Diferencia      reduce using rule 37 (function -> ApareceTortuga .)
-    RightSquareBracket reduce using rule 37 (function -> ApareceTortuga .)
     Coma            reduce using rule 37 (function -> ApareceTortuga .)
-    LeftSquareBracket reduce using rule 37 (function -> ApareceTortuga .)
+    RightSquareBracket reduce using rule 37 (function -> ApareceTortuga .)
 
 
 state 30
@@ -756,6 +756,7 @@ state 32
 
     $end            reduce using rule 40 (function -> Rumbo .)
     Space           reduce using rule 40 (function -> Rumbo .)
+    LeftSquareBracket reduce using rule 40 (function -> Rumbo .)
     Suma            reduce using rule 40 (function -> Rumbo .)
     Inc             reduce using rule 40 (function -> Rumbo .)
     Azar            reduce using rule 40 (function -> Rumbo .)
@@ -789,7 +790,7 @@ state 32
     Centro          reduce using rule 40 (function -> Rumbo .)
     Espera          reduce using rule 40 (function -> Rumbo .)
     Ejecuta         reduce using rule 40 (function -> Rumbo .)
-    Repite          reduce using rule 40 (function -> Rumbo .)
+    Repeat          reduce using rule 40 (function -> Rumbo .)
     Si              reduce using rule 40 (function -> Rumbo .)
     Iguales         reduce using rule 40 (function -> Rumbo .)
     Y               reduce using rule 40 (function -> Rumbo .)
@@ -799,9 +800,8 @@ state 32
     Redondea        reduce using rule 40 (function -> Rumbo .)
     Cos             reduce using rule 40 (function -> Rumbo .)
     Diferencia      reduce using rule 40 (function -> Rumbo .)
-    RightSquareBracket reduce using rule 40 (function -> Rumbo .)
     Coma            reduce using rule 40 (function -> Rumbo .)
-    LeftSquareBracket reduce using rule 40 (function -> Rumbo .)
+    RightSquareBracket reduce using rule 40 (function -> Rumbo .)
 
 
 state 33
@@ -824,6 +824,7 @@ state 35
 
     $end            reduce using rule 43 (function -> BajaLapiz .)
     Space           reduce using rule 43 (function -> BajaLapiz .)
+    LeftSquareBracket reduce using rule 43 (function -> BajaLapiz .)
     Suma            reduce using rule 43 (function -> BajaLapiz .)
     Inc             reduce using rule 43 (function -> BajaLapiz .)
     Azar            reduce using rule 43 (function -> BajaLapiz .)
@@ -857,7 +858,7 @@ state 35
     Centro          reduce using rule 43 (function -> BajaLapiz .)
     Espera          reduce using rule 43 (function -> BajaLapiz .)
     Ejecuta         reduce using rule 43 (function -> BajaLapiz .)
-    Repite          reduce using rule 43 (function -> BajaLapiz .)
+    Repeat          reduce using rule 43 (function -> BajaLapiz .)
     Si              reduce using rule 43 (function -> BajaLapiz .)
     Iguales         reduce using rule 43 (function -> BajaLapiz .)
     Y               reduce using rule 43 (function -> BajaLapiz .)
@@ -867,9 +868,8 @@ state 35
     Redondea        reduce using rule 43 (function -> BajaLapiz .)
     Cos             reduce using rule 43 (function -> BajaLapiz .)
     Diferencia      reduce using rule 43 (function -> BajaLapiz .)
-    RightSquareBracket reduce using rule 43 (function -> BajaLapiz .)
     Coma            reduce using rule 43 (function -> BajaLapiz .)
-    LeftSquareBracket reduce using rule 43 (function -> BajaLapiz .)
+    RightSquareBracket reduce using rule 43 (function -> BajaLapiz .)
 
 
 state 36
@@ -878,6 +878,7 @@ state 36
 
     $end            reduce using rule 44 (function -> SubeLapiz .)
     Space           reduce using rule 44 (function -> SubeLapiz .)
+    LeftSquareBracket reduce using rule 44 (function -> SubeLapiz .)
     Suma            reduce using rule 44 (function -> SubeLapiz .)
     Inc             reduce using rule 44 (function -> SubeLapiz .)
     Azar            reduce using rule 44 (function -> SubeLapiz .)
@@ -911,7 +912,7 @@ state 36
     Centro          reduce using rule 44 (function -> SubeLapiz .)
     Espera          reduce using rule 44 (function -> SubeLapiz .)
     Ejecuta         reduce using rule 44 (function -> SubeLapiz .)
-    Repite          reduce using rule 44 (function -> SubeLapiz .)
+    Repeat          reduce using rule 44 (function -> SubeLapiz .)
     Si              reduce using rule 44 (function -> SubeLapiz .)
     Iguales         reduce using rule 44 (function -> SubeLapiz .)
     Y               reduce using rule 44 (function -> SubeLapiz .)
@@ -921,9 +922,8 @@ state 36
     Redondea        reduce using rule 44 (function -> SubeLapiz .)
     Cos             reduce using rule 44 (function -> SubeLapiz .)
     Diferencia      reduce using rule 44 (function -> SubeLapiz .)
-    RightSquareBracket reduce using rule 44 (function -> SubeLapiz .)
     Coma            reduce using rule 44 (function -> SubeLapiz .)
-    LeftSquareBracket reduce using rule 44 (function -> SubeLapiz .)
+    RightSquareBracket reduce using rule 44 (function -> SubeLapiz .)
 
 
 state 37
@@ -932,6 +932,7 @@ state 37
 
     $end            reduce using rule 45 (function -> Borrapantalla .)
     Space           reduce using rule 45 (function -> Borrapantalla .)
+    LeftSquareBracket reduce using rule 45 (function -> Borrapantalla .)
     Suma            reduce using rule 45 (function -> Borrapantalla .)
     Inc             reduce using rule 45 (function -> Borrapantalla .)
     Azar            reduce using rule 45 (function -> Borrapantalla .)
@@ -965,7 +966,7 @@ state 37
     Centro          reduce using rule 45 (function -> Borrapantalla .)
     Espera          reduce using rule 45 (function -> Borrapantalla .)
     Ejecuta         reduce using rule 45 (function -> Borrapantalla .)
-    Repite          reduce using rule 45 (function -> Borrapantalla .)
+    Repeat          reduce using rule 45 (function -> Borrapantalla .)
     Si              reduce using rule 45 (function -> Borrapantalla .)
     Iguales         reduce using rule 45 (function -> Borrapantalla .)
     Y               reduce using rule 45 (function -> Borrapantalla .)
@@ -975,9 +976,8 @@ state 37
     Redondea        reduce using rule 45 (function -> Borrapantalla .)
     Cos             reduce using rule 45 (function -> Borrapantalla .)
     Diferencia      reduce using rule 45 (function -> Borrapantalla .)
-    RightSquareBracket reduce using rule 45 (function -> Borrapantalla .)
     Coma            reduce using rule 45 (function -> Borrapantalla .)
-    LeftSquareBracket reduce using rule 45 (function -> Borrapantalla .)
+    RightSquareBracket reduce using rule 45 (function -> Borrapantalla .)
 
 
 state 38
@@ -986,6 +986,7 @@ state 38
 
     $end            reduce using rule 46 (function -> PonColorLapiz .)
     Space           reduce using rule 46 (function -> PonColorLapiz .)
+    LeftSquareBracket reduce using rule 46 (function -> PonColorLapiz .)
     Suma            reduce using rule 46 (function -> PonColorLapiz .)
     Inc             reduce using rule 46 (function -> PonColorLapiz .)
     Azar            reduce using rule 46 (function -> PonColorLapiz .)
@@ -1019,7 +1020,7 @@ state 38
     Centro          reduce using rule 46 (function -> PonColorLapiz .)
     Espera          reduce using rule 46 (function -> PonColorLapiz .)
     Ejecuta         reduce using rule 46 (function -> PonColorLapiz .)
-    Repite          reduce using rule 46 (function -> PonColorLapiz .)
+    Repeat          reduce using rule 46 (function -> PonColorLapiz .)
     Si              reduce using rule 46 (function -> PonColorLapiz .)
     Iguales         reduce using rule 46 (function -> PonColorLapiz .)
     Y               reduce using rule 46 (function -> PonColorLapiz .)
@@ -1029,9 +1030,8 @@ state 38
     Redondea        reduce using rule 46 (function -> PonColorLapiz .)
     Cos             reduce using rule 46 (function -> PonColorLapiz .)
     Diferencia      reduce using rule 46 (function -> PonColorLapiz .)
-    RightSquareBracket reduce using rule 46 (function -> PonColorLapiz .)
     Coma            reduce using rule 46 (function -> PonColorLapiz .)
-    LeftSquareBracket reduce using rule 46 (function -> PonColorLapiz .)
+    RightSquareBracket reduce using rule 46 (function -> PonColorLapiz .)
 
 
 state 39
@@ -1040,6 +1040,7 @@ state 39
 
     $end            reduce using rule 47 (function -> Centro .)
     Space           reduce using rule 47 (function -> Centro .)
+    LeftSquareBracket reduce using rule 47 (function -> Centro .)
     Suma            reduce using rule 47 (function -> Centro .)
     Inc             reduce using rule 47 (function -> Centro .)
     Azar            reduce using rule 47 (function -> Centro .)
@@ -1073,7 +1074,7 @@ state 39
     Centro          reduce using rule 47 (function -> Centro .)
     Espera          reduce using rule 47 (function -> Centro .)
     Ejecuta         reduce using rule 47 (function -> Centro .)
-    Repite          reduce using rule 47 (function -> Centro .)
+    Repeat          reduce using rule 47 (function -> Centro .)
     Si              reduce using rule 47 (function -> Centro .)
     Iguales         reduce using rule 47 (function -> Centro .)
     Y               reduce using rule 47 (function -> Centro .)
@@ -1083,9 +1084,8 @@ state 39
     Redondea        reduce using rule 47 (function -> Centro .)
     Cos             reduce using rule 47 (function -> Centro .)
     Diferencia      reduce using rule 47 (function -> Centro .)
-    RightSquareBracket reduce using rule 47 (function -> Centro .)
     Coma            reduce using rule 47 (function -> Centro .)
-    LeftSquareBracket reduce using rule 47 (function -> Centro .)
+    RightSquareBracket reduce using rule 47 (function -> Centro .)
 
 
 state 40
@@ -1104,7 +1104,7 @@ state 41
 
 state 42
 
-    (50) function -> Repite . Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> Repeat . Space expression LeftSquareBracket funciones RightSquareBracket
 
     Space           shift and go to state 79
 
@@ -1233,7 +1233,7 @@ state 54
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1280,7 +1280,7 @@ state 54
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1346,7 +1346,7 @@ state 56
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1393,7 +1393,7 @@ state 56
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1450,7 +1450,7 @@ state 57
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1497,7 +1497,7 @@ state 57
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1556,7 +1556,7 @@ state 58
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1603,7 +1603,7 @@ state 58
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1661,7 +1661,7 @@ state 59
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1708,7 +1708,7 @@ state 59
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1765,7 +1765,7 @@ state 60
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1812,7 +1812,7 @@ state 60
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1869,7 +1869,7 @@ state 61
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -1916,7 +1916,7 @@ state 61
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -1973,7 +1973,7 @@ state 62
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2020,7 +2020,7 @@ state 62
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2077,7 +2077,7 @@ state 63
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2124,7 +2124,7 @@ state 63
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2202,7 +2202,7 @@ state 67
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2249,7 +2249,7 @@ state 67
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2314,7 +2314,7 @@ state 69
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2361,7 +2361,7 @@ state 69
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2419,7 +2419,7 @@ state 70
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2466,7 +2466,7 @@ state 70
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2523,7 +2523,7 @@ state 71
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2570,7 +2570,7 @@ state 71
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2627,7 +2627,7 @@ state 72
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2674,7 +2674,7 @@ state 72
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2738,7 +2738,7 @@ state 74
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2785,7 +2785,7 @@ state 74
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2842,7 +2842,7 @@ state 75
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2889,7 +2889,7 @@ state 75
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -2946,7 +2946,7 @@ state 76
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -2993,7 +2993,7 @@ state 76
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3050,7 +3050,7 @@ state 77
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3097,7 +3097,7 @@ state 77
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3120,7 +3120,7 @@ state 78
 
 state 79
 
-    (50) function -> Repite Space . expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> Repeat Space . expression LeftSquareBracket funciones RightSquareBracket
     (6) expression -> . INT
     (7) expression -> . FLOAT
     (8) expression -> . function
@@ -3161,7 +3161,7 @@ state 79
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3208,7 +3208,7 @@ state 79
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3267,7 +3267,7 @@ state 80
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3314,7 +3314,7 @@ state 80
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3374,7 +3374,7 @@ state 81
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3421,7 +3421,7 @@ state 81
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3475,7 +3475,7 @@ state 82
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3519,7 +3519,7 @@ state 82
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3571,7 +3571,7 @@ state 83
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3615,7 +3615,7 @@ state 83
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3673,7 +3673,7 @@ state 84
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3720,7 +3720,7 @@ state 84
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3780,7 +3780,7 @@ state 85
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3827,7 +3827,7 @@ state 85
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3885,7 +3885,7 @@ state 86
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -3932,7 +3932,7 @@ state 86
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -3989,7 +3989,7 @@ state 87
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -4036,7 +4036,7 @@ state 87
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -4095,7 +4095,7 @@ state 88
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -4142,7 +4142,7 @@ state 88
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -4180,6 +4180,7 @@ state 91
 
     $end            reduce using rule 14 (function -> Suma Space operaciones .)
     Space           reduce using rule 14 (function -> Suma Space operaciones .)
+    LeftSquareBracket reduce using rule 14 (function -> Suma Space operaciones .)
     Suma            reduce using rule 14 (function -> Suma Space operaciones .)
     Inc             reduce using rule 14 (function -> Suma Space operaciones .)
     Azar            reduce using rule 14 (function -> Suma Space operaciones .)
@@ -4213,7 +4214,7 @@ state 91
     Centro          reduce using rule 14 (function -> Suma Space operaciones .)
     Espera          reduce using rule 14 (function -> Suma Space operaciones .)
     Ejecuta         reduce using rule 14 (function -> Suma Space operaciones .)
-    Repite          reduce using rule 14 (function -> Suma Space operaciones .)
+    Repeat          reduce using rule 14 (function -> Suma Space operaciones .)
     Si              reduce using rule 14 (function -> Suma Space operaciones .)
     Iguales         reduce using rule 14 (function -> Suma Space operaciones .)
     Y               reduce using rule 14 (function -> Suma Space operaciones .)
@@ -4223,9 +4224,8 @@ state 91
     Redondea        reduce using rule 14 (function -> Suma Space operaciones .)
     Cos             reduce using rule 14 (function -> Suma Space operaciones .)
     Diferencia      reduce using rule 14 (function -> Suma Space operaciones .)
-    RightSquareBracket reduce using rule 14 (function -> Suma Space operaciones .)
     Coma            reduce using rule 14 (function -> Suma Space operaciones .)
-    LeftSquareBracket reduce using rule 14 (function -> Suma Space operaciones .)
+    RightSquareBracket reduce using rule 14 (function -> Suma Space operaciones .)
 
 
 state 92
@@ -4243,6 +4243,7 @@ state 93
 
   ! shift/reduce conflict for Space resolved as shift
     $end            reduce using rule 15 (function -> Inc Space NAME .)
+    LeftSquareBracket reduce using rule 15 (function -> Inc Space NAME .)
     Suma            reduce using rule 15 (function -> Inc Space NAME .)
     Inc             reduce using rule 15 (function -> Inc Space NAME .)
     Azar            reduce using rule 15 (function -> Inc Space NAME .)
@@ -4276,7 +4277,7 @@ state 93
     Centro          reduce using rule 15 (function -> Inc Space NAME .)
     Espera          reduce using rule 15 (function -> Inc Space NAME .)
     Ejecuta         reduce using rule 15 (function -> Inc Space NAME .)
-    Repite          reduce using rule 15 (function -> Inc Space NAME .)
+    Repeat          reduce using rule 15 (function -> Inc Space NAME .)
     Si              reduce using rule 15 (function -> Inc Space NAME .)
     Iguales         reduce using rule 15 (function -> Inc Space NAME .)
     Y               reduce using rule 15 (function -> Inc Space NAME .)
@@ -4286,9 +4287,8 @@ state 93
     Redondea        reduce using rule 15 (function -> Inc Space NAME .)
     Cos             reduce using rule 15 (function -> Inc Space NAME .)
     Diferencia      reduce using rule 15 (function -> Inc Space NAME .)
-    RightSquareBracket reduce using rule 15 (function -> Inc Space NAME .)
     Coma            reduce using rule 15 (function -> Inc Space NAME .)
-    LeftSquareBracket reduce using rule 15 (function -> Inc Space NAME .)
+    RightSquareBracket reduce using rule 15 (function -> Inc Space NAME .)
     Space           shift and go to state 132
 
   ! Space           [ reduce using rule 15 (function -> Inc Space NAME .) ]
@@ -4300,6 +4300,7 @@ state 94
 
     $end            reduce using rule 17 (function -> Azar Space expression .)
     Space           reduce using rule 17 (function -> Azar Space expression .)
+    LeftSquareBracket reduce using rule 17 (function -> Azar Space expression .)
     Suma            reduce using rule 17 (function -> Azar Space expression .)
     Inc             reduce using rule 17 (function -> Azar Space expression .)
     Azar            reduce using rule 17 (function -> Azar Space expression .)
@@ -4333,7 +4334,7 @@ state 94
     Centro          reduce using rule 17 (function -> Azar Space expression .)
     Espera          reduce using rule 17 (function -> Azar Space expression .)
     Ejecuta         reduce using rule 17 (function -> Azar Space expression .)
-    Repite          reduce using rule 17 (function -> Azar Space expression .)
+    Repeat          reduce using rule 17 (function -> Azar Space expression .)
     Si              reduce using rule 17 (function -> Azar Space expression .)
     Iguales         reduce using rule 17 (function -> Azar Space expression .)
     Y               reduce using rule 17 (function -> Azar Space expression .)
@@ -4343,9 +4344,8 @@ state 94
     Redondea        reduce using rule 17 (function -> Azar Space expression .)
     Cos             reduce using rule 17 (function -> Azar Space expression .)
     Diferencia      reduce using rule 17 (function -> Azar Space expression .)
-    RightSquareBracket reduce using rule 17 (function -> Azar Space expression .)
     Coma            reduce using rule 17 (function -> Azar Space expression .)
-    LeftSquareBracket reduce using rule 17 (function -> Azar Space expression .)
+    RightSquareBracket reduce using rule 17 (function -> Azar Space expression .)
 
 
 state 95
@@ -4354,6 +4354,7 @@ state 95
 
     $end            reduce using rule 18 (function -> Menos Space expression .)
     Space           reduce using rule 18 (function -> Menos Space expression .)
+    LeftSquareBracket reduce using rule 18 (function -> Menos Space expression .)
     Suma            reduce using rule 18 (function -> Menos Space expression .)
     Inc             reduce using rule 18 (function -> Menos Space expression .)
     Azar            reduce using rule 18 (function -> Menos Space expression .)
@@ -4387,7 +4388,7 @@ state 95
     Centro          reduce using rule 18 (function -> Menos Space expression .)
     Espera          reduce using rule 18 (function -> Menos Space expression .)
     Ejecuta         reduce using rule 18 (function -> Menos Space expression .)
-    Repite          reduce using rule 18 (function -> Menos Space expression .)
+    Repeat          reduce using rule 18 (function -> Menos Space expression .)
     Si              reduce using rule 18 (function -> Menos Space expression .)
     Iguales         reduce using rule 18 (function -> Menos Space expression .)
     Y               reduce using rule 18 (function -> Menos Space expression .)
@@ -4397,9 +4398,8 @@ state 95
     Redondea        reduce using rule 18 (function -> Menos Space expression .)
     Cos             reduce using rule 18 (function -> Menos Space expression .)
     Diferencia      reduce using rule 18 (function -> Menos Space expression .)
-    RightSquareBracket reduce using rule 18 (function -> Menos Space expression .)
     Coma            reduce using rule 18 (function -> Menos Space expression .)
-    LeftSquareBracket reduce using rule 18 (function -> Menos Space expression .)
+    RightSquareBracket reduce using rule 18 (function -> Menos Space expression .)
 
 
 state 96
@@ -4408,6 +4408,7 @@ state 96
 
     $end            reduce using rule 19 (function -> Producto Space operaciones .)
     Space           reduce using rule 19 (function -> Producto Space operaciones .)
+    LeftSquareBracket reduce using rule 19 (function -> Producto Space operaciones .)
     Suma            reduce using rule 19 (function -> Producto Space operaciones .)
     Inc             reduce using rule 19 (function -> Producto Space operaciones .)
     Azar            reduce using rule 19 (function -> Producto Space operaciones .)
@@ -4441,7 +4442,7 @@ state 96
     Centro          reduce using rule 19 (function -> Producto Space operaciones .)
     Espera          reduce using rule 19 (function -> Producto Space operaciones .)
     Ejecuta         reduce using rule 19 (function -> Producto Space operaciones .)
-    Repite          reduce using rule 19 (function -> Producto Space operaciones .)
+    Repeat          reduce using rule 19 (function -> Producto Space operaciones .)
     Si              reduce using rule 19 (function -> Producto Space operaciones .)
     Iguales         reduce using rule 19 (function -> Producto Space operaciones .)
     Y               reduce using rule 19 (function -> Producto Space operaciones .)
@@ -4451,9 +4452,8 @@ state 96
     Redondea        reduce using rule 19 (function -> Producto Space operaciones .)
     Cos             reduce using rule 19 (function -> Producto Space operaciones .)
     Diferencia      reduce using rule 19 (function -> Producto Space operaciones .)
-    RightSquareBracket reduce using rule 19 (function -> Producto Space operaciones .)
     Coma            reduce using rule 19 (function -> Producto Space operaciones .)
-    LeftSquareBracket reduce using rule 19 (function -> Producto Space operaciones .)
+    RightSquareBracket reduce using rule 19 (function -> Producto Space operaciones .)
 
 
 state 97
@@ -4483,6 +4483,7 @@ state 100
 
     $end            reduce using rule 23 (function -> RC Space expression .)
     Space           reduce using rule 23 (function -> RC Space expression .)
+    LeftSquareBracket reduce using rule 23 (function -> RC Space expression .)
     Suma            reduce using rule 23 (function -> RC Space expression .)
     Inc             reduce using rule 23 (function -> RC Space expression .)
     Azar            reduce using rule 23 (function -> RC Space expression .)
@@ -4516,7 +4517,7 @@ state 100
     Centro          reduce using rule 23 (function -> RC Space expression .)
     Espera          reduce using rule 23 (function -> RC Space expression .)
     Ejecuta         reduce using rule 23 (function -> RC Space expression .)
-    Repite          reduce using rule 23 (function -> RC Space expression .)
+    Repeat          reduce using rule 23 (function -> RC Space expression .)
     Si              reduce using rule 23 (function -> RC Space expression .)
     Iguales         reduce using rule 23 (function -> RC Space expression .)
     Y               reduce using rule 23 (function -> RC Space expression .)
@@ -4526,9 +4527,8 @@ state 100
     Redondea        reduce using rule 23 (function -> RC Space expression .)
     Cos             reduce using rule 23 (function -> RC Space expression .)
     Diferencia      reduce using rule 23 (function -> RC Space expression .)
-    RightSquareBracket reduce using rule 23 (function -> RC Space expression .)
     Coma            reduce using rule 23 (function -> RC Space expression .)
-    LeftSquareBracket reduce using rule 23 (function -> RC Space expression .)
+    RightSquareBracket reduce using rule 23 (function -> RC Space expression .)
 
 
 state 101
@@ -4537,6 +4537,7 @@ state 101
 
     $end            reduce using rule 24 (function -> Sen Space expression .)
     Space           reduce using rule 24 (function -> Sen Space expression .)
+    LeftSquareBracket reduce using rule 24 (function -> Sen Space expression .)
     Suma            reduce using rule 24 (function -> Sen Space expression .)
     Inc             reduce using rule 24 (function -> Sen Space expression .)
     Azar            reduce using rule 24 (function -> Sen Space expression .)
@@ -4570,7 +4571,7 @@ state 101
     Centro          reduce using rule 24 (function -> Sen Space expression .)
     Espera          reduce using rule 24 (function -> Sen Space expression .)
     Ejecuta         reduce using rule 24 (function -> Sen Space expression .)
-    Repite          reduce using rule 24 (function -> Sen Space expression .)
+    Repeat          reduce using rule 24 (function -> Sen Space expression .)
     Si              reduce using rule 24 (function -> Sen Space expression .)
     Iguales         reduce using rule 24 (function -> Sen Space expression .)
     Y               reduce using rule 24 (function -> Sen Space expression .)
@@ -4580,9 +4581,8 @@ state 101
     Redondea        reduce using rule 24 (function -> Sen Space expression .)
     Cos             reduce using rule 24 (function -> Sen Space expression .)
     Diferencia      reduce using rule 24 (function -> Sen Space expression .)
-    RightSquareBracket reduce using rule 24 (function -> Sen Space expression .)
     Coma            reduce using rule 24 (function -> Sen Space expression .)
-    LeftSquareBracket reduce using rule 24 (function -> Sen Space expression .)
+    RightSquareBracket reduce using rule 24 (function -> Sen Space expression .)
 
 
 state 102
@@ -4630,7 +4630,7 @@ state 102
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -4677,7 +4677,7 @@ state 102
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -4737,7 +4737,7 @@ state 103
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -4784,7 +4784,7 @@ state 103
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -4844,7 +4844,7 @@ state 104
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -4891,7 +4891,7 @@ state 104
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -4958,7 +4958,7 @@ state 106
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -5005,7 +5005,7 @@ state 106
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -5026,6 +5026,7 @@ state 107
 
     $end            reduce using rule 30 (function -> Avanza Space expression .)
     Space           reduce using rule 30 (function -> Avanza Space expression .)
+    LeftSquareBracket reduce using rule 30 (function -> Avanza Space expression .)
     Suma            reduce using rule 30 (function -> Avanza Space expression .)
     Inc             reduce using rule 30 (function -> Avanza Space expression .)
     Azar            reduce using rule 30 (function -> Avanza Space expression .)
@@ -5059,7 +5060,7 @@ state 107
     Centro          reduce using rule 30 (function -> Avanza Space expression .)
     Espera          reduce using rule 30 (function -> Avanza Space expression .)
     Ejecuta         reduce using rule 30 (function -> Avanza Space expression .)
-    Repite          reduce using rule 30 (function -> Avanza Space expression .)
+    Repeat          reduce using rule 30 (function -> Avanza Space expression .)
     Si              reduce using rule 30 (function -> Avanza Space expression .)
     Iguales         reduce using rule 30 (function -> Avanza Space expression .)
     Y               reduce using rule 30 (function -> Avanza Space expression .)
@@ -5069,9 +5070,8 @@ state 107
     Redondea        reduce using rule 30 (function -> Avanza Space expression .)
     Cos             reduce using rule 30 (function -> Avanza Space expression .)
     Diferencia      reduce using rule 30 (function -> Avanza Space expression .)
-    RightSquareBracket reduce using rule 30 (function -> Avanza Space expression .)
     Coma            reduce using rule 30 (function -> Avanza Space expression .)
-    LeftSquareBracket reduce using rule 30 (function -> Avanza Space expression .)
+    RightSquareBracket reduce using rule 30 (function -> Avanza Space expression .)
 
 
 state 108
@@ -5081,6 +5081,7 @@ state 108
 
   ! reduce/reduce conflict for $end resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Space resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for LeftSquareBracket resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Suma resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Inc resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Azar resolved using rule 8 (expression -> function .)
@@ -5114,7 +5115,7 @@ state 108
   ! reduce/reduce conflict for Centro resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Espera resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Ejecuta resolved using rule 8 (expression -> function .)
-  ! reduce/reduce conflict for Repite resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for Repeat resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Si resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Iguales resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Y resolved using rule 8 (expression -> function .)
@@ -5124,11 +5125,11 @@ state 108
   ! reduce/reduce conflict for Redondea resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Cos resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Diferencia resolved using rule 8 (expression -> function .)
-  ! reduce/reduce conflict for RightSquareBracket resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Coma resolved using rule 8 (expression -> function .)
-  ! reduce/reduce conflict for LeftSquareBracket resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for RightSquareBracket resolved using rule 8 (expression -> function .)
     $end            reduce using rule 8 (expression -> function .)
     Space           reduce using rule 8 (expression -> function .)
+    LeftSquareBracket reduce using rule 8 (expression -> function .)
     Suma            reduce using rule 8 (expression -> function .)
     Inc             reduce using rule 8 (expression -> function .)
     Azar            reduce using rule 8 (expression -> function .)
@@ -5162,7 +5163,7 @@ state 108
     Centro          reduce using rule 8 (expression -> function .)
     Espera          reduce using rule 8 (expression -> function .)
     Ejecuta         reduce using rule 8 (expression -> function .)
-    Repite          reduce using rule 8 (expression -> function .)
+    Repeat          reduce using rule 8 (expression -> function .)
     Si              reduce using rule 8 (expression -> function .)
     Iguales         reduce using rule 8 (expression -> function .)
     Y               reduce using rule 8 (expression -> function .)
@@ -5172,12 +5173,12 @@ state 108
     Redondea        reduce using rule 8 (expression -> function .)
     Cos             reduce using rule 8 (expression -> function .)
     Diferencia      reduce using rule 8 (expression -> function .)
-    RightSquareBracket reduce using rule 8 (expression -> function .)
     Coma            reduce using rule 8 (expression -> function .)
-    LeftSquareBracket reduce using rule 8 (expression -> function .)
+    RightSquareBracket reduce using rule 8 (expression -> function .)
 
   ! $end            [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Space           [ reduce using rule 31 (function -> Avanza Space function .) ]
+  ! LeftSquareBracket [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Suma            [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Inc             [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Azar            [ reduce using rule 31 (function -> Avanza Space function .) ]
@@ -5211,7 +5212,7 @@ state 108
   ! Centro          [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Espera          [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Ejecuta         [ reduce using rule 31 (function -> Avanza Space function .) ]
-  ! Repite          [ reduce using rule 31 (function -> Avanza Space function .) ]
+  ! Repeat          [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Si              [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Iguales         [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Y               [ reduce using rule 31 (function -> Avanza Space function .) ]
@@ -5221,9 +5222,8 @@ state 108
   ! Redondea        [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Cos             [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Diferencia      [ reduce using rule 31 (function -> Avanza Space function .) ]
-  ! RightSquareBracket [ reduce using rule 31 (function -> Avanza Space function .) ]
   ! Coma            [ reduce using rule 31 (function -> Avanza Space function .) ]
-  ! LeftSquareBracket [ reduce using rule 31 (function -> Avanza Space function .) ]
+  ! RightSquareBracket [ reduce using rule 31 (function -> Avanza Space function .) ]
 
 
 state 109
@@ -5232,6 +5232,7 @@ state 109
 
     $end            reduce using rule 32 (function -> Retrocede Space expression .)
     Space           reduce using rule 32 (function -> Retrocede Space expression .)
+    LeftSquareBracket reduce using rule 32 (function -> Retrocede Space expression .)
     Suma            reduce using rule 32 (function -> Retrocede Space expression .)
     Inc             reduce using rule 32 (function -> Retrocede Space expression .)
     Azar            reduce using rule 32 (function -> Retrocede Space expression .)
@@ -5265,7 +5266,7 @@ state 109
     Centro          reduce using rule 32 (function -> Retrocede Space expression .)
     Espera          reduce using rule 32 (function -> Retrocede Space expression .)
     Ejecuta         reduce using rule 32 (function -> Retrocede Space expression .)
-    Repite          reduce using rule 32 (function -> Retrocede Space expression .)
+    Repeat          reduce using rule 32 (function -> Retrocede Space expression .)
     Si              reduce using rule 32 (function -> Retrocede Space expression .)
     Iguales         reduce using rule 32 (function -> Retrocede Space expression .)
     Y               reduce using rule 32 (function -> Retrocede Space expression .)
@@ -5275,9 +5276,8 @@ state 109
     Redondea        reduce using rule 32 (function -> Retrocede Space expression .)
     Cos             reduce using rule 32 (function -> Retrocede Space expression .)
     Diferencia      reduce using rule 32 (function -> Retrocede Space expression .)
-    RightSquareBracket reduce using rule 32 (function -> Retrocede Space expression .)
     Coma            reduce using rule 32 (function -> Retrocede Space expression .)
-    LeftSquareBracket reduce using rule 32 (function -> Retrocede Space expression .)
+    RightSquareBracket reduce using rule 32 (function -> Retrocede Space expression .)
 
 
 state 110
@@ -5287,6 +5287,7 @@ state 110
 
   ! reduce/reduce conflict for $end resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Space resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for LeftSquareBracket resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Suma resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Inc resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Azar resolved using rule 8 (expression -> function .)
@@ -5320,7 +5321,7 @@ state 110
   ! reduce/reduce conflict for Centro resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Espera resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Ejecuta resolved using rule 8 (expression -> function .)
-  ! reduce/reduce conflict for Repite resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for Repeat resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Si resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Iguales resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Y resolved using rule 8 (expression -> function .)
@@ -5330,11 +5331,11 @@ state 110
   ! reduce/reduce conflict for Redondea resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Cos resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Diferencia resolved using rule 8 (expression -> function .)
-  ! reduce/reduce conflict for RightSquareBracket resolved using rule 8 (expression -> function .)
   ! reduce/reduce conflict for Coma resolved using rule 8 (expression -> function .)
-  ! reduce/reduce conflict for LeftSquareBracket resolved using rule 8 (expression -> function .)
+  ! reduce/reduce conflict for RightSquareBracket resolved using rule 8 (expression -> function .)
     $end            reduce using rule 8 (expression -> function .)
     Space           reduce using rule 8 (expression -> function .)
+    LeftSquareBracket reduce using rule 8 (expression -> function .)
     Suma            reduce using rule 8 (expression -> function .)
     Inc             reduce using rule 8 (expression -> function .)
     Azar            reduce using rule 8 (expression -> function .)
@@ -5368,7 +5369,7 @@ state 110
     Centro          reduce using rule 8 (expression -> function .)
     Espera          reduce using rule 8 (expression -> function .)
     Ejecuta         reduce using rule 8 (expression -> function .)
-    Repite          reduce using rule 8 (expression -> function .)
+    Repeat          reduce using rule 8 (expression -> function .)
     Si              reduce using rule 8 (expression -> function .)
     Iguales         reduce using rule 8 (expression -> function .)
     Y               reduce using rule 8 (expression -> function .)
@@ -5378,12 +5379,12 @@ state 110
     Redondea        reduce using rule 8 (expression -> function .)
     Cos             reduce using rule 8 (expression -> function .)
     Diferencia      reduce using rule 8 (expression -> function .)
-    RightSquareBracket reduce using rule 8 (expression -> function .)
     Coma            reduce using rule 8 (expression -> function .)
-    LeftSquareBracket reduce using rule 8 (expression -> function .)
+    RightSquareBracket reduce using rule 8 (expression -> function .)
 
   ! $end            [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Space           [ reduce using rule 33 (function -> Retrocede Space function .) ]
+  ! LeftSquareBracket [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Suma            [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Inc             [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Azar            [ reduce using rule 33 (function -> Retrocede Space function .) ]
@@ -5417,7 +5418,7 @@ state 110
   ! Centro          [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Espera          [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Ejecuta         [ reduce using rule 33 (function -> Retrocede Space function .) ]
-  ! Repite          [ reduce using rule 33 (function -> Retrocede Space function .) ]
+  ! Repeat          [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Si              [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Iguales         [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Y               [ reduce using rule 33 (function -> Retrocede Space function .) ]
@@ -5427,9 +5428,8 @@ state 110
   ! Redondea        [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Cos             [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Diferencia      [ reduce using rule 33 (function -> Retrocede Space function .) ]
-  ! RightSquareBracket [ reduce using rule 33 (function -> Retrocede Space function .) ]
   ! Coma            [ reduce using rule 33 (function -> Retrocede Space function .) ]
-  ! LeftSquareBracket [ reduce using rule 33 (function -> Retrocede Space function .) ]
+  ! RightSquareBracket [ reduce using rule 33 (function -> Retrocede Space function .) ]
 
 
 state 111
@@ -5438,6 +5438,7 @@ state 111
 
     $end            reduce using rule 34 (function -> GiraDerecha Space expression .)
     Space           reduce using rule 34 (function -> GiraDerecha Space expression .)
+    LeftSquareBracket reduce using rule 34 (function -> GiraDerecha Space expression .)
     Suma            reduce using rule 34 (function -> GiraDerecha Space expression .)
     Inc             reduce using rule 34 (function -> GiraDerecha Space expression .)
     Azar            reduce using rule 34 (function -> GiraDerecha Space expression .)
@@ -5471,7 +5472,7 @@ state 111
     Centro          reduce using rule 34 (function -> GiraDerecha Space expression .)
     Espera          reduce using rule 34 (function -> GiraDerecha Space expression .)
     Ejecuta         reduce using rule 34 (function -> GiraDerecha Space expression .)
-    Repite          reduce using rule 34 (function -> GiraDerecha Space expression .)
+    Repeat          reduce using rule 34 (function -> GiraDerecha Space expression .)
     Si              reduce using rule 34 (function -> GiraDerecha Space expression .)
     Iguales         reduce using rule 34 (function -> GiraDerecha Space expression .)
     Y               reduce using rule 34 (function -> GiraDerecha Space expression .)
@@ -5481,9 +5482,8 @@ state 111
     Redondea        reduce using rule 34 (function -> GiraDerecha Space expression .)
     Cos             reduce using rule 34 (function -> GiraDerecha Space expression .)
     Diferencia      reduce using rule 34 (function -> GiraDerecha Space expression .)
-    RightSquareBracket reduce using rule 34 (function -> GiraDerecha Space expression .)
     Coma            reduce using rule 34 (function -> GiraDerecha Space expression .)
-    LeftSquareBracket reduce using rule 34 (function -> GiraDerecha Space expression .)
+    RightSquareBracket reduce using rule 34 (function -> GiraDerecha Space expression .)
 
 
 state 112
@@ -5492,6 +5492,7 @@ state 112
 
     $end            reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Space           reduce using rule 35 (function -> GiraIzquierda Space expression .)
+    LeftSquareBracket reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Suma            reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Inc             reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Azar            reduce using rule 35 (function -> GiraIzquierda Space expression .)
@@ -5525,7 +5526,7 @@ state 112
     Centro          reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Espera          reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Ejecuta         reduce using rule 35 (function -> GiraIzquierda Space expression .)
-    Repite          reduce using rule 35 (function -> GiraIzquierda Space expression .)
+    Repeat          reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Si              reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Iguales         reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Y               reduce using rule 35 (function -> GiraIzquierda Space expression .)
@@ -5535,9 +5536,8 @@ state 112
     Redondea        reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Cos             reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Diferencia      reduce using rule 35 (function -> GiraIzquierda Space expression .)
-    RightSquareBracket reduce using rule 35 (function -> GiraIzquierda Space expression .)
     Coma            reduce using rule 35 (function -> GiraIzquierda Space expression .)
-    LeftSquareBracket reduce using rule 35 (function -> GiraIzquierda Space expression .)
+    RightSquareBracket reduce using rule 35 (function -> GiraIzquierda Space expression .)
 
 
 state 113
@@ -5583,7 +5583,7 @@ state 113
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -5630,7 +5630,7 @@ state 113
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -5650,6 +5650,7 @@ state 114
 
     $end            reduce using rule 39 (function -> PonRumbo Space expression .)
     Space           reduce using rule 39 (function -> PonRumbo Space expression .)
+    LeftSquareBracket reduce using rule 39 (function -> PonRumbo Space expression .)
     Suma            reduce using rule 39 (function -> PonRumbo Space expression .)
     Inc             reduce using rule 39 (function -> PonRumbo Space expression .)
     Azar            reduce using rule 39 (function -> PonRumbo Space expression .)
@@ -5683,7 +5684,7 @@ state 114
     Centro          reduce using rule 39 (function -> PonRumbo Space expression .)
     Espera          reduce using rule 39 (function -> PonRumbo Space expression .)
     Ejecuta         reduce using rule 39 (function -> PonRumbo Space expression .)
-    Repite          reduce using rule 39 (function -> PonRumbo Space expression .)
+    Repeat          reduce using rule 39 (function -> PonRumbo Space expression .)
     Si              reduce using rule 39 (function -> PonRumbo Space expression .)
     Iguales         reduce using rule 39 (function -> PonRumbo Space expression .)
     Y               reduce using rule 39 (function -> PonRumbo Space expression .)
@@ -5693,9 +5694,8 @@ state 114
     Redondea        reduce using rule 39 (function -> PonRumbo Space expression .)
     Cos             reduce using rule 39 (function -> PonRumbo Space expression .)
     Diferencia      reduce using rule 39 (function -> PonRumbo Space expression .)
-    RightSquareBracket reduce using rule 39 (function -> PonRumbo Space expression .)
     Coma            reduce using rule 39 (function -> PonRumbo Space expression .)
-    LeftSquareBracket reduce using rule 39 (function -> PonRumbo Space expression .)
+    RightSquareBracket reduce using rule 39 (function -> PonRumbo Space expression .)
 
 
 state 115
@@ -5704,6 +5704,7 @@ state 115
 
     $end            reduce using rule 41 (function -> PonX Space expression .)
     Space           reduce using rule 41 (function -> PonX Space expression .)
+    LeftSquareBracket reduce using rule 41 (function -> PonX Space expression .)
     Suma            reduce using rule 41 (function -> PonX Space expression .)
     Inc             reduce using rule 41 (function -> PonX Space expression .)
     Azar            reduce using rule 41 (function -> PonX Space expression .)
@@ -5737,7 +5738,7 @@ state 115
     Centro          reduce using rule 41 (function -> PonX Space expression .)
     Espera          reduce using rule 41 (function -> PonX Space expression .)
     Ejecuta         reduce using rule 41 (function -> PonX Space expression .)
-    Repite          reduce using rule 41 (function -> PonX Space expression .)
+    Repeat          reduce using rule 41 (function -> PonX Space expression .)
     Si              reduce using rule 41 (function -> PonX Space expression .)
     Iguales         reduce using rule 41 (function -> PonX Space expression .)
     Y               reduce using rule 41 (function -> PonX Space expression .)
@@ -5747,9 +5748,8 @@ state 115
     Redondea        reduce using rule 41 (function -> PonX Space expression .)
     Cos             reduce using rule 41 (function -> PonX Space expression .)
     Diferencia      reduce using rule 41 (function -> PonX Space expression .)
-    RightSquareBracket reduce using rule 41 (function -> PonX Space expression .)
     Coma            reduce using rule 41 (function -> PonX Space expression .)
-    LeftSquareBracket reduce using rule 41 (function -> PonX Space expression .)
+    RightSquareBracket reduce using rule 41 (function -> PonX Space expression .)
 
 
 state 116
@@ -5758,6 +5758,7 @@ state 116
 
     $end            reduce using rule 42 (function -> PonY Space expression .)
     Space           reduce using rule 42 (function -> PonY Space expression .)
+    LeftSquareBracket reduce using rule 42 (function -> PonY Space expression .)
     Suma            reduce using rule 42 (function -> PonY Space expression .)
     Inc             reduce using rule 42 (function -> PonY Space expression .)
     Azar            reduce using rule 42 (function -> PonY Space expression .)
@@ -5791,7 +5792,7 @@ state 116
     Centro          reduce using rule 42 (function -> PonY Space expression .)
     Espera          reduce using rule 42 (function -> PonY Space expression .)
     Ejecuta         reduce using rule 42 (function -> PonY Space expression .)
-    Repite          reduce using rule 42 (function -> PonY Space expression .)
+    Repeat          reduce using rule 42 (function -> PonY Space expression .)
     Si              reduce using rule 42 (function -> PonY Space expression .)
     Iguales         reduce using rule 42 (function -> PonY Space expression .)
     Y               reduce using rule 42 (function -> PonY Space expression .)
@@ -5801,9 +5802,8 @@ state 116
     Redondea        reduce using rule 42 (function -> PonY Space expression .)
     Cos             reduce using rule 42 (function -> PonY Space expression .)
     Diferencia      reduce using rule 42 (function -> PonY Space expression .)
-    RightSquareBracket reduce using rule 42 (function -> PonY Space expression .)
     Coma            reduce using rule 42 (function -> PonY Space expression .)
-    LeftSquareBracket reduce using rule 42 (function -> PonY Space expression .)
+    RightSquareBracket reduce using rule 42 (function -> PonY Space expression .)
 
 
 state 117
@@ -5812,6 +5812,7 @@ state 117
 
     $end            reduce using rule 48 (function -> Espera Space expression .)
     Space           reduce using rule 48 (function -> Espera Space expression .)
+    LeftSquareBracket reduce using rule 48 (function -> Espera Space expression .)
     Suma            reduce using rule 48 (function -> Espera Space expression .)
     Inc             reduce using rule 48 (function -> Espera Space expression .)
     Azar            reduce using rule 48 (function -> Espera Space expression .)
@@ -5845,7 +5846,7 @@ state 117
     Centro          reduce using rule 48 (function -> Espera Space expression .)
     Espera          reduce using rule 48 (function -> Espera Space expression .)
     Ejecuta         reduce using rule 48 (function -> Espera Space expression .)
-    Repite          reduce using rule 48 (function -> Espera Space expression .)
+    Repeat          reduce using rule 48 (function -> Espera Space expression .)
     Si              reduce using rule 48 (function -> Espera Space expression .)
     Iguales         reduce using rule 48 (function -> Espera Space expression .)
     Y               reduce using rule 48 (function -> Espera Space expression .)
@@ -5855,9 +5856,8 @@ state 117
     Redondea        reduce using rule 48 (function -> Espera Space expression .)
     Cos             reduce using rule 48 (function -> Espera Space expression .)
     Diferencia      reduce using rule 48 (function -> Espera Space expression .)
-    RightSquareBracket reduce using rule 48 (function -> Espera Space expression .)
     Coma            reduce using rule 48 (function -> Espera Space expression .)
-    LeftSquareBracket reduce using rule 48 (function -> Espera Space expression .)
+    RightSquareBracket reduce using rule 48 (function -> Espera Space expression .)
 
 
 state 118
@@ -5905,7 +5905,7 @@ state 118
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -5952,7 +5952,7 @@ state 118
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -5969,9 +5969,9 @@ state 118
 
 state 119
 
-    (50) function -> Repite Space expression . Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> Repeat Space expression . LeftSquareBracket funciones RightSquareBracket
 
-    Space           shift and go to state 143
+    LeftSquareBracket shift and go to state 143
 
 
 state 120
@@ -5987,6 +5987,7 @@ state 121
 
     $end            reduce using rule 52 (function -> Iguales Space operaciones .)
     Space           reduce using rule 52 (function -> Iguales Space operaciones .)
+    LeftSquareBracket reduce using rule 52 (function -> Iguales Space operaciones .)
     Suma            reduce using rule 52 (function -> Iguales Space operaciones .)
     Inc             reduce using rule 52 (function -> Iguales Space operaciones .)
     Azar            reduce using rule 52 (function -> Iguales Space operaciones .)
@@ -6020,7 +6021,7 @@ state 121
     Centro          reduce using rule 52 (function -> Iguales Space operaciones .)
     Espera          reduce using rule 52 (function -> Iguales Space operaciones .)
     Ejecuta         reduce using rule 52 (function -> Iguales Space operaciones .)
-    Repite          reduce using rule 52 (function -> Iguales Space operaciones .)
+    Repeat          reduce using rule 52 (function -> Iguales Space operaciones .)
     Si              reduce using rule 52 (function -> Iguales Space operaciones .)
     Iguales         reduce using rule 52 (function -> Iguales Space operaciones .)
     Y               reduce using rule 52 (function -> Iguales Space operaciones .)
@@ -6030,9 +6031,8 @@ state 121
     Redondea        reduce using rule 52 (function -> Iguales Space operaciones .)
     Cos             reduce using rule 52 (function -> Iguales Space operaciones .)
     Diferencia      reduce using rule 52 (function -> Iguales Space operaciones .)
-    RightSquareBracket reduce using rule 52 (function -> Iguales Space operaciones .)
     Coma            reduce using rule 52 (function -> Iguales Space operaciones .)
-    LeftSquareBracket reduce using rule 52 (function -> Iguales Space operaciones .)
+    RightSquareBracket reduce using rule 52 (function -> Iguales Space operaciones .)
 
 
 state 122
@@ -6074,7 +6074,7 @@ state 122
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -6118,7 +6118,7 @@ state 122
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -6170,7 +6170,7 @@ state 123
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -6214,7 +6214,7 @@ state 123
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -6233,6 +6233,7 @@ state 124
 
     $end            reduce using rule 55 (function -> MayorQue Space operaciones .)
     Space           reduce using rule 55 (function -> MayorQue Space operaciones .)
+    LeftSquareBracket reduce using rule 55 (function -> MayorQue Space operaciones .)
     Suma            reduce using rule 55 (function -> MayorQue Space operaciones .)
     Inc             reduce using rule 55 (function -> MayorQue Space operaciones .)
     Azar            reduce using rule 55 (function -> MayorQue Space operaciones .)
@@ -6266,7 +6267,7 @@ state 124
     Centro          reduce using rule 55 (function -> MayorQue Space operaciones .)
     Espera          reduce using rule 55 (function -> MayorQue Space operaciones .)
     Ejecuta         reduce using rule 55 (function -> MayorQue Space operaciones .)
-    Repite          reduce using rule 55 (function -> MayorQue Space operaciones .)
+    Repeat          reduce using rule 55 (function -> MayorQue Space operaciones .)
     Si              reduce using rule 55 (function -> MayorQue Space operaciones .)
     Iguales         reduce using rule 55 (function -> MayorQue Space operaciones .)
     Y               reduce using rule 55 (function -> MayorQue Space operaciones .)
@@ -6276,9 +6277,8 @@ state 124
     Redondea        reduce using rule 55 (function -> MayorQue Space operaciones .)
     Cos             reduce using rule 55 (function -> MayorQue Space operaciones .)
     Diferencia      reduce using rule 55 (function -> MayorQue Space operaciones .)
-    RightSquareBracket reduce using rule 55 (function -> MayorQue Space operaciones .)
     Coma            reduce using rule 55 (function -> MayorQue Space operaciones .)
-    LeftSquareBracket reduce using rule 55 (function -> MayorQue Space operaciones .)
+    RightSquareBracket reduce using rule 55 (function -> MayorQue Space operaciones .)
 
 
 state 125
@@ -6287,6 +6287,7 @@ state 125
 
     $end            reduce using rule 56 (function -> MenorQue Space operaciones .)
     Space           reduce using rule 56 (function -> MenorQue Space operaciones .)
+    LeftSquareBracket reduce using rule 56 (function -> MenorQue Space operaciones .)
     Suma            reduce using rule 56 (function -> MenorQue Space operaciones .)
     Inc             reduce using rule 56 (function -> MenorQue Space operaciones .)
     Azar            reduce using rule 56 (function -> MenorQue Space operaciones .)
@@ -6320,7 +6321,7 @@ state 125
     Centro          reduce using rule 56 (function -> MenorQue Space operaciones .)
     Espera          reduce using rule 56 (function -> MenorQue Space operaciones .)
     Ejecuta         reduce using rule 56 (function -> MenorQue Space operaciones .)
-    Repite          reduce using rule 56 (function -> MenorQue Space operaciones .)
+    Repeat          reduce using rule 56 (function -> MenorQue Space operaciones .)
     Si              reduce using rule 56 (function -> MenorQue Space operaciones .)
     Iguales         reduce using rule 56 (function -> MenorQue Space operaciones .)
     Y               reduce using rule 56 (function -> MenorQue Space operaciones .)
@@ -6330,9 +6331,8 @@ state 125
     Redondea        reduce using rule 56 (function -> MenorQue Space operaciones .)
     Cos             reduce using rule 56 (function -> MenorQue Space operaciones .)
     Diferencia      reduce using rule 56 (function -> MenorQue Space operaciones .)
-    RightSquareBracket reduce using rule 56 (function -> MenorQue Space operaciones .)
     Coma            reduce using rule 56 (function -> MenorQue Space operaciones .)
-    LeftSquareBracket reduce using rule 56 (function -> MenorQue Space operaciones .)
+    RightSquareBracket reduce using rule 56 (function -> MenorQue Space operaciones .)
 
 
 state 126
@@ -6341,6 +6341,7 @@ state 126
 
     $end            reduce using rule 57 (function -> Redondea Space expression .)
     Space           reduce using rule 57 (function -> Redondea Space expression .)
+    LeftSquareBracket reduce using rule 57 (function -> Redondea Space expression .)
     Suma            reduce using rule 57 (function -> Redondea Space expression .)
     Inc             reduce using rule 57 (function -> Redondea Space expression .)
     Azar            reduce using rule 57 (function -> Redondea Space expression .)
@@ -6374,7 +6375,7 @@ state 126
     Centro          reduce using rule 57 (function -> Redondea Space expression .)
     Espera          reduce using rule 57 (function -> Redondea Space expression .)
     Ejecuta         reduce using rule 57 (function -> Redondea Space expression .)
-    Repite          reduce using rule 57 (function -> Redondea Space expression .)
+    Repeat          reduce using rule 57 (function -> Redondea Space expression .)
     Si              reduce using rule 57 (function -> Redondea Space expression .)
     Iguales         reduce using rule 57 (function -> Redondea Space expression .)
     Y               reduce using rule 57 (function -> Redondea Space expression .)
@@ -6384,9 +6385,8 @@ state 126
     Redondea        reduce using rule 57 (function -> Redondea Space expression .)
     Cos             reduce using rule 57 (function -> Redondea Space expression .)
     Diferencia      reduce using rule 57 (function -> Redondea Space expression .)
-    RightSquareBracket reduce using rule 57 (function -> Redondea Space expression .)
     Coma            reduce using rule 57 (function -> Redondea Space expression .)
-    LeftSquareBracket reduce using rule 57 (function -> Redondea Space expression .)
+    RightSquareBracket reduce using rule 57 (function -> Redondea Space expression .)
 
 
 state 127
@@ -6395,6 +6395,7 @@ state 127
 
     $end            reduce using rule 58 (function -> Cos Space expression .)
     Space           reduce using rule 58 (function -> Cos Space expression .)
+    LeftSquareBracket reduce using rule 58 (function -> Cos Space expression .)
     Suma            reduce using rule 58 (function -> Cos Space expression .)
     Inc             reduce using rule 58 (function -> Cos Space expression .)
     Azar            reduce using rule 58 (function -> Cos Space expression .)
@@ -6428,7 +6429,7 @@ state 127
     Centro          reduce using rule 58 (function -> Cos Space expression .)
     Espera          reduce using rule 58 (function -> Cos Space expression .)
     Ejecuta         reduce using rule 58 (function -> Cos Space expression .)
-    Repite          reduce using rule 58 (function -> Cos Space expression .)
+    Repeat          reduce using rule 58 (function -> Cos Space expression .)
     Si              reduce using rule 58 (function -> Cos Space expression .)
     Iguales         reduce using rule 58 (function -> Cos Space expression .)
     Y               reduce using rule 58 (function -> Cos Space expression .)
@@ -6438,9 +6439,8 @@ state 127
     Redondea        reduce using rule 58 (function -> Cos Space expression .)
     Cos             reduce using rule 58 (function -> Cos Space expression .)
     Diferencia      reduce using rule 58 (function -> Cos Space expression .)
-    RightSquareBracket reduce using rule 58 (function -> Cos Space expression .)
     Coma            reduce using rule 58 (function -> Cos Space expression .)
-    LeftSquareBracket reduce using rule 58 (function -> Cos Space expression .)
+    RightSquareBracket reduce using rule 58 (function -> Cos Space expression .)
 
 
 state 128
@@ -6449,6 +6449,7 @@ state 128
 
     $end            reduce using rule 59 (function -> Diferencia Space operaciones .)
     Space           reduce using rule 59 (function -> Diferencia Space operaciones .)
+    LeftSquareBracket reduce using rule 59 (function -> Diferencia Space operaciones .)
     Suma            reduce using rule 59 (function -> Diferencia Space operaciones .)
     Inc             reduce using rule 59 (function -> Diferencia Space operaciones .)
     Azar            reduce using rule 59 (function -> Diferencia Space operaciones .)
@@ -6482,7 +6483,7 @@ state 128
     Centro          reduce using rule 59 (function -> Diferencia Space operaciones .)
     Espera          reduce using rule 59 (function -> Diferencia Space operaciones .)
     Ejecuta         reduce using rule 59 (function -> Diferencia Space operaciones .)
-    Repite          reduce using rule 59 (function -> Diferencia Space operaciones .)
+    Repeat          reduce using rule 59 (function -> Diferencia Space operaciones .)
     Si              reduce using rule 59 (function -> Diferencia Space operaciones .)
     Iguales         reduce using rule 59 (function -> Diferencia Space operaciones .)
     Y               reduce using rule 59 (function -> Diferencia Space operaciones .)
@@ -6492,9 +6493,8 @@ state 128
     Redondea        reduce using rule 59 (function -> Diferencia Space operaciones .)
     Cos             reduce using rule 59 (function -> Diferencia Space operaciones .)
     Diferencia      reduce using rule 59 (function -> Diferencia Space operaciones .)
-    RightSquareBracket reduce using rule 59 (function -> Diferencia Space operaciones .)
     Coma            reduce using rule 59 (function -> Diferencia Space operaciones .)
-    LeftSquareBracket reduce using rule 59 (function -> Diferencia Space operaciones .)
+    RightSquareBracket reduce using rule 59 (function -> Diferencia Space operaciones .)
 
 
 state 129
@@ -6558,7 +6558,7 @@ state 131
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -6605,7 +6605,7 @@ state 131
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -6663,7 +6663,7 @@ state 132
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -6710,7 +6710,7 @@ state 132
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -6767,7 +6767,7 @@ state 133
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -6814,7 +6814,7 @@ state 133
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -6871,7 +6871,7 @@ state 134
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -6918,7 +6918,7 @@ state 134
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -6975,7 +6975,7 @@ state 135
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -7022,7 +7022,7 @@ state 135
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -7087,10 +7087,102 @@ state 142
 
 state 143
 
-    (50) function -> Repite Space expression Space . LeftSquareBracket funciones RightSquareBracket
+    (50) function -> Repeat Space expression LeftSquareBracket . funciones RightSquareBracket
+    (12) funciones -> . function Coma Space function
+    (13) funciones -> . function Coma Space funciones
+    (14) function -> . Suma Space operaciones
+    (15) function -> . Inc Space NAME
+    (16) function -> . Inc Space NAME Space expression
+    (17) function -> . Azar Space expression
+    (18) function -> . Menos Space expression
+    (19) function -> . Producto Space operaciones
+    (20) function -> . Potencia Space expression Space expression
+    (21) function -> . Division Space expression Space expression
+    (22) function -> . Resto Space expression Space expression
+    (23) function -> . RC Space expression
+    (24) function -> . Sen Space expression
+    (25) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (26) function -> . Cuenta Space LeftSquareBracket operaciones RightSquareBracket
+    (27) function -> . Ultimo Space LeftSquareBracket operaciones RightSquareBracket
+    (28) function -> . Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
+    (29) function -> . Pri Space LeftSquareBracket operaciones RightSquareBracket
+    (30) function -> . Avanza Space expression
+    (31) function -> . Avanza Space function
+    (32) function -> . Retrocede Space expression
+    (33) function -> . Retrocede Space function
+    (34) function -> . GiraDerecha Space expression
+    (35) function -> . GiraIzquierda Space expression
+    (36) function -> . OcultaTortuga
+    (37) function -> . ApareceTortuga
+    (38) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (39) function -> . PonRumbo Space expression
+    (40) function -> . Rumbo
+    (41) function -> . PonX Space expression
+    (42) function -> . PonY Space expression
+    (43) function -> . BajaLapiz
+    (44) function -> . SubeLapiz
+    (45) function -> . Borrapantalla
+    (46) function -> . PonColorLapiz
+    (47) function -> . Centro
+    (48) function -> . Espera Space expression
+    (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
+    (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
+    (52) function -> . Iguales Space operaciones
+    (53) function -> . Y Space function function
+    (54) function -> . O Space function function
+    (55) function -> . MayorQue Space operaciones
+    (56) function -> . MenorQue Space operaciones
+    (57) function -> . Redondea Space expression
+    (58) function -> . Cos Space expression
+    (59) function -> . Diferencia Space operaciones
 
-    LeftSquareBracket shift and go to state 162
+    Suma            shift and go to state 9
+    Inc             shift and go to state 10
+    Azar            shift and go to state 11
+    Menos           shift and go to state 12
+    Producto        shift and go to state 13
+    Potencia        shift and go to state 14
+    Division        shift and go to state 15
+    Resto           shift and go to state 16
+    RC              shift and go to state 17
+    Sen             shift and go to state 18
+    Elegir          shift and go to state 19
+    Cuenta          shift and go to state 20
+    Ultimo          shift and go to state 21
+    Elemento        shift and go to state 22
+    Pri             shift and go to state 23
+    Avanza          shift and go to state 24
+    Retrocede       shift and go to state 25
+    GiraDerecha     shift and go to state 26
+    GiraIzquierda   shift and go to state 27
+    OcultaTortuga   shift and go to state 28
+    ApareceTortuga  shift and go to state 29
+    PonXY           shift and go to state 30
+    PonRumbo        shift and go to state 31
+    Rumbo           shift and go to state 32
+    PonX            shift and go to state 33
+    PonY            shift and go to state 34
+    BajaLapiz       shift and go to state 35
+    SubeLapiz       shift and go to state 36
+    Borrapantalla   shift and go to state 37
+    PonColorLapiz   shift and go to state 38
+    Centro          shift and go to state 39
+    Espera          shift and go to state 40
+    Ejecuta         shift and go to state 41
+    Repeat          shift and go to state 42
+    Si              shift and go to state 43
+    Iguales         shift and go to state 44
+    Y               shift and go to state 45
+    O               shift and go to state 46
+    MayorQue        shift and go to state 47
+    MenorQue        shift and go to state 48
+    Redondea        shift and go to state 49
+    Cos             shift and go to state 50
+    Diferencia      shift and go to state 51
 
+    funciones                      shift and go to state 162
+    function                       shift and go to state 163
 
 state 144
 
@@ -7137,7 +7229,7 @@ state 144
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -7184,7 +7276,7 @@ state 144
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -7195,7 +7287,7 @@ state 144
     Cos             shift and go to state 50
     Diferencia      shift and go to state 51
 
-    operaciones                    shift and go to state 163
+    operaciones                    shift and go to state 164
     expression                     shift and go to state 92
     function                       shift and go to state 6
 
@@ -7205,6 +7297,7 @@ state 145
 
     $end            reduce using rule 53 (function -> Y Space function function .)
     Space           reduce using rule 53 (function -> Y Space function function .)
+    LeftSquareBracket reduce using rule 53 (function -> Y Space function function .)
     Suma            reduce using rule 53 (function -> Y Space function function .)
     Inc             reduce using rule 53 (function -> Y Space function function .)
     Azar            reduce using rule 53 (function -> Y Space function function .)
@@ -7238,7 +7331,7 @@ state 145
     Centro          reduce using rule 53 (function -> Y Space function function .)
     Espera          reduce using rule 53 (function -> Y Space function function .)
     Ejecuta         reduce using rule 53 (function -> Y Space function function .)
-    Repite          reduce using rule 53 (function -> Y Space function function .)
+    Repeat          reduce using rule 53 (function -> Y Space function function .)
     Si              reduce using rule 53 (function -> Y Space function function .)
     Iguales         reduce using rule 53 (function -> Y Space function function .)
     Y               reduce using rule 53 (function -> Y Space function function .)
@@ -7248,9 +7341,8 @@ state 145
     Redondea        reduce using rule 53 (function -> Y Space function function .)
     Cos             reduce using rule 53 (function -> Y Space function function .)
     Diferencia      reduce using rule 53 (function -> Y Space function function .)
-    RightSquareBracket reduce using rule 53 (function -> Y Space function function .)
     Coma            reduce using rule 53 (function -> Y Space function function .)
-    LeftSquareBracket reduce using rule 53 (function -> Y Space function function .)
+    RightSquareBracket reduce using rule 53 (function -> Y Space function function .)
 
 
 state 146
@@ -7259,6 +7351,7 @@ state 146
 
     $end            reduce using rule 54 (function -> O Space function function .)
     Space           reduce using rule 54 (function -> O Space function function .)
+    LeftSquareBracket reduce using rule 54 (function -> O Space function function .)
     Suma            reduce using rule 54 (function -> O Space function function .)
     Inc             reduce using rule 54 (function -> O Space function function .)
     Azar            reduce using rule 54 (function -> O Space function function .)
@@ -7292,7 +7385,7 @@ state 146
     Centro          reduce using rule 54 (function -> O Space function function .)
     Espera          reduce using rule 54 (function -> O Space function function .)
     Ejecuta         reduce using rule 54 (function -> O Space function function .)
-    Repite          reduce using rule 54 (function -> O Space function function .)
+    Repeat          reduce using rule 54 (function -> O Space function function .)
     Si              reduce using rule 54 (function -> O Space function function .)
     Iguales         reduce using rule 54 (function -> O Space function function .)
     Y               reduce using rule 54 (function -> O Space function function .)
@@ -7302,16 +7395,15 @@ state 146
     Redondea        reduce using rule 54 (function -> O Space function function .)
     Cos             reduce using rule 54 (function -> O Space function function .)
     Diferencia      reduce using rule 54 (function -> O Space function function .)
-    RightSquareBracket reduce using rule 54 (function -> O Space function function .)
     Coma            reduce using rule 54 (function -> O Space function function .)
-    LeftSquareBracket reduce using rule 54 (function -> O Space function function .)
+    RightSquareBracket reduce using rule 54 (function -> O Space function function .)
 
 
 state 147
 
     (1) statement -> Var Space NAME Space EQUALS . Space expression
 
-    Space           shift and go to state 164
+    Space           shift and go to state 165
 
 
 state 148
@@ -7319,7 +7411,7 @@ state 148
     (2) statement -> Inic Space NAME Space EQUALS . Space expression
     (3) statement -> Inic Space NAME Space EQUALS . Space function
 
-    Space           shift and go to state 165
+    Space           shift and go to state 166
 
 
 state 149
@@ -7330,6 +7422,7 @@ state 149
 
   ! shift/reduce conflict for Space resolved as shift
     $end            reduce using rule 10 (operaciones -> expression Space expression .)
+    LeftSquareBracket reduce using rule 10 (operaciones -> expression Space expression .)
     Suma            reduce using rule 10 (operaciones -> expression Space expression .)
     Inc             reduce using rule 10 (operaciones -> expression Space expression .)
     Azar            reduce using rule 10 (operaciones -> expression Space expression .)
@@ -7363,7 +7456,7 @@ state 149
     Centro          reduce using rule 10 (operaciones -> expression Space expression .)
     Espera          reduce using rule 10 (operaciones -> expression Space expression .)
     Ejecuta         reduce using rule 10 (operaciones -> expression Space expression .)
-    Repite          reduce using rule 10 (operaciones -> expression Space expression .)
+    Repeat          reduce using rule 10 (operaciones -> expression Space expression .)
     Si              reduce using rule 10 (operaciones -> expression Space expression .)
     Iguales         reduce using rule 10 (operaciones -> expression Space expression .)
     Y               reduce using rule 10 (operaciones -> expression Space expression .)
@@ -7373,9 +7466,8 @@ state 149
     Redondea        reduce using rule 10 (operaciones -> expression Space expression .)
     Cos             reduce using rule 10 (operaciones -> expression Space expression .)
     Diferencia      reduce using rule 10 (operaciones -> expression Space expression .)
-    RightSquareBracket reduce using rule 10 (operaciones -> expression Space expression .)
     Coma            reduce using rule 10 (operaciones -> expression Space expression .)
-    LeftSquareBracket reduce using rule 10 (operaciones -> expression Space expression .)
+    RightSquareBracket reduce using rule 10 (operaciones -> expression Space expression .)
     Space           shift and go to state 131
 
   ! Space           [ reduce using rule 10 (operaciones -> expression Space expression .) ]
@@ -7387,6 +7479,7 @@ state 150
 
     $end            reduce using rule 11 (operaciones -> expression Space operaciones .)
     Space           reduce using rule 11 (operaciones -> expression Space operaciones .)
+    LeftSquareBracket reduce using rule 11 (operaciones -> expression Space operaciones .)
     Suma            reduce using rule 11 (operaciones -> expression Space operaciones .)
     Inc             reduce using rule 11 (operaciones -> expression Space operaciones .)
     Azar            reduce using rule 11 (operaciones -> expression Space operaciones .)
@@ -7420,7 +7513,7 @@ state 150
     Centro          reduce using rule 11 (operaciones -> expression Space operaciones .)
     Espera          reduce using rule 11 (operaciones -> expression Space operaciones .)
     Ejecuta         reduce using rule 11 (operaciones -> expression Space operaciones .)
-    Repite          reduce using rule 11 (operaciones -> expression Space operaciones .)
+    Repeat          reduce using rule 11 (operaciones -> expression Space operaciones .)
     Si              reduce using rule 11 (operaciones -> expression Space operaciones .)
     Iguales         reduce using rule 11 (operaciones -> expression Space operaciones .)
     Y               reduce using rule 11 (operaciones -> expression Space operaciones .)
@@ -7430,9 +7523,8 @@ state 150
     Redondea        reduce using rule 11 (operaciones -> expression Space operaciones .)
     Cos             reduce using rule 11 (operaciones -> expression Space operaciones .)
     Diferencia      reduce using rule 11 (operaciones -> expression Space operaciones .)
-    RightSquareBracket reduce using rule 11 (operaciones -> expression Space operaciones .)
     Coma            reduce using rule 11 (operaciones -> expression Space operaciones .)
-    LeftSquareBracket reduce using rule 11 (operaciones -> expression Space operaciones .)
+    RightSquareBracket reduce using rule 11 (operaciones -> expression Space operaciones .)
 
 
 state 151
@@ -7441,6 +7533,7 @@ state 151
 
     $end            reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Space           reduce using rule 16 (function -> Inc Space NAME Space expression .)
+    LeftSquareBracket reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Suma            reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Inc             reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Azar            reduce using rule 16 (function -> Inc Space NAME Space expression .)
@@ -7474,7 +7567,7 @@ state 151
     Centro          reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Espera          reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Ejecuta         reduce using rule 16 (function -> Inc Space NAME Space expression .)
-    Repite          reduce using rule 16 (function -> Inc Space NAME Space expression .)
+    Repeat          reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Si              reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Iguales         reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Y               reduce using rule 16 (function -> Inc Space NAME Space expression .)
@@ -7484,9 +7577,8 @@ state 151
     Redondea        reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Cos             reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Diferencia      reduce using rule 16 (function -> Inc Space NAME Space expression .)
-    RightSquareBracket reduce using rule 16 (function -> Inc Space NAME Space expression .)
     Coma            reduce using rule 16 (function -> Inc Space NAME Space expression .)
-    LeftSquareBracket reduce using rule 16 (function -> Inc Space NAME Space expression .)
+    RightSquareBracket reduce using rule 16 (function -> Inc Space NAME Space expression .)
 
 
 state 152
@@ -7495,6 +7587,7 @@ state 152
 
     $end            reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Space           reduce using rule 20 (function -> Potencia Space expression Space expression .)
+    LeftSquareBracket reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Suma            reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Inc             reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Azar            reduce using rule 20 (function -> Potencia Space expression Space expression .)
@@ -7528,7 +7621,7 @@ state 152
     Centro          reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Espera          reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Ejecuta         reduce using rule 20 (function -> Potencia Space expression Space expression .)
-    Repite          reduce using rule 20 (function -> Potencia Space expression Space expression .)
+    Repeat          reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Si              reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Iguales         reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Y               reduce using rule 20 (function -> Potencia Space expression Space expression .)
@@ -7538,9 +7631,8 @@ state 152
     Redondea        reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Cos             reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Diferencia      reduce using rule 20 (function -> Potencia Space expression Space expression .)
-    RightSquareBracket reduce using rule 20 (function -> Potencia Space expression Space expression .)
     Coma            reduce using rule 20 (function -> Potencia Space expression Space expression .)
-    LeftSquareBracket reduce using rule 20 (function -> Potencia Space expression Space expression .)
+    RightSquareBracket reduce using rule 20 (function -> Potencia Space expression Space expression .)
 
 
 state 153
@@ -7549,6 +7641,7 @@ state 153
 
     $end            reduce using rule 21 (function -> Division Space expression Space expression .)
     Space           reduce using rule 21 (function -> Division Space expression Space expression .)
+    LeftSquareBracket reduce using rule 21 (function -> Division Space expression Space expression .)
     Suma            reduce using rule 21 (function -> Division Space expression Space expression .)
     Inc             reduce using rule 21 (function -> Division Space expression Space expression .)
     Azar            reduce using rule 21 (function -> Division Space expression Space expression .)
@@ -7582,7 +7675,7 @@ state 153
     Centro          reduce using rule 21 (function -> Division Space expression Space expression .)
     Espera          reduce using rule 21 (function -> Division Space expression Space expression .)
     Ejecuta         reduce using rule 21 (function -> Division Space expression Space expression .)
-    Repite          reduce using rule 21 (function -> Division Space expression Space expression .)
+    Repeat          reduce using rule 21 (function -> Division Space expression Space expression .)
     Si              reduce using rule 21 (function -> Division Space expression Space expression .)
     Iguales         reduce using rule 21 (function -> Division Space expression Space expression .)
     Y               reduce using rule 21 (function -> Division Space expression Space expression .)
@@ -7592,9 +7685,8 @@ state 153
     Redondea        reduce using rule 21 (function -> Division Space expression Space expression .)
     Cos             reduce using rule 21 (function -> Division Space expression Space expression .)
     Diferencia      reduce using rule 21 (function -> Division Space expression Space expression .)
-    RightSquareBracket reduce using rule 21 (function -> Division Space expression Space expression .)
     Coma            reduce using rule 21 (function -> Division Space expression Space expression .)
-    LeftSquareBracket reduce using rule 21 (function -> Division Space expression Space expression .)
+    RightSquareBracket reduce using rule 21 (function -> Division Space expression Space expression .)
 
 
 state 154
@@ -7603,6 +7695,7 @@ state 154
 
     $end            reduce using rule 22 (function -> Resto Space expression Space expression .)
     Space           reduce using rule 22 (function -> Resto Space expression Space expression .)
+    LeftSquareBracket reduce using rule 22 (function -> Resto Space expression Space expression .)
     Suma            reduce using rule 22 (function -> Resto Space expression Space expression .)
     Inc             reduce using rule 22 (function -> Resto Space expression Space expression .)
     Azar            reduce using rule 22 (function -> Resto Space expression Space expression .)
@@ -7636,7 +7729,7 @@ state 154
     Centro          reduce using rule 22 (function -> Resto Space expression Space expression .)
     Espera          reduce using rule 22 (function -> Resto Space expression Space expression .)
     Ejecuta         reduce using rule 22 (function -> Resto Space expression Space expression .)
-    Repite          reduce using rule 22 (function -> Resto Space expression Space expression .)
+    Repeat          reduce using rule 22 (function -> Resto Space expression Space expression .)
     Si              reduce using rule 22 (function -> Resto Space expression Space expression .)
     Iguales         reduce using rule 22 (function -> Resto Space expression Space expression .)
     Y               reduce using rule 22 (function -> Resto Space expression Space expression .)
@@ -7646,9 +7739,8 @@ state 154
     Redondea        reduce using rule 22 (function -> Resto Space expression Space expression .)
     Cos             reduce using rule 22 (function -> Resto Space expression Space expression .)
     Diferencia      reduce using rule 22 (function -> Resto Space expression Space expression .)
-    RightSquareBracket reduce using rule 22 (function -> Resto Space expression Space expression .)
     Coma            reduce using rule 22 (function -> Resto Space expression Space expression .)
-    LeftSquareBracket reduce using rule 22 (function -> Resto Space expression Space expression .)
+    RightSquareBracket reduce using rule 22 (function -> Resto Space expression Space expression .)
 
 
 state 155
@@ -7657,6 +7749,7 @@ state 155
 
     $end            reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7690,7 +7783,7 @@ state 155
     Centro          reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7700,9 +7793,8 @@ state 155
     Redondea        reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 25 (function -> Elegir Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
 state 156
@@ -7711,6 +7803,7 @@ state 156
 
     $end            reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7744,7 +7837,7 @@ state 156
     Centro          reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7754,9 +7847,8 @@ state 156
     Redondea        reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 26 (function -> Cuenta Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
 state 157
@@ -7765,6 +7857,7 @@ state 157
 
     $end            reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7798,7 +7891,7 @@ state 157
     Centro          reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7808,9 +7901,8 @@ state 157
     Redondea        reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 27 (function -> Ultimo Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
 state 158
@@ -7858,7 +7950,7 @@ state 158
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -7905,7 +7997,7 @@ state 158
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -7917,7 +8009,7 @@ state 158
     Diferencia      shift and go to state 51
 
     expression                     shift and go to state 92
-    operaciones                    shift and go to state 166
+    operaciones                    shift and go to state 167
     function                       shift and go to state 6
 
 state 159
@@ -7926,6 +8018,7 @@ state 159
 
     $end            reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7959,7 +8052,7 @@ state 159
     Centro          reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -7969,9 +8062,8 @@ state 159
     Redondea        reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 29 (function -> Pri Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
 state 160
@@ -8017,7 +8109,7 @@ state 160
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -8064,7 +8156,7 @@ state 160
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -8075,7 +8167,7 @@ state 160
     Cos             shift and go to state 50
     Diferencia      shift and go to state 51
 
-    expression                     shift and go to state 167
+    expression                     shift and go to state 168
     function                       shift and go to state 6
 
 state 161
@@ -8084,6 +8176,7 @@ state 161
 
     $end            reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -8117,7 +8210,7 @@ state 161
     Centro          reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -8127,118 +8220,33 @@ state 161
     Redondea        reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 49 (function -> Ejecuta Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
 state 162
 
-    (50) function -> Repite Space expression Space LeftSquareBracket . funciones RightSquareBracket
-    (12) funciones -> . function Coma Space function
-    (13) funciones -> . function Coma Space funciones
-    (14) function -> . Suma Space operaciones
-    (15) function -> . Inc Space NAME
-    (16) function -> . Inc Space NAME Space expression
-    (17) function -> . Azar Space expression
-    (18) function -> . Menos Space expression
-    (19) function -> . Producto Space operaciones
-    (20) function -> . Potencia Space expression Space expression
-    (21) function -> . Division Space expression Space expression
-    (22) function -> . Resto Space expression Space expression
-    (23) function -> . RC Space expression
-    (24) function -> . Sen Space expression
-    (25) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (26) function -> . Cuenta Space LeftSquareBracket operaciones RightSquareBracket
-    (27) function -> . Ultimo Space LeftSquareBracket operaciones RightSquareBracket
-    (28) function -> . Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
-    (29) function -> . Pri Space LeftSquareBracket operaciones RightSquareBracket
-    (30) function -> . Avanza Space expression
-    (31) function -> . Avanza Space function
-    (32) function -> . Retrocede Space expression
-    (33) function -> . Retrocede Space function
-    (34) function -> . GiraDerecha Space expression
-    (35) function -> . GiraIzquierda Space expression
-    (36) function -> . OcultaTortuga
-    (37) function -> . ApareceTortuga
-    (38) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
-    (39) function -> . PonRumbo Space expression
-    (40) function -> . Rumbo
-    (41) function -> . PonX Space expression
-    (42) function -> . PonY Space expression
-    (43) function -> . BajaLapiz
-    (44) function -> . SubeLapiz
-    (45) function -> . Borrapantalla
-    (46) function -> . PonColorLapiz
-    (47) function -> . Centro
-    (48) function -> . Espera Space expression
-    (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
-    (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
-    (52) function -> . Iguales Space operaciones
-    (53) function -> . Y Space function function
-    (54) function -> . O Space function function
-    (55) function -> . MayorQue Space operaciones
-    (56) function -> . MenorQue Space operaciones
-    (57) function -> . Redondea Space expression
-    (58) function -> . Cos Space expression
-    (59) function -> . Diferencia Space operaciones
+    (50) function -> Repeat Space expression LeftSquareBracket funciones . RightSquareBracket
 
-    Suma            shift and go to state 9
-    Inc             shift and go to state 10
-    Azar            shift and go to state 11
-    Menos           shift and go to state 12
-    Producto        shift and go to state 13
-    Potencia        shift and go to state 14
-    Division        shift and go to state 15
-    Resto           shift and go to state 16
-    RC              shift and go to state 17
-    Sen             shift and go to state 18
-    Elegir          shift and go to state 19
-    Cuenta          shift and go to state 20
-    Ultimo          shift and go to state 21
-    Elemento        shift and go to state 22
-    Pri             shift and go to state 23
-    Avanza          shift and go to state 24
-    Retrocede       shift and go to state 25
-    GiraDerecha     shift and go to state 26
-    GiraIzquierda   shift and go to state 27
-    OcultaTortuga   shift and go to state 28
-    ApareceTortuga  shift and go to state 29
-    PonXY           shift and go to state 30
-    PonRumbo        shift and go to state 31
-    Rumbo           shift and go to state 32
-    PonX            shift and go to state 33
-    PonY            shift and go to state 34
-    BajaLapiz       shift and go to state 35
-    SubeLapiz       shift and go to state 36
-    Borrapantalla   shift and go to state 37
-    PonColorLapiz   shift and go to state 38
-    Centro          shift and go to state 39
-    Espera          shift and go to state 40
-    Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
-    Si              shift and go to state 43
-    Iguales         shift and go to state 44
-    Y               shift and go to state 45
-    O               shift and go to state 46
-    MayorQue        shift and go to state 47
-    MenorQue        shift and go to state 48
-    Redondea        shift and go to state 49
-    Cos             shift and go to state 50
-    Diferencia      shift and go to state 51
+    RightSquareBracket shift and go to state 169
 
-    funciones                      shift and go to state 168
-    function                       shift and go to state 169
 
 state 163
 
-    (51) function -> Si Space operaciones LeftSquareBracket operaciones . RightSquareBracket
+    (12) funciones -> function . Coma Space function
+    (13) funciones -> function . Coma Space funciones
 
-    RightSquareBracket shift and go to state 170
+    Coma            shift and go to state 170
 
 
 state 164
+
+    (51) function -> Si Space operaciones LeftSquareBracket operaciones . RightSquareBracket
+
+    RightSquareBracket shift and go to state 171
+
+
+state 165
 
     (1) statement -> Var Space NAME Space EQUALS Space . expression
     (6) expression -> . INT
@@ -8281,7 +8289,7 @@ state 164
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -8328,7 +8336,7 @@ state 164
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -8339,10 +8347,10 @@ state 164
     Cos             shift and go to state 50
     Diferencia      shift and go to state 51
 
-    expression                     shift and go to state 171
+    expression                     shift and go to state 172
     function                       shift and go to state 6
 
-state 165
+state 166
 
     (2) statement -> Inic Space NAME Space EQUALS Space . expression
     (3) statement -> Inic Space NAME Space EQUALS Space . function
@@ -8386,7 +8394,7 @@ state 165
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -8433,7 +8441,7 @@ state 165
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -8444,44 +8452,92 @@ state 165
     Cos             shift and go to state 50
     Diferencia      shift and go to state 51
 
-    expression                     shift and go to state 172
-    function                       shift and go to state 173
-
-state 166
-
-    (28) function -> Elemento Space expression Space LeftSquareBracket operaciones . RightSquareBracket
-
-    RightSquareBracket shift and go to state 174
-
+    expression                     shift and go to state 173
+    function                       shift and go to state 174
 
 state 167
 
-    (38) function -> PonXY Space LeftSquareBracket expression Space expression . RightSquareBracket
+    (28) function -> Elemento Space expression Space LeftSquareBracket operaciones . RightSquareBracket
 
     RightSquareBracket shift and go to state 175
 
 
 state 168
 
-    (50) function -> Repite Space expression Space LeftSquareBracket funciones . RightSquareBracket
+    (38) function -> PonXY Space LeftSquareBracket expression Space expression . RightSquareBracket
 
     RightSquareBracket shift and go to state 176
 
 
 state 169
 
-    (12) funciones -> function . Coma Space function
-    (13) funciones -> function . Coma Space funciones
+    (50) function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .
 
-    Coma            shift and go to state 177
+    $end            reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Space           reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Suma            reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Inc             reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Azar            reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Menos           reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Producto        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Potencia        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Division        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Resto           reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    RC              reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Sen             reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Elegir          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Cuenta          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Ultimo          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Elemento        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Pri             reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Avanza          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Retrocede       reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    GiraDerecha     reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    GiraIzquierda   reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    OcultaTortuga   reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    ApareceTortuga  reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    PonXY           reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    PonRumbo        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Rumbo           reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    PonX            reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    PonY            reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    BajaLapiz       reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    SubeLapiz       reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Borrapantalla   reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    PonColorLapiz   reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Centro          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Espera          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Ejecuta         reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Repeat          reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Si              reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Iguales         reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Y               reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    O               reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    MayorQue        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    MenorQue        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Redondea        reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Cos             reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Diferencia      reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    Coma            reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 50 (function -> Repeat Space expression LeftSquareBracket funciones RightSquareBracket .)
 
 
 state 170
+
+    (12) funciones -> function Coma . Space function
+    (13) funciones -> function Coma . Space funciones
+
+    Space           shift and go to state 177
+
+
+state 171
 
     (51) function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .
 
     $end            reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
@@ -8515,7 +8571,7 @@ state 170
     Centro          reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
@@ -8525,26 +8581,25 @@ state 170
     Redondea        reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 51 (function -> Si Space operaciones LeftSquareBracket operaciones RightSquareBracket .)
 
 
-state 171
+state 172
 
     (1) statement -> Var Space NAME Space EQUALS Space expression .
 
     $end            reduce using rule 1 (statement -> Var Space NAME Space EQUALS Space expression .)
 
 
-state 172
+state 173
 
     (2) statement -> Inic Space NAME Space EQUALS Space expression .
 
     $end            reduce using rule 2 (statement -> Inic Space NAME Space EQUALS Space expression .)
 
 
-state 173
+state 174
 
     (3) statement -> Inic Space NAME Space EQUALS Space function .
     (8) expression -> function .
@@ -8555,12 +8610,13 @@ state 173
   ! $end            [ reduce using rule 8 (expression -> function .) ]
 
 
-state 174
+state 175
 
     (28) function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .
 
     $end            reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Space           reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Suma            reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Inc             reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Azar            reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -8594,7 +8650,7 @@ state 174
     Centro          reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Espera          reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Ejecuta         reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
-    Repite          reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
+    Repeat          reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Si              reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Iguales         reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Y               reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
@@ -8604,17 +8660,17 @@ state 174
     Redondea        reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Cos             reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Diferencia      reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
     Coma            reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 28 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
-state 175
+state 176
 
     (38) function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .
 
     $end            reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Space           reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
+    LeftSquareBracket reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Suma            reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Inc             reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Azar            reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
@@ -8648,7 +8704,7 @@ state 175
     Centro          reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Espera          reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Ejecuta         reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
-    Repite          reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
+    Repeat          reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Si              reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Iguales         reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Y               reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
@@ -8658,74 +8714,11 @@ state 175
     Redondea        reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Cos             reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Diferencia      reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
-    RightSquareBracket reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
     Coma            reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
-    LeftSquareBracket reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
-
-
-state 176
-
-    (50) function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .
-
-    $end            reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Space           reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Suma            reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Inc             reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Azar            reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Menos           reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Producto        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Potencia        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Division        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Resto           reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    RC              reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Sen             reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Elegir          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Cuenta          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Ultimo          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Elemento        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Pri             reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Avanza          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Retrocede       reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    GiraDerecha     reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    GiraIzquierda   reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    OcultaTortuga   reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    ApareceTortuga  reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    PonXY           reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    PonRumbo        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Rumbo           reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    PonX            reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    PonY            reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    BajaLapiz       reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    SubeLapiz       reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Borrapantalla   reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    PonColorLapiz   reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Centro          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Espera          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Ejecuta         reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Repite          reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Si              reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Iguales         reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Y               reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    O               reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    MayorQue        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    MenorQue        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Redondea        reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Cos             reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Diferencia      reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    Coma            reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 50 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 38 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
 
 
 state 177
-
-    (12) funciones -> function Coma . Space function
-    (13) funciones -> function Coma . Space funciones
-
-    Space           shift and go to state 178
-
-
-state 178
 
     (12) funciones -> function Coma Space . function
     (13) funciones -> function Coma Space . funciones
@@ -8765,7 +8758,7 @@ state 178
     (47) function -> . Centro
     (48) function -> . Espera Space expression
     (49) function -> . Ejecuta Space LeftSquareBracket operaciones RightSquareBracket
-    (50) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (50) function -> . Repeat Space expression LeftSquareBracket funciones RightSquareBracket
     (51) function -> . Si Space operaciones LeftSquareBracket operaciones RightSquareBracket
     (52) function -> . Iguales Space operaciones
     (53) function -> . Y Space function function
@@ -8811,7 +8804,7 @@ state 178
     Centro          shift and go to state 39
     Espera          shift and go to state 40
     Ejecuta         shift and go to state 41
-    Repite          shift and go to state 42
+    Repeat          shift and go to state 42
     Si              shift and go to state 43
     Iguales         shift and go to state 44
     Y               shift and go to state 45
@@ -8822,20 +8815,20 @@ state 178
     Cos             shift and go to state 50
     Diferencia      shift and go to state 51
 
-    function                       shift and go to state 179
-    funciones                      shift and go to state 180
+    function                       shift and go to state 178
+    funciones                      shift and go to state 179
 
-state 179
+state 178
 
     (12) funciones -> function Coma Space function .
     (12) funciones -> function . Coma Space function
     (13) funciones -> function . Coma Space funciones
 
     RightSquareBracket reduce using rule 12 (funciones -> function Coma Space function .)
-    Coma            shift and go to state 177
+    Coma            shift and go to state 170
 
 
-state 180
+state 179
 
     (13) funciones -> function Coma Space funciones .
 
@@ -8850,7 +8843,7 @@ WARNING: reduce/reduce conflict in state 108 resolved using rule (expression -> 
 WARNING: rejected rule (function -> Avanza Space function) in state 108
 WARNING: reduce/reduce conflict in state 110 resolved using rule (expression -> function)
 WARNING: rejected rule (function -> Retrocede Space function) in state 110
-WARNING: reduce/reduce conflict in state 173 resolved using rule (statement -> Inic Space NAME Space EQUALS Space function)
-WARNING: rejected rule (expression -> function) in state 173
+WARNING: reduce/reduce conflict in state 174 resolved using rule (statement -> Inic Space NAME Space EQUALS Space function)
+WARNING: rejected rule (expression -> function) in state 174
 WARNING: Rule (function -> Avanza Space function) is never reduced
 WARNING: Rule (function -> Retrocede Space function) is never reduced

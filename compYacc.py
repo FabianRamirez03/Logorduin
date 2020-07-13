@@ -67,7 +67,6 @@ def p_expression_name(p):
         print("Variable no definida '%s'" % p[1])
         p[0]='fabian busque que hacer aqui, att: wajo'
 
-
 def p_operaciones(p):
     '''
     operaciones : expression Space expression
@@ -84,10 +83,7 @@ def p_funciones(p):# wajooooooooooooooooooooooooooooooooooo
     funciones : function Coma Space function
                 | function Coma Space funciones
                 '''
-    print(p[1])
-    print(p[4])
     p[0] = (p[1],p[4])
-    print(p[0])
 
 # funcion para sumar los digitos de una tupla
 def suma(tupla):
@@ -326,14 +322,12 @@ def p_Ejecuta(p):
     p[0] = (p[1],p[4])
 
 # Funcion que repite ordenes cierta cantidad de veces
-def p_Repite(p):
-    '''function :  Repite Space expression Space LeftSquareBracket function RightSquareBracket
-                | Repite Space expression Space LeftSquareBracket funciones RightSquareBracket'''
-
-    print(p[6])
-    #for x in range(p[3]):
-        #p[0] = p[5] #modiiiiiiiiiiiiiiiiifiiiiiiiiiiiiiicaaaaaaaaaaaaaaaaar
-
+def p_Repeat(p):
+    '''
+    function : Repeat Space expression LeftSquareBracket funciones RightSquareBracket'''
+            # | Repeat Space expression LeftSquareBracket function RightSquareBracket
+    p[0] = p[5][2]
+    print(p[0])
 
 # Ejecuta si se cumple la condicion
 def p_Si(p):
@@ -460,5 +454,3 @@ while True:
         break
     if not s:continue
     parser.parse(s)
-
-#def Repite
