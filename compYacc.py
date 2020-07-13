@@ -18,13 +18,12 @@ def p_statement_create(p):
         variables[p[3]] = p[7]
         print(variables)
     else:
-        print("La variable ya fue creada")
+        print("La variable '%s' ya fue creada" % p[3])
 
 def p_statement_assign(p):
     """statement : Inic Space NAME Space EQUALS Space expression
                  | Inic Space NAME Space EQUALS Space function
                  """
-    print(p[7])
     if p[3] not in variables:
         print("La variable '%s' no ha sido creada" % p[3])
     else:
@@ -71,6 +70,14 @@ def p_operaciones(p):
                 | expression Space operaciones
                 '''
     p[0] = (p[1],p[3])
+
+def p_funciones(p):
+    '''
+    funciones : function Space function
+                | function Space funciones
+                '''
+    p[0] = (p[1],p[3])
+
 
 # funcion para sumar los digitos de una tupla
 def suma(tupla):
@@ -122,8 +129,9 @@ def producto(tupla):
     return num * tupla[0] * tupla[1]
 
 def p_producto(p):
-    '''function : Producto Space operaciones
-                '''
+    '''
+    function : Producto Space operaciones
+    '''
     p[0]=producto(p[3])
 
 # funcion para calcular potencia y gramatica
@@ -186,6 +194,94 @@ def p_Primero(p):
     Lista= makeList(p[4])
     p[0]=Lista[0]
 
+def p_Avanza(p):
+    """
+    function : Avanza Space expression
+             | Avanza Space function
+    """
+    p[0] = p[3]
+    print("Avanza '%d' unidades" %p[0])
+
+def p_Retrocede(p):
+    """
+    function : Retrocede Space expression
+             | Retrocede Space function
+    """
+    p[0] = p[3]
+    print("Retrocede '%d' unidades" %p[0])
+
+def p_GiraDerecha(p):
+    """
+    function : GiraDerecha Space expression
+    """
+    p[0] = p[3]
+    print("Gira '%d' grados a la derecha" % p[0])
+
+def p_GiraIzquierda(p):
+    """
+    function : GiraIzquierda Space expression
+    """
+    p[0] = p[3]
+    print("Gira '%d' grados a la izquierda" %p[0])
+
+def p_OcultaTortuga(p):
+    """
+    function : OcultaTortuga
+    """
+    print("Se oculta la tortuga")
+
+def p_ApareceTortuga(p):
+    """
+    function : ApareceTortuga
+    """
+    print("Aparece la Tortuga")
+
+def p_PonXY(p):
+    """
+    function : PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    """
+    a = [p[4],p[6]]
+    p[0] = a
+
+def p_PonRumbo(p):
+    """
+    function : PonRumbo Space expression
+    """
+    p[0] = p[3]
+    print("Tortuga en rumbo hacia los '%d' grados" %p[0])
+
+def p_Rumbo(p):
+    """
+    function : Rumbo
+    """
+    print("Indicar el rumbo de la tortura")
+
+def p_PonX(p):
+    """
+    function : PonX Space expression
+    """
+    p[0] = p[3]
+    print("Tortuga en la posicionX '%d'"%p[0])
+
+def p_PonY(p):
+    """
+    function : PonY Space expression
+    """
+    p[0] = p[3]
+    print("Tortuga en la posicionY '%d'" % p[0])
+
+def p_BajaLapiz(p):
+    """
+    function : BajaLapiz
+    """
+    print("Comienza a dibujar")
+
+def p_SubeLapiz(p):
+    """
+    function : SubeLapiz
+    """
+    print("Levanta el lapiz y detiene el dibujo")
+
 def p_Borrapantalla(p):
     '''function :  Borrapantalla'''
 
@@ -201,14 +297,16 @@ def p_Centro(p):
 def p_Espera(p):
     '''function :  Espera Space expression'''
     time.sleep(p[3]/60)
-    p[0] = "Wait de " + str(p[3]/60) + " segundos"
+    print("Wait de " + str(p[3]/60) + " segundos")
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta(p):
     '''function :  Ejecuta Space LeftSquareBracket operaciones RightSquareBracket'''
 
 # Funcion que repite ordenes cierta cantidad de veces
 def p_Repite(p):
-    '''function :  Repite Space  operaciones LeftSquareBracket operaciones RightSquareBracket'''
+    '''function :  Repite Space expression LeftSquareBracket function RightSquareBracket'''
+    for x in range(p[3]):
+        p[0] = p[5]
 
 # Ejecuta si se cumple la condicion
 def p_Si(p):
@@ -246,7 +344,7 @@ def p_Y(p):
 
 # Funcion que devuelve CIERTO si al menos una condicion se cumple
 def O(tupla):
-    if(tupla[0] or tupla[1]):
+    if(tupla[0] == "CIERTO" or tupla[1] == "CIERTO"):
         return "CIERTO"
     else:
         return "FALSO"
@@ -274,7 +372,6 @@ def p_MayorQue(p):
     '''
     a= MayorQue(p[3])
     p[0] = a
-
 # Funcion que devuelve Falso si n < n1
 def MenorQue(tupla):
     if(tupla[0] < tupla[1]):
@@ -322,7 +419,6 @@ def p_error(p):
         print("Error de sintaxis de '%s'" % p.value)
     else:
         print("Syntax error at EOF")
-
 
 parser = yacc.yacc()
 
