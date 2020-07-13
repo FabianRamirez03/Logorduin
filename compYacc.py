@@ -18,13 +18,12 @@ def p_statement_create(p):
         variables[p[3]] = p[7]
         print(variables)
     else:
-        print("La variable ya fue creada")
+        print("La variable '%s' ya fue creada" % p[3])
 
 def p_statement_assign(p):
     """statement : Inic Space NAME Space EQUALS Space expression
                  | Inic Space NAME Space EQUALS Space function
                  """
-    print(p[7])
     if p[3] not in variables:
         print("La variable '%s' no ha sido creada" % p[3])
     else:
@@ -130,8 +129,9 @@ def producto(tupla):
     return num * tupla[0] * tupla[1]
 
 def p_producto(p):
-    '''function : Producto Space operaciones
-                '''
+    '''
+    function : Producto Space operaciones
+    '''
     p[0]=producto(p[3])
 
 # funcion para calcular potencia y gramatica
@@ -193,6 +193,94 @@ def p_Primero(p):
     '''function : Pri Space LeftSquareBracket operaciones RightSquareBracket'''
     Lista= makeList(p[4])
     p[0]=Lista[0]
+
+def p_Avanza(p):
+    """
+    function : Avanza Space expression
+             | Avanza Space function
+    """
+    p[0] = p[3]
+    print("Avanza '%d' unidades" %p[0])
+
+def p_Retrocede(p):
+    """
+    function : Retrocede Space expression
+             | Retrocede Space function
+    """
+    p[0] = p[3]
+    print("Retrocede '%d' unidades" %p[0])
+
+def p_GiraDerecha(p):
+    """
+    function : GiraDerecha Space expression
+    """
+    p[0] = p[3]
+    print("Gira '%d' grados a la derecha" % p[0])
+
+def p_GiraIzquierda(p):
+    """
+    function : GiraIzquierda Space expression
+    """
+    p[0] = p[3]
+    print("Gira '%d' grados a la izquierda" %p[0])
+
+def p_OcultaTortuga(p):
+    """
+    function : OcultaTortuga
+    """
+    print("Se oculta la tortuga")
+
+def p_ApareceTortuga(p):
+    """
+    function : ApareceTortuga
+    """
+    print("Aparece la Tortuga")
+
+def p_PonXY(p):
+    """
+    function : PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    """
+    a = [p[4],p[6]]
+    p[0] = a
+
+def p_PonRumbo(p):
+    """
+    function : PonRumbo Space expression
+    """
+    p[0] = p[3]
+    print("Tortuga en rumbo hacia los '%d' grados" %p[0])
+
+def p_Rumbo(p):
+    """
+    function : Rumbo
+    """
+    print("Indicar el rumbo de la tortura")
+
+def p_PonX(p):
+    """
+    function : PonX Space expression
+    """
+    p[0] = p[3]
+    print("Tortuga en la posicionX '%d'"%p[0])
+
+def p_PonY(p):
+    """
+    function : PonY Space expression
+    """
+    p[0] = p[3]
+    print("Tortuga en la posicionY '%d'" % p[0])
+
+def p_BajaLapiz(p):
+    """
+    function : BajaLapiz
+    """
+    print("Comienza a dibujar")
+
+def p_SubeLapiz(p):
+    """
+    function : SubeLapiz
+    """
+    print("Levanta el lapiz y detiene el dibujo")
 
 def p_Borrapantalla(p):
     '''function :  Borrapantalla'''
@@ -331,7 +419,6 @@ def p_error(p):
         print("Error de sintaxis de '%s'" % p.value)
     else:
         print("Syntax error at EOF")
-
 
 parser = yacc.yacc()
 
