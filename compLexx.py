@@ -42,7 +42,7 @@ tokens = [
     'MenorQue',
     'Redondea',
     'Cos',
-    'Diferencia'
+    'Diferencia',
     'Inc',
     'Avanza',
     'Retrocede',
@@ -56,12 +56,14 @@ tokens = [
     'PonX',
     'PonY',
     'BajaLapiz',
-    'SubeLapiz'
+    'SubeLapiz',
+    'Coma'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
 t_LeftSquareBracket = r'\['
 t_RightSquareBracket = r'\]'
+t_Coma = r','
 
 #Comentarios
 def t_Comment(t):
@@ -243,12 +245,12 @@ def t_Pri(t):
     return t
 
 def t_Borrarpantalla(t):
-    r'Borrarpantalla'
-    t.type = 'Borrarpantalla'
+    r'Borrapantalla'
+    t.type = 'Borrapantalla'
     return t
 def t_PonColor(t):
     r'PonColorLapiz'
-    t.type = 'PonColor'
+    t.type = 'PonColorLapiz'
     return t
 def t_PonCl(t):
     r'PonCL'
