@@ -50,13 +50,15 @@ def p_statement_expr(p):
 
 
 def p_expression_Number(p):
-    '''expression : INT
-                  | FLOAT
+    '''
+    expression : INT
+               | FLOAT
     '''
     p[0] = ('exp',p[1])
 
-def p_expression_Function(p): ######### aquiiiiii posiblemente mario la cago
-    '''expression : function'''
+def p_expression_Function(p):
+    '''expression : function
+    '''
     p[0] = p[1]
 
 def p_expression_name(p):
@@ -78,11 +80,28 @@ def p_Op_operaciones(p):
         operaciones : expression Space operaciones'''
     p[0] = (p[1][1], p[3])
 
-def p_funciones(p):# wajooooooooooooooooooooooooooooooooooo
+def p_funciones(p):#
     '''
     funciones : function Coma Space function
                 | function Coma Space funciones
-                '''
+    '''
+
+    # | function
+    # Coma
+    # Space
+    # statement
+    # | statement
+    # Coma
+    # Space
+    # function
+    # | statement
+    # Coma
+    # Space
+    # statement
+    # | statement
+    # Coma
+    # Space
+    # funciones
     p[0] = (p[1],p[4])
 
 # funcion para sumar los digitos de una tupla
@@ -364,36 +383,31 @@ def p_O(p):
     p[0] = (p[1], a, p[3], p[4])
 
 # Funcion que devuelve CIERTO si n > n1
-def MayorQue(tupla):
-    if(type(tupla[1]) == tuple):
-        if (tupla[0] > tupla[1][0]):
-            return "CIERTO"
-        else:
-            return "FALSO"
-    elif(tupla[0] > tupla[1]):
+def MayorQue(num1,num2):
+    if(num1 > num2):
         return "CIERTO"
     else:
         return "FALSO"
 
 def p_MayorQue(p):
     '''
-    function : MayorQue Space operaciones
+    function : MayorQue Space expression Coma Space expression
     '''
-    a= MayorQue(p[3])
+    a= MayorQue(p[3][1],p[6][1])
     p[0] = (p[1], a, p[3])
 
 # Funcion que devuelve Falso si n < n1
-def MenorQue(tupla):
-    if(tupla[0] < tupla[1]):
+def MenorQue(num1,num2):
+    if(num1 < num2):
         return "CIERTO"
     else:
         return "FALSO"
 
 def p_MenorQue(p):
     '''
-    function : MenorQue Space operaciones
+    function : MenorQue Space expression Coma Space expression
     '''
-    a= MenorQue(p[3])
+    a= MenorQue(p[3][1],p[6][1])
     p[0] = (p[1], a, p[3])
 
 # Funcion que redondea un numero
@@ -453,10 +467,11 @@ def repite(tupla):
 
 
 # Funcion que repite ordenes cierta cantidad de veces
-def p_Repite(p):
+def p_Repite(p):# Repite 2[Inic a = Suma a 1, Avanza a] hacer que acepte esto..........................
     '''
     function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
-            | Repite Space expression LeftSquareBracket function RightSquareBracket'''
+            | Repite Space expression LeftSquareBracket function RightSquareBracket
+    '''
     p[0] = (p[3][1],p[5])
     repite(p[0])
 
