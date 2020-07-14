@@ -165,7 +165,7 @@ def p_RC(p):
 
 def p_Sen(p):
     '''function :  Sen Space expression'''
-    num = m.sin(p[3][1]) #preeeeguntaaar
+    num = m.sin(m.radians(p[3][1]))
     p[0]=(p[1],num,p[3][1])
 
 def makeList(tupla):
@@ -206,23 +206,23 @@ def p_Avanza(p):
     function : Avanza Space expression
              | Avanza Space function
     """
-    p[0] = (p[1], p[3])
-    print("Avanza '%d' unidades" %p[0][1][1])
+    p[0] = (p[1], p[3][1])
+    print("Avanza '%d' unidades" %p[0][1])
 
 def p_Retrocede(p):
     """
     function : Retrocede Space expression
              | Retrocede Space function
     """
-    p[0] = (p[1], p[3])
-    print("Retrocede '%d' unidades" %p[0][1][1])
+    p[0] = (p[1], p[3][1])
+    print("Retrocede '%d' unidades" %p[0][1])
 
 def p_GiraDerecha(p):
     """
     function : GiraDerecha Space expression
     """
     p[0] = (p[1], p[3][1])
-    print(p[0])
+    print("Gira '%d' grados a la derecha" %p[0][1])
 
 def p_GiraIzquierda(p):
     """
@@ -235,14 +235,14 @@ def p_OcultaTortuga(p):
     """
     function : OcultaTortuga
     """
-    p[0] = (p[1])
+    p[0] = (p[1],None)
     print("Se oculta la tortuga")
 
 def p_ApareceTortuga(p):
     """
     function : ApareceTortuga
     """
-    p[0] = (p[1])
+    p[0] = (p[1],None)
     print("Aparece la Tortuga")
 
 def p_PonXY(p):
@@ -263,7 +263,7 @@ def p_Rumbo(p):
     """
     function : Rumbo
     """
-    p[0] = (p[1])
+    p[0] = (p[1],None)
     print("Indicar el rumbo de la tortura")
 
 def p_PonX(p):
@@ -284,29 +284,29 @@ def p_BajaLapiz(p):
     """
     function : BajaLapiz
     """
-    p[0] = (p[1])
+    p[0] = (p[1],None)
     print("Comienza a dibujar")
 
 def p_SubeLapiz(p):
     """
     function : SubeLapiz
     """
-    p[0] = (p[1])
+    p[0] = (p[1],None)
     print("Levanta el lapiz y detiene el dibujo")
 
 def p_Borrapantalla(p):
     """function : Borrapantalla"""
-    p[0] = (p[1])
+    p[0] = (p[1],None)
 
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     '''function :  PonColorLapiz'''
-    p[0] = (p[1])
+    p[0] = (p[1],None)
 
 # Funcion para poner la tortuga en el centro
 def p_Centro(p):
     '''function :  Centro'''
-    p[0] = (p[1])
+    p[0] = (p[1],None)
 
 # Funcion para pausar la ejecucion
 def p_Espera(p):
@@ -406,22 +406,22 @@ def p_Redondea(p):
 # Funcion que calcula el coseno de un numero
 def p_Cos(p):
     '''function :  Cos Space expression'''
-    num = m.cos(p[3][1])
+    num = m.cos(m.radians(p[3][1]))
     p[0] = (p[1], num, p[3][1])
 
 # Funcion para restar los digitos de una tupla
 def restar(tupla):
     resta=0
     while (type(tupla[1]) == tuple):
-        resta += tupla[0]
-        tupla = tupla[1]
-    return resta - tupla[0] - tupla[1]
+        resta = tupla[0] - tupla[1][0]
+        tupla = (resta,tupla[1][1])
+    return tupla[0] - tupla[1]
 
 def p_restar(p):
     '''
     function : Diferencia Space operaciones
     '''
-    a= restar(p[3])
+    a = restar(p[3])
     p[0] = (p[1], a, p[3])
 
 def RepeatList(tupla):
@@ -433,66 +433,30 @@ def RepeatList(tupla):
     return lista+[tupla]
 
 def repite(tupla):
-    Lista=RepeatList(tupla[1])
-    repeat=tupla[0]-1
-    # while(repet!=0):
-    #     num=0
-    #     while(len(Lista)-1!=num):
-    #         if('inc'):
-    #         elif('Avanza'==Li
-    #         sta[num][0]):
-    #         elif('Retrocede'==Lista[num][0]):
-    #         elif('GiraDerecha'==Lista[num][0]):
-    #         elif('GiraIzquierda'==Lista[num][0]):
-    #         elif('OcultaTortuga'==Lista[num][0]):
-    #         elif('ApareceTortuga'==Lista[num][0]):
-    #         elif('PonXY'==Lista[num][0]):
-    #         elif('PonRumbo'==Lista[num][0]):
-    #         elif('Rumbo'==Lista[num][0]):
-    #         elif('PonX'==Lista[num][0]):
-    #         elif('PonY'==Lista[num][0]):
-    #         elif('BajaLapiz'==Lista[num][0]):
-    #         elif('SubeLapiz'==Lista[num][0]):
-    #         elif('ColorLapiz'==Lista[num][0]):
-    #         elif('Centro'==Lista[num][0]):
-    #         elif('Espera'==Lista[num][0]):
-    #         elif('Ejecuta'==Lista[num][0]):
-    #         elif('Repite'==Lista[num][0]):
-    #         elif('Si'==Lista[num][0]):
-    #         elif('Iguales'==Lista[num][0]):
-    #         elif('Y'==Lista[num][0]):
-    #         elif ('O'==Lista[num][0]):
-    #         elif ('MayorQue'==Lista[num][0]):
-    #         elif ('MenorQue'==Lista[num][0]):
-    #         elif ('Redondea'==Lista[num][0]):
-    #         elif ('Cos'==Lista[num][0]):
-    #         elif ('Diferencia'==Lista[num][0]):
-    #         elif ('Azar'==Lista[num][0]):
-    #         elif ('Menos'==Lista[num][0]):
-    #         elif('Producto'==Lista[num][0]):
-    #         elif('Potencia'==Lista[num][0]):
-    #         elif('Division'==Lista[num][0]):
-    #         elif('Resto'==Lista[num][0]):
-    #         elif('RC'==Lista[num][0]):
-    #         elif('Sen'==Lista[num][0]):
-    #         elif('Suma'==Lista[num][0]):
-    #         elif('Elegir'==Lista[num][0]):
-    #         elif('Cuenta'==Lista[num][0]):
-    #         elif('Ultimo'==Lista[num][0]):
-    #         elif('Elemento'==Lista[num][0]):
-    #         elif('Primero'==Lista[num][0]):
-    #         elif('Borrapantalla'==Lista[num][0]):
-    #     num+=1
-    # repeat-=1
-
+    Lista = RepeatList(tupla[1])
+    cantVeces = tupla[0]-1
+    while cantVeces != 0:
+        for instruccion in Lista:
+            inst = instruccion[0]
+            num = instruccion[1]
+            if(num==None):
+                s = inst
+                print(s)
+                parser.parse(s)
+            else:
+                print(num)
+                s = inst + " " + str(num)
+                print(s)
+                parser.parse(s)
+        cantVeces -= 1
 
 
 
 # Funcion que repite ordenes cierta cantidad de veces
-def p_Repeat(p):
+def p_Repite(p):
     '''
-    function : Repeat Space expression LeftSquareBracket funciones RightSquareBracket
-            | Repeat Space expression LeftSquareBracket function RightSquareBracket'''
+    function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
+            | Repite Space expression LeftSquareBracket function RightSquareBracket'''
     p[0] = (p[3][1],p[5])
     repite(p[0])
 
