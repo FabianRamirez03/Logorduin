@@ -5,7 +5,7 @@ import random
 import math as m
 from compLexx import tokens
 import sys
-
+global Entrada
 variables = {}
 
 # Gramatica de asignacion de variables
@@ -24,7 +24,7 @@ def p_statement_create(p):
 def p_statement_assign(p):
     """
     function : Inic Space NAME Space EQUALS Space expression
-                 | Inic Space NAME Space EQUALS Space function
+             | Inic Space NAME Space EQUALS Space function
     """
     if p[3] not in variables:
         print("La variable '%s' no ha sido creada" % p[3])
@@ -46,9 +46,11 @@ def p_statement_expr(p):
     '''
     statement : expression
     '''
-    p[0] = ('statement',p[1][1])
-    print(p[1][1])
-
+    p[0] = p[1]
+    if p[0] == None:
+        return
+    else:
+        print(p[1][1])
 
 def p_expression_Number(p):
     '''
@@ -63,7 +65,7 @@ def p_expression_Function(p):
     p[0] = p[1]
 
 def p_expression_name(p):
-    "expression : NAME"
+    """expression : NAME"""
     try:
         p[0] = ('exp',variables[p[1]])
     except LookupError:# arreglaaaaaaaaaaaaaaar
@@ -81,28 +83,12 @@ def p_Op_operaciones(p):
         operaciones : expression Space operaciones'''
     p[0] = (p[1][1], p[3])
 
-def p_funciones(p):#
+def p_funciones(p):
     '''
-    funciones : function Coma Space function
-                | function Coma Space funciones
+    funciones : statement Coma Space statement
+                | statement Coma Space funciones
     '''
 
-    # | function
-    # Coma
-    # Space
-    # statement
-    # | statement
-    # Coma
-    # Space
-    # function
-    # | statement
-    # Coma
-    # Space
-    # statement
-    # | statement
-    # Coma
-    # Space
-    # funciones
     p[0] = (p[1],p[4])
 
 # funcion para sumar los digitos de una tupla
@@ -125,8 +111,11 @@ def p_Incrementar(p):
     """
     function : Inc Space NAME
     """
-    variables[p[3]] = variables[p[3]] + 1
-    p[0] = (p[1],variables[p[3]], p[3])
+    try:
+        variables[p[3]] = variables[p[3]] + 1
+        p[0] = (p[1], p[3],variables[p[3]])
+    except LookupError:
+            print("La variable que desea incrementar no ha sido declarada")
 
 def p_Incrementar_Num(p):
     """
@@ -392,7 +381,7 @@ def MayorQue(num1,num2):
 
 def p_MayorQue(p):
     '''
-    function : MayorQue Space expression Coma Space expression
+    function : MayorQue Space expression PuntoComa Space expression
     '''
     a= MayorQue(p[3][1],p[6][1])
     p[0] = (p[1], a, p[3])
@@ -406,7 +395,7 @@ def MenorQue(num1,num2):
 
 def p_MenorQue(p):
     '''
-    function : MenorQue Space expression Coma Space expression
+    function : MenorQue Space expression PuntoComa Space expression
     '''
     a= MenorQue(p[3][1],p[6][1])
     p[0] = (p[1], a, p[3])
@@ -439,47 +428,46 @@ def p_restar(p):
     a = restar(p[3])
     p[0] = (p[1], a, p[3])
 
-def RepeatList(tupla):
-    lista=[]
-    while(type(tupla[1]) == tuple):
-        lista+=[tupla[0]]
-        tupla=tupla[1]
-    print(lista+[tupla])
-    return lista+[tupla]
-
 def repite(tupla):
-    Lista = RepeatList(tupla[1])
-    cantVeces = tupla[0]-1
-    while cantVeces != 0:
-        for instruccion in Lista:
-            inst = instruccion[0]
-            num = instruccion[1]
-            if(num==None):
-                s = inst
-                print(s)
-                parser.parse(s)
-            else:
-                print(num)
-                s = inst + " " + str(num)
-                print(s)
-                parser.parse(s)
-        cantVeces -= 1
+    can_veces= tupla[0]-1
+    global Entrada
+    while Entrada[0]!="[":
+        Entrada=Entrada[1:]
+    Entrada = Entrada[1:-1]
+    Entrada = Entrada.split(",")
+    while can_veces!=0:
+        s=Entrada[0]
+        parser.parse(s)
+        num=1
+        while len(Entrada)!=num:
+            s = Entrada[num][1:]
+            print(s)
+            num+=1
+            parser.parse(s)
+        can_veces-=1
 
+# Ejecuta si se cumple la condicion
+def p_Si(p):
+    '''function :  Si Space  expression LeftSquareBracket function RightSquareBracket
+                | Si Space expression LeftSquareBracket funciones RightSquareBracket
+    '''
+    p[0] = (p[1],p[3],p[5])
+    if(p[0][1][1] == 'CIERTO'):
+        print("EJECUTA")
+        repite((2,None))
+    else:
+        print("NO EJECUTA")
 
 
 # Funcion que repite ordenes cierta cantidad de veces
 def p_Repite(p):# Repite 2[Inic a = Suma a 1, Avanza a] hacer que acepte esto..........................
     '''
     function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
-            | Repite Space expression LeftSquareBracket function RightSquareBracket
+            | Repite Space expression LeftSquareBracket  statement RightSquareBracket
     '''
     p[0] = (p[3][1],p[5])
     repite(p[0])
 
-# Ejecuta si se cumple la condicion
-def p_Si(p):
-    '''function :  Si Space  operaciones LeftSquareBracket operaciones RightSquareBracket'''
-    p[0] = (p[1],p[3],p[5])
 
 # Retorna error de sintaxis
 def p_error(p):
@@ -491,8 +479,10 @@ def p_error(p):
 parser = yacc.yacc()
 
 while True:
+    global Entrada
     try:
         s = input('->')
+        Entrada = s
     except EOFError:
         break
     if not s:continue

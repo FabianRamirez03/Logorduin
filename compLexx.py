@@ -56,13 +56,15 @@ tokens = [
     'PonY',
     'BajaLapiz',
     'SubeLapiz',
-    'Coma'
+    'Coma',
+    'PuntoComa'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
 t_LeftSquareBracket = r'\['
 t_RightSquareBracket = r'\]'
 t_Coma = r','
+t_PuntoComa = r';'
 
 #Comentarios
 def t_Comment(t):
