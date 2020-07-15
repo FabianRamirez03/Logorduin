@@ -22,9 +22,10 @@ def p_statement_create(p):
         print("La variable '%s' ya fue creada" % p[3])
 
 def p_statement_assign(p):
-    """statement : Inic Space NAME Space EQUALS Space expression
+    """
+    function : Inic Space NAME Space EQUALS Space expression
                  | Inic Space NAME Space EQUALS Space function
-                 """
+    """
     if p[3] not in variables:
         print("La variable '%s' no ha sido creada" % p[3])
     else:
