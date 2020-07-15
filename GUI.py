@@ -1,5 +1,10 @@
 from tkinter import *
+from tkinter import messagebox
+from tkinter.filedialog import askopenfilename
 import sys
+import DrawController
+from PIL import Image
+from PIL import ImageTk
 
 
 
@@ -10,10 +15,129 @@ yCanvas = 500
 xCanvasCenter = xCanvas / 2
 yCanvasCenter = yCanvas / 2
 
+xTurtle = xCanvas / 2
+yTurtle = yCanvas / 2
+
+skin_path = "Imagenes"
+turtle_skin = "turtle.png"
+
+# Constantes logicas
+file_path = ""
+
+
+# ______________________________Funciones de la interfaz grafica_______________________________________
 
 def doNothing():
     print("Test")
 
+
+# Abre un archivo de texto en el codigo a compilar
+def open_file():
+    Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
+    filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
+    global file_path
+    file_path = filename
+    with open(filename, "r") as text_file:
+        file_content = text_file.read()
+        codeText.delete('1.0', END)
+        codeText.insert(INSERT, file_content)
+
+
+# En caso de que haya un archivo abierto, lo reescribe con la informacion en el texto del codigo
+def save_file():
+    if file_path != "":
+        file_to_write = open(file_path, "w")
+        file_to_write.write(codeText.get('1.0', END))
+        file_to_write.close()
+    else:
+        messagebox.showerror(message="No hay archivo para guardar", title="Error")
+
+
+def avanza(distance):
+    global xTurtle
+    global yTurtle
+    coords = avanzaAux(distance)
+    xTurtle = coords[0]
+    yTurtle = coords[1]
+
+
+def avanzaAux(distance):
+    return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
+                                 yTurtle)  # cambiar para que el 100 se obtenga del codigo
+
+
+def ponrumbo(grades):
+    global turtle
+    gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
+    path = skin_path + "/" + turtle_skin
+    if grades == 90:
+        turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
+        turtle_canvas.itemconfigure(turtleImage, image=turtle)
+        turtle_canvas.update()
+    elif gradesToRotate != 0:
+        turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
+        turtle_canvas.itemconfigure(turtleImage, image=turtle)
+        turtle_canvas.update()
+
+
+def bajaLapiz():
+    DrawController.setCanDraw(True)
+
+
+def subeLapiz():
+    DrawController.setCanDraw(False)
+
+
+def cuadrado(lado):
+    grades = DrawController.seeingTo
+    cont = 0
+    bajaLapiz()
+    while cont < 4:
+        ponrumbo(grades + 90 * cont)
+        avanza(lado)
+        cont = cont + 1
+    subeLapiz()
+
+
+def clean_canvas():
+    for i in DrawController.figuresLists:
+        turtle_canvas.delete(i)
+
+
+def test():
+    cont = 0
+    while cont < 4:
+        cuadrado(50)
+        cont = cont + 1
+
+
+# Logica de las skins___________________________________
+def update_skin(name):
+    global turtle
+    global turtle_skin
+    turtle_skin = name
+    turtle = PhotoImage(file=skin_path + "/" + name)
+    turtle_canvas.itemconfigure(turtleImage, image=turtle)
+    turtle_canvas.update()
+
+
+def defaultAux():
+    update_skin("turtle.png")
+
+
+def shrekAux():
+    update_skin("shrek.png")
+
+
+def pacManAux():
+    update_skin("pacman.png")
+
+
+def arrowAux():
+    update_skin("arrow.png")
+
+
+# ___________________________________-Aplicacion Grafica_____________________________________________
 
 root = Tk()
 root.title("Logorduin")
@@ -24,14 +148,22 @@ root.config(menu=menu)
 subMenu = Menu(menu)
 menu.add_cascade(label="Archivo", menu=subMenu)
 subMenu.add_command(label="Nuevo Archivo", command=doNothing)
-subMenu.add_command(label="Abrir Archivo", command=doNothing)
-subMenu.add_command(label="Guardar", command=doNothing)
-subMenu.add_separator()
+subMenu.add_command(label="Abrir Archivo", command=open_file)
+subMenu.add_command(label="Guardar", command=save_file)
 
-editMenu = Menu(menu)
-menu.add_cascade(label="Canvas", menu=editMenu)
-editMenu.add_command(label="Limpiar", command=doNothing)
+canvasMenu = Menu(menu)
+menu.add_cascade(label="Canvas", menu=canvasMenu)
+canvasMenu.add_command(label="Limpiar", command=clean_canvas)
 
+# Menu para cambiar la skin de la tortuga
+viewMenu = Menu(menu)
+menu.add_cascade(label="Vista", menu=viewMenu)
+skinMenu = Menu(viewMenu)
+viewMenu.add_cascade(label="Skin", menu=skinMenu)
+skinMenu.add_command(label="Default", command=defaultAux)
+skinMenu.add_command(label="Shrek", command=shrekAux)
+skinMenu.add_command(label="Pacman", command=pacManAux)
+skinMenu.add_command(label="Flecha", command=arrowAux)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
@@ -58,7 +190,7 @@ console_Frame.pack(side=LEFT)
 buttons_Frame = Frame(left_Botom_Frame, width=185, height=150, bg="white", bd=2)
 buttons_Frame.pack(side=LEFT)
 
-# ______________________________________________Elementos de la interfaz__________________________________
+# _________________________Elementos de la interfaz__________________________________
 
 # Text Area para el codigo
 codeText = Text(code_Frame, width=30,
@@ -76,13 +208,13 @@ turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas)
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
-turtle = PhotoImage(file='Imagenes\shrek2.png')
-turtle_canvas.create_image(xCanvasCenter, yCanvasCenter, image=turtle)
+turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
+turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
 compileButton = Button(buttons_Frame, text="Compilar")
 compileButton.place(height=30, width=60, x=55, y=30)
-executeButton = Button(buttons_Frame, text="Ejecutar")
+executeButton = Button(buttons_Frame, text="Ejecutar", command=test)
 executeButton.place(height=30, width=60, x=55, y=75)
 
 # Text Area de la consola
@@ -96,6 +228,15 @@ consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
 consoleText.pack(fill="y")
+
+
+# Safe closure
+def on_closing():
+    if messagebox.askokcancel("Salir", "Seguros que quieres salir?"):
+        root.destroy()
+
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
 
 root.mainloop()
 
