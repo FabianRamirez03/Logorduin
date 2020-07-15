@@ -7,7 +7,7 @@ xBound = 935
 yBound = 500
 
 
-def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
+def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel):
     distanceX = distance * math.cos(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje X
     distanceY = distance * -math.sin(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje Y
 
@@ -47,6 +47,8 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
+            xLabel.configure(text="X = " + str(xTurtle))
+            yLabel.configure(text="X = " + str(yTurtle))
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
 
@@ -71,8 +73,11 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction):
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
+            xLabel.configure(text="X = " + str(xTurtle))
+            yLabel.configure(text="X = " + str(yTurtle))
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
+            print(canvas.coords(turtle))
     return [xTurtle, yTurtle]
 
 

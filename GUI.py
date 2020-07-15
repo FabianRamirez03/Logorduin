@@ -61,7 +61,7 @@ def retroceder(distance):
 
 def retrocederAux(distance):
     return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
-                                 yTurtle, -1)
+                                 yTurtle, -1, xCoords, yCoords)
 
 
 def avanza(distance):
@@ -74,7 +74,7 @@ def avanza(distance):
 
 def avanzaAux(distance):
     return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
-                                 yTurtle, 1)  # El numero final depende de la direccion
+                                 yTurtle, 1, xCoords, yCoords)  # El numero final depende de la direccion
     # 1 para avanzar
     # -1 para retroceder
 
@@ -269,9 +269,15 @@ turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
 compileButton = Button(buttons_Frame, text="Compilar")
-compileButton.place(height=30, width=60, x=55, y=30)
+compileButton.place(height=30, width=60, x=0, y=30)
 executeButton = Button(buttons_Frame, text="Ejecutar", command=test)
-executeButton.place(height=30, width=60, x=55, y=75)
+executeButton.place(height=30, width=60, x=0, y=75)
+
+# Labels de las coordenadas
+xCoords = Label(buttons_Frame, text="X = " + str(xTurtle), fg="black", bg="white")
+yCoords = Label(buttons_Frame, text="Y = " + str(yTurtle), fg="black", bg="white")
+xCoords.place(x=85, y=0)
+yCoords.place(x=85, y=20)
 
 # Text Area de la consola
 consoleText = Text(console_Frame, width=93, height=9)
