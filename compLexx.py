@@ -57,7 +57,10 @@ tokens = [
     'BajaLapiz',
     'SubeLapiz',
     'Coma',
-    'PuntoComa'
+    'PuntoComa',
+    'Para',
+    'Fin',
+    'Prueba'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
@@ -97,6 +100,21 @@ def t_NAME(t):
 def t_var(t):
     r'Var'
     t.type = 'Var'
+    return t
+
+def t_Prueba(t):
+    r'Prueba'
+    t.type = 'Prueba'
+    return t
+
+def t_Para(t):
+    r'Para'
+    t.type = 'Para'
+    return t
+
+def t_Fin(t):
+    r'Fin'
+    t.type = 'Fin'
     return t
 
 def t_Avanza(t):
