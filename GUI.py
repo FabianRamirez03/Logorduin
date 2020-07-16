@@ -3,10 +3,9 @@ from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 import sys
 import DrawController
+import compYacc
 from PIL import Image
 from PIL import ImageTk
-
-
 
 # Constantes Graficas
 xCanvas = 935
@@ -304,10 +303,12 @@ root.protocol("WM_DELETE_WINDOW", on_closing)
 
 root.mainloop()
 
-#**********************************Compilador*********************************************************
+# **********************************Compilador*********************************************************
 
 # Build the lexer
 import ply.lex as lex
+
 lexer = lex.lex()
 import ply.yacc as yacc
+
 parser = yacc.yacc()
