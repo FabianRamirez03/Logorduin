@@ -53,6 +53,19 @@ def save_file():
         messagebox.showerror(message="No hay archivo para guardar", title="Error")
 
 
+def retroceder(distance):
+    global xTurtle
+    global yTurtle
+    coords = retrocederAux(distance)
+    xTurtle = coords[0]
+    yTurtle = coords[1]
+
+
+def retrocederAux(distance):
+    return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
+                                 yTurtle, -1, xCoords, yCoords)
+
+
 def avanza(distance):
     global xTurtle
     global yTurtle
@@ -63,7 +76,9 @@ def avanza(distance):
 
 def avanzaAux(distance):
     return DrawController.avanza(turtle_canvas, turtleImage, distance, xTurtle,
-                                 yTurtle)  # cambiar para que el 100 se obtenga del codigo
+                                 yTurtle, 1, xCoords, yCoords)  # El numero final depende de la direccion
+    # 1 para avanzar
+    # -1 para retroceder
 
 
 def ponrumbo(grades):
@@ -80,6 +95,48 @@ def ponrumbo(grades):
         turtle_canvas.update()
 
 
+def ponpos(coords):
+    global xTurtle
+    global yTurtle
+    turtle_canvas.move(turtleImage, -xTurtle, -yTurtle)
+    xTurtle = coords[0]
+    yTurtle = coords[1]
+    turtle_canvas.move(turtleImage, xTurtle, yTurtle)
+    turtle_canvas.update()
+
+
+def ponx(xCoord):
+    global xTurtle
+    turtle_canvas.move(turtleImage, -xTurtle, 0)
+    xTurtle = xCoord
+    turtle_canvas.move(turtleImage, xTurtle, 0)
+    turtle_canvas.update()
+
+
+def pony(yCoord):
+    global yTurtle
+    turtle_canvas.move(turtleImage, 0, -yTurtle)
+    yTurtle = yCoord
+    turtle_canvas.move(turtleImage, 0, yTurtle)
+    turtle_canvas.update()
+
+
+def giraDerecha(grades):
+    girarAux(DrawController.girar(grades, -1))
+
+
+def giraIzquierda(grades):
+    girarAux(DrawController.girar(grades, 1))
+
+
+def girarAux(gradesToRotate):
+    global turtle
+    path = skin_path + "/" + turtle_skin
+    turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
+    turtle_canvas.itemconfigure(turtleImage, image=turtle)
+    turtle_canvas.update()
+
+
 def bajaLapiz():
     DrawController.setCanDraw(True)
 
@@ -88,15 +145,17 @@ def subeLapiz():
     DrawController.setCanDraw(False)
 
 
+def rumbo():
+    return DrawController.seeingTo
+
+
 def cuadrado(lado):
     grades = DrawController.seeingTo
     cont = 0
-    bajaLapiz()
     while cont < 4:
         ponrumbo(grades + 90 * cont)
         avanza(lado)
         cont = cont + 1
-    subeLapiz()
 
 
 def clean_canvas():
@@ -105,10 +164,9 @@ def clean_canvas():
 
 
 def test():
-    cont = 0
-    while cont < 4:
-        cuadrado(50)
-        cont = cont + 1
+    ponx(100)
+    ponrumbo(270)
+    avanza(500)
 
 
 # Logica de las skins___________________________________
@@ -213,9 +271,15 @@ turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
 compileButton = Button(buttons_Frame, text="Compilar")
-compileButton.place(height=30, width=60, x=55, y=30)
+compileButton.place(height=30, width=60, x=0, y=30)
 executeButton = Button(buttons_Frame, text="Ejecutar", command=test)
-executeButton.place(height=30, width=60, x=55, y=75)
+executeButton.place(height=30, width=60, x=0, y=75)
+
+# Labels de las coordenadas
+xCoords = Label(buttons_Frame, text="X = " + str(xTurtle), fg="black", bg="white")
+yCoords = Label(buttons_Frame, text="Y = " + str(yTurtle), fg="black", bg="white")
+xCoords.place(x=85, y=0)
+yCoords.place(x=85, y=20)
 
 # Text Area de la consola
 consoleText = Text(console_Frame, width=93, height=9)
