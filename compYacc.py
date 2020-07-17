@@ -8,6 +8,7 @@ import sys
 global Entrada
 global Funcion
 Funcion = False
+ListaFunciones = {}
 Instrucciones={}
 variables = {}
 
@@ -73,7 +74,7 @@ def p_expression_name(p):
         p[0] = ('exp',variables[p[1]])
     except LookupError:# arreglaaaaaaaaaaaaaaar
         print("Variable no definida '%s'" % p[1])
-        p[0]='fabian busque que hacer aqui, att: wajo'
+        raise Exception()
 
 def p_operaciones(p):
     '''
@@ -160,10 +161,15 @@ def p_Potencia(p):
     num = p[3][1]**p[5][1]
     p[0]=(p[1],num,p[3][1],p[5][1])
 
-def p_Division(p):#Arrelgar que no pueda dividir entre 0 cuando se use una varibale sin inicializar*************************************************
+def p_Division(p):
     '''function :  Division Space expression Space expression'''
-    num = p[3][1]/p[5][1]
-    p[0]=(p[1],num,p[3][1],p[5][1])
+    num = p[3][1]
+    denom = p[5][1]
+    if denom == 0:
+        print("Error, no se puede dividir entre cero")
+    else:
+        resultado = num / denom
+        p[0]=(p[1],resultado,num,denom)
 
 def p_Resto(p):
     '''function :  Resto Space expression Space expression'''
@@ -574,8 +580,8 @@ def p_Si(p):
         print("NO EJECUTA")
 
 
-# Funcion que repite ordenes cierta cantidad de veces
-def p_Repite(p):# Repite 2[Inic a = Suma a 1, Avanza a] hacer que acepte esto..........................
+# Funcion que repite ordenes N cantidad de veces
+def p_Repite(p):
     '''
     function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
              | Repite Space expression LeftSquareBracket  statement RightSquareBracket
@@ -590,7 +596,7 @@ def p_Variable(p):
     '''
     p[0] = (p[1],p[4])
 
-def p_ParaSin(p):#Terminar las funciones de para, hacer que detecte la palabra Fin***********************************************************
+def p_ParaSin(p):#ESTA VARA NO DEBERIA EXISTIR, IGUAL QUE HEREDIA***********************************************************
     '''
     function : Para Space NAME Space LeftSquareBracket RightSquareBracket
     '''
@@ -608,11 +614,24 @@ def p_ParaUna(p):
     '''
     global Funcion
     if p[3] not in Instrucciones:
-        Instrucciones[p[3]] = [[p[6]],[]]
-        Funcion=True
+        Instrucciones[p[3]] = {p[6]:None}
+        #llamar funcion que lee lineas
         print(Instrucciones)
+        print(p[3])
+        print(p[0])
     else:
-        print("La variable '%s' ya fue creada" % p[3])
+        print("La funcion '%s' ya fue creada" % p[3])
+
+def ValidarPara(array):
+   try:
+       parser.parse(array[0])
+
+   except:
+       print("Funcion invalida")
+
+
+
+
 
 def p_ParaVarias(p):
     '''
@@ -630,9 +649,11 @@ def p_ParaVarias(p):
 # Retorna error de sintaxis
 def p_error(p):
     if p:
-        print("Error de sintaxis de '%s'" % p.value)
+        print ("Error de sintaxis de '%s'" % p.value)
+        raise Exception()
     else:
-        print("Syntax error at EOF")
+        print ("Syntax error at EOF")
+        raise Exception()
 
 parser = yacc.yacc()
 
@@ -641,9 +662,15 @@ while True:
     try:
         s = input('->')
         Entrada = s
-    except EOFError:
+    except:
         break
-    if not s:continue
-    parser.parse(s)
-
+    if not s:
+        continue
+    try:
+        parser.parse(s)
+    except:
+        print("ERROR DESCONOCIDO")
+#Arreglar el manejo de errores
+#Crear bien las funciones de Para Fin
+#Todo_lo que tenga parser.parse hay que agregar try except  
 
