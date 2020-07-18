@@ -595,19 +595,20 @@ def p_Variable(p):
              | NAME Coma Space Variable
     '''
     p[0] = (p[1],p[4])
-
-def p_ParaSin(p):#ESTA VARA NO DEBERIA EXISTIR, IGUAL QUE HEREDIA***********************************************************
+#[[Para casa []],[Avanza 10], [GiraDerecha 90]]
+def p_ParaSin(p):
     '''
     function : Para Space NAME Space LeftSquareBracket RightSquareBracket
     '''
     global Funcion
     if p[3] not in Instrucciones:
-        Instrucciones[p[3]] = [[None],[]]
+        Instrucciones[p[3]] = {"SinVariables"}
         Funcion=True
         print(Instrucciones)
     else:
         print("La variable '%s' ya fue creada" % p[3])
 
+#[Para casa[largo], [Avanza largo], [GiraDerecha 90], [Avanza largo],[Fin]]
 def p_ParaUna(p):
     '''
     function : Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -624,13 +625,12 @@ def p_ParaUna(p):
 
 def ValidarPara(array):
    try:
-       parser.parse(array[0])
+       if (array[-1] == "Fin"):
+           for instruccion in array[1:-2]:
+               print(instruccion)
 
    except:
        print("Funcion invalida")
-
-
-
 
 
 def p_ParaVarias(p):
@@ -673,4 +673,4 @@ while True:
 #Arreglar el manejo de errores
 #Crear bien las funciones de Para Fin
 #Todo_lo que tenga parser.parse hay que agregar try except  
-
+#Asi debe llegar la instruccion: [Para casa[largo], [Avanza largo], [GiraDerecha 90], [Avanza largo]]
