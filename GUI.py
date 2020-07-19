@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
-import sys
 import DrawController
 import compYacc
 from PIL import Image
@@ -22,6 +21,7 @@ turtle_skin = "turtle.png"
 
 # Constantes logicas
 file_path = ""
+functionsList = []
 
 
 # ______________________________Funciones de la interfaz grafica_______________________________________
@@ -65,7 +65,7 @@ def retrocederAux(distance):
                                  yTurtle, -1, xCoords, yCoords)
 
 
-def avanza(distance):
+def Avanza(distance):
     global xTurtle
     global yTurtle
     coords = avanzaAux(distance)
@@ -153,7 +153,7 @@ def cuadrado(lado):
     cont = 0
     while cont < 4:
         ponrumbo(grades + 90 * cont)
-        avanza(lado)
+        Avanza(lado)
         cont = cont + 1
 
 
@@ -163,9 +163,24 @@ def clean_canvas():
 
 
 def test():
-    ponx(100)
-    ponrumbo(270)
-    avanza(500)
+    global functionsList
+    # """
+    line_list = codeText.get('1.0', 'end').split('\n')
+    for line in line_list:
+        if line != "":
+            compYacc.parser.parse(line.replace("\n", ""))
+            functionsList.append(compYacc.xxx)
+
+    for fuction in functionsList:
+        if fuction != None:
+            eval(str(fuction))
+
+    functionsList = []
+    consoleText.delete("1.0", "end")
+    code_Frame.update()
+
+    # """
+    # compYacc.parser.parse("Suma 5 3")
 
 
 # Logica de las skins___________________________________

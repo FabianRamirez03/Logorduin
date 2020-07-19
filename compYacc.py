@@ -6,8 +6,9 @@ import math as m
 from compLexx import tokens
 import sys
 
-global Entrada
+global Entrada, xxx
 variables = {}
+xxx = ""
 
 
 # Gramatica de asignacion de variables
@@ -246,7 +247,10 @@ def p_Avanza(p):
              | Avanza Space function
     """
     p[0] = (p[1], p[3][1])
+    distance = p[0][1]
+    global xxx
     print("Avanza '%d' unidades" % p[0][1])
+    xxx = "Avanza(distance = " + str(distance) + ")"
 
 
 def p_Retrocede(p):
