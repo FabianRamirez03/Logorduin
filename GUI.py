@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 import DrawController
 import compYacc
+import sys
 from PIL import Image
 from PIL import ImageTk
 
@@ -22,6 +23,8 @@ turtle_skin = "turtle.png"
 # Constantes logicas
 file_path = ""
 functionsList = []
+
+compYacc.rumbo = 90
 
 
 # ______________________________Funciones de la interfaz grafica_______________________________________
@@ -145,6 +148,7 @@ def subeLapiz():
 
 
 def rumbo():
+    compYacc.rumbo = DrawController.seeingTo
     return DrawController.seeingTo
 
 
@@ -164,6 +168,7 @@ def clean_canvas():
 
 def test():
     global functionsList
+    sys.exit()
     # """
     line_list = codeText.get('1.0', 'end').split('\n')
     for line in line_list:

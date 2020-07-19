@@ -5,7 +5,7 @@ import random
 import math as m
 from compLexx import tokens
 import sys
-global Entrada, toDo
+global Entrada, toDo, rumbo
 global Funcion
 Funcion = False
 ListaFunciones = {}
@@ -304,28 +304,32 @@ def p_GiraDerecha(p):
     """
     function : GiraDerecha Space expression
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
         Instrucciones[holi][1] += [Entrada]
     else:
         p[0] = (p[1], p[3][1])
+        grades = p[0][1]
         print("Gira '%d' grados a la derecha" %p[0][1])
+        toDo = "giraDerecha(grades =" + str(grades)+")"
 
 
 def p_GiraIzquierda(p):
     """
     function : GiraIzquierda Space expression
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
         Instrucciones[holi][1] += [Entrada]
     else:
         p[0] = (p[1], p[3][1])
+        grades = p[0][1]
         print("Gira '%d' grados a la izquierda" %p[0][1])
+        toDo = "giraIzquierda(grades =" + str(grades) + ")"
 
 
 def p_OcultaTortuga(p):
@@ -374,7 +378,7 @@ def p_PonRumbo(p):
     """
     function : PonRumbo Space expression
     """
-    global Funcion, Entrada, toDo
+    global Funcion, Entrada, toDo, rumbo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -397,7 +401,7 @@ def p_Rumbo(p):
         Instrucciones[holi][1] += [Entrada]
     else:
         p[0] = (p[1],None)
-        print("Indicar el rumbo de la tortura")
+        print("El rumbo de la tortura es " + str(rumbo))
 
 
 def p_PonX(p):
