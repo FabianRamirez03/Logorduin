@@ -52,7 +52,7 @@ def save_file():
         messagebox.showerror(message="No hay archivo para guardar", title="Error")
 
 
-def retroceder(distance):
+def Retroceder(distance):
     global xTurtle
     global yTurtle
     coords = retrocederAux(distance)
@@ -80,7 +80,7 @@ def avanzaAux(distance):
     # -1 para retroceder
 
 
-def ponrumbo(grades):
+def Ponrumbo(grades):
     global turtle
     gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
     path = skin_path + "/" + turtle_skin
@@ -136,7 +136,7 @@ def girarAux(gradesToRotate):
     turtle_canvas.update()
 
 
-def bajaLapiz():
+def BajaLapiz():
     DrawController.setCanDraw(True)
 
 
@@ -169,7 +169,7 @@ def test():
     for line in line_list:
         if line != "":
             compYacc.parser.parse(line.replace("\n", ""))
-            functionsList.append(compYacc.xxx)
+            functionsList.append(compYacc.toDo)
 
     for fuction in functionsList:
         if fuction != None:

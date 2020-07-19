@@ -5,13 +5,13 @@ import random
 import math as m
 from compLexx import tokens
 import sys
-global Entrada
+global Entrada, toDo
 global Funcion
 Funcion = False
 ListaFunciones = {}
 Instrucciones={}
 variables = {}
-xxx = ""
+toDo = ""
 
 
 # Gramatica de asignacion de variables
@@ -263,7 +263,7 @@ def p_Avanza(p):
     function : Avanza Space expression
              | Avanza Space function
     """
-    global Funcion,Entrada
+    global Funcion,Entrada, toDo
     if(Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -271,9 +271,8 @@ def p_Avanza(p):
     else:
         p[0] = (p[1], p[3][1])
         print("Avanza '%d' unidades" % p[0][1])
-    global xxx
-    distance = p[0][1]
-    xxx = "Avanza(distance = " + str(distance) + ")"
+        distance = p[0][1]
+        toDo = "Avanza(distance = " + str(distance) + ")"
 
 
 def p_Retrocede(p):
@@ -281,7 +280,7 @@ def p_Retrocede(p):
     function : Retrocede Space expression
              | Retrocede Space function
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -289,6 +288,8 @@ def p_Retrocede(p):
     else:
         p[0] = (p[1], p[3][1])
         print("Retrocede '%d' unidades" %p[0][1])
+        distance = p[0][1]
+        toDo = "Retroceder(distance = " + str(distance) + ")"
 
 
 def p_GiraDerecha(p):
@@ -365,7 +366,7 @@ def p_PonRumbo(p):
     """
     function : PonRumbo Space expression
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -373,6 +374,8 @@ def p_PonRumbo(p):
     else:
         p[0] = (p[1], p[3][1])
         print("Tortuga en rumbo hacia los '%d' grados" %p[0][1])
+        rumbo = p[0][1]
+        toDo = "Ponrumbo(grades = " + str(rumbo) + ")"
 
 
 def p_Rumbo(p):
@@ -421,7 +424,7 @@ def p_BajaLapiz(p):
     """
     function : BajaLapiz
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -429,6 +432,7 @@ def p_BajaLapiz(p):
     else:
         p[0] = (p[1],None)
         print("Comienza a dibujar")
+        toDo = "BajaLapiz()"
 
 
 def p_SubeLapiz(p):
@@ -741,3 +745,4 @@ while True:
 #Crear bien las funciones de Para Fin
 #Todo_lo que tenga parser.parse hay que agregar try except  
 #Asi debe llegar la instruccion: [Para casa[largo], [Avanza largo], [GiraDerecha 90], [Avanza largo]]
+"""
