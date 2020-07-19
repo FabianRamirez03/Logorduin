@@ -5,8 +5,11 @@ import random
 import math as m
 from compLexx import tokens
 import sys
-
-global Entrada, xxx
+global Entrada
+global Funcion
+Funcion = False
+ListaFunciones = {}
+Instrucciones={}
 variables = {}
 xxx = ""
 
@@ -41,8 +44,8 @@ def p_statement_create_empty(p):
     '''
     statement : Var Space NAME
     '''
-    p[0] = (p[1], None, p[3])
-    variables[p[3]] = None
+    p[0] = (p[1], 0, p[3])
+    variables[p[3]] = 0
     print(variables)
 
 
@@ -78,7 +81,7 @@ def p_expression_name(p):
         p[0] = ('exp', variables[p[1]])
     except LookupError:  # arreglaaaaaaaaaaaaaaar
         print("Variable no definida '%s'" % p[1])
-        p[0] = 'fabian busque que hacer aqui, att: wajo'
+        raise Exception()
 
 
 def p_operaciones(p):
@@ -180,8 +183,13 @@ def p_Potencia(p):
 
 def p_Division(p):
     '''function :  Division Space expression Space expression'''
-    num = p[3][1] / p[5][1]
-    p[0] = (p[1], num, p[3][1], p[5][1])
+    num = p[3][1]
+    denom = p[5][1]
+    if denom == 0:
+        print("Error, no se puede dividir entre cero")
+    else:
+        resultado = num / denom
+        p[0]=(p[1],resultado,num,denom)
 
 
 def p_Resto(p):
@@ -203,11 +211,12 @@ def p_Sen(p):
 
 
 def makeList(tupla):
-    lista = []
-    while (type(tupla[1]) == tuple):
-        lista += [tupla[0]]
-        tupla = tupla[1]
-    return lista + [tupla[0]] + [tupla[1]]
+    lista=[]
+    print(tupla)
+    while(type(tupla[1]) == tuple):
+        lista+=[tupla[0]]
+        tupla=tupla[1]
+    return lista+[tupla[0]]+[tupla[1]]
 
 
 def p_Elegir(p):
@@ -240,16 +249,30 @@ def p_Primero(p):
     Lista = makeList(p[4])
     p[0] = (p[1], Lista[0], Lista)
 
+def p_Prueba(p):
+    '''
+    function : Prueba
+    '''
+    for elemento in Instrucciones:
+        holi=elemento
+    Instrucciones[holi][1]+=['avanza']
+    Instrucciones[holi][1]+=['casa']
 
 def p_Avanza(p):
     """
     function : Avanza Space expression
              | Avanza Space function
     """
-    p[0] = (p[1], p[3][1])
-    distance = p[0][1]
+    global Funcion,Entrada
+    if(Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1], p[3][1])
+        print("Avanza '%d' unidades" % p[0][1])
     global xxx
-    print("Avanza '%d' unidades" % p[0][1])
+    distance = p[0][1]
     xxx = "Avanza(distance = " + str(distance) + ")"
 
 
@@ -258,121 +281,217 @@ def p_Retrocede(p):
     function : Retrocede Space expression
              | Retrocede Space function
     """
-    p[0] = (p[1], p[3][1])
-    print("Retrocede '%d' unidades" % p[0][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1], p[3][1])
+        print("Retrocede '%d' unidades" %p[0][1])
 
 
 def p_GiraDerecha(p):
     """
     function : GiraDerecha Space expression
     """
-    p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la derecha" % p[0][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1], p[3][1])
+        print("Gira '%d' grados a la derecha" %p[0][1])
 
 
 def p_GiraIzquierda(p):
     """
     function : GiraIzquierda Space expression
     """
-    p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la izquierda" % p[0][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1], p[3][1])
+        print("Gira '%d' grados a la izquierda" %p[0][1])
 
 
 def p_OcultaTortuga(p):
     """
     function : OcultaTortuga
     """
-    p[0] = (p[1], None)
-    print("Se oculta la tortuga")
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
+        print("Se oculta la tortuga")
 
 
 def p_ApareceTortuga(p):
     """
     function : ApareceTortuga
     """
-    p[0] = (p[1], None)
-    print("Aparece la Tortuga")
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
+        print("Aparece la Tortuga")
 
 
 def p_PonXY(p):
     """
     function : PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
     """
-    a = [p[4][1], p[6][1]]
-    p[0] = (p[1], a, p[4][1], p[6][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        a = [p[4][1],p[6][1]]
+        p[0] = (p[1],a,p[4][1],p[6][1])
 
 
 def p_PonRumbo(p):
     """
     function : PonRumbo Space expression
     """
-    p[0] = (p[1], p[3][1])
-    print("Tortuga en rumbo hacia los '%d' grados" % p[0][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1], p[3][1])
+        print("Tortuga en rumbo hacia los '%d' grados" %p[0][1])
 
 
 def p_Rumbo(p):
     """
     function : Rumbo
     """
-    p[0] = (p[1], None)
-    print("Indicar el rumbo de la tortura")
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
+        print("Indicar el rumbo de la tortura")
 
 
 def p_PonX(p):
     """
     function : PonX Space expression
     """
-    p[0] = (p[1], p[3][1])
-    print("Tortuga en la posicionX '%d'" % p[0][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],p[3][1])
+        print("Tortuga en la posicionX '%d'"%p[0][1])
 
 
 def p_PonY(p):
     """
     function : PonY Space expression
     """
-    p[0] = (p[1], p[3][1])
-    print("Tortuga en la posicionY '%d'" % p[0][1])
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],p[3][1])
+        print("Tortuga en la posicionY '%d'" % p[0][1])
 
 
 def p_BajaLapiz(p):
     """
     function : BajaLapiz
     """
-    p[0] = (p[1], None)
-    print("Comienza a dibujar")
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
+        print("Comienza a dibujar")
 
 
 def p_SubeLapiz(p):
     """
     function : SubeLapiz
     """
-    p[0] = (p[1], None)
-    print("Levanta el lapiz y detiene el dibujo")
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
+        print("Levanta el lapiz y detiene el dibujo")
 
 
 def p_Borrapantalla(p):
     """function : Borrapantalla"""
-    p[0] = (p[1], None)
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
 
 
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     '''function :  PonColorLapiz'''
-    p[0] = (p[1], None)
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
 
 
 # Funcion para poner la tortuga en el centro
 def p_Centro(p):
     '''function :  Centro'''
-    p[0] = (p[1], None)
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        p[0] = (p[1],None)
 
 
 # Funcion para pausar la ejecucion
 def p_Espera(p):
     '''function :  Espera Space expression'''
-    time.sleep(p[3][1] / 60)
-    p[0] = (p[1], p[3][1])
-    print("Wait de " + str(p[3][1] / 60) + " segundos")
+    global Funcion, Entrada
+    if (Funcion):
+        for elemento in Instrucciones:
+            holi = elemento
+        Instrucciones[holi][1] += [Entrada]
+    else:
+        time.sleep(p[3][1]/60)
+        p[0] = (p[1],p[3][1])
+        print("Wait de " + str(p[3][1]/60) + " segundos")
 
 
 # Funcion que ejecuta las Ordenes
@@ -526,22 +645,80 @@ def p_Si(p):
         print("NO EJECUTA")
 
 
-# Funcion que repite ordenes cierta cantidad de veces
-def p_Repite(p):  # Repite 2[Inic a = Suma a 1, Avanza a] hacer que acepte esto..........................
+# Funcion que repite ordenes N cantidad de veces
+def p_Repite(p):
     '''
     function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
-            | Repite Space expression LeftSquareBracket  statement RightSquareBracket
+             | Repite Space expression LeftSquareBracket  statement RightSquareBracket
     '''
     p[0] = (p[3][1], p[5])
     repite(p[0])
 
+def p_Variable(p):
+    '''
+    Variable : NAME Coma Space NAME
+             | NAME Coma Space Variable
+    '''
+    p[0] = (p[1],p[4])
+#[[Para casa []],[Avanza 10], [GiraDerecha 90]]
+def p_ParaSin(p):
+    '''
+    function : Para Space NAME Space LeftSquareBracket RightSquareBracket
+    '''
+    global Funcion
+    if p[3] not in Instrucciones:
+        Instrucciones[p[3]] = {"SinVariables"}
+        Funcion=True
+        print(Instrucciones)
+    else:
+        print("La variable '%s' ya fue creada" % p[3])
+
+#[Para casa[largo], [Avanza largo], [GiraDerecha 90], [Avanza largo],[Fin]]
+def p_ParaUna(p):
+    '''
+    function : Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
+    '''
+    global Funcion
+    if p[3] not in Instrucciones:
+        Instrucciones[p[3]] = {p[6]:None}
+        #llamar funcion que lee lineas
+        print(Instrucciones)
+        print(p[3])
+        print(p[0])
+    else:
+        print("La funcion '%s' ya fue creada" % p[3])
+
+def ValidarPara(array):
+   try:
+       if (array[-1] == "Fin"):
+           for instruccion in array[1:-2]:
+               print(instruccion)
+
+   except:
+       print("Funcion invalida")
+
+
+def p_ParaVarias(p):
+    '''
+    function : Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    '''
+    global Funcion
+    if p[3] not in Instrucciones:
+        variableList=makeList(p[6])
+        Instrucciones[p[3]] = [variableList,[]]
+        Funcion=True
+        print(Instrucciones)
+    else:
+        print("La variable '%s' ya fue creada" % p[3])
 
 # Retorna error de sintaxis
 def p_error(p):
     if p:
-        print("Error de sintaxis de '%s'" % p.value)
+        print ("Error de sintaxis de '%s'" % p.value)
+        raise Exception()
     else:
-        print("Syntax error at EOF")
+        print ("Syntax error at EOF")
+        raise Exception()
 
 
 parser = yacc.yacc()
@@ -552,8 +729,15 @@ while True:
     try:
         s = input('->')
         Entrada = s
-    except EOFError:
+    except:
         break
-    if not s: continue
-    parser.parse(s)
-"""
+    if not s:
+        continue
+    try:
+        parser.parse(s)
+    except:
+        print("ERROR DESCONOCIDO")
+#Arreglar el manejo de errores
+#Crear bien las funciones de Para Fin
+#Todo_lo que tenga parser.parse hay que agregar try except  
+#Asi debe llegar la instruccion: [Para casa[largo], [Avanza largo], [GiraDerecha 90], [Avanza largo]]
