@@ -25,7 +25,9 @@ def p_statement_create(p):
         print(p[0])
         print(variables)
     else:
+        global toDo
         print("La variable '%s' ya fue creada" % p[3])
+        toDo = "Logic"
 
 
 def p_statement_assign(p):
@@ -36,8 +38,10 @@ def p_statement_assign(p):
     if p[3] not in variables:
         print("La variable '%s' no ha sido creada" % p[3])
     else:
+        global toDo
         variables[p[3]] = p[7][1]
         p[0] = (p[1], p[7][1], p[3], p[7])
+        toDo = "Logic"
 
 
 def p_statement_create_empty(p):
@@ -47,6 +51,8 @@ def p_statement_create_empty(p):
     p[0] = (p[1], 0, p[3])
     variables[p[3]] = 0
     print(variables)
+    global toDo
+    toDo = "Logic"
 
 
 # Gramatica de una expresion
@@ -131,6 +137,8 @@ def p_Incrementar(p):
     try:
         variables[p[3]] = variables[p[3]] + 1
         p[0] = (p[1], p[3], variables[p[3]])
+        global toDo
+        toDo = "Logic"
     except LookupError:
         print("La variable que desea incrementar no ha sido declarada")
 

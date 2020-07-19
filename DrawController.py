@@ -74,7 +74,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
             xLabel.configure(text="X = " + str(xTurtle))
-            yLabel.configure(text="X = " + str(yTurtle))
+            yLabel.configure(text="Y = " + str(yTurtle))
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
 

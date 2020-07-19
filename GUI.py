@@ -152,7 +152,7 @@ def cuadrado(lado):
     grades = DrawController.seeingTo
     cont = 0
     while cont < 4:
-        ponrumbo(grades + 90 * cont)
+        Ponrumbo(grades + 90 * cont)
         Avanza(lado)
         cont = cont + 1
 
@@ -172,12 +172,14 @@ def test():
             functionsList.append(compYacc.toDo)
 
     for fuction in functionsList:
-        if fuction != None:
+        if fuction is not None and fuction != "Logic" and fuction != "":
             eval(str(fuction))
 
     functionsList = []
-    consoleText.delete("1.0", "end")
-    code_Frame.update()
+    consoleText.config(state=NORMAL)
+    consoleText.delete('1.0', END)
+    consoleText.insert(INSERT, "Compilado correctamente")
+    consoleText.config(state=DISABLED)
 
     # """
     # compYacc.parser.parse("Suma 5 3")
