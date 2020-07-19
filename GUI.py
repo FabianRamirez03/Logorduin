@@ -24,6 +24,9 @@ turtle_skin = "turtle.png"
 file_path = ""
 functionsList = []
 
+global running
+running = False
+
 compYacc.rumbo = 90
 
 
@@ -167,28 +170,28 @@ def clean_canvas():
 
 
 def test():
-    global functionsList
-    sys.exit()
-    # """
-    line_list = codeText.get('1.0', 'end').split('\n')
-    for line in line_list:
-        if line != "":
-            compYacc.parser.parse(line.replace("\n", ""))
-            functionsList.append(compYacc.toDo)
+    global functionsList, running
 
-    for fuction in functionsList:
-        if fuction is not None and fuction != "Logic" and fuction != "":
-            eval(str(fuction))
+    if not running:
+        running = True
+        line_list = codeText.get('1.0', 'end').split('\n')
+        for line in line_list:
+            if line != "":
+                compYacc.parser.parse(line.replace("\n", ""))
+                functionsList.append(compYacc.toDo)
 
-    functionsList = []
-    consoleText.config(state=NORMAL)
-    consoleText.delete('1.0', END)
-    consoleText.insert(INSERT, "Compilado correctamente")
-    consoleText.config(state=DISABLED)
+        for fuction in functionsList:
+            if fuction is not None and fuction != "Logic" and fuction != "":
+                eval(str(fuction))
 
-    # """
-    # compYacc.parser.parse("Suma 5 3")
-
+        functionsList = []
+        consoleText.config(state=NORMAL)
+        consoleText.delete('1.0', END)
+        consoleText.insert(INSERT, "Compilado correctamente")
+        consoleText.config(state=DISABLED)
+        running = False
+    else:
+        print("Running Procces")
 
 # Logica de las skins___________________________________
 def update_skin(name):
