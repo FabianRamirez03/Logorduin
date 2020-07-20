@@ -500,19 +500,20 @@ def p_Poncolorlapiz(p):
 # Funcion para poner la tortuga en el centro
 def p_Centro(p):
     '''function :  Centro'''
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
         Instrucciones[holi][1] += [Entrada]
     else:
         p[0] = (p[1], None)
+        toDo = "centro()"
 
 
 # Funcion para pausar la ejecucion
 def p_Espera(p):
     '''function :  Espera Space expression'''
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -520,8 +521,9 @@ def p_Espera(p):
     else:
         time.sleep(p[3][1] / 60)
         p[0] = (p[1], p[3][1])
+        segs = p[3][1]
         print("Wait de " + str(p[3][1] / 60) + " segundos")
-
+        toDo = "espera(seg = "+str(segs)+")"
 
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta(p):

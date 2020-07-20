@@ -1,3 +1,4 @@
+import time
 from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
@@ -212,6 +213,17 @@ def getColor(color):
 def PonColorLapiz(color):
     colorIngles = getColor(color)
     DrawController.color = colorIngles
+
+
+def centro():
+    coords = [xCanvasCenter, yCanvasCenter]
+    ponpos(coords)
+
+
+def espera(seg):
+    result = seg / 60
+    time.sleep(result)
+    print("listo")
 
 
 # Logica de las skins___________________________________
