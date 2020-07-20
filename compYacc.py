@@ -462,7 +462,7 @@ def p_SubeLapiz(p):
     """
     function : SubeLapiz
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -470,6 +470,7 @@ def p_SubeLapiz(p):
     else:
         p[0] = (p[1], None)
         print("Levanta el lapiz y detiene el dibujo")
+        toDo = "subeLapiz()"
 
 
 def p_Borrapantalla(p):
