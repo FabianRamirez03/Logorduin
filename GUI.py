@@ -20,6 +20,10 @@ yTurtle = yCanvas / 2
 skin_path = "Imagenes"
 turtle_skin = "turtle.png"
 
+colorsDict = [["blanco", "white"], ["azul", "blue"], ["marron", "brown"], ["cafe", "brown"],
+              ["gris", "grey"], ["amarillo", "yellow"], ["negro", "black"], ["rojo", "red"], ["verde", "green"],
+              ["cian", "cyan"]]
+
 # Constantes logicas
 file_path = ""
 functionsList = []
@@ -196,6 +200,19 @@ def test():
         running = False
     else:
         print("Running Procces")
+
+
+def getColor(color):
+    global colorsDict
+    for i in colorsDict:
+        if i[0] == color:
+            return i[1]
+
+
+def PonColorLapiz(color):
+    colorIngles = getColor(color)
+    DrawController.color = colorIngles
+
 
 # Logica de las skins___________________________________
 def update_skin(name):

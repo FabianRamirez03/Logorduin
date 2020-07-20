@@ -5,6 +5,7 @@ canDraw = False
 seeingTo = 90  # hacia donde está viendo la tortuga en grados
 xBound = 935
 yBound = 500
+color = "black"
 
 
 def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel):
@@ -43,7 +44,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
                 toMoveY = directionY
 
             if canDraw:  # Dibuja la linea en caso de que el lapiz este bajo
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction)
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, color=color)
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
@@ -69,7 +70,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
                 toMoveX = directionX * direction
 
             if canDraw:
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction)
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, color=color)
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura

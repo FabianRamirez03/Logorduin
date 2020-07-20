@@ -494,6 +494,7 @@ def p_Poncolorlapiz(p):
         Instrucciones[holi][1] += [Entrada]
     else:
         p[0] = (p[1], None)
+        print(str(p[0]))
 
 
 # Funcion para poner la tortuga en el centro
