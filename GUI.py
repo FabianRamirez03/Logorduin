@@ -107,6 +107,8 @@ def ponpos(coords):
     xTurtle = coords[0]
     yTurtle = coords[1]
     turtle_canvas.move(turtleImage, xTurtle, yTurtle)
+    xCoords.configure(text="X = " + str(xTurtle))
+    yCoords.configure(text="Y = " + str(yTurtle))
     turtle_canvas.update()
 
 
@@ -115,6 +117,7 @@ def ponx(xCoord):
     turtle_canvas.move(turtleImage, -xTurtle, 0)
     xTurtle = xCoord
     turtle_canvas.move(turtleImage, xTurtle, 0)
+    xCoords.configure(text="X = " + str(xTurtle))
     turtle_canvas.update()
 
 
@@ -123,6 +126,7 @@ def pony(yCoord):
     turtle_canvas.move(turtleImage, 0, -yTurtle)
     yTurtle = yCoord
     turtle_canvas.move(turtleImage, 0, yTurtle)
+    yCoords.configure(text="Y = " + str(yTurtle))
     turtle_canvas.update()
 
 
