@@ -19,6 +19,9 @@ yCanvasCenter = yCanvas / 2
 xTurtle = xCanvas / 2
 yTurtle = yCanvas / 2
 
+xEscondite = 1
+yEscondite = 1
+
 skin_path = "Imagenes"
 turtle_skin = "turtle.png"
 
@@ -30,8 +33,9 @@ colorsDict = [["blanco", "white"], ["azul", "blue"], ["marron", "brown"], ["cafe
 file_path = ""
 functionsList = []
 
-global running
+global running, showingTurtle
 running = False
+escondida = False
 
 compYacc.rumbo = 90
 
@@ -82,11 +86,13 @@ def new_file():
 
 
 def Retroceder(distance):
-    global xTurtle
-    global yTurtle
-    coords = retrocederAux(distance)
-    xTurtle = coords[0]
-    yTurtle = coords[1]
+    global xTurtle, yTurtle, escondida
+    if not escondida:
+        coords = retrocederAux(distance)
+        xTurtle = coords[0]
+        yTurtle = coords[1]
+    else:
+        pass
 
 
 def retrocederAux(distance):
@@ -95,11 +101,13 @@ def retrocederAux(distance):
 
 
 def Avanza(distance):
-    global xTurtle
-    global yTurtle
-    coords = avanzaAux(distance)
-    xTurtle = coords[0]
-    yTurtle = coords[1]
+    global xTurtle, yTurtle, escondida
+    if not escondida:
+        coords = avanzaAux(distance)
+        xTurtle = coords[0]
+        yTurtle = coords[1]
+    else:
+        pass
 
 
 def avanzaAux(distance):
@@ -110,55 +118,74 @@ def avanzaAux(distance):
 
 
 def Ponrumbo(grades):
-    global turtle
-    gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
-    path = skin_path + "/" + turtle_skin
-    if grades == 90:
-        turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
-        turtle_canvas.itemconfigure(turtleImage, image=turtle)
-        turtle_canvas.update()
-    elif gradesToRotate != 0:
-        turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
-        turtle_canvas.itemconfigure(turtleImage, image=turtle)
-        turtle_canvas.update()
+    global turtle, escondida
+    if not escondida:
+        gradesToRotate = DrawController.setSeeingTo(grades)  # Cuanto me debo mover para llegar al destino
+        path = skin_path + "/" + turtle_skin
+        if grades == 90:
+            turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
+            turtle_canvas.itemconfigure(turtleImage, image=turtle)
+            turtle_canvas.update()
+        elif gradesToRotate != 0:
+            turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
+            turtle_canvas.itemconfigure(turtleImage, image=turtle)
+            turtle_canvas.update()
+    else:
+        pass
 
 
 def ponpos(coords):
-    global xTurtle
-    global yTurtle
-    turtle_canvas.move(turtleImage, -xTurtle, -yTurtle)
-    xTurtle = coords[0]
-    yTurtle = coords[1]
-    turtle_canvas.move(turtleImage, xTurtle, yTurtle)
-    xCoords.configure(text="X = " + str(xTurtle))
-    yCoords.configure(text="Y = " + str(yTurtle))
-    turtle_canvas.update()
+    global xTurtle, yTurtle, escondida
+    if not escondida:
+        turtle_canvas.move(turtleImage, -xTurtle, -yTurtle)
+        xTurtle = coords[0]
+        yTurtle = coords[1]
+        turtle_canvas.move(turtleImage, xTurtle, yTurtle)
+        xCoords.configure(text="X = " + str(xTurtle))
+        yCoords.configure(text="Y = " + str(yTurtle))
+        turtle_canvas.update()
+    else:
+        pass
 
 
 def ponx(xCoord):
-    global xTurtle
-    turtle_canvas.move(turtleImage, -xTurtle, 0)
-    xTurtle = xCoord
-    turtle_canvas.move(turtleImage, xTurtle, 0)
-    xCoords.configure(text="X = " + str(xTurtle))
-    turtle_canvas.update()
+    global xTurtle, escondida
+    if not escondida:
+        turtle_canvas.move(turtleImage, -xTurtle, 0)
+        xTurtle = xCoord
+        turtle_canvas.move(turtleImage, xTurtle, 0)
+        xCoords.configure(text="X = " + str(xTurtle))
+        turtle_canvas.update()
+    else:
+        pass
 
 
 def pony(yCoord):
-    global yTurtle
-    turtle_canvas.move(turtleImage, 0, -yTurtle)
-    yTurtle = yCoord
-    turtle_canvas.move(turtleImage, 0, yTurtle)
-    yCoords.configure(text="Y = " + str(yTurtle))
-    turtle_canvas.update()
+    global escondida
+    if not escondida:
+        global yTurtle
+        turtle_canvas.move(turtleImage, 0, -yTurtle)
+        yTurtle = yCoord
+        turtle_canvas.move(turtleImage, 0, yTurtle)
+        yCoords.configure(text="Y = " + str(yTurtle))
+        turtle_canvas.update()
+    else:
+        pass
 
 
 def giraDerecha(grades):
-    girarAux(DrawController.girar(grades, -1))
+    global escondida
+    if not escondida:
+        girarAux(DrawController.girar(grades, -1))
+    else:
+        pass
 
 
 def giraIzquierda(grades):
-    girarAux(DrawController.girar(grades, 1))
+    if not escondida:
+        girarAux(DrawController.girar(grades, 1))
+    else:
+        pass
 
 
 def girarAux(gradesToRotate):
@@ -170,11 +197,19 @@ def girarAux(gradesToRotate):
 
 
 def BajaLapiz():
-    DrawController.setCanDraw(True)
+    global escondida
+    if not escondida:
+        DrawController.setCanDraw(True)
+    else:
+        pass
 
 
 def subeLapiz():
-    DrawController.setCanDraw(False)
+    global escondida
+    if not escondida:
+        DrawController.setCanDraw(False)
+    else:
+        pass
 
 
 def rumbo():
@@ -183,12 +218,34 @@ def rumbo():
 
 
 def cuadrado(lado):
-    grades = DrawController.seeingTo
-    cont = 0
-    while cont < 4:
-        Ponrumbo(grades + 90 * cont)
-        Avanza(lado)
-        cont = cont + 1
+    global escondida
+    if not escondida:
+        grades = DrawController.seeingTo
+        cont = 0
+        while cont < 4:
+            Ponrumbo(grades + 90 * cont)
+            Avanza(lado)
+            cont = cont + 1
+    else:
+        pass
+
+
+def ocultaTortuga():
+    global xEscondite, yEscondite, xTurtle, yTurtle, escondida
+    if not escondida:
+        xEscondite = xTurtle
+        yEscondite = yTurtle
+        ponpos([2000, 2000])
+        escondida = True
+    else:
+        pass
+
+
+def apareceTortuga():
+    global xEscondite, yEscondite, escondida
+    if escondida:
+        escondida = False
+        ponpos([xEscondite, yEscondite])
 
 
 def clean_canvas():

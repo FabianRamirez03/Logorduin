@@ -5,9 +5,10 @@ import random
 import math as m
 from compLexx import tokens
 import sys
-global Entrada,Funcion,Ejecutar, toDo, rumbo
+
+global Entrada, Funcion, Ejecutar, toDo, rumbo
 Funcion = False
-coloresPermitidos = ["blanco","azul","marron","cian","gris","amarillo","negro","rojo","verde"]
+coloresPermitidos = ["blanco", "azul", "marron", "cian", "gris", "amarillo", "negro", "rojo", "verde"]
 ListaFunciones = {}
 Instrucciones = {}
 variables = {}
@@ -46,7 +47,7 @@ def p_statement_assign(p):
             print("La variable '%s' no ha sido creada" % p[3])
         else:
             variables[p[3]] = p[7][1]
-            p[0] = (p[1], p[7][1], p[3],p[7])
+            p[0] = (p[1], p[7][1], p[3], p[7])
 
 
 def p_statement_create_empty(p):
@@ -93,8 +94,8 @@ def p_expression_name(p):
     expression : NAME
     '''
     try:
-        p[0] = ('exp',variables[p[1]])
-    except LookupError:# arreglaaaaaaaaaaaaaaar********************************************
+        p[0] = ('exp', variables[p[1]])
+    except LookupError:  # arreglaaaaaaaaaaaaaaar********************************************
         print("Variable no definida '%s'" % p[1])
         raise Exception()
 
@@ -103,7 +104,7 @@ def p_operaciones(p):
     '''
     operaciones : expression Space expression
     '''
-    p[0] = (p[1][1],p[3][1])
+    p[0] = (p[1][1], p[3][1])
 
 
 def p_Op_operaciones(p):
@@ -124,7 +125,8 @@ def p_funciones(p):
             ultimoElemento = elemento
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
-        p[0] = (p[1],p[4])
+        p[0] = (p[1], p[4])
+
 
 # funcion para sumar los digitos de una tupla
 def suma(tupla):
@@ -147,7 +149,7 @@ def p_suma(p):
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
         a = suma(p[3])
-        p[0] = (p[1],a,p[3])
+        p[0] = (p[1], a, p[3])
 
 
 def p_Incrementar(p):
@@ -162,9 +164,9 @@ def p_Incrementar(p):
     else:
         try:
             variables[p[3]] = variables[p[3]] + 1
-            p[0] = (p[1], p[3],variables[p[3]])
+            p[0] = (p[1], p[3], variables[p[3]])
         except LookupError:
-                print("La variable que desea incrementar no ha sido declarada")
+            print("La variable que desea incrementar no ha sido declarada")
 
 
 def p_Incrementar_Num(p):
@@ -177,8 +179,8 @@ def p_Incrementar_Num(p):
             ultimoElemento = elemento
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
-        variables[p[3]] = variables[p[3]] * p[5][1] #preguntar al profe
-        p[0] = (p[1], variables[p[3]], p[3],p[5][1])
+        variables[p[3]] = variables[p[3]] * p[5][1]  # preguntar al profe
+        p[0] = (p[1], variables[p[3]], p[3], p[5][1])
 
 
 # funcion de numero aleatorio
@@ -192,8 +194,8 @@ def p_Azar(p):
             ultimoElemento = elemento
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
-        num = random.randint(0,p[3][1])
-        p[0]= (p[1],num,p[3][1])
+        num = random.randint(0, p[3][1])
+        p[0] = (p[1], num, p[3][1])
 
 
 # funcion para cambiar de signo
@@ -208,7 +210,7 @@ def p_Menos(p):
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
         num = -p[3][1]
-        p[0]=(p[1],num,p[3][1])
+        p[0] = (p[1], num, p[3][1])
 
 
 # funcion para multiplicar los digitos de una tupla
@@ -231,7 +233,7 @@ def p_producto(p):
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
         print(p[3])
-        p[0]=(p[1],producto(p[3]),p[3][1])
+        p[0] = (p[1], producto(p[3]), p[3][1])
 
 
 # funcion para calcular potencia y gramatica
@@ -245,8 +247,8 @@ def p_Potencia(p):
             ultimoElemento = elemento
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
-        num = p[3][1]**p[5][1]
-        p[0]=(p[1],num,p[3][1],p[5][1])
+        num = p[3][1] ** p[5][1]
+        p[0] = (p[1], num, p[3][1], p[5][1])
 
 
 def p_Division(p):
@@ -265,7 +267,7 @@ def p_Division(p):
             print("Error, no se puede dividir entre cero")
         else:
             resultado = num / denom
-            p[0]=(p[1],resultado,num,denom)
+            p[0] = (p[1], resultado, num, denom)
 
 
 def p_Resto(p):
@@ -325,15 +327,16 @@ def p_Primero(p):
     Lista = makeList(p[4])
     p[0] = (p[1], Lista[0], Lista)
 
-#BORRAR ESTO ALGUN DIA************************************************************************************
+
+# BORRAR ESTO ALGUN DIA************************************************************************************
 def p_Prueba(p):
     '''
     function : Prueba
     '''
     for elemento in Instrucciones:
-        ultimoElemento=elemento
-    Instrucciones[ultimoElemento][1]+=['avanza']
-    Instrucciones[ultimoElemento][1]+=['casa']
+        ultimoElemento = elemento
+    Instrucciones[ultimoElemento][1] += ['avanza']
+    Instrucciones[ultimoElemento][1] += ['casa']
 
 
 def p_Avanza(p):
@@ -406,7 +409,7 @@ def p_OcultaTortuga(p):
     """
     function : OcultaTortuga
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             ultimoElemento = elemento
@@ -414,13 +417,14 @@ def p_OcultaTortuga(p):
     else:
         p[0] = (p[1], None)
         print("Se oculta la tortuga")
+        toDo = "ocultaTortuga()"
 
 
 def p_ApareceTortuga(p):
     """
     function : ApareceTortuga
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             ultimoElemento = elemento
@@ -428,6 +432,7 @@ def p_ApareceTortuga(p):
     else:
         p[0] = (p[1], None)
         print("Aparece la Tortuga")
+        toDo = "apareceTortuga()"
 
 
 def p_PonXY(p):
@@ -564,7 +569,7 @@ def p_Poncolorlapiz(p):
                 ultimoElemento = elemento
             Instrucciones[ultimoElemento][1] += [Entrada]
         else:
-            p[0] = (p[1],p[3])
+            p[0] = (p[1], p[3])
             strColor = p[3]
             toDo = "PonColorLapiz(color = '" + strColor + "')"
 
@@ -612,14 +617,15 @@ def p_Ejecuta_Funcion(p):
                 for instruccion in Instrucciones[funcion][1]:
                     parser.parse(instruccion)
 
+    # p[0] = (p[1],p[4])
 
-    #p[0] = (p[1],p[4])
 
 def reiniciar():
     global variables, Instrucciones, ListaFunciones
     variables = {}
     Instrucciones = {}
     ListaFunciones = {}
+
 
 # Funcion que devuelve True si la dos numeros son iguales
 def iguales(tupla):
@@ -781,7 +787,8 @@ def p_Variable(p):
     Variable : NAME Coma Space NAME
              | NAME Coma Space Variable
     '''
-    p[0] = (p[1],p[4])
+    p[0] = (p[1], p[4])
+
 
 def p_Fin(p):
     '''
@@ -790,6 +797,7 @@ def p_Fin(p):
     global Funcion
     Funcion = False
     print(Instrucciones)
+
 
 def p_ParaSin(p):
     '''
@@ -802,10 +810,11 @@ def p_ParaSin(p):
     else:
         Funcion = True
         if p[3] not in Instrucciones:
-            Instrucciones[p[3]] = [[None],[]]
+            Instrucciones[p[3]] = [[None], []]
             print(Instrucciones)
         else:
             print("La funcion con nombre '%s' ya fue creada" % p[3])
+
 
 def p_ParaUna(p):
     '''
@@ -824,7 +833,8 @@ def p_ParaUna(p):
         else:
             print("La funcion con nombre '%s' ya fue creada" % p[3])
 
-#Falta terminar esto******************************************************************
+
+# Falta terminar esto******************************************************************
 def p_ParaVarias(p):
     '''
     function : Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
