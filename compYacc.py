@@ -12,11 +12,11 @@ ListaFunciones = {}
 Instrucciones={}
 variables = {}
 
-# Gramatica de asignacion de variables
+#Gramatica de asignacion de variables
 def p_statement_create(p):
-    '''
+    """
     statement : Var Space NAME Space EQUALS Space expression
-    '''
+    """
 
     if p[3] not in variables:
         p[0] =(p[1], p[7][1], p[3] )
@@ -26,6 +26,23 @@ def p_statement_create(p):
     else:
         print("La variable '%s' ya fue creada" % p[3])
 
+#Gramatica de variable vacia
+def p_statement_create_empty(p):
+    """
+    statement : Var Space NAME
+    """
+
+    global Funcion, Entrada
+    if p[3] not in variables:
+        p[0] = (p[1], 0, p[3])
+        variables[p[3]] = 0
+        print(variables)
+    else:
+        print("La variable '%s' ya fue creada" % p[3])
+
+
+
+#Inicializacion de una variable
 def p_statement_assign(p):
     """
     function : Inic Space NAME Space EQUALS Space expression
@@ -44,20 +61,11 @@ def p_statement_assign(p):
             p[0] = (p[1], p[7][1], p[3],p[7])
 
 
-def p_statement_create_empty(p):
-    '''
-    statement : Var Space NAME
-    '''
-    global Funcion, Entrada
-    p[0] = (p[1], 0, p[3])
-    variables[p[3]] = 0
-    print(variables)
-
 # Gramatica de una expresion
 def p_statement_expr(p):
-    '''
+    """
     statement : expression
-    '''
+    """
     p[0] = p[1]
     if p[0] == None:
         return
@@ -65,22 +73,22 @@ def p_statement_expr(p):
         print(p[1][1])
 
 def p_expression_Number(p):
-    '''
+    """
     expression : INT
                | FLOAT
-    '''
+    """
     p[0] = ('exp',p[1])
 
 def p_expression_Function(p):
-    '''
+    """
     expression : function
-    '''
+    """
     p[0] = p[1]
 
 def p_expression_name(p):
-    '''
+    """
     expression : NAME
-    '''
+    """
     try:
         p[0] = ('exp',variables[p[1]])
     except LookupError:# arreglaaaaaaaaaaaaaaar********************************************
@@ -88,22 +96,22 @@ def p_expression_name(p):
         raise Exception()
 
 def p_operaciones(p):
-    '''
+    """
     operaciones : expression Space expression
-    '''
+    """
     p[0] = (p[1][1],p[3][1])
 
 def p_Op_operaciones(p):
-    '''
-        operaciones : expression Space operaciones
-    '''
+    """
+    operaciones : expression Space operaciones
+    """
     p[0] = (p[1][1], p[3])
 
 def p_funciones(p):
-    '''
+    """
     funciones : statement Coma Space statement
               | statement Coma Space funciones
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -122,9 +130,9 @@ def suma(tupla):
 
 #(Nombre, Resultado, tupla de valores)
 def p_suma(p):
-    '''
+    """
     function : Suma Space operaciones
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -165,9 +173,9 @@ def p_Incrementar_Num(p):
 
 # funcion de numero aleatorio
 def p_Azar(p):
-    '''
+    """
     function : Azar Space expression
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -179,9 +187,9 @@ def p_Azar(p):
 
 # funcion para cambiar de signo
 def p_Menos(p):
-    '''
+    """
     function :  Menos Space expression
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -200,9 +208,9 @@ def producto(tupla):
     return num * tupla[0] * tupla[1]
 
 def p_producto(p):
-    '''
+    """
     function : Producto Space operaciones
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -214,9 +222,9 @@ def p_producto(p):
 
 # funcion para calcular potencia y gramatica
 def p_Potencia(p):
-    '''
+    """
     function :  Potencia Space expression Space expression
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -227,9 +235,9 @@ def p_Potencia(p):
         p[0]=(p[1],num,p[3][1],p[5][1])
 
 def p_Division(p):
-    '''
+    """
     function :  Division Space expression Space expression
-    '''
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -245,59 +253,74 @@ def p_Division(p):
             p[0]=(p[1],resultado,num,denom)
 
 def p_Resto(p):
-    '''function :  Resto Space expression Space expression'''
+    """
+    function :  Resto Space expression Space expression
+    """
     num = p[3][1]%p[5][1]
     p[0]=(p[1],num,p[3][1],p[5][1])
 
 def p_RC(p):
-    '''function :  RC Space expression'''
+    """
+    function :  RC Space expression
+    """
     num = m.sqrt(p[3][1])
     p[0]=(p[1],num,p[3][1])
 
 def p_Sen(p):
-    '''function :  Sen Space expression'''
+    """
+    function :  Sen Space expression
+    """
     num = m.sin(m.radians(p[3][1]))
     p[0]=(p[1],num,p[3][1])
 
 def makeList(tupla):
     lista=[]
-    print(tupla)
     while(type(tupla[1]) == tuple):
         lista+=[tupla[0]]
         tupla=tupla[1]
     return lista+[tupla[0]]+[tupla[1]]
 
 def p_Elegir(p):
-    '''function : Elegir Space LeftSquareBracket operaciones RightSquareBracket'''
+    """
+    function : Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    """
     Lista= makeList(p[4])
     num= random.randint(0,len(Lista)-1)
     p[0]=(p[1],Lista[num],Lista)
 
 def p_Cuenta(p):
-    '''function : Cuenta Space LeftSquareBracket operaciones RightSquareBracket'''
+    """
+    function : Cuenta Space LeftSquareBracket operaciones RightSquareBracket
+    """
     Lista= makeList(p[4])
     p[0]=(p[1],len(Lista),Lista)
 
 def p_Ultimo(p):
-    '''function : Ultimo Space LeftSquareBracket operaciones RightSquareBracket'''
+    """
+    function : Ultimo Space LeftSquareBracket operaciones RightSquareBracket
+    """
     Lista= makeList(p[4])
     p[0]=(p[1],Lista[len(Lista)-1],Lista)
 
 def p_Elemento(p):
-    '''function : Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket'''
+    """
+    function : Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
+    """
     Lista= makeList(p[6])
     p[0]=(p[1],Lista[p[3][1]-1],Lista,p[3]) #(nombre,resultado,lista,indice)
 
 def p_Primero(p):
-    '''function : Pri Space LeftSquareBracket operaciones RightSquareBracket'''
+    """
+    function : Pri Space LeftSquareBracket operaciones RightSquareBracket
+    """
     Lista= makeList(p[4])
     p[0]=(p[1],Lista[0],Lista)
 
 #BORRAR ESTO ALGUN DIA************************************************************************************
 def p_Prueba(p):
-    '''
+    """
     function : Prueba
-    '''
+    """
     for elemento in Instrucciones:
         ultimoElemento=elemento
     Instrucciones[ultimoElemento][1]+=['avanza']
@@ -486,7 +509,9 @@ def p_Borrapantalla(p):
 
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
-    '''function :  PonColorLapiz Space NAME'''
+    """
+    function :  PonColorLapiz Space NAME
+    """
     global Funcion, Entrada
     color = p[3]
     if color not in coloresPermitidos:
@@ -501,7 +526,9 @@ def p_Poncolorlapiz(p):
 
 # Funcion para poner la tortuga en el centro
 def p_Centro(p):
-    '''function :  Centro'''
+    """
+    function :  Centro
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -512,7 +539,9 @@ def p_Centro(p):
 
 # Funcion para pausar la ejecucion
 def p_Espera(p):
-    '''function :  Espera Space expression'''
+    """
+    function :  Espera Space expression
+    """
     global Funcion, Entrada
     if (Funcion):
         for elemento in Instrucciones:
@@ -523,24 +552,69 @@ def p_Espera(p):
         p[0] = (p[1],p[3][1])
         print("Wait de " + str(p[3][1]/60) + " segundos")
 
+def Var_Array(tupla):
+    listaFinal = []
+    for x in tupla:
+        if isinstance(x,tuple):
+            listaFinal.append(x[1])
+        else:
+            listaFinal.append(tupla[-1])
+            break
+    return listaFinal
 
-# Funcion que ejecuta las Ordenes
-def p_Ejecuta_Funcion(p):
-    '''
-    function :  Ejecuta Space LeftSquareBracket NAME RightSquareBracket
-    '''
-    nombre = p[4]
+def p_Ejecuta_Parametro(p):
+    """
+    function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
+    """
+    parametros = Var_Array(makeList(p[6]))
+    nombre = p[3]
     if nombre not in Instrucciones:
         print("No existe la funcion de nombre " + nombre)
     else:
-        for funcion in Instrucciones:
-            if funcion == nombre:
-                for instruccion in Instrucciones[funcion][1]:
+        for elemento in Instrucciones:
+            if elemento == nombre:
+                if len(parametros) != len(Instrucciones[elemento][0]):
+                    print("La cantidad de parametros ingresados no coincide con la cantidad de variables de la funcion")
+                else:
+                    Instrucciones[elemento][2] = parametros
+            listaFinal =[]
+            for i in range(0,len(Instrucciones[elemento][1])):
+                temp = Instrucciones[elemento][1][i].split(" ")
+                listaValores = []
+                func = ""
+
+                for j in temp:
+                    if j in Instrucciones[elemento][0]:
+                        pos = Instrucciones[elemento][0].index(j)
+                        valor = Instrucciones[elemento][2][pos]
+                        listaValores.append(str(valor))
+                    else:
+                        listaValores.append(j)
+                for g in listaValores:
+                    if listaValores.index(g) == 0:
+                        func += g
+                    else:
+                        func += " " + g
+                listaFinal.append(func)
+        for inst in listaFinal:
+            parser.parse(inst)
+
+# Funcion que ejecuta las Ordenes
+def p_Ejecuta_Funcion(p):
+    """
+    function :  Ejecuta Space NAME
+    """
+    nombre = p[3]
+    if nombre not in Instrucciones:
+        print("No existe la funcion de nombre " + nombre)
+    else:
+        for elemento in Instrucciones:
+            if elemento == nombre:
+                for instruccion in Instrucciones[elemento][1]:
                     parser.parse(instruccion)
 
 
-    #p[0] = (p[1],p[4])
-
+#Reinicia el compilador
 def reiniciar():
     global variables, Instrucciones, ListaFunciones
     variables = {}
@@ -555,9 +629,9 @@ def iguales(tupla):
         return "FALSO"
 
 def p_iguales(p):
-    '''
+    """
     function : Iguales Space operaciones
-    '''
+    """
     a= iguales(p[3])
     p[0] = (p[1],a,p[3])
 
@@ -569,9 +643,9 @@ def y(tupla):
         return "FALSO"
 
 def p_Y(p):
-    '''
+    """
     function : Y Space function function
-    '''
+    """
     res= y((p[3][1],p[4][1]))
     p[0] = (p[1],res,p[3],p[4])
     print(p[0])
@@ -583,9 +657,9 @@ def O(tupla):
     else:
         return "FALSO"
 def p_O(p):
-    '''
+    """
     function : O Space function function
-    '''
+    """
     a= O((p[3][1],p[4][1]))
     p[0] = (p[1], a, p[3], p[4])
 
@@ -597,9 +671,9 @@ def MayorQue(num1,num2):
         return "FALSO"
 
 def p_MayorQue(p):
-    '''
+    """
     function : MayorQue Space expression PuntoComa Space expression
-    '''
+    """
     a= MayorQue(p[3][1],p[6][1])
     p[0] = (p[1], a, p[3])
 
@@ -611,22 +685,24 @@ def MenorQue(num1,num2):
         return "FALSO"
 
 def p_MenorQue(p):
-    '''
+    """
     function : MenorQue Space expression PuntoComa Space expression
-    '''
+    """
     a= MenorQue(p[3][1],p[6][1])
     p[0] = (p[1], a, p[3])
 
 # Funcion que redondea un numero
 def p_Redondea(p):
-    '''
-        function : Redondea Space expression
-    '''
+    """
+    function : Redondea Space expression
+    """
     p[0] = (p[1], round(p[3][1]), p[3])
 
 # Funcion que calcula el coseno de un numero
 def p_Cos(p):
-    '''function :  Cos Space expression'''
+    """
+    function :  Cos Space expression
+    """
     num = m.cos(m.radians(p[3][1]))
     p[0] = (p[1], num, p[3][1])
 
@@ -639,9 +715,9 @@ def restar(tupla):
     return tupla[0] - tupla[1]
 
 def p_restar(p):
-    '''
+    """
     function : Diferencia Space operaciones
-    '''
+    """
     a = restar(p[3])
     p[0] = (p[1], a, p[3])
 
@@ -665,9 +741,10 @@ def repite(tupla):
 
 # Ejecuta si se cumple la condicion
 def p_Si(p):
-    '''function :  Si Space  expression LeftSquareBracket function RightSquareBracket
-                | Si Space expression LeftSquareBracket funciones RightSquareBracket
-    '''
+    """
+    function : Si Space  expression LeftSquareBracket function RightSquareBracket
+             | Si Space expression LeftSquareBracket funciones RightSquareBracket
+    """
     p[0] = (p[1],p[3],p[5])
     if(p[0][1][1] == 'CIERTO'):
         print("EJECUTA")
@@ -678,32 +755,40 @@ def p_Si(p):
 
 # Funcion que repite ordenes N cantidad de veces
 def p_Repite(p):
-    '''
+    """
     function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
              | Repite Space expression LeftSquareBracket  statement RightSquareBracket
-    '''
+    """
     p[0] = (p[3][1],p[5])
     repite(p[0])
-
+#Acepta nombres de variables
 def p_Variable(p):
-    '''
+    """
     Variable : NAME Coma Space NAME
              | NAME Coma Space Variable
-    '''
+    """
+    p[0] = (p[1],p[4])
+
+#Acepta nombres y funciones para variables
+def p_Variables(p):
+    """
+    Variables : expression Coma Space expression
+              | expression Coma Space Variables
+    """
     p[0] = (p[1],p[4])
 
 def p_Fin(p):
-    '''
+    """
     function : Fin
-    '''
+    """
     global Funcion
     Funcion = False
     print(Instrucciones)
 
 def p_ParaSin(p):
-    '''
+    """
     function : Para Space NAME Space LeftSquareBracket RightSquareBracket
-    '''
+    """
     global Funcion
 
     if Funcion == True:
@@ -717,35 +802,39 @@ def p_ParaSin(p):
             print("La funcion con nombre '%s' ya fue creada" % p[3])
 
 def p_ParaUna(p):
-    '''
+    """
     function : Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    '''
+    """
     global Funcion
     variable = "Var " + p[6]
-    parser.parse(variable)
     if Funcion == True:
         print("Error no puede meter un Para dentro de otro")
     else:
         Funcion = True
+        parser.parse(variable)
         if p[3] not in Instrucciones:
-            Instrucciones[p[3]] = [p[6], []]
+            Instrucciones[p[3]] = [p[6], [], []]
             print(Instrucciones)
         else:
             print("La funcion con nombre '%s' ya fue creada" % p[3])
 
-#Falta terminar esto******************************************************************
 def p_ParaVarias(p):
-    '''
+    """
     function : Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
-    '''
+    """
     global Funcion
+    variable = makeList(p[6])
     if Funcion == True:
         print("Error no puede meter un Para dentro de otro")
     else:
         Funcion = True
+
+        for var in variable:
+            parser.parse("Var " + str(var))
+
         if p[3] not in Instrucciones:
             var = makeList(p[6])
-            Instrucciones[p[3]] = [var, []]
+            Instrucciones[p[3]] = [var, [], []]
             print(Instrucciones)
         else:
             print("La funcion con nombre '%s' ya fue creada" % p[3])
