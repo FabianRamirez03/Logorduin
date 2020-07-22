@@ -44,7 +44,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
                 toMoveY = directionY
 
             if canDraw:  # Dibuja la linea en caso de que el lapiz este bajo
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, color=color)
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, fill=color)
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura

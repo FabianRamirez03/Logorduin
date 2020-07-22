@@ -178,7 +178,7 @@ def clean_canvas():
         turtle_canvas.delete(i)
 
 
-def test():
+def Compila():
     global functionsList, running
 
     if not running:
@@ -189,11 +189,6 @@ def test():
                 compYacc.parser.parse(line.replace("\n", ""))
                 functionsList.append(compYacc.toDo)
 
-        for fuction in functionsList:
-            if fuction is not None and fuction != "Logic" and fuction != "":
-                eval(str(fuction))
-
-        functionsList = []
         consoleText.config(state=NORMAL)
         consoleText.delete('1.0', END)
         consoleText.insert(INSERT, "Compilado correctamente")
@@ -201,6 +196,15 @@ def test():
         running = False
     else:
         print("Running Procces")
+
+
+def Ejecuta():
+    global functionsList, running
+    functionsList = []
+    Compila()
+    for fuction in functionsList:
+        if fuction is not None and fuction != "Logic" and fuction != "":
+            eval(str(fuction))
 
 
 def getColor(color):
@@ -330,9 +334,9 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar")
+compileButton = Button(buttons_Frame, text="Compilar", command=Compila)
 compileButton.place(height=30, width=60, x=0, y=30)
-executeButton = Button(buttons_Frame, text="Ejecutar", command=test)
+executeButton = Button(buttons_Frame, text="Ejecutar", command=Ejecuta)
 executeButton.place(height=30, width=60, x=0, y=75)
 
 # Labels de las coordenadas
