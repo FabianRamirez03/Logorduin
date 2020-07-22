@@ -72,6 +72,7 @@ def p_statement_expr(p):
     else:
         print(p[1][1])
 
+#Expression acepta numeros
 def p_expression_Number(p):
     """
     expression : INT
@@ -79,12 +80,14 @@ def p_expression_Number(p):
     """
     p[0] = ('exp',p[1])
 
+#Expression acepta funciones
 def p_expression_Function(p):
     """
     expression : function
     """
     p[0] = p[1]
 
+#Expression puede ser un nombre
 def p_expression_name(p):
     """
     expression : NAME
@@ -95,6 +98,7 @@ def p_expression_name(p):
         print("Variable no definida '%s'" % p[1])
         raise Exception()
 
+#Sintaxis de operaciones
 def p_operaciones(p):
     """
     operaciones : expression Space expression
@@ -142,6 +146,7 @@ def p_suma(p):
         a = suma(p[3])
         p[0] = (p[1],a,p[3])
 
+#Funcion que incrementa en 1 el valor de una variable
 def p_Incrementar(p):
     """
     function : Inc Space NAME
@@ -158,6 +163,7 @@ def p_Incrementar(p):
         except LookupError:
                 print("La variable que desea incrementar no ha sido declarada")
 
+#Funcion que incrementa el valor de una variable N veces
 def p_Incrementar_Num(p):
     """
     function : Inc Space NAME Space expression
@@ -207,6 +213,7 @@ def producto(tupla):
         tupla = tupla[1]
     return num * tupla[0] * tupla[1]
 
+#Gramatica de la multiplicacion
 def p_producto(p):
     """
     function : Producto Space operaciones
@@ -316,15 +323,6 @@ def p_Primero(p):
     Lista= makeList(p[4])
     p[0]=(p[1],Lista[0],Lista)
 
-#BORRAR ESTO ALGUN DIA************************************************************************************
-def p_Prueba(p):
-    """
-    function : Prueba
-    """
-    for elemento in Instrucciones:
-        ultimoElemento=elemento
-    Instrucciones[ultimoElemento][1]+=['avanza']
-    Instrucciones[ultimoElemento][1]+=['casa']
 
 def p_Avanza(p):
     """
@@ -706,7 +704,7 @@ def p_Cos(p):
     num = m.cos(m.radians(p[3][1]))
     p[0] = (p[1], num, p[3][1])
 
-# Funcion para restar los digitos de una tupla
+#Funcion para restar los digitos de una tupla
 def restar(tupla):
     resta=0
     while (type(tupla[1]) == tuple):
@@ -752,7 +750,6 @@ def p_Si(p):
     else:
         print("NO EJECUTA")
 
-
 # Funcion que repite ordenes N cantidad de veces
 def p_Repite(p):
     """
@@ -761,6 +758,7 @@ def p_Repite(p):
     """
     p[0] = (p[3][1],p[5])
     repite(p[0])
+
 #Acepta nombres de variables
 def p_Variable(p):
     """
@@ -777,6 +775,7 @@ def p_Variables(p):
     """
     p[0] = (p[1],p[4])
 
+#Detecta el fin de una funcion
 def p_Fin(p):
     """
     function : Fin
@@ -785,6 +784,7 @@ def p_Fin(p):
     Funcion = False
     print(Instrucciones)
 
+#Gramatica para creacion de una funcion sin variables
 def p_ParaSin(p):
     """
     function : Para Space NAME Space LeftSquareBracket RightSquareBracket
@@ -801,6 +801,7 @@ def p_ParaSin(p):
         else:
             print("La funcion con nombre '%s' ya fue creada" % p[3])
 
+#Gramatica para la creacion de una funcion con una variable
 def p_ParaUna(p):
     """
     function : Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -818,6 +819,7 @@ def p_ParaUna(p):
         else:
             print("La funcion con nombre '%s' ya fue creada" % p[3])
 
+#Gramatica para la creacion de una funcion con variables
 def p_ParaVarias(p):
     """
     function : Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
@@ -863,5 +865,6 @@ while True:
         parser.parse(s)
     except:
         print("ERROR DESCONOCIDO")
+
 #Arreglar el manejo de errores
-#Todo_lo que tenga parser.parse hay que agregar try except
+#Hacer la documentacion
