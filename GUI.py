@@ -205,9 +205,12 @@ def test():
 
 def getColor(color):
     global colorsDict
+    result = ""
     for i in colorsDict:
         if i[0] == color:
-            return i[1]
+            result = i[1]
+            break
+    return result
 
 
 def PonColorLapiz(color):

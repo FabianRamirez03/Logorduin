@@ -377,7 +377,7 @@ def p_PonXY(p):
         p[0] = (p[1], a, p[4][1], p[6][1])
         posx = p[4][1]
         posy = p[6][1]
-        toDo = "ponpos( coords = ["+str(posx)+","+str(posy)+"] )"
+        toDo = "ponpos( coords = [" + str(posx) + "," + str(posy) + "] )"
         print(str(posx) + " " + str(posy))
 
 
@@ -487,7 +487,7 @@ def p_Borrapantalla(p):
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     '''function :  PonColorLapiz'''
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             holi = elemento
@@ -495,6 +495,7 @@ def p_Poncolorlapiz(p):
     else:
         p[0] = (p[1], None)
         print(str(p[0]))
+        color = str(p[0])
 
 
 # Funcion para poner la tortuga en el centro
@@ -523,7 +524,8 @@ def p_Espera(p):
         p[0] = (p[1], p[3][1])
         segs = p[3][1]
         print("Wait de " + str(p[3][1] / 60) + " segundos")
-        toDo = "espera(seg = "+str(segs)+")"
+        toDo = "espera(seg = " + str(segs) + ")"
+
 
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta(p):
