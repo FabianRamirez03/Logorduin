@@ -1,12 +1,13 @@
 import time
 from tkinter import *
 from tkinter import messagebox
-from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import askopenfilename, asksaveasfile
 import DrawController
 import compYacc
 import sys
 from PIL import Image
 from PIL import ImageTk
+import asyncio
 
 # Constantes Graficas
 xCanvas = 935
@@ -60,7 +61,24 @@ def save_file():
         file_to_write.write(codeText.get('1.0', END))
         file_to_write.close()
     else:
-        messagebox.showerror(message="No hay archivo para guardar", title="Error")
+        saveAs_file()
+
+
+def saveAs_file():
+    file = asksaveasfile(mode="w", defaultextension=".txt")
+    global file_path
+    file_path = file.name
+    if file is None:  # asksaveasfile return `None` if dialog closed with "cancel".
+        return
+    text2save = str(codeText.get('1.0', END))  # starts from `1.0`, not `0.0`
+    file.write(text2save)
+    file.close()  # `()` was missing.
+
+
+def new_file():
+    global file_path
+    file_path = ""
+    codeText.delete('1.0', END)
 
 
 def Retroceder(distance):
@@ -269,9 +287,10 @@ root.config(menu=menu)
 
 subMenu = Menu(menu)
 menu.add_cascade(label="Archivo", menu=subMenu)
-subMenu.add_command(label="Nuevo Archivo", command=doNothing)
+subMenu.add_command(label="Nuevo Archivo", command=new_file)
 subMenu.add_command(label="Abrir Archivo", command=open_file)
 subMenu.add_command(label="Guardar", command=save_file)
+subMenu.add_command(label="Guardar como", command=saveAs_file)
 
 canvasMenu = Menu(menu)
 menu.add_cascade(label="Canvas", menu=canvasMenu)
@@ -356,6 +375,21 @@ consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
 consoleText.pack(fill="y")
+
+
+# Pop up Window para obtener el nombre del archivo
+def nameFileWindow():
+    def caca():
+        global file_path
+        file_path = "caca.txt"
+        window.destroy()
+
+    window = Toplevel()
+    window.wm_title("Window")
+    l = Label(window, text="Input")
+    l.grid(row=0, column=0)
+    b = Button(window, text="Okay", command=caca)
+    b.grid(row=1, column=0)
 
 
 # Safe closure
