@@ -70,7 +70,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
                 toMoveX = directionX * direction
 
             if canDraw:
-                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, color=color)
+                canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, fill=color)
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura

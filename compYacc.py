@@ -5,10 +5,7 @@ import random
 import math as m
 from compLexx import tokens
 import sys
-global Entrada,Funcion,Ejecutar
-
-global Entrada, toDo, rumbo
-global Funcion
+global Entrada,Funcion,Ejecutar, toDo, rumbo
 Funcion = False
 coloresPermitidos = ["blanco","azul","marron","cian","gris","amarillo","negro","rojo","verde"]
 ListaFunciones = {}
@@ -557,7 +554,7 @@ def p_Borrapantalla(p):
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     '''function :  PonColorLapiz Space NAME'''
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     color = p[3]
     if color not in coloresPermitidos:
         print("Error, el color " + color + " no es un color permitido")
@@ -568,6 +565,8 @@ def p_Poncolorlapiz(p):
             Instrucciones[ultimoElemento][1] += [Entrada]
         else:
             p[0] = (p[1],p[3])
+            strColor = p[3]
+            toDo = "PonColorLapiz(color = '" + strColor + "')"
 
 
 # Funcion para poner la tortuga en el centro
@@ -870,4 +869,4 @@ while True:
     except:
         print("ERROR DESCONOCIDO")
 #Arreglar el manejo de errores
-#Todo_lo que tenga parser.parse hay que agregar try except
+#Todo_lo que tenga parser.parse hay que agregar try except"""
