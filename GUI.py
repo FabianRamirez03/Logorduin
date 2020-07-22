@@ -249,8 +249,9 @@ def apareceTortuga():
 
 
 def clean_canvas():
-    for i in DrawController.figuresLists:
-        turtle_canvas.delete(i)
+    global turtle_canvas, turtleImage
+    turtle_canvas.delete("all")
+    turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 
 def Compila():

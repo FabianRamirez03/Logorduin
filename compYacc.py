@@ -142,7 +142,7 @@ def p_suma(p):
     '''
     function : Suma Space operaciones
     '''
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             ultimoElemento = elemento
@@ -150,13 +150,14 @@ def p_suma(p):
     else:
         a = suma(p[3])
         p[0] = (p[1], a, p[3])
+        toDo = "Logic"
 
 
 def p_Incrementar(p):
     """
     function : Inc Space NAME
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             ultimoElemento = elemento
@@ -165,6 +166,7 @@ def p_Incrementar(p):
         try:
             variables[p[3]] = variables[p[3]] + 1
             p[0] = (p[1], p[3], variables[p[3]])
+            toDo = "Logic"
         except LookupError:
             print("La variable que desea incrementar no ha sido declarada")
 
@@ -173,7 +175,7 @@ def p_Incrementar_Num(p):
     """
     function : Inc Space NAME Space expression
     """
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             ultimoElemento = elemento
@@ -181,6 +183,7 @@ def p_Incrementar_Num(p):
     else:
         variables[p[3]] = variables[p[3]] * p[5][1]  # preguntar al profe
         p[0] = (p[1], variables[p[3]], p[3], p[5][1])
+        toDo = "Logic"
 
 
 # funcion de numero aleatorio
@@ -547,13 +550,14 @@ def p_SubeLapiz(p):
 
 def p_Borrapantalla(p):
     """function : Borrapantalla"""
-    global Funcion, Entrada
+    global Funcion, Entrada, toDo
     if (Funcion):
         for elemento in Instrucciones:
             ultimoElemento = elemento
         Instrucciones[ultimoElemento][1] += [Entrada]
     else:
         p[0] = (p[1], None)
+        toDo = "clean_canvas()"
 
 
 # Funcion para cambiar el color del lapiz
