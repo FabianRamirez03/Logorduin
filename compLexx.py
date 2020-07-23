@@ -60,7 +60,7 @@ tokens = [
     'PuntoComa',
     'Para',
     'Fin',
-    'Prueba'
+    'Comentario'
 ]
 #indica con que simbolo se representan los tokens
 t_EQUALS = r'\='
@@ -70,9 +70,10 @@ t_Coma = r','
 t_PuntoComa = r';'
 
 #Comentarios
-def t_Comment(t):
-    r'\//[a-zA-Z_0-9]*'
-    pass
+def t_Comentario(t):
+    r'\//[ \t\na-zA-Z_0-9&@-]*'
+    t.value ='Comentario'
+    return t
 
 #espacio
 def t_Space(t):
@@ -100,11 +101,6 @@ def t_NAME(t):
 def t_var(t):
     r'Var'
     t.type = 'Var'
-    return t
-
-def t_Prueba(t):
-    r'Prueba'
-    t.type = 'Prueba'
     return t
 
 def t_Para(t):

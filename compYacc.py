@@ -31,7 +31,6 @@ def p_statement_create_empty(p):
     """
     statement : Var Space NAME
     """
-
     global Funcion, Entrada
     if p[3] not in variables:
         p[0] = (p[1], 0, p[3])
@@ -40,7 +39,12 @@ def p_statement_create_empty(p):
     else:
         print("La variable '%s' ya fue creada" % p[3])
 
-
+def p_comment(p):
+    """
+    statement : Comentario
+    """
+    p[0] = p[1]
+    print("Es un comentario: '%s'" % p[1])
 
 #Inicializacion de una variable
 def p_statement_assign(p):
@@ -692,6 +696,12 @@ def p_Ejecuta_Funcion(p):
                 for instruccion in Instrucciones[elemento][1]:
                     parser.parse(instruccion)
 
+# def p_Ejecuta_Ordenes(p):
+#     """
+#     function : Ejecuta Space LeftSquareBracket Variables RightSquareBracket
+#     """
+#     p[0] = p[4]
+#     print("asd  " + str(p[0]))
 
 #Reinicia el compilador
 def reiniciar():
