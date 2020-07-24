@@ -782,7 +782,6 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-"""
 while True:
     global Entrada
     try:
@@ -792,14 +791,12 @@ while True:
         break
     if not s:
         continue
-    parser.parse(s)
-    # try:
-    #     parser.parse(s)
-    # except Exception as e:
-    #     print(e)
+    try:
+        parser.parse(s)
+    except Exception as e:
+        print(e)
 
 #Arreglar el manejo de errores
 #Hacer la documentacion
 
 #Errores del dia
-#Producto 2 Suma 1 2 en Para
