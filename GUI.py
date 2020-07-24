@@ -268,7 +268,8 @@ def Compila():
             if line != "":
                 try:
                     compYacc.parser.parse(line.replace("\n", ""))
-                    functionsList.append(compYacc.toDo)
+                    if not compYacc.Funcion:
+                        functionsList.append(compYacc.toDo)
                 except:
                     print(compYacc.Error)
                     break
