@@ -74,7 +74,13 @@ def p_statement_expr(p):
     if p[0] == None:
         return
     else:
-        print(p[1][1])
+        global Funcion, Entrada
+        if (Funcion):
+                for elemento in Instrucciones:
+                    ultimoElemento = elemento
+                Instrucciones[ultimoElemento][1] += [Entrada]
+        else:
+         print(p[1][1])
 
 #Expression acepta numeros
 def p_expression_Number(p):
@@ -120,13 +126,7 @@ def p_funciones(p):
     funciones : statement Coma Space statement
               | statement Coma Space funciones
     """
-    global Funcion, Entrada
-    if (Funcion):
-        for elemento in Instrucciones:
-            ultimoElemento = elemento
-        Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],p[4])
+    p[0] = (p[1],p[4])
 
 # funcion para sumar los digitos de una tupla
 def suma(tupla):
@@ -141,78 +141,45 @@ def p_suma(p):
     """
     function : Suma Space operaciones
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a = suma(p[3])
-        p[0] = (p[1],a,p[3])
+    a = suma(p[3])
+    p[0] = (p[1],a,p[3])
+    print(p[0])
 
 #Funcion que incrementa en 1 el valor de una variable
 def p_Incrementar(p):
     """
     function : Inc Space NAME
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        try:
-            variables[p[3]] = variables[p[3]] + 1
-            p[0] = (p[1], p[3],variables[p[3]])
-        except LookupError:
-                print("La variable que desea incrementar no ha sido declarada")
+    try:
+        variables[p[3]] = variables[p[3]] + 1
+        p[0] = (p[1], p[3],variables[p[3]])
+    except LookupError:
+            print("La variable que desea incrementar no ha sido declarada")
 
 #Funcion que incrementa el valor de una variable N veces
 def p_Incrementar_Num(p):
     """
     function : Inc Space NAME Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        variables[p[3]] = variables[p[3]] * p[5][1] #preguntar al profe
-        p[0] = (p[1], variables[p[3]], p[3],p[5][1])
+
+    variables[p[3]] = variables[p[3]] * p[5][1] #preguntar al profe
+    p[0] = (p[1], variables[p[3]], p[3],p[5][1])
 
 # funcion de numero aleatorio
 def p_Azar(p):
     """
     function : Azar Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = random.randint(0,p[3][1])
-        p[0]= (p[1],num,p[3][1])
+    num = random.randint(0,p[3][1])
+    p[0]= (p[1],num,p[3][1])
 
 # funcion para cambiar de signo
 def p_Menos(p):
     """
     function :  Menos Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = -p[3][1]
-        p[0]=(p[1],num,p[3][1])
+    num = -p[3][1]
+    p[0]=(p[1],num,p[3][1])
 
 # funcion para multiplicar los digitos de una tupla
 def producto(tupla):
@@ -227,91 +194,49 @@ def p_producto(p):
     """
     function : Producto Space operaciones
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        print(p[3])
-        p[0]=(p[1],producto(p[3]),p[3][1])
+    p[0]=(p[1],producto(p[3]),p[3][1])
 
 # funcion para calcular potencia y gramatica
 def p_Potencia(p):
     """
     function :  Potencia Space expression Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = p[3][1]**p[5][1]
-        p[0]=(p[1],num,p[3][1],p[5][1])
+    num = p[3][1]**p[5][1]
+    p[0]=(p[1],num,p[3][1],p[5][1])
 
 def p_Division(p):
     """
     function :  Division Space expression Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
+    num = p[3][1]
+    denom = p[5][1]
+    if denom == 0:
+        print("Error, no se puede dividir entre cero")
     else:
-        num = p[3][1]
-        denom = p[5][1]
-        if denom == 0:
-            print("Error, no se puede dividir entre cero")
-        else:
-            resultado = num / denom
-            p[0]=(p[1],resultado,num,denom)
+        resultado = num / denom
+        p[0]=(p[1],resultado,num,denom)
 
 def p_Resto(p):
     """
     function :  Resto Space expression Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = p[3][1]%p[5][1]
-        p[0]=(p[1],num,p[3][1],p[5][1])
+    num = p[3][1]%p[5][1]
+    p[0]=(p[1],num,p[3][1],p[5][1])
 
 def p_RC(p):
     """
     function :  RC Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = m.sqrt(p[3][1])
-        p[0]=(p[1],num,p[3][1])
+    num = m.sqrt(p[3][1])
+    p[0]=(p[1],num,p[3][1])
 
 def p_Sen(p):
     """
     function :  Sen Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = m.sin(m.radians(p[3][1]))
-        p[0]=(p[1],num,p[3][1])
+
+    num = m.sin(m.radians(p[3][1]))
+    p[0]=(p[1],num,p[3][1])
 
 def makeList(tupla):
     lista=[]
@@ -324,72 +249,38 @@ def p_Elegir(p):
     """
     function : Elegir Space LeftSquareBracket operaciones RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        Lista= makeList(p[4])
-        num= random.randint(0,len(Lista)-1)
-        p[0]=(p[1],Lista[num],Lista)
+
+    Lista= makeList(p[4])
+    num= random.randint(0,len(Lista)-1)
+    p[0]=(p[1],Lista[num],Lista)
 
 def p_Cuenta(p):
     """
     function : Cuenta Space LeftSquareBracket operaciones RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        Lista= makeList(p[4])
-        p[0]=(p[1],len(Lista),Lista)
+    Lista= makeList(p[4])
+    p[0]=(p[1],len(Lista),Lista)
 
 def p_Ultimo(p):
     """
     function : Ultimo Space LeftSquareBracket operaciones RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        Lista= makeList(p[4])
-        p[0]=(p[1],Lista[len(Lista)-1],Lista)
+    Lista= makeList(p[4])
+    p[0]=(p[1],Lista[len(Lista)-1],Lista)
 
 def p_Elemento(p):
     """
     function : Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        Lista= makeList(p[6])
-        p[0]=(p[1],Lista[p[3][1]-1],Lista,p[3]) #(nombre,resultado,lista,indice)
+    Lista= makeList(p[6])
+    p[0]=(p[1],Lista[p[3][1]-1],Lista,p[3])
 
 def p_Primero(p):
     """
     function : Pri Space LeftSquareBracket operaciones RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        Lista= makeList(p[4])
-        p[0]=(p[1],Lista[0],Lista)
+    Lista = makeList(p[4])
+    p[0]=(p[1],Lista[0],Lista)
 
 
 def p_Avanza(p):
@@ -397,243 +288,124 @@ def p_Avanza(p):
     function : Avanza Space expression
              | Avanza Space function
     """
-    global Funcion,Entrada
-    if(Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1], p[3][1])
-        print("Avanza '%d' unidades" % p[0][1])
+    p[0] = (p[1], p[3][1])
+    print("Avanza '%d' unidades" % p[0][1])
 
 def p_Retrocede(p):
     """
     function : Retrocede Space expression
              | Retrocede Space function
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1], p[3][1])
-        print("Retrocede '%d' unidades" %p[0][1])
+    p[0] = (p[1], p[3][1])
+    print("Retrocede '%d' unidades" %p[0][1])
 
 def p_GiraDerecha(p):
     """
     function : GiraDerecha Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1], p[3][1])
-        print("Gira '%d' grados a la derecha" %p[0][1])
+    p[0] = (p[1], p[3][1])
+    print("Gira '%d' grados a la derecha" %p[0][1])
 
 def p_GiraIzquierda(p):
     """
     function : GiraIzquierda Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1], p[3][1])
-        print("Gira '%d' grados a la izquierda" %p[0][1])
+    p[0] = (p[1], p[3][1])
+    print("Gira '%d' grados a la izquierda" %p[0][1])
 
 def p_OcultaTortuga(p):
     """
     function : OcultaTortuga
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
-        print("Se oculta la tortuga")
+    p[0] = (p[1],None)
+    print("Se oculta la tortuga")
 
 def p_ApareceTortuga(p):
     """
     function : ApareceTortuga
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
-        print("Aparece la Tortuga")
+    p[0] = (p[1],None)
+    print("Aparece la Tortuga")
 
 def p_PonXY(p):
     """
     function : PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a = [p[4][1],p[6][1]]
-        p[0] = (p[1],a,p[4][1],p[6][1])
+    a = [p[4][1],p[6][1]]
+    p[0] = (p[1],a,p[4][1],p[6][1])
 
 def p_PonRumbo(p):
     """
     function : PonRumbo Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1], p[3][1])
-        print("Tortuga en rumbo hacia los '%d' grados" %p[0][1])
+    p[0] = (p[1], p[3][1])
+    print("Tortuga en rumbo hacia los '%d' grados" %p[0][1])
 
 def p_Rumbo(p):
     """
     function : Rumbo
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
-        print("Indicar el rumbo de la tortura")
+    p[0] = (p[1],None)
+    print("Indicar el rumbo de la tortura")
 
 def p_PonX(p):
     """
     function : PonX Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],p[3][1])
-        print("Tortuga en la posicionX '%d'"%p[0][1])
+    p[0] = (p[1],p[3][1])
+    print("Tortuga en la posicionX '%d'"%p[0][1])
 
 def p_PonY(p):
     """
     function : PonY Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],p[3][1])
-        print("Tortuga en la posicionY '%d'" % p[0][1])
+    p[0] = (p[1],p[3][1])
+    print("Tortuga en la posicionY '%d'" % p[0][1])
 
 def p_BajaLapiz(p):
     """
     function : BajaLapiz
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
-        print("Comienza a dibujar")
+    p[0] = (p[1],None)
+    print("Comienza a dibujar")
 
 def p_SubeLapiz(p):
     """
     function : SubeLapiz
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
-        print("Levanta el lapiz y detiene el dibujo")
+    p[0] = (p[1],None)
+    print("Levanta el lapiz y detiene el dibujo")
 
 def p_Borrapantalla(p):
     """function : Borrapantalla"""
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
+    p[0] = (p[1],None)
 
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     """
     function :  PonColorLapiz Space NAME
     """
-    global Funcion, Entrada
     color = p[3]
     if color not in coloresPermitidos:
         print("Error, el color " + color + " no es un color permitido")
     else:
-        if (Funcion):
-            if Entrada.split(" ")[0] == p[1]:
-                for elemento in Instrucciones:
-                    ultimoElemento = elemento
-                Instrucciones[ultimoElemento][1] += [Entrada]
-        else:
-            p[0] = (p[1],p[3])
+        p[0] = (p[1],p[3])
 
 # Funcion para poner la tortuga en el centro
 def p_Centro(p):
     """
     function :  Centro
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1],None)
+    p[0] = (p[1],None)
 
 # Funcion para pausar la ejecucion
 def p_Espera(p):
     """
     function :  Espera Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        time.sleep(p[3][1]/60)
-        p[0] = (p[1],p[3][1])
-        print("Wait de " + str(p[3][1]/60) + " segundos")
+    time.sleep(p[3][1]/60)
+    p[0] = (p[1],p[3][1])
+    print("Wait de " + str(p[3][1]/60) + " segundos")
 
 def Var_Array(tupla):
     listaFinal = []
@@ -729,19 +501,11 @@ def p_iguales(p):
     """
     function : Iguales Space operaciones
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a= iguales(p[3])
-        p[0] = (p[1],a,p[3])
+    a= iguales(p[3])
+    p[0] = (p[1],a,p[3])
 
 # Funcion que devuelve CIERTO si dos condiciones se cumplen
 def y(tupla):
-
     if(tupla[0] == "CIERTO" and tupla[1] == "CIERTO"):
         return "CIERTO"
     else:
@@ -751,20 +515,12 @@ def p_Y(p):
     """
     function : Y Space function function
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        res= y((p[3][1],p[4][1]))
-        p[0] = (p[1],res,p[3],p[4])
-        print(p[0])
+    res= y((p[3][1],p[4][1]))
+    p[0] = (p[1],res,p[3],p[4])
+    print(p[0])
 
 # Funcion que devuelve CIERTO si al menos una condicion se cumple
 def O(tupla):
-
     if(tupla[0] == "CIERTO" or tupla[1] == "CIERTO"):
         return "CIERTO"
     else:
@@ -773,15 +529,8 @@ def p_O(p):
     """
     function : O Space function function
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a= O((p[3][1],p[4][1]))
-        p[0] = (p[1], a, p[3], p[4])
+    a= O((p[3][1],p[4][1]))
+    p[0] = (p[1], a, p[3], p[4])
 
 # Funcion que devuelve CIERTO si n > n1
 def MayorQue(num1,num2):
@@ -794,15 +543,8 @@ def p_MayorQue(p):
     """
     function : MayorQue Space expression PuntoComa Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a= MayorQue(p[3][1],p[6][1])
-        p[0] = (p[1], a, p[3])
+    a= MayorQue(p[3][1],p[6][1])
+    p[0] = (p[1], a, p[3])
 
 # Funcion que devuelve Falso si n < n1
 def MenorQue(num1,num2):
@@ -815,44 +557,23 @@ def p_MenorQue(p):
     """
     function : MenorQue Space expression PuntoComa Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a= MenorQue(p[3][1],p[6][1])
-        p[0] = (p[1], a, p[3])
+    a= MenorQue(p[3][1],p[6][1])
+    p[0] = (p[1], a, p[3])
 
 # Funcion que redondea un numero
 def p_Redondea(p):
     """
     function : Redondea Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[1], round(p[3][1]), p[3])
+    p[0] = (p[1], round(p[3][1]), p[3])
 
 # Funcion que calcula el coseno de un numero
 def p_Cos(p):
     """
     function :  Cos Space expression
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        num = m.cos(m.radians(p[3][1]))
-        p[0] = (p[1], num, p[3][1])
+    num = m.cos(m.radians(p[3][1]))
+    p[0] = (p[1], num, p[3][1])
 
 #Funcion para restar los digitos de una tupla
 def restar(tupla):
@@ -866,15 +587,8 @@ def p_restar(p):
     """
     function : Diferencia Space operaciones
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        a = restar(p[3])
-        p[0] = (p[1], a, p[3])
+    a = restar(p[3])
+    p[0] = (p[1], a, p[3])
 
 def repite(tupla):
     can_veces= tupla[0]-1
@@ -900,19 +614,12 @@ def p_Si(p):
     function : Si Space  expression LeftSquareBracket function RightSquareBracket
              | Si Space expression LeftSquareBracket funciones RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
+    p[0] = (p[1],p[3],p[5])
+    if(p[0][1][1] == 'CIERTO'):
+        print("EJECUTA")
+        repite((2,None))
     else:
-        p[0] = (p[1],p[3],p[5])
-        if(p[0][1][1] == 'CIERTO'):
-            print("EJECUTA")
-            repite((2,None))
-        else:
-            print("NO EJECUTA")
+        print("NO EJECUTA")
 
 # Funcion que repite ordenes N cantidad de veces
 def p_Repite(p):
@@ -920,15 +627,8 @@ def p_Repite(p):
     function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
              | Repite Space expression LeftSquareBracket  statement RightSquareBracket
     """
-    global Funcion, Entrada
-    if (Funcion):
-        if Entrada.split(" ")[0] == p[1]:
-            for elemento in Instrucciones:
-                ultimoElemento = elemento
-            Instrucciones[ultimoElemento][1] += [Entrada]
-    else:
-        p[0] = (p[3][1],p[5])
-        repite(p[0])
+    p[0] = (p[3][1],p[5])
+    repite(p[0])
 
 #Acepta nombres de variables
 def p_Variable(p):
@@ -1035,11 +735,11 @@ while True:
         break
     if not s:
         continue
-
-    try:
-        parser.parse(s)
-    except Exception as e:
-        print(e)
+    parser.parse(s)
+    # try:
+    #     parser.parse(s)
+    # except Exception as e:
+    #     print(e)
 
 #Arreglar el manejo de errores
 #Hacer la documentacion
