@@ -28,7 +28,6 @@ tokens = [
     'Var',
     'Inic',
     'Inc',
-    'PonCL',
     'PonColorLapiz',
     'Centro',
     'Espera',
@@ -267,10 +266,7 @@ def t_PonColor(t):
     r'PonColorLapiz'
     t.type = 'PonColorLapiz'
     return t
-def t_PonCl(t):
-    r'PonCL'
-    t.type = 'PonCL'
-    return t
+
 def t_Centro(t):
     r'Centro'
     t.type = 'Centro'

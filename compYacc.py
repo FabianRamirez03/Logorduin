@@ -11,13 +11,13 @@ coloresPermitidos = ["blanco","azul","marron","cian","gris","amarillo","negro","
 ListaFunciones = {}
 Instrucciones={}
 variables = {}
+Error = ""
 
 #Gramatica de asignacion de variables
 def p_statement_create(p):
     """
     statement : Var Space NAME Space EQUALS Space expression
     """
-
     if p[3] not in variables:
         p[0] =(p[1], p[7][1], p[3] )
         variables[p[3]] = p[7][1]
@@ -696,12 +696,20 @@ def p_Ejecuta_Funcion(p):
                 for instruccion in Instrucciones[elemento][1]:
                     parser.parse(instruccion)
 
-# def p_Ejecuta_Ordenes(p):
-#     """
-#     function : Ejecuta Space LeftSquareBracket Variables RightSquareBracket
-#     """
-#     p[0] = p[4]
-#     print("asd  " + str(p[0]))
+def p_Ejecuta_Ordenes(p):
+    """
+    function : Ejecuta Space LeftSquareBracket Variables RightSquareBracket
+    """
+    lista = makeList(p[4])
+    listaFinal = []
+    for elemento in lista:
+        if isinstance(elemento, tuple):
+            listaFinal.append(str(elemento[0]) + " " + str(elemento[1]))
+        else:
+            listaFinal.append(str(lista[lista.index(elemento)]) + " " + str(lista[lista.index(elemento ) + 1]))
+            break
+    for x in listaFinal:
+        parser.parse(x)
 
 #Reinicia el compilador
 def reiniciar():
@@ -933,10 +941,13 @@ def p_Variable(p):
 #Acepta nombres y funciones para variables
 def p_Variables(p):
     """
-    Variables : expression Coma Space expression
+    Variables : expression
               | expression Coma Space Variables
     """
-    p[0] = (p[1],p[4])
+    if len(p) > 2:
+        p[0] = (p[1],p[4])
+    else:
+        p[0]=(p[1])
 
 #Detecta el fin de una funcion
 def p_Fin(p):
@@ -1034,4 +1045,4 @@ while True:
 #Hacer la documentacion
 
 #Errores del dia
-    #Producto 2 Suma 1 2 en Para
+#Producto 2 Suma 1 2 en Para
