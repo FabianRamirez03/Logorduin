@@ -256,18 +256,32 @@ def clean_canvas():
 
 def Compila():
     global functionsList, running
-
+    compYacc.reiniciar()
+    clean_canvas()
+    centro()
+    Ponrumbo(90)
+    DrawController.color="black"
     if not running:
         running = True
         line_list = codeText.get('1.0', 'end').split('\n')
         for line in line_list:
             if line != "":
-                compYacc.parser.parse(line.replace("\n", ""))
-                functionsList.append(compYacc.toDo)
+                try:
+                    compYacc.parser.parse(line.replace("\n", ""))
+                    functionsList.append(compYacc.toDo)
+                except:
+                    print(compYacc.Error)
+                    break
+            if (compYacc.Error):
+                print(compYacc.Error)
+                break
 
         consoleText.config(state=NORMAL)
         consoleText.delete('1.0', END)
-        consoleText.insert(INSERT, "Compilado correctamente")
+        if not compYacc.Error:
+            consoleText.insert(INSERT, "Compilado correctamente")
+        else:
+            consoleText.insert(INSERT, compYacc.Error)
         consoleText.config(state=DISABLED)
         running = False
     else:
@@ -278,9 +292,12 @@ def Ejecuta():
     global functionsList, running
     functionsList = []
     Compila()
-    for fuction in functionsList:
-        if fuction is not None and fuction != "Logic" and fuction != "":
-            eval(str(fuction))
+    if not compYacc.Error:
+        for fuction in functionsList:
+            if fuction is not None and fuction != "Logic" and fuction != "":
+                eval(str(fuction))
+    else:
+        print("no se")
 
 
 def getColor(color):

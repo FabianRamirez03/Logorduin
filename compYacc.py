@@ -78,8 +78,7 @@ def p_statement_expr(p):
                     ultimoElemento = elemento
                 Instrucciones[ultimoElemento][1] += [Entrada]
         else:
-         toDo = "print(" + str(p[1][1]) + ")"
-    print(p[0])
+            print(p[0])
 #Expression acepta numeros
 def p_expression_Number(p):
     """
@@ -793,17 +792,17 @@ def p_error(p):
 
 
 parser = yacc.yacc()
-while not Error:
-    global Entrada
-    s = input('->')
-    Entrada = s
-    if not s:
-        continue
-    try:
-        parser.parse(s)
-    except Exception as e:
-        if not Error:
-            Error = str(e)
+# while not Error:
+#     global Entrada
+#     s = input('->')
+#     Entrada = s
+#     if not s:
+#         continue
+#     try:
+#         parser.parse(s)
+#     except Exception as e:
+#         if not Error:
+#             Error = str(e)
 print(Error)
 
 #Hacer la documentacion
