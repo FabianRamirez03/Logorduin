@@ -310,71 +310,92 @@ def p_Avanza(p):
     function : Avanza Space expression
              | Avanza Space function
     """
+    global toDo
     p[0] = (p[1], p[3][1])
+    distance = str(p[0][1])
     print("Avanza '%d' unidades" % p[0][1])
-
+    toDo = "Avanza(distance = " + str(distance) + ")"
 
 def p_Retrocede(p):
     """
     function : Retrocede Space expression
              | Retrocede Space function
     """
+    global toDo
     p[0] = (p[1], p[3][1])
+    distance = p[0][1]
     print("Retrocede '%d' unidades" %p[0][1])
-
+    toDo = "Retroceder(distance = " + str(distance) + ")"
 
 def p_GiraDerecha(p):
     """
     function : GiraDerecha Space expression
     """
+    global toDo
     p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la derecha" %p[0][1])
+    grades = p[0][1]
+    print("Gira '%d' grados a la derecha" % p[0][1])
+    toDo = "giraDerecha(grades =" + str(grades) + ")"
 
 
 def p_GiraIzquierda(p):
     """
     function : GiraIzquierda Space expression
     """
+    global toDo
     p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la izquierda" %p[0][1])
+    grades = p[0][1]
+    print("Gira '%d' grados a la izquierda" % p[0][1])
+    toDo = "giraIzquierda(grades =" + str(grades) + ")"
 
 
 def p_OcultaTortuga(p):
     """
     function : OcultaTortuga
     """
+    global toDo
     p[0] = (p[1],None)
     print("Se oculta la tortuga")
+    toDo = "ocultaTortuga()"
 
 
 def p_ApareceTortuga(p):
     """
     function : ApareceTortuga
     """
+    global toDo
     p[0] = (p[1],None)
     print("Aparece la Tortuga")
-
+    toDo = "apareceTortuga()"
 
 def p_PonXY(p):
     """
     function : PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
     """
+    global toDo
     a = [p[4][1],p[6][1]]
     p[0] = (p[1],a,p[4][1],p[6][1])
-
+    posx = p[4][1]
+    posy = p[6][1]
+    toDo = "ponpos( coords = [" + str(posx) + "," + str(posy) + "] )"
+    print(str(posx) + " " + str(posy))
 
 def p_PonRumbo(p):
     """
     function : PonRumbo Space expression
     """
+    global toDo
     p[0] = (p[1], p[3][1])
-    print("Tortuga en rumbo hacia los '%d' grados" %p[0][1])
+    print("Tortuga en rumbo hacia los '%d' grados" % p[0][1])
+    rumbo = p[0][1]
+    toDo = "Ponrumbo(grades = " + str(rumbo) + ")"
 
 
 def p_Rumbo(p):
     """
     function : Rumbo
     """
+    global toDo
     p[0] = (p[1],None)
     print("Indicar el rumbo de la tortura")
 
@@ -383,49 +404,62 @@ def p_PonX(p):
     """
     function : PonX Space expression
     """
+    global toDo
     p[0] = (p[1],p[3][1])
-    print("Tortuga en la posicionX '%d'"%p[0][1])
+    xPos = p[0][1]
+    print("Tortuga en la posicionX '%d'" % p[0][1])
+    toDo = "ponx(xCoord = " + str(xPos) + ")"
 
 
 def p_PonY(p):
     """
     function : PonY Space expression
     """
+    global toDo
     p[0] = (p[1],p[3][1])
+    yPos = p[0][1]
     print("Tortuga en la posicionY '%d'" % p[0][1])
+    toDo = "pony(yCoord = " + str(yPos) + ")"
 
 
 def p_BajaLapiz(p):
     """
     function : BajaLapiz
     """
+    global toDo
     p[0] = (p[1],None)
     print("Comienza a dibujar")
+    toDo = "BajaLapiz()"
 
 
 def p_SubeLapiz(p):
     """
     function : SubeLapiz
     """
+    global toDo
     p[0] = (p[1],None)
     print("Levanta el lapiz y detiene el dibujo")
-
+    toDo = "subeLapiz()"
 
 def p_Borrapantalla(p):
     """function : Borrapantalla"""
+    global toDo
     p[0] = (p[1],None)
-
+    toDo = "clean_canvas()"
 
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     """
     function :  PonColorLapiz Space NAME
     """
+    global toDo
     color = p[3]
     if color not in coloresPermitidos:
         print("Error, el color " + color + " no es un color permitido")
     else:
         p[0] = (p[1],p[3])
+        strColor = p[3]
+        toDo = "PonColorLapiz(color = '" + strColor + "')"
 
 
 # Funcion para poner la tortuga en el centro
@@ -433,7 +467,9 @@ def p_Centro(p):
     """
     function :  Centro
     """
+    global toDo
     p[0] = (p[1],None)
+    toDo = "centro()"
 
 
 # Funcion para pausar la ejecucion
@@ -441,9 +477,12 @@ def p_Espera(p):
     """
     function :  Espera Space expression
     """
-    time.sleep(p[3][1]/60)
+    global toDo
     p[0] = (p[1],p[3][1])
-    print("Wait de " + str(p[3][1]/60) + " segundos")
+    segs = p[3][1]
+    print("Wait de " + str(p[3][1] / 60) + " segundos")
+    toDo = "espera(seg = " + str(segs) + ")"
+
 
 def Var_Array(tupla):
     listaFinal = []
@@ -782,6 +821,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
+"""
 while True:
     global Entrada
     try:
@@ -795,7 +835,7 @@ while True:
         parser.parse(s)
     except Exception as e:
         print(e)
-
+"""
 #Arreglar el manejo de errores
 #Hacer la documentacion
 
