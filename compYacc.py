@@ -6,7 +6,8 @@ import math as m
 from compLexx import tokens
 import sys
 
-global Entrada, Funcion, Ejecutar, toDo, rumbo,Error
+global Entrada, Funcion, Ejecutar, toDo, rumbo,Error, listaEjecuta
+listaEjecuta = []
 Error = ""
 Funcion = False
 coloresPermitidos = ["blanco", "azul", "marron", "cian", "gris", "amarillo", "negro", "rojo", "verde"]
@@ -479,7 +480,8 @@ def p_Ejecuta_Parametro(p):
     """
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
-    global Error
+    global Error, listaEjecuta, toDo
+    listaEjecuta = []
     parametros = Var_Array(makeList(p[6]))
     nombre = p[3]
     if nombre not in Instrucciones:
@@ -512,6 +514,10 @@ def p_Ejecuta_Parametro(p):
                 listaFinal.append(func)
         for inst in listaFinal:
             parser.parse(inst)
+            print(inst)
+            listaEjecuta.append(toDo)
+        toDo = listaEjecuta
+
 
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta_Funcion(p):
@@ -545,10 +551,11 @@ def p_Ejecuta_Ordenes(p):
 
 #Reinicia el compilador
 def reiniciar():
-    global variables, Instrucciones, ListaFunciones, Error
+    global variables, Instrucciones, ListaFunciones, Error, Entrada
     variables = {}
     Instrucciones = {}
     ListaFunciones = {}
+    Entrada = ""
     Error = ""
 
 # Funcion que devuelve True si la dos numeros son iguales
