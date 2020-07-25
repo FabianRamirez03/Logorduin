@@ -267,16 +267,18 @@ def Compila():
         for line in line_list:
             if line != "":
                 try:
+                    compYacc.toDo = ""
                     compYacc.Entrada = line.replace("\n", "")
                     compYacc.parser.parse(compYacc.Entrada)
                     print(compYacc.variables)
                     if not compYacc.Funcion:
-                        if isinstance(compYacc.toDo, str):
+                        if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
                             functionsList.append(compYacc.toDo)
                         elif isinstance(compYacc.toDo, list):
                             print(compYacc.toDo)
                             for i in compYacc.toDo:
-                                functionsList.append(i)
+                                if compYacc.toDo != "":
+                                    functionsList.append(i)
                 except Exception as e:
                     print(e)
                     print(compYacc.Error)

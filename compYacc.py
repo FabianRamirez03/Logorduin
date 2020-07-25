@@ -814,5 +814,4 @@ print(Error)
 
 #Hacer la documentacion
 #Errores del dia
-#ejecuta el ultimo de primero
 #Arreglar el si
