@@ -25,6 +25,7 @@ yEscondite = 1
 skin_path = "Imagenes"
 turtle_skin = "turtle.png"
 
+
 colorsDict = [["blanco", "white"], ["azul", "blue"], ["marron", "brown"], ["cafe", "brown"],
               ["gris", "grey"], ["amarillo", "yellow"], ["negro", "black"], ["rojo", "red"], ["verde", "green"],
               ["cian", "cyan"]]
@@ -378,9 +379,12 @@ def arrowAux():
 
 
 # ___________________________________-Aplicacion Grafica_____________________________________________
-
 root = Tk()
+
 root.title("Logorduin")
+icon = PhotoImage(file="Imagenes/turtle.png")
+root.iconphoto(False, icon)
+
 
 # root.geometry("1400x650")
 root.geometry('%dx%d+%d+%d' % (1400, 650, 20, 20))

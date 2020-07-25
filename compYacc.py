@@ -825,6 +825,7 @@ def p_error(p):
 
 
 parser = yacc.yacc()
+"""
 while not Error:
     global Entrada
     s = input('->')
@@ -837,7 +838,7 @@ while not Error:
         if not Error:
             Error = str(e)
 print(Error)
-
+"""
 #Hacer la documentacion
 #Errores del dia
 #Arreglar el si
