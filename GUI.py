@@ -256,6 +256,7 @@ def clean_canvas():
 
 def Compila():
     global functionsList, running
+    NumeroDelinea = 1
     compYacc.reiniciar()
     clean_canvas()
     centro()
@@ -287,13 +288,13 @@ def Compila():
 
                 print(compYacc.Error)
                 break
-
+            NumeroDelinea = NumeroDelinea + 1
         consoleText.config(state=NORMAL)
         consoleText.delete('1.0', END)
         if not compYacc.Error:
             consoleText.insert(INSERT, "Compilado correctamente")
         else:
-            consoleText.insert(INSERT, compYacc.Error)
+            consoleText.insert(INSERT, compYacc.Error + " en la linea número " + str(NumeroDelinea))
         consoleText.config(state=DISABLED)
         running = False
     else:
