@@ -671,21 +671,26 @@ def p_restar(p):
     p[0] = (p[1], a, p[3])
 
 def repite(tupla):
-    can_veces = tupla[0] - 1
-    global Entrada
+    can_veces = tupla[0]
+    global Entrada, listaEjecuta, toDo
     while Entrada[0] != "[":
         Entrada = Entrada[1:]
     Entrada = Entrada[1:-1]
     Entrada = Entrada.split(",")
+    aaa = Entrada
     while can_veces != 0:
         s = Entrada[0]
         parser.parse(s)
+        listaEjecuta.append(toDo)
         num = 1
         while len(Entrada) != num:
             s = Entrada[num][1:]
             print(s)
             num += 1
             parser.parse(s)
+            string = toDo
+            listaEjecuta.append(toDo)
+        toDo = listaEjecuta
         can_veces -= 1
 
 

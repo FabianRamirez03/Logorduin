@@ -263,26 +263,26 @@ def Compila():
         line_list = codeText.get('1.0', 'end').split('\n')
         for line in line_list:
             if line != "":
-                try:
-                    if numeroDelinea > 1 and not compYacc.Comentario:
-                        compYacc.Error = "No hay Comentario en la primera linea"
-                        break
-                    compYacc.toDo = ""
-                    compYacc.Entrada = line.replace("\n", "")
-                    compYacc.parser.parse(compYacc.Entrada)
-                    print(compYacc.variables)
-                    if not compYacc.Funcion:
-                        if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
-                            functionsList.append(compYacc.toDo)
-                        elif isinstance(compYacc.toDo, list):
-                            print(compYacc.toDo)
-                            for i in compYacc.toDo:
-                                if compYacc.toDo != "":
-                                    functionsList.append(i)
-                except Exception as e:
-                    print(e)
-                    print(compYacc.Error)
+
+                if numeroDelinea > 1 and not compYacc.Comentario:
+                    compYacc.Error = "No hay Comentario en la primera linea"
                     break
+                compYacc.toDo = ""
+                compYacc.Entrada = line.replace("\n", "")
+                compYacc.parser.parse(compYacc.Entrada)
+                print(compYacc.variables)
+                if not compYacc.Funcion:
+                    if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
+                        functionsList.append(compYacc.toDo)
+                    elif isinstance(compYacc.toDo, list):
+                        print(compYacc.toDo)
+                        for i in compYacc.toDo:
+                            if compYacc.toDo != "":
+                                functionsList.append(i)
+                #except Exception as e:
+                 #   print(e)
+                  #  print(compYacc.Error)
+                   # break
             if (compYacc.Error):
 
                 print(compYacc.Error)
