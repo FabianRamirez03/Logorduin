@@ -6,11 +6,12 @@ import math as m
 from compLexx import tokens
 import sys
 
-global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario
+global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario, Repite
 listaEjecuta = []
 Error = ""
 Funcion = False
 Comentario = False
+Repite = True
 coloresPermitidos = ["blanco", "azul", "marron", "cian", "gris", "amarillo", "negro", "rojo", "verde"]
 ListaFunciones = {}
 Instrucciones = {}
@@ -76,7 +77,7 @@ def p_statement_expr(p):
     if p[0] == None:
         return
     else:
-        global Funcion, Entrada,toDo
+        global Funcion, Entrada,toDo, Repite
         if (Funcion):
                 for elemento in Instrucciones:
                     ultimoElemento = elemento
@@ -497,7 +498,9 @@ def p_Ejecuta_Parametro(p):
                 else:
                     Instrucciones[elemento][2] = parametros
             listaFinal =[]
+
             for i in range(0,len(Instrucciones[elemento][1])):
+                string = Instrucciones[elemento][1][i]
                 temp = Instrucciones[elemento][1][i].split(" ")
                 listaValores = []
                 func = ""
@@ -514,11 +517,17 @@ def p_Ejecuta_Parametro(p):
                         func += g
                     else:
                         func += " " + g
-                listaFinal.append(func)
+                if temp[0] != "Repite":
+                    listaFinal.append(func)
+                else:
+                    listaFinal.append(func)
+                    break
         for inst in listaFinal:
             parser.parse(inst)
             print(inst)
             listaEjecuta.append(toDo)
+        a = toDo
+        b = listaEjecuta
         toDo = listaEjecuta
 
 
@@ -554,7 +563,7 @@ def p_Ejecuta_Ordenes(p):
 
 #Reinicia el compilador
 def reiniciar():
-    global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones
+    global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones, Repite
     variables = {}
     Instrucciones = {}
     ListaFunciones = {}
@@ -564,6 +573,7 @@ def reiniciar():
     Funcion = False
     listaEjecuta = []
     toDo = ""
+    Repite = True
 
 
 # Funcion que devuelve True si la dos numeros son iguales
@@ -672,7 +682,9 @@ def p_restar(p):
 
 def repite(tupla):
     can_veces = tupla[0]
-    global Entrada, listaEjecuta, toDo
+    global Entrada, listaEjecuta, toDo, Repite
+    Repite = False
+    print(str(Entrada) + str(tupla) + "ESTA MIERDA")
     while Entrada[0] != "[":
         Entrada = Entrada[1:]
     Entrada = Entrada[1:-1]
@@ -692,6 +704,7 @@ def repite(tupla):
             listaEjecuta.append(toDo)
         toDo = listaEjecuta
         can_veces -= 1
+    Repite = True
 
 
 # Ejecuta si se cumple la condicion
@@ -710,8 +723,8 @@ def p_Si(p):
 # Funcion que repite ordenes N cantidad de veces
 def p_Repite(p):
     """
-    function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
-             | Repite Space expression LeftSquareBracket  statement RightSquareBracket
+    function : Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+             | Repite Space expression Space LeftSquareBracket  statement RightSquareBracket
     """
     p[0] = (p[3][1],p[5])
     repite(p[0])
@@ -812,19 +825,20 @@ def p_error(p):
 
 
 parser = yacc.yacc()
-# while not Error:
-#     global Entrada
-#     s = input('->')
-#     Entrada = s
-#     if not s:
-#         continue
-#     try:
-#         parser.parse(s)
-#     except Exception as e:
-#         if not Error:
-#             Error = str(e)
+while not Error:
+    global Entrada
+    s = input('->')
+    Entrada = s
+    if not s:
+        continue
+    try:
+        parser.parse(s)
+    except Exception as e:
+        if not Error:
+            Error = str(e)
 print(Error)
 
 #Hacer la documentacion
 #Errores del dia
 #Arreglar el si
+#Arreglar repite en para

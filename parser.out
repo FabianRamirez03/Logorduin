@@ -65,8 +65,8 @@ Rule 59    function -> Cos Space expression
 Rule 60    function -> Diferencia Space operaciones
 Rule 61    function -> Si Space expression LeftSquareBracket function RightSquareBracket
 Rule 62    function -> Si Space expression LeftSquareBracket funciones RightSquareBracket
-Rule 63    function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket
-Rule 64    function -> Repite Space expression LeftSquareBracket statement RightSquareBracket
+Rule 63    function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+Rule 64    function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket
 Rule 65    Variable -> NAME Coma Space NAME
 Rule 66    Variable -> NAME Coma Space Variable
 Rule 67    Variables -> expression
@@ -129,7 +129,7 @@ RightSquareBracket   : 26 27 28 29 30 39 50 52 61 62 63 64 70 71 72
 Rumbo                : 41
 Sen                  : 25
 Si                   : 61 62
-Space                : 1 1 1 2 4 4 4 5 5 5 11 12 13 14 15 16 17 17 18 19 20 21 21 22 22 23 23 24 25 26 27 28 29 29 30 31 32 33 34 35 36 39 39 40 42 43 47 49 50 50 51 52 53 54 55 56 56 57 57 58 59 60 61 62 63 64 65 66 68 70 70 71 71 72 72
+Space                : 1 1 1 2 4 4 4 5 5 5 11 12 13 14 15 16 17 17 18 19 20 21 21 22 22 23 23 24 25 26 27 28 29 29 30 31 32 33 34 35 36 39 39 40 42 43 47 49 50 50 51 52 53 54 55 56 56 57 57 58 59 60 61 62 63 63 64 64 65 66 68 70 70 71 71 72 72
 SubeLapiz            : 45
 Suma                 : 15
 Ultimo               : 28
@@ -210,8 +210,8 @@ state 0
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -1204,8 +1204,8 @@ state 51
 
 state 52
 
-    (63) function -> Repite . Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> Repite . Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> Repite . Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> Repite . Space expression Space LeftSquareBracket statement RightSquareBracket
 
     Space           shift and go to state 92
 
@@ -1352,8 +1352,8 @@ state 57
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -1478,8 +1478,8 @@ state 59
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -1595,8 +1595,8 @@ state 60
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -1714,8 +1714,8 @@ state 61
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -1832,8 +1832,8 @@ state 62
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -1949,8 +1949,8 @@ state 63
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2066,8 +2066,8 @@ state 64
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2183,8 +2183,8 @@ state 65
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2300,8 +2300,8 @@ state 66
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2438,8 +2438,8 @@ state 70
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2563,8 +2563,8 @@ state 72
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2681,8 +2681,8 @@ state 73
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2798,8 +2798,8 @@ state 74
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -2915,8 +2915,8 @@ state 75
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3039,8 +3039,8 @@ state 77
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3156,8 +3156,8 @@ state 78
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3273,8 +3273,8 @@ state 79
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3397,8 +3397,8 @@ state 81
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3526,8 +3526,8 @@ state 83
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3640,8 +3640,8 @@ state 84
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3749,8 +3749,8 @@ state 85
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3862,8 +3862,8 @@ state 86
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -3979,8 +3979,8 @@ state 87
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -4096,8 +4096,8 @@ state 88
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -4213,8 +4213,8 @@ state 89
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -4332,8 +4332,8 @@ state 90
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -4451,8 +4451,8 @@ state 91
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -4513,8 +4513,8 @@ state 91
 
 state 92
 
-    (63) function -> Repite Space . expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> Repite Space . expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> Repite Space . expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> Repite Space . expression Space LeftSquareBracket statement RightSquareBracket
     (7) expression -> . INT
     (8) expression -> . FLOAT
     (9) expression -> . function
@@ -4569,8 +4569,8 @@ state 92
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -5155,8 +5155,8 @@ state 107
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -5275,8 +5275,8 @@ state 108
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -5395,8 +5395,8 @@ state 109
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -5522,8 +5522,8 @@ state 111
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -6200,8 +6200,8 @@ state 118
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -6671,8 +6671,8 @@ state 125
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -6843,8 +6843,8 @@ state 127
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -6952,8 +6952,8 @@ state 128
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -7206,10 +7206,10 @@ state 134
 
 state 135
 
-    (63) function -> Repite Space expression . LeftSquareBracket funciones RightSquareBracket
-    (64) function -> Repite Space expression . LeftSquareBracket statement RightSquareBracket
+    (63) function -> Repite Space expression . Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> Repite Space expression . Space LeftSquareBracket statement RightSquareBracket
 
-    LeftSquareBracket shift and go to state 158
+    Space           shift and go to state 158
 
 
 state 136
@@ -7296,8 +7296,8 @@ state 139
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -7414,8 +7414,8 @@ state 140
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -7531,8 +7531,8 @@ state 141
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -7648,8 +7648,8 @@ state 142
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -7765,8 +7765,8 @@ state 143
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -8074,8 +8074,8 @@ state 157
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -8150,131 +8150,11 @@ state 157
 
 state 158
 
-    (63) function -> Repite Space expression LeftSquareBracket . funciones RightSquareBracket
-    (64) function -> Repite Space expression LeftSquareBracket . statement RightSquareBracket
-    (13) funciones -> . statement Coma Space statement
-    (14) funciones -> . statement Coma Space funciones
-    (1) statement -> . Var Space NAME Space EQUALS Space expression
-    (2) statement -> . Var Space NAME
-    (3) statement -> . Comentario
-    (6) statement -> . expression
-    (7) expression -> . INT
-    (8) expression -> . FLOAT
-    (9) expression -> . function
-    (10) expression -> . NAME
-    (4) function -> . Inic Space NAME Space EQUALS Space expression
-    (5) function -> . Inic Space NAME Space EQUALS Space function
-    (15) function -> . Suma Space operaciones
-    (16) function -> . Inc Space NAME
-    (17) function -> . Inc Space NAME Space expression
-    (18) function -> . Azar Space expression
-    (19) function -> . Menos Space expression
-    (20) function -> . Producto Space operaciones
-    (21) function -> . Potencia Space expression Space expression
-    (22) function -> . Division Space expression Space expression
-    (23) function -> . Resto Space expression Space expression
-    (24) function -> . RC Space expression
-    (25) function -> . Sen Space expression
-    (26) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
-    (27) function -> . Cuenta Space LeftSquareBracket operaciones RightSquareBracket
-    (28) function -> . Ultimo Space LeftSquareBracket operaciones RightSquareBracket
-    (29) function -> . Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
-    (30) function -> . Pri Space LeftSquareBracket operaciones RightSquareBracket
-    (31) function -> . Avanza Space expression
-    (32) function -> . Avanza Space function
-    (33) function -> . Retrocede Space expression
-    (34) function -> . Retrocede Space function
-    (35) function -> . GiraDerecha Space expression
-    (36) function -> . GiraIzquierda Space expression
-    (37) function -> . OcultaTortuga
-    (38) function -> . ApareceTortuga
-    (39) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
-    (40) function -> . PonRumbo Space expression
-    (41) function -> . Rumbo
-    (42) function -> . PonX Space expression
-    (43) function -> . PonY Space expression
-    (44) function -> . BajaLapiz
-    (45) function -> . SubeLapiz
-    (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
-    (48) function -> . Centro
-    (49) function -> . Espera Space expression
-    (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
-    (51) function -> . Ejecuta Space NAME
-    (52) function -> . Ejecuta Space LeftSquareBracket Variables RightSquareBracket
-    (53) function -> . Iguales Space operaciones
-    (54) function -> . Y Space function function
-    (55) function -> . O Space function function
-    (56) function -> . MayorQue Space expression PuntoComa Space expression
-    (57) function -> . MenorQue Space expression PuntoComa Space expression
-    (58) function -> . Redondea Space expression
-    (59) function -> . Cos Space expression
-    (60) function -> . Diferencia Space operaciones
-    (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
-    (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
-    (69) function -> . Fin
-    (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (63) function -> Repite Space expression Space . LeftSquareBracket funciones RightSquareBracket
+    (64) function -> Repite Space expression Space . LeftSquareBracket statement RightSquareBracket
 
-    Var             shift and go to state 2
-    Comentario      shift and go to state 5
-    INT             shift and go to state 6
-    FLOAT           shift and go to state 7
-    NAME            shift and go to state 3
-    Inic            shift and go to state 9
-    Suma            shift and go to state 10
-    Inc             shift and go to state 11
-    Azar            shift and go to state 12
-    Menos           shift and go to state 13
-    Producto        shift and go to state 14
-    Potencia        shift and go to state 15
-    Division        shift and go to state 16
-    Resto           shift and go to state 17
-    RC              shift and go to state 18
-    Sen             shift and go to state 19
-    Elegir          shift and go to state 20
-    Cuenta          shift and go to state 21
-    Ultimo          shift and go to state 22
-    Elemento        shift and go to state 23
-    Pri             shift and go to state 24
-    Avanza          shift and go to state 25
-    Retrocede       shift and go to state 26
-    GiraDerecha     shift and go to state 27
-    GiraIzquierda   shift and go to state 28
-    OcultaTortuga   shift and go to state 29
-    ApareceTortuga  shift and go to state 30
-    PonXY           shift and go to state 31
-    PonRumbo        shift and go to state 32
-    Rumbo           shift and go to state 33
-    PonX            shift and go to state 34
-    PonY            shift and go to state 35
-    BajaLapiz       shift and go to state 36
-    SubeLapiz       shift and go to state 37
-    Borrapantalla   shift and go to state 38
-    PonColorLapiz   shift and go to state 39
-    Centro          shift and go to state 40
-    Espera          shift and go to state 41
-    Ejecuta         shift and go to state 42
-    Iguales         shift and go to state 43
-    Y               shift and go to state 44
-    O               shift and go to state 45
-    MayorQue        shift and go to state 46
-    MenorQue        shift and go to state 47
-    Redondea        shift and go to state 48
-    Cos             shift and go to state 49
-    Diferencia      shift and go to state 50
-    Si              shift and go to state 51
-    Repite          shift and go to state 52
-    Fin             shift and go to state 53
-    Para            shift and go to state 54
+    LeftSquareBracket shift and go to state 182
 
-    expression                     shift and go to state 4
-    funciones                      shift and go to state 182
-    statement                      shift and go to state 183
-    function                       shift and go to state 8
 
 state 159
 
@@ -8282,14 +8162,14 @@ state 159
     (71) function -> Para Space NAME Space . LeftSquareBracket NAME RightSquareBracket
     (72) function -> Para Space NAME Space . LeftSquareBracket Variable RightSquareBracket
 
-    LeftSquareBracket shift and go to state 184
+    LeftSquareBracket shift and go to state 183
 
 
 state 160
 
     (1) statement -> Var Space NAME Space EQUALS . Space expression
 
-    Space           shift and go to state 185
+    Space           shift and go to state 184
 
 
 state 161
@@ -8297,7 +8177,7 @@ state 161
     (4) function -> Inic Space NAME Space EQUALS . Space expression
     (5) function -> Inic Space NAME Space EQUALS . Space function
 
-    Space           shift and go to state 186
+    Space           shift and go to state 185
 
 
 state 162
@@ -8886,8 +8766,8 @@ state 171
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -8944,7 +8824,7 @@ state 171
     Para            shift and go to state 54
 
     expression                     shift and go to state 97
-    operaciones                    shift and go to state 187
+    operaciones                    shift and go to state 186
     function                       shift and go to state 8
 
 state 172
@@ -9062,8 +8942,8 @@ state 173
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9119,7 +8999,7 @@ state 173
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    expression                     shift and go to state 188
+    expression                     shift and go to state 187
     function                       shift and go to state 8
 
 state 174
@@ -9181,8 +9061,8 @@ state 174
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9238,7 +9118,7 @@ state 174
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    Variables                      shift and go to state 189
+    Variables                      shift and go to state 188
     expression                     shift and go to state 152
     function                       shift and go to state 8
 
@@ -9304,7 +9184,7 @@ state 176
 
     (68) Variables -> expression Coma . Space Variables
 
-    Space           shift and go to state 190
+    Space           shift and go to state 189
 
 
 state 177
@@ -9364,8 +9244,8 @@ state 177
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9421,7 +9301,7 @@ state 177
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    expression                     shift and go to state 191
+    expression                     shift and go to state 190
     function                       shift and go to state 8
 
 state 178
@@ -9481,8 +9361,8 @@ state 178
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9538,7 +9418,7 @@ state 178
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    expression                     shift and go to state 192
+    expression                     shift and go to state 191
     function                       shift and go to state 8
 
 state 179
@@ -9546,7 +9426,7 @@ state 179
     (61) function -> Si Space expression LeftSquareBracket function . RightSquareBracket
     (9) expression -> function .
 
-    RightSquareBracket shift and go to state 193
+    RightSquareBracket shift and go to state 192
     Coma            reduce using rule 9 (expression -> function .)
 
 
@@ -9554,7 +9434,7 @@ state 180
 
     (62) function -> Si Space expression LeftSquareBracket funciones . RightSquareBracket
 
-    RightSquareBracket shift and go to state 194
+    RightSquareBracket shift and go to state 193
 
 
 state 181
@@ -9562,27 +9442,138 @@ state 181
     (13) funciones -> statement . Coma Space statement
     (14) funciones -> statement . Coma Space funciones
 
-    Coma            shift and go to state 195
+    Coma            shift and go to state 194
 
 
 state 182
 
-    (63) function -> Repite Space expression LeftSquareBracket funciones . RightSquareBracket
+    (63) function -> Repite Space expression Space LeftSquareBracket . funciones RightSquareBracket
+    (64) function -> Repite Space expression Space LeftSquareBracket . statement RightSquareBracket
+    (13) funciones -> . statement Coma Space statement
+    (14) funciones -> . statement Coma Space funciones
+    (1) statement -> . Var Space NAME Space EQUALS Space expression
+    (2) statement -> . Var Space NAME
+    (3) statement -> . Comentario
+    (6) statement -> . expression
+    (7) expression -> . INT
+    (8) expression -> . FLOAT
+    (9) expression -> . function
+    (10) expression -> . NAME
+    (4) function -> . Inic Space NAME Space EQUALS Space expression
+    (5) function -> . Inic Space NAME Space EQUALS Space function
+    (15) function -> . Suma Space operaciones
+    (16) function -> . Inc Space NAME
+    (17) function -> . Inc Space NAME Space expression
+    (18) function -> . Azar Space expression
+    (19) function -> . Menos Space expression
+    (20) function -> . Producto Space operaciones
+    (21) function -> . Potencia Space expression Space expression
+    (22) function -> . Division Space expression Space expression
+    (23) function -> . Resto Space expression Space expression
+    (24) function -> . RC Space expression
+    (25) function -> . Sen Space expression
+    (26) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (27) function -> . Cuenta Space LeftSquareBracket operaciones RightSquareBracket
+    (28) function -> . Ultimo Space LeftSquareBracket operaciones RightSquareBracket
+    (29) function -> . Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
+    (30) function -> . Pri Space LeftSquareBracket operaciones RightSquareBracket
+    (31) function -> . Avanza Space expression
+    (32) function -> . Avanza Space function
+    (33) function -> . Retrocede Space expression
+    (34) function -> . Retrocede Space function
+    (35) function -> . GiraDerecha Space expression
+    (36) function -> . GiraIzquierda Space expression
+    (37) function -> . OcultaTortuga
+    (38) function -> . ApareceTortuga
+    (39) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (40) function -> . PonRumbo Space expression
+    (41) function -> . Rumbo
+    (42) function -> . PonX Space expression
+    (43) function -> . PonY Space expression
+    (44) function -> . BajaLapiz
+    (45) function -> . SubeLapiz
+    (46) function -> . Borrapantalla
+    (47) function -> . PonColorLapiz Space NAME
+    (48) function -> . Centro
+    (49) function -> . Espera Space expression
+    (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
+    (51) function -> . Ejecuta Space NAME
+    (52) function -> . Ejecuta Space LeftSquareBracket Variables RightSquareBracket
+    (53) function -> . Iguales Space operaciones
+    (54) function -> . Y Space function function
+    (55) function -> . O Space function function
+    (56) function -> . MayorQue Space expression PuntoComa Space expression
+    (57) function -> . MenorQue Space expression PuntoComa Space expression
+    (58) function -> . Redondea Space expression
+    (59) function -> . Cos Space expression
+    (60) function -> . Diferencia Space operaciones
+    (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
+    (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
+    (69) function -> . Fin
+    (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
 
-    RightSquareBracket shift and go to state 196
+    Var             shift and go to state 2
+    Comentario      shift and go to state 5
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    NAME            shift and go to state 3
+    Inic            shift and go to state 9
+    Suma            shift and go to state 10
+    Inc             shift and go to state 11
+    Azar            shift and go to state 12
+    Menos           shift and go to state 13
+    Producto        shift and go to state 14
+    Potencia        shift and go to state 15
+    Division        shift and go to state 16
+    Resto           shift and go to state 17
+    RC              shift and go to state 18
+    Sen             shift and go to state 19
+    Elegir          shift and go to state 20
+    Cuenta          shift and go to state 21
+    Ultimo          shift and go to state 22
+    Elemento        shift and go to state 23
+    Pri             shift and go to state 24
+    Avanza          shift and go to state 25
+    Retrocede       shift and go to state 26
+    GiraDerecha     shift and go to state 27
+    GiraIzquierda   shift and go to state 28
+    OcultaTortuga   shift and go to state 29
+    ApareceTortuga  shift and go to state 30
+    PonXY           shift and go to state 31
+    PonRumbo        shift and go to state 32
+    Rumbo           shift and go to state 33
+    PonX            shift and go to state 34
+    PonY            shift and go to state 35
+    BajaLapiz       shift and go to state 36
+    SubeLapiz       shift and go to state 37
+    Borrapantalla   shift and go to state 38
+    PonColorLapiz   shift and go to state 39
+    Centro          shift and go to state 40
+    Espera          shift and go to state 41
+    Ejecuta         shift and go to state 42
+    Iguales         shift and go to state 43
+    Y               shift and go to state 44
+    O               shift and go to state 45
+    MayorQue        shift and go to state 46
+    MenorQue        shift and go to state 47
+    Redondea        shift and go to state 48
+    Cos             shift and go to state 49
+    Diferencia      shift and go to state 50
+    Si              shift and go to state 51
+    Repite          shift and go to state 52
+    Fin             shift and go to state 53
+    Para            shift and go to state 54
 
+    expression                     shift and go to state 4
+    funciones                      shift and go to state 195
+    statement                      shift and go to state 196
+    function                       shift and go to state 8
 
 state 183
-
-    (64) function -> Repite Space expression LeftSquareBracket statement . RightSquareBracket
-    (13) funciones -> statement . Coma Space statement
-    (14) funciones -> statement . Coma Space funciones
-
-    RightSquareBracket shift and go to state 197
-    Coma            shift and go to state 195
-
-
-state 184
 
     (70) function -> Para Space NAME Space LeftSquareBracket . RightSquareBracket
     (71) function -> Para Space NAME Space LeftSquareBracket . NAME RightSquareBracket
@@ -9590,12 +9581,12 @@ state 184
     (65) Variable -> . NAME Coma Space NAME
     (66) Variable -> . NAME Coma Space Variable
 
-    RightSquareBracket shift and go to state 199
-    NAME            shift and go to state 198
+    RightSquareBracket shift and go to state 198
+    NAME            shift and go to state 197
 
-    Variable                       shift and go to state 200
+    Variable                       shift and go to state 199
 
-state 185
+state 184
 
     (1) statement -> Var Space NAME Space EQUALS Space . expression
     (7) expression -> . INT
@@ -9652,8 +9643,8 @@ state 185
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9709,10 +9700,10 @@ state 185
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    expression                     shift and go to state 201
+    expression                     shift and go to state 200
     function                       shift and go to state 8
 
-state 186
+state 185
 
     (4) function -> Inic Space NAME Space EQUALS Space . expression
     (5) function -> Inic Space NAME Space EQUALS Space . function
@@ -9770,8 +9761,8 @@ state 186
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9827,31 +9818,31 @@ state 186
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    expression                     shift and go to state 202
-    function                       shift and go to state 203
+    expression                     shift and go to state 201
+    function                       shift and go to state 202
+
+state 186
+
+    (29) function -> Elemento Space expression Space LeftSquareBracket operaciones . RightSquareBracket
+
+    RightSquareBracket shift and go to state 203
+
 
 state 187
 
-    (29) function -> Elemento Space expression Space LeftSquareBracket operaciones . RightSquareBracket
+    (39) function -> PonXY Space LeftSquareBracket expression Space expression . RightSquareBracket
 
     RightSquareBracket shift and go to state 204
 
 
 state 188
 
-    (39) function -> PonXY Space LeftSquareBracket expression Space expression . RightSquareBracket
+    (50) function -> Ejecuta Space NAME Space LeftSquareBracket Variables . RightSquareBracket
 
     RightSquareBracket shift and go to state 205
 
 
 state 189
-
-    (50) function -> Ejecuta Space NAME Space LeftSquareBracket Variables . RightSquareBracket
-
-    RightSquareBracket shift and go to state 206
-
-
-state 190
 
     (68) Variables -> expression Coma Space . Variables
     (67) Variables -> . expression
@@ -9910,8 +9901,8 @@ state 190
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -9968,10 +9959,10 @@ state 190
     Para            shift and go to state 54
 
     expression                     shift and go to state 152
-    Variables                      shift and go to state 207
+    Variables                      shift and go to state 206
     function                       shift and go to state 8
 
-state 191
+state 190
 
     (56) function -> MayorQue Space expression PuntoComa Space expression .
 
@@ -10029,7 +10020,7 @@ state 191
     RightSquareBracket reduce using rule 56 (function -> MayorQue Space expression PuntoComa Space expression .)
 
 
-state 192
+state 191
 
     (57) function -> MenorQue Space expression PuntoComa Space expression .
 
@@ -10087,7 +10078,7 @@ state 192
     RightSquareBracket reduce using rule 57 (function -> MenorQue Space expression PuntoComa Space expression .)
 
 
-state 193
+state 192
 
     (61) function -> Si Space expression LeftSquareBracket function RightSquareBracket .
 
@@ -10145,7 +10136,7 @@ state 193
     RightSquareBracket reduce using rule 61 (function -> Si Space expression LeftSquareBracket function RightSquareBracket .)
 
 
-state 194
+state 193
 
     (62) function -> Si Space expression LeftSquareBracket funciones RightSquareBracket .
 
@@ -10203,141 +10194,42 @@ state 194
     RightSquareBracket reduce using rule 62 (function -> Si Space expression LeftSquareBracket funciones RightSquareBracket .)
 
 
-state 195
+state 194
 
     (13) funciones -> statement Coma . Space statement
     (14) funciones -> statement Coma . Space funciones
 
-    Space           shift and go to state 208
+    Space           shift and go to state 207
+
+
+state 195
+
+    (63) function -> Repite Space expression Space LeftSquareBracket funciones . RightSquareBracket
+
+    RightSquareBracket shift and go to state 208
 
 
 state 196
 
-    (63) function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .
+    (64) function -> Repite Space expression Space LeftSquareBracket statement . RightSquareBracket
+    (13) funciones -> statement . Coma Space statement
+    (14) funciones -> statement . Coma Space funciones
 
-    $end            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Space           reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Inic            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Suma            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Inc             reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Azar            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Menos           reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Producto        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Potencia        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Division        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Resto           reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    RC              reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Sen             reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Elegir          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Cuenta          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Ultimo          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Elemento        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Pri             reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Avanza          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Retrocede       reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    GiraDerecha     reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    GiraIzquierda   reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    OcultaTortuga   reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    ApareceTortuga  reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    PonXY           reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    PonRumbo        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Rumbo           reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    PonX            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    PonY            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    BajaLapiz       reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    SubeLapiz       reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Borrapantalla   reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    PonColorLapiz   reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Centro          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Espera          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Ejecuta         reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Iguales         reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Y               reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    O               reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    MayorQue        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    MenorQue        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Redondea        reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Cos             reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Diferencia      reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Si              reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Repite          reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Fin             reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Para            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    PuntoComa       reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    LeftSquareBracket reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    Coma            reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
-    RightSquareBracket reduce using rule 63 (function -> Repite Space expression LeftSquareBracket funciones RightSquareBracket .)
+    RightSquareBracket shift and go to state 209
+    Coma            shift and go to state 194
 
 
 state 197
-
-    (64) function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .
-
-    $end            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Space           reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Inic            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Suma            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Inc             reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Azar            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Menos           reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Producto        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Potencia        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Division        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Resto           reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    RC              reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Sen             reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Elegir          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Cuenta          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Ultimo          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Elemento        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Pri             reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Avanza          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Retrocede       reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    GiraDerecha     reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    GiraIzquierda   reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    OcultaTortuga   reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    ApareceTortuga  reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    PonXY           reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    PonRumbo        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Rumbo           reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    PonX            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    PonY            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    BajaLapiz       reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    SubeLapiz       reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Borrapantalla   reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    PonColorLapiz   reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Centro          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Espera          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Ejecuta         reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Iguales         reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Y               reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    O               reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    MayorQue        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    MenorQue        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Redondea        reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Cos             reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Diferencia      reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Si              reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Repite          reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Fin             reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Para            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    PuntoComa       reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    LeftSquareBracket reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    Coma            reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-    RightSquareBracket reduce using rule 64 (function -> Repite Space expression LeftSquareBracket statement RightSquareBracket .)
-
-
-state 198
 
     (71) function -> Para Space NAME Space LeftSquareBracket NAME . RightSquareBracket
     (65) Variable -> NAME . Coma Space NAME
     (66) Variable -> NAME . Coma Space Variable
 
-    RightSquareBracket shift and go to state 209
-    Coma            shift and go to state 210
+    RightSquareBracket shift and go to state 210
+    Coma            shift and go to state 211
 
 
-state 199
+state 198
 
     (70) function -> Para Space NAME Space LeftSquareBracket RightSquareBracket .
 
@@ -10395,14 +10287,14 @@ state 199
     RightSquareBracket reduce using rule 70 (function -> Para Space NAME Space LeftSquareBracket RightSquareBracket .)
 
 
-state 200
+state 199
 
     (72) function -> Para Space NAME Space LeftSquareBracket Variable . RightSquareBracket
 
-    RightSquareBracket shift and go to state 211
+    RightSquareBracket shift and go to state 212
 
 
-state 201
+state 200
 
     (1) statement -> Var Space NAME Space EQUALS Space expression .
 
@@ -10411,7 +10303,7 @@ state 201
     RightSquareBracket reduce using rule 1 (statement -> Var Space NAME Space EQUALS Space expression .)
 
 
-state 202
+state 201
 
     (4) function -> Inic Space NAME Space EQUALS Space expression .
 
@@ -10469,7 +10361,7 @@ state 202
     RightSquareBracket reduce using rule 4 (function -> Inic Space NAME Space EQUALS Space expression .)
 
 
-state 203
+state 202
 
     (5) function -> Inic Space NAME Space EQUALS Space function .
     (9) expression -> function .
@@ -10633,7 +10525,7 @@ state 203
   ! RightSquareBracket [ reduce using rule 9 (expression -> function .) ]
 
 
-state 204
+state 203
 
     (29) function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .
 
@@ -10691,7 +10583,7 @@ state 204
     RightSquareBracket reduce using rule 29 (function -> Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket .)
 
 
-state 205
+state 204
 
     (39) function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .
 
@@ -10749,7 +10641,7 @@ state 205
     RightSquareBracket reduce using rule 39 (function -> PonXY Space LeftSquareBracket expression Space expression RightSquareBracket .)
 
 
-state 206
+state 205
 
     (50) function -> Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket .
 
@@ -10807,14 +10699,14 @@ state 206
     RightSquareBracket reduce using rule 50 (function -> Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket .)
 
 
-state 207
+state 206
 
     (68) Variables -> expression Coma Space Variables .
 
     RightSquareBracket reduce using rule 68 (Variables -> expression Coma Space Variables .)
 
 
-state 208
+state 207
 
     (13) funciones -> statement Coma Space . statement
     (14) funciones -> statement Coma Space . funciones
@@ -10878,8 +10770,8 @@ state 208
     (60) function -> . Diferencia Space operaciones
     (61) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
     (62) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
-    (63) function -> . Repite Space expression LeftSquareBracket funciones RightSquareBracket
-    (64) function -> . Repite Space expression LeftSquareBracket statement RightSquareBracket
+    (63) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
     (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
@@ -10937,12 +10829,128 @@ state 208
     Fin             shift and go to state 53
     Para            shift and go to state 54
 
-    statement                      shift and go to state 212
-    funciones                      shift and go to state 213
+    statement                      shift and go to state 213
+    funciones                      shift and go to state 214
     expression                     shift and go to state 4
     function                       shift and go to state 8
 
+state 208
+
+    (63) function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .
+
+    $end            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Space           reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Inic            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Suma            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Inc             reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Azar            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Menos           reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Producto        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Potencia        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Division        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Resto           reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    RC              reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Sen             reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Elegir          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Cuenta          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Ultimo          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Elemento        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Pri             reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Avanza          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Retrocede       reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    GiraDerecha     reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    GiraIzquierda   reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    OcultaTortuga   reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    ApareceTortuga  reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    PonXY           reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    PonRumbo        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Rumbo           reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    PonX            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    PonY            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    BajaLapiz       reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    SubeLapiz       reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Borrapantalla   reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    PonColorLapiz   reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Centro          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Espera          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Ejecuta         reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Iguales         reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Y               reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    O               reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    MayorQue        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    MenorQue        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Redondea        reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Cos             reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Diferencia      reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Si              reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Repite          reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Fin             reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Para            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    PuntoComa       reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    LeftSquareBracket reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    Coma            reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+    RightSquareBracket reduce using rule 63 (function -> Repite Space expression Space LeftSquareBracket funciones RightSquareBracket .)
+
+
 state 209
+
+    (64) function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .
+
+    $end            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Space           reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Inic            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Suma            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Inc             reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Azar            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Menos           reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Producto        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Potencia        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Division        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Resto           reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    RC              reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Sen             reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Elegir          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Cuenta          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Ultimo          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Elemento        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Pri             reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Avanza          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Retrocede       reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    GiraDerecha     reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    GiraIzquierda   reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    OcultaTortuga   reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    ApareceTortuga  reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    PonXY           reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    PonRumbo        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Rumbo           reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    PonX            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    PonY            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    BajaLapiz       reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    SubeLapiz       reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Borrapantalla   reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    PonColorLapiz   reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Centro          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Espera          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Ejecuta         reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Iguales         reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Y               reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    O               reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    MayorQue        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    MenorQue        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Redondea        reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Cos             reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Diferencia      reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Si              reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Repite          reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Fin             reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Para            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    PuntoComa       reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    LeftSquareBracket reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    Coma            reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+    RightSquareBracket reduce using rule 64 (function -> Repite Space expression Space LeftSquareBracket statement RightSquareBracket .)
+
+
+state 210
 
     (71) function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .
 
@@ -11000,15 +11008,15 @@ state 209
     RightSquareBracket reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
 
 
-state 210
+state 211
 
     (65) Variable -> NAME Coma . Space NAME
     (66) Variable -> NAME Coma . Space Variable
 
-    Space           shift and go to state 214
+    Space           shift and go to state 215
 
 
-state 211
+state 212
 
     (72) function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .
 
@@ -11066,45 +11074,45 @@ state 211
     RightSquareBracket reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
 
 
-state 212
+state 213
 
     (13) funciones -> statement Coma Space statement .
     (13) funciones -> statement . Coma Space statement
     (14) funciones -> statement . Coma Space funciones
 
     RightSquareBracket reduce using rule 13 (funciones -> statement Coma Space statement .)
-    Coma            shift and go to state 195
+    Coma            shift and go to state 194
 
 
-state 213
+state 214
 
     (14) funciones -> statement Coma Space funciones .
 
     RightSquareBracket reduce using rule 14 (funciones -> statement Coma Space funciones .)
 
 
-state 214
+state 215
 
     (65) Variable -> NAME Coma Space . NAME
     (66) Variable -> NAME Coma Space . Variable
     (65) Variable -> . NAME Coma Space NAME
     (66) Variable -> . NAME Coma Space Variable
 
-    NAME            shift and go to state 215
+    NAME            shift and go to state 216
 
-    Variable                       shift and go to state 216
+    Variable                       shift and go to state 217
 
-state 215
+state 216
 
     (65) Variable -> NAME Coma Space NAME .
     (65) Variable -> NAME . Coma Space NAME
     (66) Variable -> NAME . Coma Space Variable
 
     RightSquareBracket reduce using rule 65 (Variable -> NAME Coma Space NAME .)
-    Coma            shift and go to state 210
+    Coma            shift and go to state 211
 
 
-state 216
+state 217
 
     (66) Variable -> NAME Coma Space Variable .
 
@@ -11120,7 +11128,7 @@ WARNING: reduce/reduce conflict in state 113 resolved using rule (expression -> 
 WARNING: rejected rule (function -> Avanza Space function) in state 113
 WARNING: reduce/reduce conflict in state 115 resolved using rule (expression -> function)
 WARNING: rejected rule (function -> Retrocede Space function) in state 115
-WARNING: reduce/reduce conflict in state 203 resolved using rule (function -> Inic Space NAME Space EQUALS Space function)
-WARNING: rejected rule (expression -> function) in state 203
+WARNING: reduce/reduce conflict in state 202 resolved using rule (function -> Inic Space NAME Space EQUALS Space function)
+WARNING: rejected rule (expression -> function) in state 202
 WARNING: Rule (function -> Avanza Space function) is never reduced
 WARNING: Rule (function -> Retrocede Space function) is never reduced
