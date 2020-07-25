@@ -256,18 +256,17 @@ def clean_canvas():
 
 def Compila():
     global functionsList, running
-    NumeroDelinea = 1
-    compYacc.reiniciar()
-    clean_canvas()
-    centro()
-    Ponrumbo(90)
-    DrawController.color="black"
+    numeroDelinea = 1
+    reiniciar()
     if not running:
         running = True
         line_list = codeText.get('1.0', 'end').split('\n')
         for line in line_list:
             if line != "":
                 try:
+                    if numeroDelinea > 1 and not compYacc.Comentario:
+                        compYacc.Error = "No hay Comentario en la primera linea"
+                        break
                     compYacc.toDo = ""
                     compYacc.Entrada = line.replace("\n", "")
                     compYacc.parser.parse(compYacc.Entrada)
@@ -288,13 +287,17 @@ def Compila():
 
                 print(compYacc.Error)
                 break
-            NumeroDelinea = NumeroDelinea + 1
+            numeroDelinea = numeroDelinea + 1
+
         consoleText.config(state=NORMAL)
         consoleText.delete('1.0', END)
         if not compYacc.Error:
             consoleText.insert(INSERT, "Compilado correctamente")
         else:
-            consoleText.insert(INSERT, compYacc.Error + " en la linea número " + str(NumeroDelinea))
+            if compYacc.Comentario:
+                consoleText.insert(INSERT, compYacc.Error + " en la linea número " + str(numeroDelinea))
+            else:
+                consoleText.insert(INSERT, compYacc.Error)
         consoleText.config(state=DISABLED)
         running = False
     else:
@@ -303,7 +306,6 @@ def Compila():
 
 def Ejecuta():
     global functionsList, running
-    functionsList = []
     Compila()
     if not compYacc.Error:
         for fuction in functionsList:
@@ -312,6 +314,15 @@ def Ejecuta():
     else:
         print("no se")
 
+def reiniciar():
+    global functionsList
+    functionsList = []
+    compYacc.reiniciar()
+    clean_canvas()
+    centro()
+    Ponrumbo(90)
+    subeLapiz()
+    DrawController.color = "black"
 
 def getColor(color):
     global colorsDict

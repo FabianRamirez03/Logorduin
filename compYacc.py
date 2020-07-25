@@ -6,10 +6,11 @@ import math as m
 from compLexx import tokens
 import sys
 
-global Entrada, Funcion, Ejecutar, toDo, rumbo,Error, listaEjecuta
+global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario
 listaEjecuta = []
 Error = ""
 Funcion = False
+Comentario = False
 coloresPermitidos = ["blanco", "azul", "marron", "cian", "gris", "amarillo", "negro", "rojo", "verde"]
 ListaFunciones = {}
 Instrucciones = {}
@@ -45,6 +46,8 @@ def p_comment(p):
     """
     statement : Comentario
     """
+    global Comentario
+    Comentario = True
 
 #Inicializacion de una variable
 def p_statement_assign(p):
@@ -551,12 +554,17 @@ def p_Ejecuta_Ordenes(p):
 
 #Reinicia el compilador
 def reiniciar():
-    global variables, Instrucciones, ListaFunciones, Error, Entrada
+    global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones
     variables = {}
     Instrucciones = {}
     ListaFunciones = {}
     Entrada = ""
     Error = ""
+    Comentario = False
+    Funcion = False
+    listaEjecuta = []
+    toDo = ""
+
 
 # Funcion que devuelve True si la dos numeros son iguales
 def iguales(tupla):
