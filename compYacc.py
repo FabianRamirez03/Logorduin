@@ -75,18 +75,20 @@ def p_statement_expr(p):
     """
     p[0] = p[1]
     a = p[0]
-    if p[0] == None:
-        return
-    else:
-        global Funcion, Entrada,toDo, Repite
-        if (Funcion and Repite):
-                for elemento in Instrucciones:
-                    ultimoElemento = elemento
+    # if p[0] == None:
+    #     pass
+    global Funcion, Entrada,toDo, Repite
+    if (Funcion and Repite):
+            for elemento in Instrucciones:
+                ultimoElemento = elemento
+            if "Para" not in Entrada and "//" not in Entrada:
                 Instrucciones[ultimoElemento][1] += [Entrada]
-                Repite = False
-        else:
-            ## toDo = "printConsola(text="+str(p[1][1])+")"
-            pass
+            else:
+                print("LLEGA PARA")
+            Repite = False
+    else:
+        ## toDo = "printConsola(text="+str(p[1][1])+")"
+        pass
 #Expression acepta numeros
 def p_expression_Number(p):
     """
@@ -487,55 +489,58 @@ def p_Ejecuta_Parametro(p):
     """
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
-    global Error, listaEjecuta, toDo, Entrada
-    if Repite:
-        listaEjecuta = []
-    parametros = Var_Array(makeList(p[6]))
-    nombre = p[3]
-    if nombre not in Instrucciones:
-        Error = str("No existe la funcion de nombre " + nombre)
-    else:
-        for elemento in Instrucciones:
-            if elemento == nombre:
-                if len(parametros) != len(Instrucciones[elemento][0]):
-                    Error = str("La cantidad de parametros ingresados no coincide con la cantidad de variables de la funcion")
-                else:
-                    Instrucciones[elemento][2] = parametros
-            listaFinal =[]
-
-            for i in range(0,len(Instrucciones[elemento][1])):
-                string = Instrucciones[elemento][1][i]
-                temp = Instrucciones[elemento][1][i].split(" ")
-                listaValores = []
-                func = ""
-
-                for j in temp:
-                    if j in Instrucciones[elemento][0] and (temp[0] != "Inic" or j != temp[1]):
-                        pos = Instrucciones[elemento][0].index(j)
-                        valor = Instrucciones[elemento][2][pos]
-                        listaValores.append(str(valor))
-                    elif j in Instrucciones[elemento][0] + "," and (temp[0] != "Inic" or j != temp[1]):
-                        j = j[0:-1]
-                        pos = Instrucciones[elemento][0].index(j)
-                        valor = str(Instrucciones[elemento][2][pos]) + ","
-                        listaValores.append(str(valor))
+    global Error, listaEjecuta, toDo, Entrada, Funcion, Instrucciones
+    if not Funcion:
+        if not Repite:
+            listaEjecuta = []
+        parametros = Var_Array(makeList(p[6]))
+        a = Instrucciones
+        nombre = p[3]
+        if nombre not in Instrucciones:
+            Error = str("No existe la funcion de nombre " + nombre)
+        else:
+            for elemento in Instrucciones:
+                if elemento == nombre:
+                    if len(parametros) != len(Instrucciones[elemento][0]):
+                        Error = str("La cantidad de parametros ingresados no coincide con la cantidad de variables de la funcion")
                     else:
-                        listaValores.append(j)
-                for g in listaValores:
-                    if listaValores.index(g) == 0:
-                        func += g
-                    else:
-                        func += " " + g
-                listaFinal.append(func)
-        for inst in listaFinal:
-            a= Entrada
-            Entrada = str(inst)
-            parser.parse(inst)
-            print(inst)
-            listaEjecuta.append(toDo)
-        a = toDo
-        b = listaEjecuta
-        toDo = listaEjecuta
+                        Instrucciones[elemento][2] = parametros
+                    listaFinal =[]
+
+                    for i in range(0,len(Instrucciones[elemento][1])):
+                        string = Instrucciones[elemento][1][i]
+                        temp = Instrucciones[elemento][1][i].split(" ")
+                        listaValores = []
+                        func = ""
+
+                        for j in temp:
+                            b = Instrucciones[elemento][0]
+                            if j in Instrucciones[elemento][0] and (temp[0] != "Inic" or j != temp[1]):
+                                pos = Instrucciones[elemento][0].index(j)
+                                valor = Instrucciones[elemento][2][pos]
+                                listaValores.append(str(valor))
+                            elif j in str(Instrucciones[elemento][0]) + "," and (temp[0] != "Inic" or j != temp[1]):
+                                j = j[0:-1]
+                                pos = Instrucciones[elemento][0].index(j)
+                                valor = str(Instrucciones[elemento][2][pos]) + ","
+                                listaValores.append(str(valor))
+                            else:
+                                listaValores.append(j)
+                        for g in listaValores:
+                            if listaValores.index(g) == 0:
+                                func += g
+                            else:
+                                func += " " + g
+                        listaFinal.append(func)
+                    for inst in listaFinal:
+                        a= Entrada
+                        Entrada = str(inst)
+                        parser.parse(inst)
+                        print(inst)
+                        listaEjecuta.append(toDo)
+                    a = toDo
+                    b = listaEjecuta
+                    toDo = listaEjecuta
 
 
 # Funcion que ejecuta las Ordenes
@@ -784,30 +789,12 @@ def p_ParaSin(p):
         else:
             Error = str("La funcion con nombre '%s' ya fue creada" % p[3])
 
-#Gramatica para la creacion de una funcion con una variable
-def p_ParaUna(p):
-    """
-    function : Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    """
-    global Funcion,Error
-    variable = "Var " + p[6]
-    if Funcion == True:
-        Error = str("Error no puede meter un Para dentro de otro")
-    else:
-        Funcion = True
-        parser.parse(variable)
-        if p[3] not in Instrucciones:
-            Instrucciones[p[3]] = [p[6], [], []]
-            print(Instrucciones)
-        else:
-            Error = str("La funcion con nombre '%s' ya fue creada" % p[3])
-
 #Gramatica para la creacion de una funcion con variables
 def p_ParaVarias(p):
     """
     function : Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
     """
-    global Funcion,Error
+    global Funcion,Error, Instrucciones
     variable = makeList(p[6])
     if Funcion == True:
         Error = str("Error no puede meter un Para dentro de otro")
@@ -822,6 +809,24 @@ def p_ParaVarias(p):
         else:
             Error = str("La funcion con nombre '%s' ya fue creada" % p[3])
 
+#Gramatica para la creacion de una funcion con una variable
+def p_ParaUna(p):
+    """
+    function : Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
+    """
+    global Funcion,Error, Instrucciones
+    print("ENTRAAAAAAAA")
+    variable = "Var " + p[6]
+    if Funcion == True:
+        Error = str("Error no puede meter un Para dentro de otro")
+    else:
+        Funcion = True
+        parser.parse(variable)
+        if p[3] not in Instrucciones:
+            Instrucciones[p[3]] = [p[6], [], []]
+            print(Instrucciones)
+        else:
+            Error = str("La funcion con nombre '%s' ya fue creada" % p[3])
 
 # Retorna error de sintaxis
 def p_error(p):

@@ -73,8 +73,8 @@ Rule 67    Variables -> expression
 Rule 68    Variables -> expression Coma Space Variables
 Rule 69    function -> Fin
 Rule 70    function -> Para Space NAME Space LeftSquareBracket RightSquareBracket
-Rule 71    function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-Rule 72    function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+Rule 71    function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+Rule 72    function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
 Terminals, with rules where they appear
 
@@ -107,7 +107,7 @@ LeftSquareBracket    : 26 27 28 29 30 39 50 52 61 62 63 64 70 71 72
 MayorQue             : 56
 MenorQue             : 57
 Menos                : 19
-NAME                 : 1 2 4 5 10 16 17 47 50 51 65 65 66 70 71 71 72
+NAME                 : 1 2 4 5 10 16 17 47 50 51 65 65 66 70 71 72 72
 O                    : 55
 OcultaTortuga        : 37
 Para                 : 70 71 72
@@ -139,7 +139,7 @@ error                :
 
 Nonterminals, with rules where they appear
 
-Variable             : 66 72
+Variable             : 66 71
 Variables            : 50 52 68
 expression           : 1 4 6 11 11 12 17 18 19 21 21 22 22 23 23 24 25 29 31 33 35 36 39 39 40 42 43 49 56 56 57 57 58 59 61 62 63 64 67 68
 funciones            : 14 62 63
@@ -214,8 +214,8 @@ state 0
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Var             shift and go to state 2
     Comentario      shift and go to state 5
@@ -1271,8 +1271,8 @@ state 53
 state 54
 
     (70) function -> Para . Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> Para . Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> Para . Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> Para . Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> Para . Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Space           shift and go to state 93
 
@@ -1356,8 +1356,8 @@ state 57
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -1482,8 +1482,8 @@ state 59
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -1599,8 +1599,8 @@ state 60
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -1718,8 +1718,8 @@ state 61
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -1836,8 +1836,8 @@ state 62
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -1953,8 +1953,8 @@ state 63
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2070,8 +2070,8 @@ state 64
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2187,8 +2187,8 @@ state 65
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2304,8 +2304,8 @@ state 66
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2442,8 +2442,8 @@ state 70
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2567,8 +2567,8 @@ state 72
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2685,8 +2685,8 @@ state 73
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2802,8 +2802,8 @@ state 74
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -2919,8 +2919,8 @@ state 75
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3043,8 +3043,8 @@ state 77
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3160,8 +3160,8 @@ state 78
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3277,8 +3277,8 @@ state 79
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3401,8 +3401,8 @@ state 81
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3530,8 +3530,8 @@ state 83
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3644,8 +3644,8 @@ state 84
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Inic            shift and go to state 9
     Suma            shift and go to state 10
@@ -3753,8 +3753,8 @@ state 85
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Inic            shift and go to state 9
     Suma            shift and go to state 10
@@ -3866,8 +3866,8 @@ state 86
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -3983,8 +3983,8 @@ state 87
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -4100,8 +4100,8 @@ state 88
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -4217,8 +4217,8 @@ state 89
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -4336,8 +4336,8 @@ state 90
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -4455,8 +4455,8 @@ state 91
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -4573,8 +4573,8 @@ state 92
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -4632,8 +4632,8 @@ state 92
 state 93
 
     (70) function -> Para Space . NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> Para Space . NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> Para Space . NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> Para Space . NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> Para Space . NAME Space LeftSquareBracket NAME RightSquareBracket
 
     NAME            shift and go to state 136
 
@@ -5159,8 +5159,8 @@ state 107
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -5279,8 +5279,8 @@ state 108
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -5399,8 +5399,8 @@ state 109
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -5526,8 +5526,8 @@ state 111
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -6204,8 +6204,8 @@ state 118
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -6675,8 +6675,8 @@ state 125
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -6847,8 +6847,8 @@ state 127
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Inic            shift and go to state 9
     Suma            shift and go to state 10
@@ -6956,8 +6956,8 @@ state 128
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Inic            shift and go to state 9
     Suma            shift and go to state 10
@@ -7215,8 +7215,8 @@ state 135
 state 136
 
     (70) function -> Para Space NAME . Space LeftSquareBracket RightSquareBracket
-    (71) function -> Para Space NAME . Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> Para Space NAME . Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> Para Space NAME . Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> Para Space NAME . Space LeftSquareBracket NAME RightSquareBracket
 
     Space           shift and go to state 159
 
@@ -7300,8 +7300,8 @@ state 139
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -7418,8 +7418,8 @@ state 140
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -7535,8 +7535,8 @@ state 141
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -7652,8 +7652,8 @@ state 142
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -7769,8 +7769,8 @@ state 143
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -8078,8 +8078,8 @@ state 157
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
     (13) funciones -> . statement Coma Space statement
     (14) funciones -> . statement Coma Space funciones
     (1) statement -> . Var Space NAME Space EQUALS Space expression
@@ -8159,8 +8159,8 @@ state 158
 state 159
 
     (70) function -> Para Space NAME Space . LeftSquareBracket RightSquareBracket
-    (71) function -> Para Space NAME Space . LeftSquareBracket NAME RightSquareBracket
-    (72) function -> Para Space NAME Space . LeftSquareBracket Variable RightSquareBracket
+    (71) function -> Para Space NAME Space . LeftSquareBracket Variable RightSquareBracket
+    (72) function -> Para Space NAME Space . LeftSquareBracket NAME RightSquareBracket
 
     LeftSquareBracket shift and go to state 183
 
@@ -8770,8 +8770,8 @@ state 171
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -8946,8 +8946,8 @@ state 173
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -9065,8 +9065,8 @@ state 174
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -9248,8 +9248,8 @@ state 177
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -9365,8 +9365,8 @@ state 178
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -9513,8 +9513,8 @@ state 182
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Var             shift and go to state 2
     Comentario      shift and go to state 5
@@ -9576,8 +9576,8 @@ state 182
 state 183
 
     (70) function -> Para Space NAME Space LeftSquareBracket . RightSquareBracket
-    (71) function -> Para Space NAME Space LeftSquareBracket . NAME RightSquareBracket
-    (72) function -> Para Space NAME Space LeftSquareBracket . Variable RightSquareBracket
+    (71) function -> Para Space NAME Space LeftSquareBracket . Variable RightSquareBracket
+    (72) function -> Para Space NAME Space LeftSquareBracket . NAME RightSquareBracket
     (65) Variable -> . NAME Coma Space NAME
     (66) Variable -> . NAME Coma Space Variable
 
@@ -9647,8 +9647,8 @@ state 184
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -9765,8 +9765,8 @@ state 185
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -9905,8 +9905,8 @@ state 189
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     INT             shift and go to state 6
     FLOAT           shift and go to state 7
@@ -10221,7 +10221,7 @@ state 196
 
 state 197
 
-    (71) function -> Para Space NAME Space LeftSquareBracket NAME . RightSquareBracket
+    (72) function -> Para Space NAME Space LeftSquareBracket NAME . RightSquareBracket
     (65) Variable -> NAME . Coma Space NAME
     (66) Variable -> NAME . Coma Space Variable
 
@@ -10289,7 +10289,7 @@ state 198
 
 state 199
 
-    (72) function -> Para Space NAME Space LeftSquareBracket Variable . RightSquareBracket
+    (71) function -> Para Space NAME Space LeftSquareBracket Variable . RightSquareBracket
 
     RightSquareBracket shift and go to state 212
 
@@ -10774,8 +10774,8 @@ state 207
     (64) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     (69) function -> . Fin
     (70) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
-    (71) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
-    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (71) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
     Var             shift and go to state 2
     Comentario      shift and go to state 5
@@ -10952,60 +10952,60 @@ state 209
 
 state 210
 
-    (71) function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .
+    (72) function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .
 
-    $end            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Space           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Inic            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Suma            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Inc             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Azar            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Menos           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Producto        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Potencia        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Division        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Resto           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    RC              reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Sen             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Elegir          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Cuenta          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Ultimo          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Elemento        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Pri             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Avanza          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Retrocede       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    GiraDerecha     reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    GiraIzquierda   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    OcultaTortuga   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    ApareceTortuga  reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    PonXY           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    PonRumbo        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Rumbo           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    PonX            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    PonY            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    BajaLapiz       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    SubeLapiz       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Borrapantalla   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    PonColorLapiz   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Centro          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Espera          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Ejecuta         reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Iguales         reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Y               reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    O               reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    MayorQue        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    MenorQue        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Redondea        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Cos             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Diferencia      reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Si              reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Repite          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Fin             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Para            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    PuntoComa       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    LeftSquareBracket reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    Coma            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
-    RightSquareBracket reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    $end            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Space           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Inic            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Suma            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Inc             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Azar            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Menos           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Producto        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Potencia        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Division        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Resto           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    RC              reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Sen             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Elegir          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Cuenta          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Ultimo          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Elemento        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Pri             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Avanza          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Retrocede       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    GiraDerecha     reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    GiraIzquierda   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    OcultaTortuga   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    ApareceTortuga  reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    PonXY           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    PonRumbo        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Rumbo           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    PonX            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    PonY            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    BajaLapiz       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    SubeLapiz       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Borrapantalla   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    PonColorLapiz   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Centro          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Espera          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Ejecuta         reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Iguales         reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Y               reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    O               reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    MayorQue        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    MenorQue        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Redondea        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Cos             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Diferencia      reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Si              reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Repite          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Fin             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Para            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    PuntoComa       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    LeftSquareBracket reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    Coma            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
+    RightSquareBracket reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket NAME RightSquareBracket .)
 
 
 state 211
@@ -11018,60 +11018,60 @@ state 211
 
 state 212
 
-    (72) function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .
+    (71) function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .
 
-    $end            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Space           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Inic            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Suma            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Inc             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Azar            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Menos           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Producto        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Potencia        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Division        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Resto           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    RC              reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Sen             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Elegir          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Cuenta          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Ultimo          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Elemento        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Pri             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Avanza          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Retrocede       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    GiraDerecha     reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    GiraIzquierda   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    OcultaTortuga   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    ApareceTortuga  reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    PonXY           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    PonRumbo        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Rumbo           reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    PonX            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    PonY            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    BajaLapiz       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    SubeLapiz       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Borrapantalla   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    PonColorLapiz   reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Centro          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Espera          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Ejecuta         reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Iguales         reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Y               reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    O               reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    MayorQue        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    MenorQue        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Redondea        reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Cos             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Diferencia      reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Si              reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Repite          reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Fin             reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Para            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    PuntoComa       reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    LeftSquareBracket reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    Coma            reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
-    RightSquareBracket reduce using rule 72 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    $end            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Space           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Inic            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Suma            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Inc             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Azar            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Menos           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Producto        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Potencia        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Division        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Resto           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    RC              reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Sen             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Elegir          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Cuenta          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Ultimo          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Elemento        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Pri             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Avanza          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Retrocede       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    GiraDerecha     reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    GiraIzquierda   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    OcultaTortuga   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    ApareceTortuga  reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    PonXY           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    PonRumbo        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Rumbo           reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    PonX            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    PonY            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    BajaLapiz       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    SubeLapiz       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Borrapantalla   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    PonColorLapiz   reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Centro          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Espera          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Ejecuta         reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Iguales         reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Y               reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    O               reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    MayorQue        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    MenorQue        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Redondea        reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Cos             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Diferencia      reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Si              reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Repite          reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Fin             reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Para            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    PuntoComa       reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    LeftSquareBracket reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    Coma            reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
+    RightSquareBracket reduce using rule 71 (function -> Para Space NAME Space LeftSquareBracket Variable RightSquareBracket .)
 
 
 state 213
