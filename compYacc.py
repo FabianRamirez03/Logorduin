@@ -488,7 +488,8 @@ def p_Ejecuta_Parametro(p):
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
     global Error, listaEjecuta, toDo, Entrada
-    listaEjecuta = []
+    if Repite:
+        listaEjecuta = []
     parametros = Var_Array(makeList(p[6]))
     nombre = p[3]
     if nombre not in Instrucciones:
@@ -527,7 +528,8 @@ def p_Ejecuta_Parametro(p):
                         func += " " + g
                 listaFinal.append(func)
         for inst in listaFinal:
-            Entrada = inst
+            a= Entrada
+            Entrada = str(inst)
             parser.parse(inst)
             print(inst)
             listaEjecuta.append(toDo)
@@ -689,10 +691,13 @@ def repite(tupla):
     can_veces = tupla[0]
     global Entrada, listaEjecuta, toDo, Repite
     print(str(Entrada) + str(tupla) + "ESTA MIERDA")
-    while Entrada[0] != "[":
-        Entrada = Entrada[1:]
-    Entrada = Entrada[1:-1]
-    Entrada = Entrada.split(",")
+    a = Entrada
+    if isinstance(Entrada, str):
+        if "[" in Entrada:
+            while Entrada[0] != "[":
+                Entrada = Entrada[1:]
+            Entrada = Entrada[1:-1]
+        Entrada = Entrada.split(",")
     aaa = Entrada
     while can_veces != 0:
         s = Entrada[0]
