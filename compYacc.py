@@ -6,9 +6,12 @@ import math as m
 from compLexx import tokens
 import sys
 
-global Entrada, Funcion, Ejecutar, toDo, rumbo,Error
+global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario, Repite
+listaEjecuta = []
 Error = ""
 Funcion = False
+Comentario = False
+Repite = True
 coloresPermitidos = ["blanco", "azul", "marron", "cian", "gris", "amarillo", "negro", "rojo", "verde"]
 ListaFunciones = {}
 Instrucciones = {}
@@ -44,6 +47,8 @@ def p_comment(p):
     """
     statement : Comentario
     """
+    global Comentario
+    Comentario = True
 
 #Inicializacion de una variable
 def p_statement_assign(p):
@@ -72,14 +77,13 @@ def p_statement_expr(p):
     if p[0] == None:
         return
     else:
-        global Funcion, Entrada,toDo
+        global Funcion, Entrada,toDo, Repite
         if (Funcion):
                 for elemento in Instrucciones:
                     ultimoElemento = elemento
                 Instrucciones[ultimoElemento][1] += [Entrada]
         else:
-         toDo = "print(" + str(p[1][1]) + ")"
-    print(p[0])
+            toDo = "printConsola(text="+str(p[1][1])+")"
 #Expression acepta numeros
 def p_expression_Number(p):
     """
@@ -301,64 +305,88 @@ def p_Avanza(p):
     function : Avanza Space expression
              | Avanza Space function
     """
+    global toDo
     p[0] = (p[1], p[3][1])
+    distance = str(p[0][1])
     print("Avanza '%d' unidades" % p[0][1])
+    toDo = "Avanza(distance = " + str(distance) + ")"
 
 def p_Retrocede(p):
     """
     function : Retrocede Space expression
              | Retrocede Space function
     """
+    global toDo
     p[0] = (p[1], p[3][1])
+    distance = p[0][1]
     print("Retrocede '%d' unidades" %p[0][1])
+    toDo = "Retroceder(distance = " + str(distance) + ")"
 
 def p_GiraDerecha(p):
     """
     function : GiraDerecha Space expression
     """
+    global toDo
     p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la derecha" %p[0][1])
+    grades = p[0][1]
+    print("Gira '%d' grados a la derecha" % p[0][1])
+    toDo = "giraDerecha(grades =" + str(grades) + ")"
 
 def p_GiraIzquierda(p):
     """
     function : GiraIzquierda Space expression
     """
+    global toDo
     p[0] = (p[1], p[3][1])
-    print("Gira '%d' grados a la izquierda" %p[0][1])
+    grades = p[0][1]
+    print("Gira '%d' grados a la izquierda" % p[0][1])
+    toDo = "giraIzquierda(grades =" + str(grades) + ")"
 
 def p_OcultaTortuga(p):
     """
     function : OcultaTortuga
     """
+    global toDo
     p[0] = (p[1],None)
     print("Se oculta la tortuga")
+    toDo = "ocultaTortuga()"
 
 def p_ApareceTortuga(p):
     """
     function : ApareceTortuga
     """
+    global toDo
     p[0] = (p[1],None)
     print("Aparece la Tortuga")
+    toDo = "apareceTortuga()"
 
 def p_PonXY(p):
     """
     function : PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
     """
+    global toDo
     a = [p[4][1],p[6][1]]
     p[0] = (p[1],a,p[4][1],p[6][1])
-
+    posx = p[4][1]
+    posy = p[6][1]
+    toDo = "ponpos( coords = [" + str(posx) + "," + str(posy) + "] )"
+    print(str(posx) + " " + str(posy))
 
 def p_PonRumbo(p):
     """
     function : PonRumbo Space expression
     """
+    global toDo
     p[0] = (p[1], p[3][1])
-    print("Tortuga en rumbo hacia los '%d' grados" %p[0][1])
+    print("Tortuga en rumbo hacia los '%d' grados" % p[0][1])
+    rumbo = p[0][1]
+    toDo = "Ponrumbo(grades = " + str(rumbo) + ")"
 
 def p_Rumbo(p):
     """
     function : Rumbo
     """
+    global toDo
     p[0] = (p[1],None)
     print("Indicar el rumbo de la tortura")
 
@@ -366,61 +394,81 @@ def p_PonX(p):
     """
     function : PonX Space expression
     """
+    global toDo
     p[0] = (p[1],p[3][1])
-    print("Tortuga en la posicionX '%d'"%p[0][1])
+    xPos = p[0][1]
+    print("Tortuga en la posicionX '%d'" % p[0][1])
+    toDo = "ponx(xCoord = " + str(xPos) + ")"
 
 def p_PonY(p):
     """
     function : PonY Space expression
     """
+    global toDo
     p[0] = (p[1],p[3][1])
+    yPos = p[0][1]
     print("Tortuga en la posicionY '%d'" % p[0][1])
+    toDo = "pony(yCoord = " + str(yPos) + ")"
 
 def p_BajaLapiz(p):
     """
     function : BajaLapiz
     """
+    global toDo
     p[0] = (p[1],None)
     print("Comienza a dibujar")
+    toDo = "BajaLapiz()"
 
 def p_SubeLapiz(p):
     """
     function : SubeLapiz
     """
+    global toDo
     p[0] = (p[1],None)
     print("Levanta el lapiz y detiene el dibujo")
+    toDo = "subeLapiz()"
 
 def p_Borrapantalla(p):
     """function : Borrapantalla"""
+    global toDo
     p[0] = (p[1],None)
+    toDo = "clean_canvas()"
 
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     """
     function :  PonColorLapiz Space NAME
     """
+    global toDo
     global Error
     color = p[3]
     if color not in coloresPermitidos:
         Error = str("Error, el color " + color + " no es un color permitido")
     else:
         p[0] = (p[1],p[3])
+        strColor = p[3]
+        toDo = "PonColorLapiz(color = '" + strColor + "')"
 
 # Funcion para poner la tortuga en el centro
 def p_Centro(p):
     """
     function :  Centro
     """
+    global toDo
     p[0] = (p[1],None)
+    toDo = "centro()"
 
 # Funcion para pausar la ejecucion
 def p_Espera(p):
     """
     function :  Espera Space expression
     """
-    time.sleep(p[3][1]/60)
+    global toDo
     p[0] = (p[1],p[3][1])
-    print("Wait de " + str(p[3][1]/60) + " segundos")
+    segs = p[3][1]
+    print("Wait de " + str(p[3][1] / 60) + " segundos")
+    toDo = "espera(seg = " + str(segs) + ")"
+
 
 def Var_Array(tupla):
     listaFinal = []
@@ -436,7 +484,8 @@ def p_Ejecuta_Parametro(p):
     """
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
-    global Error
+    global Error, listaEjecuta, toDo
+    listaEjecuta = []
     parametros = Var_Array(makeList(p[6]))
     nombre = p[3]
     if nombre not in Instrucciones:
@@ -449,7 +498,9 @@ def p_Ejecuta_Parametro(p):
                 else:
                     Instrucciones[elemento][2] = parametros
             listaFinal =[]
+
             for i in range(0,len(Instrucciones[elemento][1])):
+                string = Instrucciones[elemento][1][i]
                 temp = Instrucciones[elemento][1][i].split(" ")
                 listaValores = []
                 func = ""
@@ -466,9 +517,19 @@ def p_Ejecuta_Parametro(p):
                         func += g
                     else:
                         func += " " + g
-                listaFinal.append(func)
+                if temp[0] != "Repite":
+                    listaFinal.append(func)
+                else:
+                    listaFinal.append(func)
+                    break
         for inst in listaFinal:
             parser.parse(inst)
+            print(inst)
+            listaEjecuta.append(toDo)
+        a = toDo
+        b = listaEjecuta
+        toDo = listaEjecuta
+
 
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta_Funcion(p):
@@ -502,11 +563,18 @@ def p_Ejecuta_Ordenes(p):
 
 #Reinicia el compilador
 def reiniciar():
-    global variables, Instrucciones, ListaFunciones, Error
+    global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones, Repite
     variables = {}
     Instrucciones = {}
     ListaFunciones = {}
+    Entrada = ""
     Error = ""
+    Comentario = False
+    Funcion = False
+    listaEjecuta = []
+    toDo = ""
+    Repite = True
+
 
 # Funcion que devuelve True si la dos numeros son iguales
 def iguales(tupla):
@@ -613,22 +681,30 @@ def p_restar(p):
     p[0] = (p[1], a, p[3])
 
 def repite(tupla):
-    can_veces = tupla[0] - 1
-    global Entrada
+    can_veces = tupla[0]
+    global Entrada, listaEjecuta, toDo, Repite
+    Repite = False
+    print(str(Entrada) + str(tupla) + "ESTA MIERDA")
     while Entrada[0] != "[":
         Entrada = Entrada[1:]
     Entrada = Entrada[1:-1]
     Entrada = Entrada.split(",")
+    aaa = Entrada
     while can_veces != 0:
         s = Entrada[0]
         parser.parse(s)
+        listaEjecuta.append(toDo)
         num = 1
         while len(Entrada) != num:
             s = Entrada[num][1:]
             print(s)
             num += 1
             parser.parse(s)
+            string = toDo
+            listaEjecuta.append(toDo)
+        toDo = listaEjecuta
         can_veces -= 1
+    Repite = True
 
 
 # Ejecuta si se cumple la condicion
@@ -647,8 +723,8 @@ def p_Si(p):
 # Funcion que repite ordenes N cantidad de veces
 def p_Repite(p):
     """
-    function : Repite Space expression LeftSquareBracket funciones RightSquareBracket
-             | Repite Space expression LeftSquareBracket  statement RightSquareBracket
+    function : Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+             | Repite Space expression Space LeftSquareBracket  statement RightSquareBracket
     """
     p[0] = (p[3][1],p[5])
     repite(p[0])
@@ -749,6 +825,7 @@ def p_error(p):
 
 
 parser = yacc.yacc()
+"""
 while not Error:
     global Entrada
     s = input('->')
@@ -761,6 +838,8 @@ while not Error:
         if not Error:
             Error = str(e)
 print(Error)
-
+"""
 #Hacer la documentacion
 #Errores del dia
+#Arreglar el si
+#Arreglar repite en para

@@ -256,18 +256,46 @@ def clean_canvas():
 
 def Compila():
     global functionsList, running
-
+    numeroDelinea = 1
+    reiniciar()
     if not running:
         running = True
         line_list = codeText.get('1.0', 'end').split('\n')
         for line in line_list:
             if line != "":
-                compYacc.parser.parse(line.replace("\n", ""))
-                functionsList.append(compYacc.toDo)
+                try:
+                    if numeroDelinea > 1 and not compYacc.Comentario:
+                        compYacc.Error = "No hay Comentario en la primera linea\n"
+                        break
+                    compYacc.toDo = ""
+                    compYacc.Entrada = line.replace("\n", "")
+                    compYacc.parser.parse(compYacc.Entrada)
+                    print(compYacc.variables)
+                    if not compYacc.Funcion:
+                        if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
+                            functionsList.append(compYacc.toDo)
+                        elif isinstance(compYacc.toDo, list):
+                            print(compYacc.toDo)
+                            for i in compYacc.toDo:
+                                if compYacc.toDo != "":
+                                    functionsList.append(i)
+                except Exception as e:
+                    print(e)
+                    print(compYacc.Error)
+                    break
+            if (compYacc.Error):
+                print(compYacc.Error)
+                break
+            numeroDelinea = numeroDelinea + 1
 
         consoleText.config(state=NORMAL)
-        consoleText.delete('1.0', END)
-        consoleText.insert(INSERT, "Compilado correctamente")
+        if not compYacc.Error:
+            consoleText.insert(END, "Compilado correctamente\n")
+        else:
+            if compYacc.Comentario:
+                consoleText.insert(END, compYacc.Error + " en la linea número " + str(numeroDelinea) + "\n")
+            else:
+                consoleText.insert(INSERT, compYacc.Error)
         consoleText.config(state=DISABLED)
         running = False
     else:
@@ -276,11 +304,38 @@ def Compila():
 
 def Ejecuta():
     global functionsList, running
-    functionsList = []
     Compila()
-    for fuction in functionsList:
-        if fuction is not None and fuction != "Logic" and fuction != "":
-            eval(str(fuction))
+    if not compYacc.Error:
+        for fuction in functionsList:
+            if fuction is not None and fuction != "Logic" and fuction != "":
+                eval(str(fuction))
+    else:
+        print("no se")
+
+
+def reiniciar():
+    global functionsList
+    functionsList = []
+    reiniciarConsola()
+    compYacc.reiniciar()
+    clean_canvas()
+    centro()
+    Ponrumbo(90)
+    subeLapiz()
+    DrawController.color = "black"
+
+
+def reiniciarConsola():
+    consoleText.config(state=NORMAL)
+    consoleText.delete('1.0', END)
+    consoleText.insert(INSERT, "Logorduin. Version 1.0\n")
+    consoleText.config(state=DISABLED)
+
+
+def printConsola(text):
+    consoleText.config(state=NORMAL)
+    consoleText.insert(END, str(text)+"\n")
+    consoleText.config(state=DISABLED)
 
 
 def getColor(color):
@@ -336,10 +391,15 @@ def arrowAux():
 
 
 # ___________________________________-Aplicacion Grafica_____________________________________________
-
 root = Tk()
+
 root.title("Logorduin")
-root.geometry("1200x650")
+icon = PhotoImage(file="Imagenes/turtle.png")
+root.iconphoto(False, icon)
+
+# root.geometry("1400x650")
+root.geometry('%dx%d+%d+%d' % (1400, 650, 20, 20))
+root.resizable(height=False, width=False)
 menu = Menu(root)
 root.config(menu=menu)
 
@@ -366,10 +426,10 @@ skinMenu.add_command(label="Flecha", command=arrowAux)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
-code_Frame = Frame(root, height=150, width=400, bg="white", bd=2)
+code_Frame = Frame(root, height=150, width=800, bg="white", bd=2)
 code_Frame.pack(fill=Y, side="right")
 
-# Frame que contiene el resto de la interfaz fuera del recuadro del cofigo
+# Frame que contiene el resto de la interfaz fuera del recuadro del codigo
 left_Frame = Frame(root, width=935, bg="white", borderwidth=2)
 left_Frame.pack(fill="both", side="right")
 
@@ -392,18 +452,22 @@ buttons_Frame.pack(side=LEFT)
 # _________________________Elementos de la interfaz__________________________________
 
 # Text Area para el codigo
-codeText = Text(code_Frame, width=30,
-                height=41)  # En este caso, el largo y ancho es por letras, height 41 son 41 reglones
+codeText = Text(code_Frame, width=52,
+                height=41, wrap=NONE)  # En este caso, el largo y ancho es por letras, height 41 son 41 reglones
 
 # ScrollbBar para navegar dentro del codigo
-ScrollBar = Scrollbar(code_Frame)
-ScrollBar.config(command=codeText.yview)
-codeText.config(yscrollcommand=ScrollBar.set)
-ScrollBar.pack(side=RIGHT, fill="y")
-codeText.pack(fill="y")
+ScrollBarY = Scrollbar(code_Frame)
+ScrollBarX = Scrollbar(code_Frame, orient=HORIZONTAL)
+ScrollBarY.config(command=codeText.yview)
+ScrollBarX.config(command=codeText.xview)
+codeText.config(yscrollcommand=ScrollBarY.set)
+codeText.config(xscrollcommand=ScrollBarX.set)
+ScrollBarY.pack(side=RIGHT, fill="y")
+ScrollBarX.pack(side=BOTTOM, fill="x")
+codeText.pack(fill=BOTH)
 
 # Canvas donde la tortuga dibujará
-turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas)
+turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="white")
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
@@ -411,20 +475,22 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compileButton = Button(buttons_Frame, text="Compilar", command=Compila)
-compileButton.place(height=30, width=60, x=0, y=30)
-executeButton = Button(buttons_Frame, text="Ejecutar", command=Ejecuta)
-executeButton.place(height=30, width=60, x=0, y=75)
+compilePhoto = PhotoImage(file="Imagenes/Compilar.png")
+executePhoto = PhotoImage(file="Imagenes/Ejecutar.png")
+compileButton = Button(buttons_Frame, command=Compila, bg='white', image=compilePhoto, bd=0)
+compileButton.place(x=25, y=30)
+executeButton = Button(buttons_Frame, command=Ejecuta, bg='white', image=executePhoto, bd=0)
+executeButton.place(x=25, y=75)
 
 # Labels de las coordenadas
-xCoords = Label(buttons_Frame, text="X = " + str(xTurtle), fg="black", bg="white")
-yCoords = Label(buttons_Frame, text="Y = " + str(yTurtle), fg="black", bg="white")
-xCoords.place(x=85, y=0)
-yCoords.place(x=85, y=20)
+xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="white")
+yCoords = Label(turtle_canvas, text="Y = " + str(yTurtle), fg="black", bg="white")
+xCoords.place(x=5, y=465)
+yCoords.place(x=5, y=481)
 
 # Text Area de la consola
 consoleText = Text(console_Frame, width=93, height=9)
-consoleText.insert(INSERT, "Hola, soy la Consola")
+consoleText.insert(INSERT, "Logorduin. Version 1.0\n")
 consoleText.config(state=DISABLED)
 
 # ScrollBar de la consola
