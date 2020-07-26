@@ -83,7 +83,7 @@ def p_statement_expr(p):
                     ultimoElemento = elemento
                 Instrucciones[ultimoElemento][1] += [Entrada]
         else:
-            print(p[0])
+            toDo = "printConsola(text="+str(p[1][1])+")"
 #Expression acepta numeros
 def p_expression_Number(p):
     """

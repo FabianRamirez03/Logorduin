@@ -25,7 +25,6 @@ yEscondite = 1
 skin_path = "Imagenes"
 turtle_skin = "turtle.png"
 
-
 colorsDict = [["blanco", "white"], ["azul", "blue"], ["marron", "brown"], ["cafe", "brown"],
               ["gris", "grey"], ["amarillo", "yellow"], ["negro", "black"], ["rojo", "red"], ["verde", "green"],
               ["cian", "cyan"]]
@@ -266,7 +265,7 @@ def Compila():
             if line != "":
                 try:
                     if numeroDelinea > 1 and not compYacc.Comentario:
-                        compYacc.Error = "No hay Comentario en la primera linea"
+                        compYacc.Error = "No hay Comentario en la primera linea\n"
                         break
                     compYacc.toDo = ""
                     compYacc.Entrada = line.replace("\n", "")
@@ -281,21 +280,20 @@ def Compila():
                                 if compYacc.toDo != "":
                                     functionsList.append(i)
                 except Exception as e:
-                   print(e)
-                   print(compYacc.Error)
-                   break
+                    print(e)
+                    print(compYacc.Error)
+                    break
             if (compYacc.Error):
                 print(compYacc.Error)
                 break
             numeroDelinea = numeroDelinea + 1
 
         consoleText.config(state=NORMAL)
-        consoleText.delete('1.0', END)
         if not compYacc.Error:
-            consoleText.insert(INSERT, "Compilado correctamente")
+            consoleText.insert(END, "Compilado correctamente\n")
         else:
             if compYacc.Comentario:
-                consoleText.insert(INSERT, compYacc.Error + " en la linea número " + str(numeroDelinea))
+                consoleText.insert(END, compYacc.Error + " en la linea número " + str(numeroDelinea) + "\n")
             else:
                 consoleText.insert(INSERT, compYacc.Error)
         consoleText.config(state=DISABLED)
@@ -318,12 +316,26 @@ def Ejecuta():
 def reiniciar():
     global functionsList
     functionsList = []
+    reiniciarConsola()
     compYacc.reiniciar()
     clean_canvas()
     centro()
     Ponrumbo(90)
     subeLapiz()
     DrawController.color = "black"
+
+
+def reiniciarConsola():
+    consoleText.config(state=NORMAL)
+    consoleText.delete('1.0', END)
+    consoleText.insert(INSERT, "Logorduin. Version 1.0\n")
+    consoleText.config(state=DISABLED)
+
+
+def printConsola(text):
+    consoleText.config(state=NORMAL)
+    consoleText.insert(END, str(text)+"\n")
+    consoleText.config(state=DISABLED)
 
 
 def getColor(color):
@@ -385,7 +397,6 @@ root.title("Logorduin")
 icon = PhotoImage(file="Imagenes/turtle.png")
 root.iconphoto(False, icon)
 
-
 # root.geometry("1400x650")
 root.geometry('%dx%d+%d+%d' % (1400, 650, 20, 20))
 root.resizable(height=False, width=False)
@@ -442,7 +453,7 @@ buttons_Frame.pack(side=LEFT)
 
 # Text Area para el codigo
 codeText = Text(code_Frame, width=52,
-                height=41,  wrap=NONE)  # En este caso, el largo y ancho es por letras, height 41 son 41 reglones
+                height=41, wrap=NONE)  # En este caso, el largo y ancho es por letras, height 41 son 41 reglones
 
 # ScrollbBar para navegar dentro del codigo
 ScrollBarY = Scrollbar(code_Frame)
@@ -479,7 +490,7 @@ yCoords.place(x=5, y=481)
 
 # Text Area de la consola
 consoleText = Text(console_Frame, width=93, height=9)
-consoleText.insert(INSERT, "Logorduin. Version 1.0")
+consoleText.insert(INSERT, "Logorduin. Version 1.0\n")
 consoleText.config(state=DISABLED)
 
 # ScrollBar de la consola
