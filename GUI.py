@@ -270,6 +270,7 @@ def Compila():
                     compYacc.toDo = ""
                     compYacc.Entrada = line.replace("\n", "")
                     compYacc.parser.parse(compYacc.Entrada)
+                    compYacc.Repite = True
                     print(compYacc.variables)
                     if not compYacc.Funcion:
                         if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
@@ -308,7 +309,7 @@ def Ejecuta():
     if not compYacc.Error:
         for fuction in functionsList:
             if fuction is not None and fuction != "Logic" and fuction != "":
-                eval(str(fuction))
+                    eval(str(fuction))
     else:
         print("no se")
 

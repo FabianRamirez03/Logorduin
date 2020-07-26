@@ -56,8 +56,8 @@ def p_statement_assign(p):
     function : Inic Space NAME Space EQUALS Space expression
              | Inic Space NAME Space EQUALS Space function
     """
-    global Funcion, Entrada, Error
-    if (Funcion):
+    global Funcion, Entrada, Error, Repite
+    if (Funcion and Repite):
         for elemento in Instrucciones:
             ultimoElemento = elemento
         Instrucciones[ultimoElemento][1] += [Entrada]
@@ -74,16 +74,19 @@ def p_statement_expr(p):
     statement : expression
     """
     p[0] = p[1]
+    a = p[0]
     if p[0] == None:
         return
     else:
         global Funcion, Entrada,toDo, Repite
-        if (Funcion):
+        if (Funcion and Repite):
                 for elemento in Instrucciones:
                     ultimoElemento = elemento
                 Instrucciones[ultimoElemento][1] += [Entrada]
+                Repite = False
         else:
-            toDo = "printConsola(text="+str(p[1][1])+")"
+            ## toDo = "printConsola(text="+str(p[1][1])+")"
+            pass
 #Expression acepta numeros
 def p_expression_Number(p):
     """
@@ -484,7 +487,7 @@ def p_Ejecuta_Parametro(p):
     """
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
-    global Error, listaEjecuta, toDo
+    global Error, listaEjecuta, toDo, Entrada
     listaEjecuta = []
     parametros = Var_Array(makeList(p[6]))
     nombre = p[3]
@@ -510,6 +513,11 @@ def p_Ejecuta_Parametro(p):
                         pos = Instrucciones[elemento][0].index(j)
                         valor = Instrucciones[elemento][2][pos]
                         listaValores.append(str(valor))
+                    elif j in Instrucciones[elemento][0] + "," and (temp[0] != "Inic" or j != temp[1]):
+                        j = j[0:-1]
+                        pos = Instrucciones[elemento][0].index(j)
+                        valor = str(Instrucciones[elemento][2][pos]) + ","
+                        listaValores.append(str(valor))
                     else:
                         listaValores.append(j)
                 for g in listaValores:
@@ -517,12 +525,9 @@ def p_Ejecuta_Parametro(p):
                         func += g
                     else:
                         func += " " + g
-                if temp[0] != "Repite":
-                    listaFinal.append(func)
-                else:
-                    listaFinal.append(func)
-                    break
+                listaFinal.append(func)
         for inst in listaFinal:
+            Entrada = inst
             parser.parse(inst)
             print(inst)
             listaEjecuta.append(toDo)
@@ -683,7 +688,6 @@ def p_restar(p):
 def repite(tupla):
     can_veces = tupla[0]
     global Entrada, listaEjecuta, toDo, Repite
-    Repite = False
     print(str(Entrada) + str(tupla) + "ESTA MIERDA")
     while Entrada[0] != "[":
         Entrada = Entrada[1:]
@@ -704,7 +708,6 @@ def repite(tupla):
             listaEjecuta.append(toDo)
         toDo = listaEjecuta
         can_veces -= 1
-    Repite = True
 
 
 # Ejecuta si se cumple la condicion
@@ -724,9 +727,11 @@ def p_Si(p):
 def p_Repite(p):
     """
     function : Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
-             | Repite Space expression Space LeftSquareBracket  statement RightSquareBracket
+             | Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     """
+    global Repite
     p[0] = (p[3][1],p[5])
+    Repite = False
     repite(p[0])
 
 #Acepta nombres de variables
@@ -825,20 +830,20 @@ def p_error(p):
 
 
 parser = yacc.yacc()
-"""
-while not Error:
-    global Entrada
-    s = input('->')
-    Entrada = s
-    if not s:
-        continue
-    try:
-        parser.parse(s)
-    except Exception as e:
-        if not Error:
-            Error = str(e)
+# while not Error:
+#     global Entrada
+#     s = input('->')
+#     Entrada = s
+#     if not s:
+#         continue
+#     try:
+#         parser.parse(s)
+#         Repite = True
+#     except Exception as e:
+#         if not Error:
+#             Error = str(e)
 print(Error)
-"""
+
 #Hacer la documentacion
 #Errores del dia
 #Arreglar el si
