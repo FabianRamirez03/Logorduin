@@ -534,7 +534,8 @@ def p_Ejecuta_Parametro(p):
                         listaFinal.append(func)
                     for inst in listaFinal:
                         a= Entrada
-                        #Entrada = str(inst)
+                        if "Repite" not in Entrada and isinstance(Entrada,str):
+                            Entrada = str(inst)
                         parser.parse(inst)
                         print(inst)
                         listaEjecuta.append(toDo)
