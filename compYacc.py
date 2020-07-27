@@ -491,8 +491,8 @@ def p_Ejecuta_Parametro(p):
     """
     global Error, listaEjecuta, toDo, Entrada, Funcion, Instrucciones
     if not Funcion:
-        if not Repite:
-            listaEjecuta = []
+        # if not Repite:
+        #     listaEjecuta = []
         parametros = Var_Array(makeList(p[6]))
         a = Instrucciones
         nombre = p[3]
@@ -534,7 +534,7 @@ def p_Ejecuta_Parametro(p):
                         listaFinal.append(func)
                     for inst in listaFinal:
                         a= Entrada
-                        Entrada = str(inst)
+                        #Entrada = str(inst)
                         parser.parse(inst)
                         print(inst)
                         listaEjecuta.append(toDo)
@@ -560,19 +560,26 @@ def p_Ejecuta_Funcion(p):
 
 def p_Ejecuta_Ordenes(p):
     """
-    function : Ejecuta Space LeftSquareBracket Variables RightSquareBracket
+    function : Ejecuta Space LeftSquareBracket funciones RightSquareBracket
+             | Ejecuta Space LeftSquareBracket statement RightSquareBracket
     """
+    global listaEjecuta, toDo, Repite
+    Repite = False
     lista = makeList(p[4])
     listaFinal = []
     for elemento in lista:
         if isinstance(elemento, tuple):
-            listaFinal.append(str(elemento[0]) + " " + str(elemento[1]))
+            if elemento[1] != None:
+                listaFinal.append(str(elemento[0]) + " " + str(elemento[1]))
+            else:
+                listaFinal.append(str(elemento[0]))
         else:
             listaFinal.append(str(lista[lista.index(elemento)]) + " " + str(lista[lista.index(elemento ) + 1]))
             break
     for x in listaFinal:
         parser.parse(x)
-
+        listaEjecuta.append(toDo)
+        toDo = listaEjecuta
 #Reinicia el compilador
 def reiniciar():
     global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones, Repite
@@ -714,7 +721,6 @@ def repite(tupla):
             print(s)
             num += 1
             parser.parse(s)
-            string = toDo
             listaEjecuta.append(toDo)
         toDo = listaEjecuta
         can_veces -= 1
