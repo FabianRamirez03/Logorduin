@@ -283,12 +283,12 @@ def Compila():
                 except Exception as e:
                     print(e)
                     print(compYacc.Error)
+                    compYacc.Error = str(e)
                     break
             if (compYacc.Error):
                 print(compYacc.Error)
                 break
             numeroDelinea = numeroDelinea + 1
-
         consoleText.config(state=NORMAL)
         if not compYacc.Error:
             consoleText.insert(END, "Compilado correctamente\n")
