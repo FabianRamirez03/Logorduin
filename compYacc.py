@@ -744,6 +744,7 @@ def repite(tupla):
             listaEjecuta.append(toDo)
         toDo = listaEjecuta
         can_veces -= 1
+        can_Repites = 0
 
 
 # Ejecuta si se cumple la condicion
@@ -752,12 +753,14 @@ def p_Si(p):
     function : Si Space  expression LeftSquareBracket function RightSquareBracket
              | Si Space expression LeftSquareBracket funciones RightSquareBracket
     """
+    global toDo
     p[0] = (p[1],p[3],p[5])
     if(p[0][1][1] == 'CIERTO'):
         print("EJECUTA")
-        repite((2, None))
+        repite((1, None))
     else:
         print("NO EJECUTA")
+        toDo = ""
 
 # Funcion que repite ordenes N cantidad de veces
 def p_Repite(p):
