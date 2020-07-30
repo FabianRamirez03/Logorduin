@@ -559,7 +559,7 @@ def p_Ejecuta_Funcion(p):
     """
     function :  Ejecuta Space NAME
     """
-    global Error
+    global Error, toDo, listaEjecuta, Entrada
     nombre = p[3]
     if nombre not in Instrucciones:
         Error = str("No existe la funcion de nombre " + nombre)
@@ -568,7 +568,11 @@ def p_Ejecuta_Funcion(p):
             if elemento == nombre:
                 if key_exists(Instrucciones[elemento],0):
                     for instruccion in Instrucciones[elemento][0][1]:
+                        if "Repite" not in Entrada and isinstance(Entrada, str):
+                            Entrada = str(instruccion)
                         parser.parse(instruccion)
+                        listaEjecuta.append(toDo)
+                    toDo = listaEjecuta
 
 def p_Ejecuta_Ordenes(p):
     """
