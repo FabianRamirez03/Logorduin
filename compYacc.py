@@ -6,12 +6,13 @@ import math as m
 from compLexx import tokens
 import sys
 
-global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario, Repite
+global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario, Repite, can_Repites
 listaEjecuta = []
 Error = ""
 Funcion = False
 Comentario = False
 Repite = True
+can_Repites=0
 coloresPermitidos = ["blanco", "azul", "marron", "cian", "gris", "amarillo", "negro", "rojo", "verde"]
 ListaFunciones = {}
 Instrucciones = {}
@@ -583,7 +584,7 @@ def p_Ejecuta_Ordenes(p):
         toDo = listaEjecuta
 #Reinicia el compilador
 def reiniciar():
-    global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones, Repite
+    global Entrada, Funcion, toDo, Error, listaEjecuta, Comentario,variables, Instrucciones, ListaFunciones, Repite, can_Repites
     variables = {}
     Instrucciones = {}
     ListaFunciones = {}
@@ -594,6 +595,8 @@ def reiniciar():
     listaEjecuta = []
     toDo = ""
     Repite = True
+    can_Repites=0
+
 
 
 # Funcion que devuelve True si la dos numeros son iguales
@@ -702,26 +705,42 @@ def p_restar(p):
 
 def repite(tupla):
     can_veces = tupla[0]
-    global Entrada, listaEjecuta, toDo, Repite
-    print(str(Entrada) + str(tupla) + "ESTA MIERDA")
-    a = Entrada
+    global Entrada, listaEjecuta, toDo, Repite, can_Repites
+    flagrepite= False
+    can_Repites+=1
     if isinstance(Entrada, str):
         if "[" in Entrada:
             while Entrada[0] != "[":
                 Entrada = Entrada[1:]
             Entrada = Entrada[1:-1]
         Entrada = Entrada.split(",")
-    aaa = Entrada
-    while can_veces != 0:
+    canRepite=0
+    for elemento in Entrada:
+        if "Repite" in elemento:
+            canRepite+=1
+    if canRepite == can_Repites-1:
+        flagrepite=True
+    a = Entrada
+    while can_veces != 0 and flagrepite:
         s = Entrada[0]
+        Entrada =s
+        guardar=can_Repites
+        can_Repites=0
         parser.parse(s)
+        can_Repites=guardar
+        Entrada = a
         listaEjecuta.append(toDo)
         num = 1
         while len(Entrada) != num:
             s = Entrada[num][1:]
             print(s)
+            Entrada = s
             num += 1
+            guardar = can_Repites
+            can_Repites = 0
             parser.parse(s)
+            can_Repites = guardar
+            Entrada = a
             listaEjecuta.append(toDo)
         toDo = listaEjecuta
         can_veces -= 1
@@ -853,13 +872,13 @@ parser = yacc.yacc()
 #     Entrada = s
 #     if not s:
 #         continue
-#     try:
-#         parser.parse(s)
-#         Repite = True
-#     except Exception as e:
-#         if not Error:
-#             Error = str(e)
-print(Error)
+#     # try:
+#     parser.parse(s)
+#     Repite = True
+#     # except Exception as e:
+#     #     if not Error:
+#     #         Error = str(e)
+# print(Error)
 
 #Hacer la documentacion
 #Errores del dia
