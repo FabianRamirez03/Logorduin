@@ -545,8 +545,8 @@ def p_Ejecuta_Parametro(p):
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
     global Error, listaEjecuta, toDo, Entrada, Funcion, Instrucciones
-    toDo = ''
-    listaEjecuta = []
+    # toDo = ''
+    # listaEjecuta = []
     if not Funcion:
         # if not Repite:
         #     listaEjecuta = []
@@ -650,8 +650,8 @@ def p_Ejecuta_Funcion(p):
     function :  Ejecuta Space NAME
     """
     global Error, toDo, listaEjecuta, Entrada, Funcion
-    toDo = ''
-    listaEjecuta = []
+    # toDo = ''
+    # listaEjecuta = []
     nombre = p[3]
     if nombre not in Instrucciones:
         Error = str("No existe la funcion de nombre " + nombre)
@@ -672,23 +672,44 @@ def p_Ejecuta_Ordenes(p):
     function : Ejecuta Space LeftSquareBracket funciones RightSquareBracket
              | Ejecuta Space LeftSquareBracket statement RightSquareBracket
     """
-    global listaEjecuta, toDo, Repite
+    global listaEjecuta, toDo, Repite,Entrada, can_Repites
     Repite = False
-    lista = makeList(p[4])
-    listaFinal = []
-    for elemento in lista:
-        if isinstance(elemento, tuple):
-            if elemento[1] is not None:
-                listaFinal.append(str(elemento[0]) + " " + str(elemento[1]))
+    lista=[]
+    # listaFinal = []
+    if isinstance(Entrada, str):
+        if "[" in Entrada:
+            while Entrada[0] != "[":
+                Entrada = Entrada[1:]
+            Entrada = Entrada[1:-1]
+        lista = Entrada.split(",")
+    n=0
+    while n < len(lista):
+        if('[' in lista[n] and ']' not in lista[n]):
+            cant=n+1
+            ant=lista[:n]
+            asig=lista[n]
+            while (']' not in lista [cant]):
+                asig+=','+lista[cant]
+                cant+=1
+            asig+= ','+lista[cant]
+            if(len(lista)==cant+1):
+                lista = ant + [asig]
+                n=len(lista)-1
             else:
-                listaFinal.append(str(elemento[0]))
+                lista=ant+[asig]+lista[cant+1:]
+                n=len(ant+[asig])
+        if n>0:
+            lista[n]= lista[n][1:]
+            n+=1
         else:
-            listaFinal.append(str(lista[lista.index(elemento)]) + " " + str(lista[lista.index(elemento) + 1]))
-            break
-    for x in listaFinal:
+            n+=1
+    for x in lista:
+        Entrada = x
+        can_Repites=0
         parser.parse(x)
         listaEjecuta.append(toDo)
-        toDo = listaEjecuta
+        toDo=""
+    toDo = listaEjecuta
 
 
 # Reinicia el compilador
@@ -835,6 +856,7 @@ def repite(tupla):
     global Entrada, listaEjecuta, toDo, Repite, can_Repites
     flagrepite = False
     can_Repites += 1
+    Inicial=Entrada
     if isinstance(Entrada, str):
         if "[" in Entrada:
             while Entrada[0] != "[":
@@ -872,6 +894,7 @@ def repite(tupla):
         toDo = listaEjecuta
         can_veces -= 1
         can_Repites = 0
+    Entrada= Inicial
 
 
 # Ejecuta si se cumple la condicion
