@@ -63,7 +63,8 @@ def p_statement_assign(p):
     function : Inic Space NAME Space EQUALS Space expression
              | Inic Space NAME Space EQUALS Space function
     """
-    global Funcion, Entrada, Error, Repite
+    global Funcion, Entrada, Error, Repite, toDo
+    toDo = ""
     if (Funcion and Repite):
         for elemento in Instrucciones:
             ultimoElemento = elemento
@@ -544,6 +545,8 @@ def p_Ejecuta_Parametro(p):
     function : Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
     """
     global Error, listaEjecuta, toDo, Entrada, Funcion, Instrucciones
+    toDo = ''
+    listaEjecuta = []
     if not Funcion:
         # if not Repite:
         #     listaEjecuta = []
@@ -559,7 +562,7 @@ def p_Ejecuta_Parametro(p):
             else:
                 for elemento in Instrucciones:
                     if elemento == nombre:
-                        if len(parametros) != len(Instrucciones[elemento][lenParametros][0]):
+                        if len(parametros) != len(Instrucciones[elemento][lenParametros][0]) and not isinstance(Instrucciones[elemento][lenParametros][0],str):
                             Error = str(
                                 "La cantidad de parametros ingresados no coincide con la cantidad de variables de la funcion")
                         else:
@@ -570,27 +573,63 @@ def p_Ejecuta_Parametro(p):
                             temp = Instrucciones[elemento][lenParametros][1][i].split(" ")
                             listaValores = []
                             func = ""
-
+                            contador = 0
                             for j in temp:
+                                if isinstance(Instrucciones[elemento][lenParametros][0],list):
+                                    for var in list(Instrucciones[elemento][lenParametros])[0]:
+                                        pos = Instrucciones[elemento][lenParametros][0].index(var)
+                                        variables[var] = Instrucciones[elemento][lenParametros][2][pos]
+                                else:
+                                    var = Instrucciones[elemento][lenParametros][0]
+                                    pos = Instrucciones[elemento][lenParametros][0].index(var)
+                                    variables[var] = Instrucciones[elemento][lenParametros][2][pos]
                                 if j in Instrucciones[elemento][lenParametros][0] and (
-                                        temp[0] != "Inic" or j != temp[1]):
+                                        temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = Instrucciones[elemento][lenParametros][2][pos]
                                     listaValores.append(str(valor))
-                                elif j in str(Instrucciones[elemento][lenParametros][0]) + "," and (
-                                        temp[0] != "Inic" or j != temp[1]):
+                                elif j in str(Instrucciones[elemento][lenParametros][0]) + "," and (temp[0] != "Inic" or j != temp[1]) \
+                                        and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = str(Instrucciones[elemento][lenParametros][2][pos]) + ","
                                     listaValores.append(str(valor))
+                                elif j in str(Instrucciones[elemento][lenParametros][0]) + "]" and (
+                                        temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
+                                    j = j[0:-1]
+                                    pos = Instrucciones[elemento][lenParametros][0].index(j)
+                                    valor = str(Instrucciones[elemento][lenParametros][2][pos]) + "]"
+                                    listaValores.append(str(valor))
+                                elif j in Instrucciones[elemento][lenParametros][0] and (temp[0] == "Inic"):
+                                    if temp.index("Inic") + 1 != contador:
+                                        pos = Instrucciones[elemento][lenParametros][0].index(j)
+                                        valor = Instrucciones[elemento][lenParametros][2][pos]
+                                        listaValores.append(str(valor))
+                                    else:
+                                        listaValores.append(j)
+                                elif j in Instrucciones[elemento][lenParametros][0] and (temp[0] == "[Inic"):
+                                    if temp.index("[Inic") + 1 != contador:
+                                        pos = Instrucciones[elemento][lenParametros][0].index(j)
+                                        valor = Instrucciones[elemento][lenParametros][2][pos]
+                                        listaValores.append(str(valor))
+                                    else:
+                                        listaValores.append(j)
                                 else:
                                     listaValores.append(j)
+                                contador += 1
                             for g in listaValores:
                                 if listaValores.index(g) == 0:
                                     func += g
                                 else:
                                     func += " " + g
-                            listaFinal.append(func)
+                            if "Inic" not in func:
+                                listaFinal.append(func)
+                            else:
+                                if key_exists(variables,temp[1]) and Instrucciones[elemento][lenParametros][pos] == temp[1]:
+                                    parser.parse(func)
+                                    Instrucciones[elemento][lenParametros][2][pos] = variables[temp[1]]
+                                else:
+                                    listaFinal.append(func)
                         for inst in listaFinal:
                             a = Entrada
                             if "Repite" not in Entrada and isinstance(Entrada, str):
@@ -600,17 +639,14 @@ def p_Ejecuta_Parametro(p):
                                 listaEjecuta.append(toDo)
                         toDo = listaEjecuta
 
-
-def prueba():
-    print("a")
-
-
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta_Funcion(p):
     """
     function :  Ejecuta Space NAME
     """
-    global Error, toDo, listaEjecuta, Entrada
+    global Error, toDo, listaEjecuta, Entrada, Funcion
+    toDo = ''
+    listaEjecuta = []
     nombre = p[3]
     if nombre not in Instrucciones:
         Error = str("No existe la funcion de nombre " + nombre)
@@ -637,7 +673,7 @@ def p_Ejecuta_Ordenes(p):
     listaFinal = []
     for elemento in lista:
         if isinstance(elemento, tuple):
-            if elemento[1] != None:
+            if elemento[1] is not None:
                 listaFinal.append(str(elemento[0]) + " " + str(elemento[1]))
             else:
                 listaFinal.append(str(elemento[0]))
@@ -978,18 +1014,18 @@ def p_error(p):
 
 
 parser = yacc.yacc()
-while not Error:
-    global Entrada
-    s = input('->')
-    Entrada = s
-    if not s:
-        continue
-    # try:
-    parser.parse(s)
-    Repite = True
-    # except Exception as e:
-    #     if not Error:
-    #         Error = str(e)
+# while not Error:
+#     global Entrada
+#     s = input('->')
+#     Entrada = s
+#     if not s:
+#         continue
+#     # try:
+#     parser.parse(s)
+#     Repite = True
+#     # except Exception as e:
+#     #     if not Error:
+#     #         Error = str(e)
 print(Error)
 
 # Hacer la documentacion
