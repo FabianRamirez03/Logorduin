@@ -540,9 +540,13 @@ consoleText.config(state=DISABLED)
 
 # ScrollBar de la consola
 consoleBar = Scrollbar(console_Frame)
+consoleXBar = Scrollbar(console_Frame, orient=HORIZONTAL)
+consoleXBar.config(command=consoleText.xview)
+consoleText.config(xscrollcommand=consoleXBar.set)
 consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
+consoleXBar.pack(side=BOTTOM, fill="x")
 consoleText.pack(fill="y")
 
 
