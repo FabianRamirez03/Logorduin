@@ -4,6 +4,7 @@ import ply.yacc as yacc
 import random
 import math as m
 from compLexx import tokens
+from compLexx import lexError
 import sys
 
 global Entrada, Funcion, toDo, rumbo,Error, listaEjecuta,Comentario, Repite, can_Repites, lenPar
@@ -561,15 +562,15 @@ def p_Ejecuta_Funcion(p):
     nombre = p[3]
     if nombre not in Instrucciones:
         Error = str("No existe la funcion de nombre " + nombre)
-    else:
+    elif not Funcion:
         for elemento in Instrucciones:
             if elemento == nombre:
                 if key_exists(Instrucciones[elemento],0):
                     for instruccion in Instrucciones[elemento][0][1]:
                         if "Repite" not in Entrada and isinstance(Entrada, str):
                             Entrada = str(instruccion)
-                        parser.parse(instruccion)
-                        listaEjecuta.append(toDo)
+                            parser.parse(instruccion)
+                            listaEjecuta.append(toDo)
                     toDo = listaEjecuta
 
 def p_Ejecuta_Ordenes(p):
@@ -888,23 +889,26 @@ def p_error(p):
     if p:
         Error = str("Error de sintaxis en '%s'" % p.value)
     else:
-        Error = str("Error de sintaxis")
+        if lexError:
+            Error=lexError
+        else:
+            Error = str("Error de sintaxis")
 
 
 parser = yacc.yacc()
-# while not Error:
-#     global Entrada
-#     s = input('->')
-#     Entrada = s
-#     if not s:
-#         continue
-#     # try:
-#     parser.parse(s)
-#     Repite = True
-#     # except Exception as e:
-#     #     if not Error:
-#     #         Error = str(e)
-# print(Error)
+while not Error:
+    global Entrada
+    s = input('->')
+    Entrada = s
+    if not s:
+        continue
+    # try:
+    parser.parse(s)
+    Repite = True
+    # except Exception as e:
+    #     if not Error:
+    #         Error = str(e)
+print(Error)
 
 #Hacer la documentacion
 #Errores del dia

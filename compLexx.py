@@ -1,6 +1,9 @@
 import ply.lex as lex
 import sys
-
+error = False
+strError = ""
+global lexError
+lexError=''
 #lista de variables que son aceptadas
 tokens = [
     'NAME',
@@ -70,7 +73,7 @@ t_PuntoComa = r';'
 
 #Comentarios
 def t_Comentario(t):
-    r'//(.)*'
+    r'\/\/(.)*'
     t.value ='Comentario'
     return t
 
@@ -322,8 +325,10 @@ def t_Diferencia(t):
 
 #Error al ingresar un caracter no permitido
 def t_error(t):
-    print("Caracter no aceptado '%s' " % t.value[0] )
+    global lexError
+    t.type = str(("Caracter no aceptado '%s' " % t.value[0]))
     t.lexer.skip(1)
+    return t
 
 lexer = lex.lex()
 

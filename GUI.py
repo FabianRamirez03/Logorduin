@@ -264,9 +264,6 @@ def Compila():
         for line in line_list:
             if line != "":
                 try:
-                    if numeroDelinea > 1 and not compYacc.Comentario:
-                        compYacc.Error = "No hay Comentario en la primera linea\n"
-                        break
                     compYacc.toDo = ""
                     compYacc.Entrada = line.replace("\n", "")
                     compYacc.parser.parse(compYacc.Entrada)
@@ -283,13 +280,19 @@ def Compila():
                 except Exception as e:
                     print(e)
                     print(compYacc.Error)
-                    compYacc.Error = str(e)
+                    if not compYacc.Error:
+                        compYacc.Error = str(e)
                     break
-            if (compYacc.Error):
+            if compYacc.Error:
                 print(compYacc.Error)
+                break
+            if numeroDelinea >= 1 and not compYacc.Comentario:
+                compYacc.Error = "No hay Comentario en la primera linea\n"
                 break
             numeroDelinea = numeroDelinea + 1
         consoleText.config(state=NORMAL)
+        if not compYacc.variables and not compYacc.Error:
+            compYacc.Error = "No hay ninguna variable definida\n"
         if not compYacc.Error:
             consoleText.insert(END, "Compilado correctamente\n")
         else:
