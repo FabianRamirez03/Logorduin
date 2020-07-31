@@ -7,10 +7,11 @@ xBound = 935
 yBound = 500
 color = "black"
 outOfBounds = False
-
+detener = False
 
 
 def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel):
+    global detener
     distanceX = distance * math.cos(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje X
     distanceY = distance * -math.sin(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje Y
 
@@ -36,7 +37,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
         if seeingTo == 360 or seeingTo == 180:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
             traveledY = 1
-        while abs(traveledX) < abs(distanceX) and 15 < yTurtle < yBound - 15 and 15 < xTurtle < xBound - 15:
+        while abs(traveledX) < abs(distanceX) and 15 < yTurtle < yBound - 15 and 15 < xTurtle < xBound - 15 and not detener:
             traveledX = traveledX + directionX * proportion  # Define cuando se debe mover y se lo suma a la
             # distancia recorrida
             toMoveX = directionX * proportion
@@ -63,7 +64,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
         if seeingTo == 90 or seeingTo == 270:  # Puede dar numeros por e-15, para que no haya division por cero
             proportion = 1
             traveledX = 1
-        while abs(traveledY) < abs(distanceY) and 15 < xTurtle < xBound - 15 and 15 < yTurtle < yBound - 15:
+        while abs(traveledY) < abs(distanceY) and 15 < xTurtle < xBound - 15 and 15 < yTurtle < yBound - 15 and not detener:
             traveledY = traveledY + directionY * proportion  # Define cuando se debe mover y se lo suma a la distancia recorrida
             toMoveY = directionY * proportion
             toMoveX = 0  # Es cero de base en caso que no deba recorrer distancia en Y

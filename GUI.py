@@ -7,7 +7,6 @@ import compYacc
 import sys
 from PIL import Image
 from PIL import ImageTk
-import asyncio
 
 # Constantes Graficas
 xCanvas = 935
@@ -36,6 +35,7 @@ functionsList = []
 global running, showingTurtle
 running = False
 escondida = False
+detener = False
 
 compYacc.rumbo = 90
 
@@ -114,7 +114,6 @@ def Avanza(distance):
     if not escondida:
         coords = avanzaAux(distance)
         if DrawController.outOfBounds:
-            print("se salio")
             compYacc.Error = "Error: Movimiento fuera de los limites"
             printConsola(compYacc.Error)
         xTurtle = coords[0]
@@ -316,35 +315,52 @@ def Compila():
             consoleText.insert(END, "Compilado correctamente\n")
         else:
             if compYacc.Comentario:
-                consoleText.insert(END, compYacc.Error + " en la linea número " + str(numeroDelinea) + "\n")
+                consoleText.insert(END, "En la linea número " + str(numeroDelinea) + ": " + line + "\n")
+                consoleText.insert(END, compYacc.Error + "\n")
             else:
                 consoleText.insert(INSERT, compYacc.Error)
         consoleText.config(state=DISABLED)
         running = False
     else:
-        print("Running Procces")
+        printConsola("Ya se encuentra un proceso en marcha")
 
 
 def Ejecuta():
-    global functionsList, running
+    global functionsList, running, detener
     Compila()
     length = len(functionsList)
     i = 0
-    while i < length and compYacc.Error == "":
-        function = functionsList[i]
-        if function is not None and function != "Logic" and function != "":
-            eval(str(function))
-        i += 1
+    if not running:
+        while i < length and compYacc.Error == "" and not detener:
+            function = functionsList[i]
+            if function is not None and function != "Logic" and function != "":
+                eval(str(function))
+            i += 1
+        running = False
+    else:
+        printConsola("Ya se encuentra un proceso en marcha")
+
+
+def detenerEjecucion():
+    global detener, running
+    detener = True
+    DrawController.detener = True
+    if running:
+        printConsola("Ejecución detenida con éxito")
+    else:
+        printConsola("No hay proceso para detener")
 
 
 def reiniciar():
-    global functionsList
+    global functionsList, detener
     functionsList = []
     reiniciarConsola()
     compYacc.reiniciar()
     clean_canvas()
     centro()
     Ponrumbo(90)
+    detener = False
+    DrawController.detener = False
     DrawController.seeingTo = 90
     subeLapiz()
     DrawController.color = "black"
@@ -494,12 +510,18 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compilePhoto = PhotoImage(file="Imagenes/Compilar.png")
-executePhoto = PhotoImage(file="Imagenes/Ejecutar.png")
+compilePhoto = PhotoImage(file="Imagenes/compilar.png")
+executePhoto = PhotoImage(file="Imagenes/ejecutar.png")
+stopPhote = PhotoImage(file="Imagenes/detener.png")
+
 compileButton = Button(buttons_Frame, command=Compila, bg='white', image=compilePhoto, bd=0)
-compileButton.place(x=25, y=30)
 executeButton = Button(buttons_Frame, command=Ejecuta, bg='white', image=executePhoto, bd=0)
-executeButton.place(x=25, y=75)
+stopButton = Button(buttons_Frame, command=detenerEjecucion, bg='white', image=stopPhote, bd=0)
+
+executeButton.place(x=38, y=10)
+compileButton.place(x=38, y=45)
+stopButton.place(x=38, y=80)
+
 
 # Labels de las coordenadas
 xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="white")
