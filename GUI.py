@@ -85,6 +85,13 @@ def new_file():
     codeText.delete('1.0', END)
 
 
+def printConsola(string):
+    consoleText.config(state=NORMAL)
+    consoleText.insert(END, string+"\n")
+    consoleText.config(state=DISABLED)
+
+
+# ________________________________________________Funciones de la tortuga______________________________________________
 def Retroceder(distance):
     global xTurtle, yTurtle, escondida
     if not escondida:
@@ -178,12 +185,6 @@ def pony(yCoord):
 def giraDerecha(grades):
     global escondida
     if not escondida:
-        """
-        gradesToRotate = DrawController.girar(grades, -1)
-        girarAux(gradesToRotate)
-        gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
-        turtle_canvas.update()
-        """
         gradesToRotate = DrawController.seeingTo - grades
         Ponrumbo(gradesToRotate)
     else:
@@ -193,12 +194,6 @@ def giraDerecha(grades):
 def giraIzquierda(grades):
     global escondida
     if not escondida:
-        """
-        gradesToRotate = DrawController.girar(grades, 1)
-        girarAux(gradesToRotate)
-        gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
-        turtle_canvas.update()
-        """
         gradesToRotate = DrawController.seeingTo + grades
         Ponrumbo(gradesToRotate)
     else:
@@ -303,7 +298,7 @@ def Compila():
                     print(compYacc.Error)
                     compYacc.Error = str(e)
                     break
-            if (compYacc.Error):
+            if compYacc.Error:
                 print(compYacc.Error)
                 break
             numeroDelinea = numeroDelinea + 1
@@ -327,7 +322,7 @@ def Ejecuta():
     if not compYacc.Error:
         for fuction in functionsList:
             if fuction is not None and fuction != "Logic" and fuction != "":
-                    eval(str(fuction))
+                eval(str(fuction))
     else:
         print("no se")
 
@@ -349,12 +344,6 @@ def reiniciarConsola():
     consoleText.config(state=NORMAL)
     consoleText.delete('1.0', END)
     consoleText.insert(INSERT, "Logorduin. Version 1.0\n")
-    consoleText.config(state=DISABLED)
-
-
-def printConsola(text):
-    consoleText.config(state=NORMAL)
-    consoleText.insert(END, str(text)+"\n")
     consoleText.config(state=DISABLED)
 
 
