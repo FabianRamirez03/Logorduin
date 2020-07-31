@@ -545,11 +545,9 @@ def p_Ejecuta_Parametro(p):
                             a= Entrada
                             if "Repite" not in Entrada and isinstance(Entrada,str):
                                 Entrada = str(inst)
-                            parser.parse(inst)
-                            print(inst)
-                            listaEjecuta.append(toDo)
-                        a = toDo
-                        b = listaEjecuta
+                                parser.parse(inst)
+                                print(inst)
+                                listaEjecuta.append(toDo)
                         toDo = listaEjecuta
 
 def prueba():
@@ -782,10 +780,11 @@ def p_Repite(p):
     function : Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
              | Repite Space expression Space LeftSquareBracket statement RightSquareBracket
     """
-    global Repite
-    p[0] = (p[3][1],p[5])
+    global Repite,Funcion
+    p[0] = (p[3][1], p[5])
     Repite = False
-    repite(p[0])
+    if Funcion == False:
+        repite(p[0])
 
 #Acepta nombres de variables
 def p_Variable(p):
@@ -811,9 +810,12 @@ def p_Fin(p):
     """
     function : Fin
     """
-    global Funcion
-    Funcion = False
-    print(Instrucciones)
+    global Funcion,Error
+    if Funcion:
+        Funcion = False
+        print(Instrucciones)
+    else:
+        Error='No existe un Para'
 
 #Gramatica para creacion de una funcion sin variables
 def p_ParaSin(p):
@@ -885,10 +887,8 @@ def p_error(p):
     global Error
     if p:
         Error = str("Error de sintaxis en '%s'" % p.value)
-        raise Exception()
     else:
         Error = str("Error de sintaxis")
-        raise Exception()
 
 
 parser = yacc.yacc()
