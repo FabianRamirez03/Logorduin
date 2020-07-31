@@ -125,10 +125,12 @@ def Ponrumbo(grades):
         if grades == 90:
             turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
             turtle_canvas.itemconfigure(turtleImage, image=turtle)
+            gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
             turtle_canvas.update()
         elif gradesToRotate != 0:
             turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
             turtle_canvas.itemconfigure(turtleImage, image=turtle)
+            gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
             turtle_canvas.update()
     else:
         pass
@@ -141,8 +143,8 @@ def ponpos(coords):
         xTurtle = coords[0]
         yTurtle = coords[1]
         turtle_canvas.move(turtleImage, xTurtle, yTurtle)
-        xCoords.configure(text="X = " + str(xTurtle))
-        yCoords.configure(text="Y = " + str(yTurtle))
+        xCoords.configure(text="X = " + str(int(xTurtle)))
+        yCoords.configure(text="Y = " + str(int(yTurtle)))
         turtle_canvas.update()
     else:
         pass
@@ -154,7 +156,7 @@ def ponx(xCoord):
         turtle_canvas.move(turtleImage, -xTurtle, 0)
         xTurtle = xCoord
         turtle_canvas.move(turtleImage, xTurtle, 0)
-        xCoords.configure(text="X = " + str(xTurtle))
+        xCoords.configure(text="X = " + str(int(xTurtle)))
         turtle_canvas.update()
     else:
         pass
@@ -167,7 +169,7 @@ def pony(yCoord):
         turtle_canvas.move(turtleImage, 0, -yTurtle)
         yTurtle = yCoord
         turtle_canvas.move(turtleImage, 0, yTurtle)
-        yCoords.configure(text="Y = " + str(yTurtle))
+        yCoords.configure(text="Y = " + str(int(yTurtle)))
         turtle_canvas.update()
     else:
         pass
@@ -176,14 +178,29 @@ def pony(yCoord):
 def giraDerecha(grades):
     global escondida
     if not escondida:
-        girarAux(DrawController.girar(grades, -1))
+        """
+        gradesToRotate = DrawController.girar(grades, -1)
+        girarAux(gradesToRotate)
+        gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
+        turtle_canvas.update()
+        """
+        gradesToRotate = DrawController.seeingTo - grades
+        Ponrumbo(gradesToRotate)
     else:
         pass
 
 
 def giraIzquierda(grades):
+    global escondida
     if not escondida:
-        girarAux(DrawController.girar(grades, 1))
+        """
+        gradesToRotate = DrawController.girar(grades, 1)
+        girarAux(gradesToRotate)
+        gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
+        turtle_canvas.update()
+        """
+        gradesToRotate = DrawController.seeingTo + grades
+        Ponrumbo(gradesToRotate)
     else:
         pass
 
@@ -191,6 +208,7 @@ def giraIzquierda(grades):
 def girarAux(gradesToRotate):
     global turtle
     path = skin_path + "/" + turtle_skin
+    DrawController.seeingTo = gradesToRotate
     turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
     turtle_canvas.itemconfigure(turtleImage, image=turtle)
     turtle_canvas.update()
@@ -322,6 +340,7 @@ def reiniciar():
     clean_canvas()
     centro()
     Ponrumbo(90)
+    DrawController.seeingTo = 90
     subeLapiz()
     DrawController.color = "black"
 
@@ -488,6 +507,10 @@ xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="white
 yCoords = Label(turtle_canvas, text="Y = " + str(yTurtle), fg="black", bg="white")
 xCoords.place(x=5, y=465)
 yCoords.place(x=5, y=481)
+
+# Labels del rumbo de la tortuga
+gradesLabel = Label(turtle_canvas, text="Rumbo = " + str(DrawController.seeingTo), fg="black", bg="white")
+gradesLabel.place(x=5, y=449)
 
 # Text Area de la consola
 consoleText = Text(console_Frame, width=93, height=9)

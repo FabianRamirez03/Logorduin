@@ -13,7 +13,7 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
     distanceY = distance * -math.sin(Util.gradesToRadians(seeingTo))  # Distancia total a mover en el eje Y
 
     if distanceX != 0:
-        directionX = distanceX / abs(distanceX)  # Para saber si debe restar o sumarle a la cantidad
+        directionX = distanceX / abs(distanceX) # Para saber si debe restar o sumarle a la cantidad
     if distanceY != 0:
         directionY = distanceY / abs(distanceY)
     if distanceX == 0:
@@ -48,8 +48,8 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
-            xLabel.configure(text="X = " + str(xTurtle))
-            yLabel.configure(text="Y = " + str(yTurtle))
+            xLabel.configure(text="X = " + str(int(xTurtle)))
+            yLabel.configure(text="Y = " + str(int(yTurtle)))
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
 
@@ -67,15 +67,15 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
             toMoveX = 0  # Es cero de base en caso que no deba recorrer distancia en Y
             if abs(traveledX) < abs(distanceX):  # En caso de que deba seguirse moviendo en Y
                 traveledX = traveledX + directionX
-                toMoveX = directionX * direction
+                toMoveX = directionX
 
             if canDraw:
                 canvas.create_line(xTurtle, yTurtle, xTurtle + toMoveX * direction, yTurtle + toMoveY * direction, fill=color)
             xTurtle = xTurtle + toMoveX * direction
             yTurtle = yTurtle + toMoveY * direction
             canvas.move(turtle, toMoveX * direction, toMoveY * direction)  # Mueve la figura
-            xLabel.configure(text="X = " + str(xTurtle))
-            yLabel.configure(text="Y = " + str(yTurtle))
+            xLabel.configure(text="X = " + str(int(xTurtle)))
+            yLabel.configure(text="Y = " + str(int(yTurtle)))
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
 
@@ -100,7 +100,7 @@ def girar(grades, direction):
         seeingTo = seeingTo + 360
     if seeingTo > 360:
         seeingTo = seeingTo - 360
-    return seeingTo - 90
+    return seeingTo
 
 
 def setCanDraw(state):
