@@ -70,7 +70,7 @@ t_PuntoComa = r';'
 
 #Comentarios
 def t_Comentario(t):
-    r'[ \t\n]*\//[ \t\na-zA-Z_0-9&@-]*'
+    r'//(.)*'
     t.value ='Comentario'
     return t
 
