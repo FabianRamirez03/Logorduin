@@ -639,11 +639,6 @@ def p_Ejecuta_Parametro(p):
                                 listaEjecuta.append(toDo)
                         toDo = listaEjecuta
 
-
-def prueba():
-    print("a")
-
-
 # Funcion que ejecuta las Ordenes
 def p_Ejecuta_Funcion(p):
     """

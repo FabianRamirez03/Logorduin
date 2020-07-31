@@ -7,7 +7,6 @@ import compYacc
 import sys
 from PIL import Image
 from PIL import ImageTk
-import asyncio
 
 # Constantes Graficas
 xCanvas = 935
@@ -36,6 +35,7 @@ functionsList = []
 global running, showingTurtle
 running = False
 escondida = False
+detener = False
 
 compYacc.rumbo = 90
 
@@ -87,7 +87,7 @@ def new_file():
 
 def printConsola(string):
     consoleText.config(state=NORMAL)
-    consoleText.insert(END, string+"\n")
+    consoleText.insert(END, string + "\n")
     consoleText.config(state=DISABLED)
 
 
@@ -96,6 +96,8 @@ def Retroceder(distance):
     global xTurtle, yTurtle, escondida
     if not escondida:
         coords = retrocederAux(distance)
+        if DrawController.outOfBounds:
+            compYacc.Error = "Movimiento fuera de los limites"
         xTurtle = coords[0]
         yTurtle = coords[1]
     else:
@@ -111,6 +113,9 @@ def Avanza(distance):
     global xTurtle, yTurtle, escondida
     if not escondida:
         coords = avanzaAux(distance)
+        if DrawController.outOfBounds:
+            compYacc.Error = "Error: Movimiento fuera de los limites"
+            printConsola(compYacc.Error)
         xTurtle = coords[0]
         yTurtle = coords[1]
     else:
@@ -310,34 +315,52 @@ def Compila():
             consoleText.insert(END, "Compilado correctamente\n")
         else:
             if compYacc.Comentario:
-                consoleText.insert(END, compYacc.Error + " en la linea número " + str(numeroDelinea) + "\n")
+                consoleText.insert(END, "En la linea número " + str(numeroDelinea) + ": " + line + "\n")
+                consoleText.insert(END, compYacc.Error + "\n")
             else:
                 consoleText.insert(INSERT, compYacc.Error)
         consoleText.config(state=DISABLED)
         running = False
     else:
-        print("Running Procces")
+        printConsola("Ya se encuentra un proceso en marcha")
 
 
 def Ejecuta():
-    global functionsList, running
+    global functionsList, running, detener
     Compila()
-    if not compYacc.Error:
-        for fuction in functionsList:
-            if fuction is not None and fuction != "Logic" and fuction != "":
-                eval(str(fuction))
+    length = len(functionsList)
+    i = 0
+    if not running:
+        while i < length and compYacc.Error == "" and not detener:
+            function = functionsList[i]
+            if function is not None and function != "Logic" and function != "":
+                eval(str(function))
+            i += 1
+        running = False
     else:
-        print("no se")
+        printConsola("Ya se encuentra un proceso en marcha")
+
+
+def detenerEjecucion():
+    global detener, running
+    detener = True
+    DrawController.detener = True
+    if running:
+        printConsola("Ejecución detenida con éxito")
+    else:
+        printConsola("No hay proceso para detener")
 
 
 def reiniciar():
-    global functionsList
+    global functionsList, detener
     functionsList = []
     reiniciarConsola()
     compYacc.reiniciar()
     clean_canvas()
     centro()
     Ponrumbo(90)
+    detener = False
+    DrawController.detener = False
     DrawController.seeingTo = 90
     subeLapiz()
     DrawController.color = "black"
@@ -402,6 +425,24 @@ def arrowAux():
     update_skin("arrow.png")
 
 
+# _________________________________Logica de la velocidad________________________________________
+
+def defaultSpeed():
+    DrawController.speed = 20
+
+
+def slowSpeed():
+    DrawController.speed = 30
+
+
+def hightSpeed():
+    DrawController.speed = 10
+
+
+def toretto():
+    DrawController.speed = 5
+
+
 # ___________________________________-Aplicacion Grafica_____________________________________________
 root = Tk()
 
@@ -435,6 +476,13 @@ skinMenu.add_command(label="Default", command=defaultAux)
 skinMenu.add_command(label="Shrek", command=shrekAux)
 skinMenu.add_command(label="Pacman", command=pacManAux)
 skinMenu.add_command(label="Flecha", command=arrowAux)
+
+speedMenu = Menu(viewMenu)
+viewMenu.add_cascade(label="Velocidad", menu=speedMenu)
+speedMenu.add_command(label="Default", command=defaultSpeed)
+speedMenu.add_command(label="Lento", command=slowSpeed)
+speedMenu.add_command(label="Alto", command=hightSpeed)
+speedMenu.add_command(label="Muy alto", command=toretto)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
@@ -487,12 +535,17 @@ turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
 turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 # Botones de compilacion y ejecución
-compilePhoto = PhotoImage(file="Imagenes/Compilar.png")
-executePhoto = PhotoImage(file="Imagenes/Ejecutar.png")
+compilePhoto = PhotoImage(file="Imagenes/compilar.png")
+executePhoto = PhotoImage(file="Imagenes/ejecutar.png")
+stopPhote = PhotoImage(file="Imagenes/detener.png")
+
 compileButton = Button(buttons_Frame, command=Compila, bg='white', image=compilePhoto, bd=0)
-compileButton.place(x=25, y=30)
 executeButton = Button(buttons_Frame, command=Ejecuta, bg='white', image=executePhoto, bd=0)
-executeButton.place(x=25, y=75)
+stopButton = Button(buttons_Frame, command=detenerEjecucion, bg='white', image=stopPhote, bd=0)
+
+executeButton.place(x=38, y=10)
+compileButton.place(x=38, y=45)
+stopButton.place(x=38, y=80)
 
 # Labels de las coordenadas
 xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="white")
@@ -511,9 +564,13 @@ consoleText.config(state=DISABLED)
 
 # ScrollBar de la consola
 consoleBar = Scrollbar(console_Frame)
+consoleXBar = Scrollbar(console_Frame, orient=HORIZONTAL)
+consoleXBar.config(command=consoleText.xview)
+consoleText.config(xscrollcommand=consoleXBar.set)
 consoleBar.config(command=consoleText.yview)
 codeText.config(yscrollcommand=consoleBar.set)
 consoleBar.pack(side=RIGHT, fill="y")
+consoleXBar.pack(side=BOTTOM, fill="x")
 consoleText.pack(fill="y")
 
 
@@ -544,6 +601,7 @@ root.mainloop()
 
 # **********************************Compilador*********************************************************
 
+"""
 # Build the lexer
 import ply.lex as lex
 
@@ -551,3 +609,4 @@ lexer = lex.lex()
 import ply.yacc as yacc
 
 parser = yacc.yacc()
+"""
