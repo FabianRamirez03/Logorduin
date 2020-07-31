@@ -6,6 +6,8 @@ seeingTo = 90  # hacia donde está viendo la tortuga en grados
 xBound = 935
 yBound = 500
 color = "black"
+outOfBounds = False
+
 
 
 def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel):
@@ -78,7 +80,9 @@ def avanza(canvas, turtle, distance, xTurtle, yTurtle, direction, xLabel, yLabel
             yLabel.configure(text="Y = " + str(int(yTurtle)))
             canvas.update()  # Actualiza el canvas
             canvas.after(20)  # Define la velocidad del movimiento
-
+    if yTurtle <= 15 or yTurtle >= 485 or xTurtle <= 15 or xTurtle >= 920:
+        global outOfBounds
+        outOfBounds = True
     return [xTurtle, yTurtle]
 
 

@@ -87,7 +87,7 @@ def new_file():
 
 def printConsola(string):
     consoleText.config(state=NORMAL)
-    consoleText.insert(END, string+"\n")
+    consoleText.insert(END, string + "\n")
     consoleText.config(state=DISABLED)
 
 
@@ -96,6 +96,8 @@ def Retroceder(distance):
     global xTurtle, yTurtle, escondida
     if not escondida:
         coords = retrocederAux(distance)
+        if DrawController.outOfBounds:
+            compYacc.Error = "Movimiento fuera de los limites"
         xTurtle = coords[0]
         yTurtle = coords[1]
     else:
@@ -111,6 +113,10 @@ def Avanza(distance):
     global xTurtle, yTurtle, escondida
     if not escondida:
         coords = avanzaAux(distance)
+        if DrawController.outOfBounds:
+            print("se salio")
+            compYacc.Error = "Error: Movimiento fuera de los limites"
+            printConsola(compYacc.Error)
         xTurtle = coords[0]
         yTurtle = coords[1]
     else:
@@ -322,12 +328,13 @@ def Compila():
 def Ejecuta():
     global functionsList, running
     Compila()
-    if not compYacc.Error:
-        for fuction in functionsList:
-            if fuction is not None and fuction != "Logic" and fuction != "":
-                eval(str(fuction))
-    else:
-        print("no se")
+    length = len(functionsList)
+    i = 0
+    while i < length and compYacc.Error == "":
+        function = functionsList[i]
+        if function is not None and function != "Logic" and function != "":
+            eval(str(function))
+        i += 1
 
 
 def reiniciar():
