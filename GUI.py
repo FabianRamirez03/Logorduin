@@ -425,6 +425,24 @@ def arrowAux():
     update_skin("arrow.png")
 
 
+# _________________________________Logica de la velocidad________________________________________
+
+def defaultSpeed():
+    DrawController.speed = 20
+
+
+def slowSpeed():
+    DrawController.speed = 30
+
+
+def hightSpeed():
+    DrawController.speed = 10
+
+
+def toretto():
+    DrawController.speed = 5
+
+
 # ___________________________________-Aplicacion Grafica_____________________________________________
 root = Tk()
 
@@ -458,6 +476,13 @@ skinMenu.add_command(label="Default", command=defaultAux)
 skinMenu.add_command(label="Shrek", command=shrekAux)
 skinMenu.add_command(label="Pacman", command=pacManAux)
 skinMenu.add_command(label="Flecha", command=arrowAux)
+
+speedMenu = Menu(viewMenu)
+viewMenu.add_cascade(label="Velocidad", menu=speedMenu)
+speedMenu.add_command(label="Default", command=defaultSpeed)
+speedMenu.add_command(label="Lento", command=slowSpeed)
+speedMenu.add_command(label="Alto", command=hightSpeed)
+speedMenu.add_command(label="Muy alto", command=toretto)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
@@ -522,7 +547,6 @@ executeButton.place(x=38, y=10)
 compileButton.place(x=38, y=45)
 stopButton.place(x=38, y=80)
 
-
 # Labels de las coordenadas
 xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="white")
 yCoords = Label(turtle_canvas, text="Y = " + str(yTurtle), fg="black", bg="white")
@@ -577,6 +601,7 @@ root.mainloop()
 
 # **********************************Compilador*********************************************************
 
+"""
 # Build the lexer
 import ply.lex as lex
 
@@ -584,3 +609,4 @@ lexer = lex.lex()
 import ply.yacc as yacc
 
 parser = yacc.yacc()
+"""
