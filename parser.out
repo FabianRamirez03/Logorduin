@@ -49,7 +49,7 @@ Rule 43    function -> PonY Space expression
 Rule 44    function -> BajaLapiz
 Rule 45    function -> SubeLapiz
 Rule 46    function -> Borrapantalla
-Rule 47    function -> PonColorLapiz Space NAME
+Rule 47    function -> PonColorLapiz Space expression
 Rule 48    function -> Centro
 Rule 49    function -> Espera Space expression
 Rule 50    function -> Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -108,7 +108,7 @@ LeftSquareBracket    : 26 27 28 29 30 39 50 52 53 62 63 64 65 71 72 73
 MayorQue             : 57
 MenorQue             : 58
 Menos                : 19
-NAME                 : 1 2 4 5 10 16 17 47 50 51 66 66 67 71 72 73 73
+NAME                 : 1 2 4 5 10 16 17 50 51 66 66 67 71 72 73 73
 O                    : 56
 OcultaTortuga        : 37
 Para                 : 71 72 73
@@ -142,7 +142,7 @@ Nonterminals, with rules where they appear
 
 Variable             : 67 72
 Variables            : 50 69
-expression           : 1 4 6 11 11 12 17 18 19 21 21 22 22 23 23 24 25 29 31 33 35 36 39 39 40 42 43 49 57 57 58 58 59 60 62 63 64 65 68 69
+expression           : 1 4 6 11 11 12 17 18 19 21 21 22 22 23 23 24 25 29 31 33 35 36 39 39 40 42 43 47 49 57 57 58 58 59 60 62 63 64 65 68 69
 funciones            : 14 52 63 64
 function             : 5 9 32 34 55 55 56 56 62
 operaciones          : 12 15 20 26 27 28 29 30 54 61
@@ -195,7 +195,7 @@ state 0
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -1061,7 +1061,7 @@ state 38
 
 state 39
 
-    (47) function -> PonColorLapiz . Space NAME
+    (47) function -> PonColorLapiz . Space expression
 
     Space           shift and go to state 80
 
@@ -1339,7 +1339,7 @@ state 57
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -1466,7 +1466,7 @@ state 59
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -1584,7 +1584,7 @@ state 60
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -1704,7 +1704,7 @@ state 61
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -1823,7 +1823,7 @@ state 62
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -1941,7 +1941,7 @@ state 63
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2059,7 +2059,7 @@ state 64
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2177,7 +2177,7 @@ state 65
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2295,7 +2295,7 @@ state 66
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2434,7 +2434,7 @@ state 70
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2560,7 +2560,7 @@ state 72
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2679,7 +2679,7 @@ state 73
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2797,7 +2797,7 @@ state 74
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -2915,7 +2915,7 @@ state 75
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3040,7 +3040,7 @@ state 77
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3158,7 +3158,7 @@ state 78
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3276,7 +3276,7 @@ state 79
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3355,10 +3355,121 @@ state 79
 
 state 80
 
-    (47) function -> PonColorLapiz Space . NAME
+    (47) function -> PonColorLapiz Space . expression
+    (7) expression -> . INT
+    (8) expression -> . FLOAT
+    (9) expression -> . function
+    (10) expression -> . NAME
+    (4) function -> . Inic Space NAME Space EQUALS Space expression
+    (5) function -> . Inic Space NAME Space EQUALS Space function
+    (15) function -> . Suma Space operaciones
+    (16) function -> . Inc Space NAME
+    (17) function -> . Inc Space NAME Space expression
+    (18) function -> . Azar Space expression
+    (19) function -> . Menos Space expression
+    (20) function -> . Producto Space operaciones
+    (21) function -> . Potencia Space expression Space expression
+    (22) function -> . Division Space expression Space expression
+    (23) function -> . Resto Space expression Space expression
+    (24) function -> . RC Space expression
+    (25) function -> . Sen Space expression
+    (26) function -> . Elegir Space LeftSquareBracket operaciones RightSquareBracket
+    (27) function -> . Cuenta Space LeftSquareBracket operaciones RightSquareBracket
+    (28) function -> . Ultimo Space LeftSquareBracket operaciones RightSquareBracket
+    (29) function -> . Elemento Space expression Space LeftSquareBracket operaciones RightSquareBracket
+    (30) function -> . Pri Space LeftSquareBracket operaciones RightSquareBracket
+    (31) function -> . Avanza Space expression
+    (32) function -> . Avanza Space function
+    (33) function -> . Retrocede Space expression
+    (34) function -> . Retrocede Space function
+    (35) function -> . GiraDerecha Space expression
+    (36) function -> . GiraIzquierda Space expression
+    (37) function -> . OcultaTortuga
+    (38) function -> . ApareceTortuga
+    (39) function -> . PonXY Space LeftSquareBracket expression Space expression RightSquareBracket
+    (40) function -> . PonRumbo Space expression
+    (41) function -> . Rumbo
+    (42) function -> . PonX Space expression
+    (43) function -> . PonY Space expression
+    (44) function -> . BajaLapiz
+    (45) function -> . SubeLapiz
+    (46) function -> . Borrapantalla
+    (47) function -> . PonColorLapiz Space expression
+    (48) function -> . Centro
+    (49) function -> . Espera Space expression
+    (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
+    (51) function -> . Ejecuta Space NAME
+    (52) function -> . Ejecuta Space LeftSquareBracket funciones RightSquareBracket
+    (53) function -> . Ejecuta Space LeftSquareBracket statement RightSquareBracket
+    (54) function -> . Iguales Space operaciones
+    (55) function -> . Y Space function function
+    (56) function -> . O Space function function
+    (57) function -> . MayorQue Space expression PuntoComa Space expression
+    (58) function -> . MenorQue Space expression PuntoComa Space expression
+    (59) function -> . Redondea Space expression
+    (60) function -> . Cos Space expression
+    (61) function -> . Diferencia Space operaciones
+    (62) function -> . Si Space expression LeftSquareBracket function RightSquareBracket
+    (63) function -> . Si Space expression LeftSquareBracket funciones RightSquareBracket
+    (64) function -> . Repite Space expression Space LeftSquareBracket funciones RightSquareBracket
+    (65) function -> . Repite Space expression Space LeftSquareBracket statement RightSquareBracket
+    (70) function -> . Fin
+    (71) function -> . Para Space NAME Space LeftSquareBracket RightSquareBracket
+    (72) function -> . Para Space NAME Space LeftSquareBracket Variable RightSquareBracket
+    (73) function -> . Para Space NAME Space LeftSquareBracket NAME RightSquareBracket
 
-    NAME            shift and go to state 122
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    NAME            shift and go to state 3
+    Inic            shift and go to state 9
+    Suma            shift and go to state 10
+    Inc             shift and go to state 11
+    Azar            shift and go to state 12
+    Menos           shift and go to state 13
+    Producto        shift and go to state 14
+    Potencia        shift and go to state 15
+    Division        shift and go to state 16
+    Resto           shift and go to state 17
+    RC              shift and go to state 18
+    Sen             shift and go to state 19
+    Elegir          shift and go to state 20
+    Cuenta          shift and go to state 21
+    Ultimo          shift and go to state 22
+    Elemento        shift and go to state 23
+    Pri             shift and go to state 24
+    Avanza          shift and go to state 25
+    Retrocede       shift and go to state 26
+    GiraDerecha     shift and go to state 27
+    GiraIzquierda   shift and go to state 28
+    OcultaTortuga   shift and go to state 29
+    ApareceTortuga  shift and go to state 30
+    PonXY           shift and go to state 31
+    PonRumbo        shift and go to state 32
+    Rumbo           shift and go to state 33
+    PonX            shift and go to state 34
+    PonY            shift and go to state 35
+    BajaLapiz       shift and go to state 36
+    SubeLapiz       shift and go to state 37
+    Borrapantalla   shift and go to state 38
+    PonColorLapiz   shift and go to state 39
+    Centro          shift and go to state 40
+    Espera          shift and go to state 41
+    Ejecuta         shift and go to state 42
+    Iguales         shift and go to state 43
+    Y               shift and go to state 44
+    O               shift and go to state 45
+    MayorQue        shift and go to state 46
+    MenorQue        shift and go to state 47
+    Redondea        shift and go to state 48
+    Cos             shift and go to state 49
+    Diferencia      shift and go to state 50
+    Si              shift and go to state 51
+    Repite          shift and go to state 52
+    Fin             shift and go to state 53
+    Para            shift and go to state 54
 
+    expression                     shift and go to state 122
+    function                       shift and go to state 8
 
 state 81
 
@@ -3401,7 +3512,7 @@ state 81
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3532,7 +3643,7 @@ state 83
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3647,7 +3758,7 @@ state 84
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3757,7 +3868,7 @@ state 85
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3871,7 +3982,7 @@ state 86
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -3989,7 +4100,7 @@ state 87
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -4107,7 +4218,7 @@ state 88
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -4225,7 +4336,7 @@ state 89
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -4345,7 +4456,7 @@ state 90
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -4465,7 +4576,7 @@ state 91
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -4584,7 +4695,7 @@ state 92
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -5171,7 +5282,7 @@ state 107
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -5292,7 +5403,7 @@ state 108
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -5413,7 +5524,7 @@ state 109
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -5541,7 +5652,7 @@ state 111
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -6220,7 +6331,7 @@ state 118
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -6473,60 +6584,60 @@ state 121
 
 state 122
 
-    (47) function -> PonColorLapiz Space NAME .
+    (47) function -> PonColorLapiz Space expression .
 
-    $end            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Space           reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Inic            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Suma            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Inc             reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Azar            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Menos           reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Producto        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Potencia        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Division        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Resto           reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    RC              reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Sen             reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Elegir          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Cuenta          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Ultimo          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Elemento        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Pri             reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Avanza          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Retrocede       reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    GiraDerecha     reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    GiraIzquierda   reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    OcultaTortuga   reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    ApareceTortuga  reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    PonXY           reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    PonRumbo        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Rumbo           reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    PonX            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    PonY            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    BajaLapiz       reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    SubeLapiz       reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Borrapantalla   reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    PonColorLapiz   reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Centro          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Espera          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Ejecuta         reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Iguales         reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Y               reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    O               reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    MayorQue        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    MenorQue        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Redondea        reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Cos             reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Diferencia      reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Si              reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Repite          reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Fin             reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Para            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    PuntoComa       reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    LeftSquareBracket reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    RightSquareBracket reduce using rule 47 (function -> PonColorLapiz Space NAME .)
-    Coma            reduce using rule 47 (function -> PonColorLapiz Space NAME .)
+    $end            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Space           reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Inic            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Suma            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Inc             reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Azar            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Menos           reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Producto        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Potencia        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Division        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Resto           reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    RC              reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Sen             reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Elegir          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Cuenta          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Ultimo          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Elemento        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Pri             reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Avanza          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Retrocede       reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    GiraDerecha     reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    GiraIzquierda   reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    OcultaTortuga   reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    ApareceTortuga  reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    PonXY           reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    PonRumbo        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Rumbo           reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    PonX            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    PonY            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    BajaLapiz       reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    SubeLapiz       reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Borrapantalla   reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    PonColorLapiz   reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Centro          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Espera          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Ejecuta         reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Iguales         reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Y               reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    O               reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    MayorQue        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    MenorQue        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Redondea        reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Cos             reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Diferencia      reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Si              reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Repite          reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Fin             reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Para            reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    PuntoComa       reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    LeftSquareBracket reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    RightSquareBracket reduce using rule 47 (function -> PonColorLapiz Space expression .)
+    Coma            reduce using rule 47 (function -> PonColorLapiz Space expression .)
 
 
 state 123
@@ -6697,7 +6808,7 @@ state 125
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -6873,7 +6984,7 @@ state 127
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -6983,7 +7094,7 @@ state 128
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -7328,7 +7439,7 @@ state 139
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -7447,7 +7558,7 @@ state 140
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -7565,7 +7676,7 @@ state 141
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -7683,7 +7794,7 @@ state 142
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -7801,7 +7912,7 @@ state 143
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -8112,7 +8223,7 @@ state 157
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -8805,7 +8916,7 @@ state 171
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -8982,7 +9093,7 @@ state 173
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -9102,7 +9213,7 @@ state 174
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -9345,7 +9456,7 @@ state 178
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -9463,7 +9574,7 @@ state 179
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -9612,7 +9723,7 @@ state 183
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -9747,7 +9858,7 @@ state 185
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -9866,7 +9977,7 @@ state 186
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -10021,7 +10132,7 @@ state 191
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket
@@ -11138,7 +11249,7 @@ state 215
     (44) function -> . BajaLapiz
     (45) function -> . SubeLapiz
     (46) function -> . Borrapantalla
-    (47) function -> . PonColorLapiz Space NAME
+    (47) function -> . PonColorLapiz Space expression
     (48) function -> . Centro
     (49) function -> . Espera Space expression
     (50) function -> . Ejecuta Space NAME Space LeftSquareBracket Variables RightSquareBracket

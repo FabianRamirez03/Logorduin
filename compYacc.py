@@ -119,9 +119,12 @@ def p_expression_name(p):
     """
     expression : NAME
     """
-    global Error
+    global Error, coloresPermitidos
     try:
-        p[0] = ('exp', variables[p[1]])
+        if (p[1] in coloresPermitidos):
+            p[0] = ('exp',p[1])
+        else:
+            p[0] = ('exp', variables[p[1]])
     except LookupError:
         Error = str("Variable no definida '%s'" % p[1])
 
@@ -483,16 +486,17 @@ def p_Borrapantalla(p):
 # Funcion para cambiar el color del lapiz
 def p_Poncolorlapiz(p):
     """
-    function :  PonColorLapiz Space NAME
+    function :  PonColorLapiz Space expression
     """
     global toDo
     global Error
-    color = p[3]
+    color = p[3][1]
+
     if color not in coloresPermitidos:
         Error = str("Error, el color " + color + " no es un color permitido")
     else:
         p[0] = (p[1], p[3])
-        strColor = p[3]
+        strColor = p[3][1]
         toDo = "PonColorLapiz(color = '" + strColor + "')"
 
 
