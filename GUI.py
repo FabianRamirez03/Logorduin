@@ -39,6 +39,53 @@ detener = False
 
 compYacc.rumbo = 90
 
+nombreFunciones = ['Azar',
+                   'Menos',
+                   'Producto',
+                   'Potencia',
+                   'Division',
+                   'Resto',
+                   'Sen',
+                   'Suma',
+                   'Elegir',
+                   'Cuenta',
+                   'Ultimo',
+                   'Elemento',
+                   'Borrapantalla', 'Var',
+                   'Inic',
+                   'Inc',
+                   'PonColorLapiz',
+                   'Centro',
+                   'Espera',
+                   'Ejecuta',
+                   'Repite',
+                   'Si',
+                   'Iguales',
+                   'Y',
+                   'O',
+                   'MayorQue',
+                   'MenorQue',
+                   'Redondea',
+                   'Cos',
+                   'Diferencia',
+                   'Avanza',
+                   'Retrocede',
+                   'GiraDerecha',
+                   'GiraIzquierda',
+                   'OcultaTortuga',
+                   'ApareceTortuga',
+                   'PonXY',
+                   'PonRumbo',
+                   'Rumbo',
+                   'PonX',
+                   'PonY',
+                   'BajaLapiz',
+                   'SubeLapiz',
+                   'Coma',
+                   'PuntoComa',
+                   'Para',
+                   'Fin']
+
 
 # ______________________________Funciones de la interfaz grafica_______________________________________
 
@@ -272,6 +319,17 @@ def clean_canvas():
     turtleImage = turtle_canvas.create_image(xTurtle, yTurtle, image=turtle)
 
 
+def colorComentarios(line_list):
+    cont = 1.0
+    codeText.tag_config('comentario', foreground="green")
+    for line in line_list:
+        if line[:2] == '//':
+            codeText.tag_add("comentario", str(cont), str(cont+1))
+        else:
+            pass
+        cont += 1
+
+
 def Compila():
     global functionsList, running
     numeroDelinea = 1
@@ -279,6 +337,7 @@ def Compila():
     if not running:
         running = True
         line_list = codeText.get('1.0', 'end').split('\n')
+        colorComentarios(line_list)
         for line in line_list:
             if line != "":
                 try:
