@@ -404,6 +404,7 @@ def detenerEjecucion():
     global detener, running
     detener = True
     DrawController.detener = True
+    reiniciar()
     if running:
         printConsola("Ejecución detenida con éxito")
     else:
@@ -413,6 +414,7 @@ def detenerEjecucion():
 def reiniciar():
     global functionsList, detener
     functionsList = []
+    codeText.tag_remove("comentario", "1.0", 'end')
     reiniciarConsola()
     compYacc.reiniciar()
     clean_canvas()
