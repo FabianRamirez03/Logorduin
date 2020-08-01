@@ -354,6 +354,7 @@ def detenerEjecucion():
 def reiniciar():
     global functionsList, detener
     functionsList = []
+    DrawController.outOfBounds= False
     reiniciarConsola()
     compYacc.reiniciar()
     clean_canvas()
