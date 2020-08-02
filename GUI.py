@@ -4,7 +4,7 @@ from tkinter import messagebox
 from tkinter.filedialog import askopenfilename, asksaveasfile
 import DrawController
 import compYacc
-import sys
+import re
 from PIL import Image
 from PIL import ImageTk
 
@@ -324,7 +324,8 @@ def colorComentarios(line_list):
     codeText.tag_config('comentario', foreground="green")
     for line in line_list:
         if line[:2] == '//':
-            codeText.tag_add("comentario", str(cont), str(cont + 1))
+            length = len(line)
+            codeText.tag_add("comentario", str(cont), str(cont)+"+"+str(length)+"c")
         else:
             pass
         cont += 1
@@ -334,7 +335,6 @@ def colorFunciones(line_list):
     global nombreFunciones
     codeText.tag_config('funcion', foreground="red")
     for funcion in nombreFunciones:
-        largoFuncion = len(funcion)
         cont = 1.0
         for line in line_list:
             if line[:2] == '//':
@@ -343,9 +343,10 @@ def colorFunciones(line_list):
             else:
                 posicion = line.find(funcion)  # Donde se encontró la palabra
                 if posicion != -1:  # Si se encontró
-                    begin = str(cont) + "+" + str(posicion) + "c"
-                    end = str(cont) + "+" + str(posicion + largoFuncion) + "c"
-                    codeText.tag_add("funcion", begin,end)
+                    for word in re.finditer(funcion, line):
+                        begin = str(cont) + "+" + str(word.start()) + "c"
+                        end = str(cont) + "+" + str(word.end()) + "c"
+                        codeText.tag_add("funcion", begin,end)
                     cont += 1
                     continue
                 else:
