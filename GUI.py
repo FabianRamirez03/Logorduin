@@ -324,10 +324,33 @@ def colorComentarios(line_list):
     codeText.tag_config('comentario', foreground="green")
     for line in line_list:
         if line[:2] == '//':
-            codeText.tag_add("comentario", str(cont), str(cont+1))
+            codeText.tag_add("comentario", str(cont), str(cont + 1))
         else:
             pass
         cont += 1
+
+
+def colorFunciones(line_list):
+    global nombreFunciones
+    codeText.tag_config('funcion', foreground="red")
+    for funcion in nombreFunciones:
+        largoFuncion = len(funcion)
+        cont = 1.0
+        for line in line_list:
+            if line[:2] == '//':
+                cont += 1
+                continue
+            else:
+                posicion = line.find(funcion)  # Donde se encontró la palabra
+                if posicion != -1:  # Si se encontró
+                    begin = str(cont) + "+" + str(posicion) + "c"
+                    end = str(cont) + "+" + str(posicion + largoFuncion) + "c"
+                    codeText.tag_add("funcion", begin,end)
+                    cont += 1
+                    continue
+                else:
+                    cont += 1
+                    continue
 
 
 def Compila():
@@ -338,6 +361,7 @@ def Compila():
         running = True
         line_list = codeText.get('1.0', 'end').split('\n')
         colorComentarios(line_list)
+        colorFunciones(line_list)
         for line in line_list:
             if line != "":
                 try:
