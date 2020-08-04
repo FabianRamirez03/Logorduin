@@ -687,14 +687,18 @@ def p_Ejecuta_Ordenes(p):
     global listaEjecuta, toDo, Repite,Entrada, can_Repites
     Repite = False
     lista=[]
-    if isinstance(Entrada, str):
+    InicioEjecuta = p[1]
+    Ejecutar = True
+    if InicioEjecuta != Entrada[:len(InicioEjecuta)]:
+        Ejecutar = False
+    if isinstance(Entrada, str) and Ejecutar:
         if "[" in Entrada:
             while Entrada[0] != "[":
                 Entrada = Entrada[1:]
             Entrada = Entrada[1:-1]
         lista = Entrada.split(",")
     n=0
-    while n < len(lista):
+    while n < len(lista) and Ejecutar:
         if('[' in lista[n] and ']' not in lista[n]):
             cant=n+1
             ant=lista[:n]
@@ -714,16 +718,17 @@ def p_Ejecuta_Ordenes(p):
             n+=1
         else:
             n+=1
-    for x in lista:
-        if x[0]== ' ':
-            x= x[1:]
-        Entrada = x
-        can_Repites=0
-        parser.parse(x)
-        if not(Funcion):
-            listaEjecuta.append(toDo)
-        toDo=""
-    if not (Funcion):
+    if Ejecutar:
+        for x in lista:
+            if x[0]== ' ':
+                x= x[1:]
+            Entrada = x
+            can_Repites=0
+            parser.parse(x)
+            if not(Funcion):
+                listaEjecuta.append(toDo)
+            toDo=""
+    if not Funcion and Ejecutar:
         toDo = listaEjecuta
 
 
@@ -878,6 +883,27 @@ def repite(tupla):
                 Entrada = Entrada[1:]
             Entrada = Entrada[1:-1]
         Entrada = Entrada.split(",")
+    n=0
+    while n < len(Entrada):
+        if('[' in Entrada[n] and ']' not in Entrada[n]):
+            cant=n+1
+            ant=Entrada[:n]
+            asig=Entrada[n]
+            while (']' not in Entrada [cant]):
+                asig+=','+Entrada[cant]
+                cant+=1
+            asig+= ','+Entrada[cant]
+            if(len(Entrada)==cant+1):
+                Entrada = ant + [asig]
+                n=len(Entrada)-1
+            else:
+                Entrada=ant+[asig]+Entrada[cant+1:]
+                n=len(ant+[asig])
+        if n>0:
+            Entrada[n]= Entrada[n][1:]
+            n+=1
+        else:
+            n+=1
     canRepite = 0
     for elemento in Entrada:
         if "Repite" in elemento:
@@ -887,6 +913,8 @@ def repite(tupla):
     a = Entrada
     while can_veces != 0 and flagrepite:
         s = Entrada[0]
+        if s[0]== ' ':
+            s= s[1:]
         Entrada = s
         guardar = can_Repites
         can_Repites = 0
@@ -896,7 +924,9 @@ def repite(tupla):
         listaEjecuta.append(toDo)
         num = 1
         while len(Entrada) != num:
-            s = Entrada[num][1:]
+            s = Entrada[num]
+            if s[0] == ' ':
+                s = s[1:]
             print(s)
             Entrada = s
             num += 1
