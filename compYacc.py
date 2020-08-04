@@ -627,11 +627,13 @@ def p_Ejecuta_Parametro(p):
                                 else:
                                     listaValores.append(j)
                                 contador += 1
+                            cont = 0
                             for g in listaValores:
-                                if listaValores.index(g) == 0:
+                                if cont == 0:
                                     func += g
                                 else:
                                     func += " " + g
+                                cont += 1
                             if "Inic" not in func:
                                 listaFinal.append(func)
                             else:
