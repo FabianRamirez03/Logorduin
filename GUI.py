@@ -28,6 +28,8 @@ colorsDict = [["blanco", "white"], ["azul", "blue"], ["marron", "brown"], ["cafe
               ["gris", "grey"], ["amarillo", "yellow"], ["negro", "black"], ["rojo", "red"], ["verde", "green"],
               ["cian", "cyan"]]
 
+color = "black"
+
 # Constantes logicas
 file_path = ""
 functionsList = []
@@ -325,7 +327,7 @@ def colorComentarios(line_list):
     for line in line_list:
         if line[:2] == '//':
             length = len(line)
-            codeText.tag_add("comentario", str(cont), str(cont)+"+"+str(length)+"c")
+            codeText.tag_add("comentario", str(cont), str(cont) + "+" + str(length) + "c")
         else:
             pass
         cont += 1
@@ -346,7 +348,7 @@ def colorFunciones(line_list):
                     for word in re.finditer(funcion, line):
                         begin = str(cont) + "+" + str(word.start()) + "c"
                         end = str(cont) + "+" + str(word.end()) + "c"
-                        codeText.tag_add("funcion", begin,end)
+                        codeText.tag_add("funcion", begin, end)
                     cont += 1
                     continue
                 else:
@@ -437,9 +439,9 @@ def detenerEjecucion():
 
 
 def reiniciar():
-    global functionsList, detener
+    global functionsList, detener, color
     functionsList = []
-    DrawController.outOfBounds= False
+    DrawController.outOfBounds = False
     codeText.tag_remove("comentario", "1.0", 'end')
     reiniciarConsola()
     compYacc.reiniciar()
@@ -450,7 +452,7 @@ def reiniciar():
     DrawController.detener = False
     DrawController.seeingTo = 90
     subeLapiz()
-    DrawController.color = "black"
+    DrawController.color = color
 
 
 def reiniciarConsola():
@@ -530,6 +532,51 @@ def toretto():
     DrawController.speed = 5
 
 
+# +____________________________________Logica del cambio de fondo____________________________________
+
+def changeBG(bg, fg):
+    global color
+    color = fg
+    DrawController.color = fg
+    turtle_canvas.config(bg=bg)
+    xCoords.config(bg=bg, fg=fg)
+    yCoords.config(bg=bg, fg=fg)
+    gradesLabel.config(bg=bg, fg=fg)
+    turtle_canvas.update()
+
+
+def bgDefault():
+    changeBG("gray63", "black")
+
+
+def bgWhite():
+    changeBG("white", "black")
+
+
+def bgBlack():
+    changeBG("black", "white")
+
+
+def bgRed():
+    changeBG("firebrick2", "black")
+
+
+def bgGreen():
+    changeBG("lime green", "black")
+
+
+def bgPink():
+    changeBG("deep pink", "black")
+
+
+def bgPurple():
+    changeBG("dark violet", "black")
+
+
+def bgOrange():
+    changeBG("DarkOrange1", "black")
+
+
 # ___________________________________-Aplicacion Grafica_____________________________________________
 root = Tk()
 
@@ -570,6 +617,17 @@ speedMenu.add_command(label="Default", command=defaultSpeed)
 speedMenu.add_command(label="Lento", command=slowSpeed)
 speedMenu.add_command(label="Alto", command=hightSpeed)
 speedMenu.add_command(label="Muy alto", command=toretto)
+
+bgMenu = Menu(viewMenu)
+viewMenu.add_cascade(label="Fondo", menu=bgMenu)
+bgMenu.add_command(label="Default", command=bgDefault)
+bgMenu.add_command(label="Blanco", command=bgWhite)
+bgMenu.add_command(label="Negro", command=bgBlack)
+bgMenu.add_command(label="Rojo", command=bgRed)
+bgMenu.add_command(label="Verde", command=bgGreen)
+bgMenu.add_command(label="Rosado", command=bgPink)
+bgMenu.add_command(label="Púrpura", command=bgPurple)
+bgMenu.add_command(label="Naranja", command=bgOrange)
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
@@ -614,7 +672,7 @@ ScrollBarX.pack(side=BOTTOM, fill="x")
 codeText.pack(fill=BOTH)
 
 # Canvas donde la tortuga dibujará
-turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="white")
+turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="gray63")
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
@@ -635,13 +693,13 @@ compileButton.place(x=38, y=45)
 stopButton.place(x=38, y=80)
 
 # Labels de las coordenadas
-xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="white")
-yCoords = Label(turtle_canvas, text="Y = " + str(yTurtle), fg="black", bg="white")
+xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="gray63")
+yCoords = Label(turtle_canvas, text="Y = " + str(yTurtle), fg="black", bg="gray63")
 xCoords.place(x=5, y=465)
 yCoords.place(x=5, y=481)
 
 # Labels del rumbo de la tortuga
-gradesLabel = Label(turtle_canvas, text="Rumbo = " + str(DrawController.seeingTo), fg="black", bg="white")
+gradesLabel = Label(turtle_canvas, text="Rumbo = " + str(DrawController.seeingTo), fg="black", bg="gray63")
 gradesLabel.place(x=5, y=449)
 
 # Text Area de la consola
@@ -685,15 +743,3 @@ def on_closing():
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
 root.mainloop()
-
-# **********************************Compilador*********************************************************
-
-"""
-# Build the lexer
-import ply.lex as lex
-
-lexer = lex.lex()
-import ply.yacc as yacc
-
-parser = yacc.yacc()
-"""
