@@ -514,6 +514,14 @@ def arrowAux():
     update_skin("arrow.png")
 
 
+def doritoAux():
+    update_skin("dorito.png")
+
+
+def pigAux():
+    update_skin("pig.png")
+
+
 # _________________________________Logica de la velocidad________________________________________
 
 def defaultSpeed():
@@ -610,6 +618,8 @@ skinMenu.add_command(label="Default", command=defaultAux)
 skinMenu.add_command(label="Shrek", command=shrekAux)
 skinMenu.add_command(label="Pacman", command=pacManAux)
 skinMenu.add_command(label="Flecha", command=arrowAux)
+skinMenu.add_command(label="Dorito", command=doritoAux)
+skinMenu.add_command(label="Cerdo", command=pigAux)
 
 speedMenu = Menu(viewMenu)
 viewMenu.add_cascade(label="Velocidad", menu=speedMenu)
@@ -628,6 +638,7 @@ bgMenu.add_command(label="Verde", command=bgGreen)
 bgMenu.add_command(label="Rosado", command=bgPink)
 bgMenu.add_command(label="Púrpura", command=bgPurple)
 bgMenu.add_command(label="Naranja", command=bgOrange)
+
 # ________________________________________Frames para organizar los elementos
 
 # Frame donde se digita el codigo
