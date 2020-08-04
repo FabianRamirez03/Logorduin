@@ -365,26 +365,26 @@ def Compila():
         colorFunciones(line_list)
         for line in line_list:
             if line != "":
-                # try:
-                compYacc.toDo = ""
-                compYacc.Entrada = line.replace("\n", "")
-                compYacc.parser.parse(compYacc.Entrada)
-                compYacc.Repite = True
-                print(compYacc.variables)
-                if not compYacc.Funcion:
-                    if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
-                        functionsList.append(compYacc.toDo)
-                    elif isinstance(compYacc.toDo, list):
-                        print(compYacc.toDo)
-                        for i in compYacc.toDo:
-                            if compYacc.toDo != "":
-                                functionsList.append(i)
-                # except Exception as e:
-                #     print(e)
-                #     print(compYacc.Error)
-                #     if not compYacc.Error:
-                #         compYacc.Error = str(e)
-                #     break
+                try:
+                    compYacc.toDo = ""
+                    compYacc.Entrada = line.replace("\n", "")
+                    compYacc.parser.parse(compYacc.Entrada)
+                    compYacc.Repite = True
+                    print(compYacc.variables)
+                    if not compYacc.Funcion:
+                        if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
+                            functionsList.append(compYacc.toDo)
+                        elif isinstance(compYacc.toDo, list):
+                            print(compYacc.toDo)
+                            for i in compYacc.toDo:
+                                if compYacc.toDo != "":
+                                    functionsList.append(i)
+                except Exception as e:
+                    print(e)
+                    print(compYacc.Error)
+                    if not compYacc.Error:
+                        compYacc.Error = str(e)
+                    break
             if compYacc.Error:
                 print(compYacc.Error)
                 break
