@@ -91,10 +91,6 @@ nombreFunciones = ['Azar',
 
 # ______________________________Funciones de la interfaz grafica_______________________________________
 
-def doNothing():
-    print("Test")
-
-
 # Abre un archivo de texto en el codigo a compilar
 def open_file():
     Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
@@ -323,7 +319,7 @@ def clean_canvas():
 
 def colorComentarios(line_list):
     cont = 1.0
-    codeText.tag_config('comentario', foreground="green")
+    codeText.tag_config('comentario', foreground="lime green")
     for line in line_list:
         if line[:2] == '//':
             length = len(line)
@@ -485,7 +481,6 @@ def centro():
 def espera(seg):
     result = seg / 60
     time.sleep(result)
-    print("listo")
 
 
 # Logica de las skins___________________________________
@@ -540,7 +535,7 @@ def toretto():
     DrawController.speed = 5
 
 
-# +____________________________________Logica del cambio de fondo____________________________________
+# ____________________________________Logica del cambio de fondo del canvas____________________________________
 
 def changeBG(bg, fg):
     global color
@@ -583,6 +578,28 @@ def bgPurple():
 
 def bgOrange():
     changeBG("DarkOrange1", "black")
+
+
+# +____________________________________Logica del cambio de fondo del codigo____________________________________
+
+def changeCodeColor(backGround, fontGround):
+    codeText.config(bg=backGround, fg=fontGround)
+    consoleText.config(bg=backGround, fg=fontGround)
+    buttons_Frame.config(bg=backGround)
+    console_Frame.config(bg=backGround)
+    left_Botom_Frame.config(bg=backGround)
+    left_Frame.config(bg=backGround)
+    turtle_Frame.config(bg=backGround)
+    code_Frame.config(bg=backGround)
+    root.update()
+
+
+def brightCode():
+    changeCodeColor("white", "black")
+
+
+def darkCode():
+    changeCodeColor("gray17", "white")
 
 
 # ___________________________________-Aplicacion Grafica_____________________________________________
@@ -629,17 +646,24 @@ speedMenu.add_command(label="Alto", command=hightSpeed)
 speedMenu.add_command(label="Muy alto", command=toretto)
 
 bgMenu = Menu(viewMenu)
+canvasColorMenu = Menu(bgMenu)
 viewMenu.add_cascade(label="Fondo", menu=bgMenu)
-bgMenu.add_command(label="Default", command=bgDefault)
-bgMenu.add_command(label="Blanco", command=bgWhite)
-bgMenu.add_command(label="Negro", command=bgBlack)
-bgMenu.add_command(label="Rojo", command=bgRed)
-bgMenu.add_command(label="Verde", command=bgGreen)
-bgMenu.add_command(label="Rosado", command=bgPink)
-bgMenu.add_command(label="Púrpura", command=bgPurple)
-bgMenu.add_command(label="Naranja", command=bgOrange)
+canvasColorMenu = Menu(bgMenu)
+bgMenu.add_cascade(label="Canvas", menu=canvasColorMenu)
+canvasColorMenu.add_command(label="Default", command=bgDefault)
+canvasColorMenu.add_command(label="Blanco", command=bgWhite)
+canvasColorMenu.add_command(label="Negro", command=bgBlack)
+canvasColorMenu.add_command(label="Rojo", command=bgRed)
+canvasColorMenu.add_command(label="Verde", command=bgGreen)
+canvasColorMenu.add_command(label="Rosado", command=bgPink)
+canvasColorMenu.add_command(label="Púrpura", command=bgPurple)
+canvasColorMenu.add_command(label="Naranja", command=bgOrange)
 
-# ________________________________________Frames para organizar los elementos
+codeColorBG = Menu(bgMenu)
+bgMenu.add_cascade(label="Tema", menu=codeColorBG)
+codeColorBG.add_command(label="Modo estandar", command=brightCode)
+codeColorBG.add_command(label="Modo Oscuro", command=darkCode)
+# ________________________________________Frames para organizar los elementos__________________
 
 # Frame donde se digita el codigo
 code_Frame = Frame(root, height=150, width=800, bg="white", bd=2)
@@ -683,7 +707,7 @@ ScrollBarX.pack(side=BOTTOM, fill="x")
 codeText.pack(fill=BOTH)
 
 # Canvas donde la tortuga dibujará
-turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="gray63")
+turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="gray63", bd=0, relief='ridge', borderwidth=0, highlightthickness=0)
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
@@ -699,9 +723,9 @@ compileButton = Button(buttons_Frame, command=Compila, bg='white', image=compile
 executeButton = Button(buttons_Frame, command=Ejecuta, bg='white', image=executePhoto, bd=0)
 stopButton = Button(buttons_Frame, command=detenerEjecucion, bg='white', image=stopPhote, bd=0)
 
-executeButton.place(x=38, y=10)
-compileButton.place(x=38, y=45)
-stopButton.place(x=38, y=80)
+executeButton.place(x=47, y=10)
+compileButton.place(x=47, y=45)
+stopButton.place(x=47, y=80)
 
 # Labels de las coordenadas
 xCoords = Label(turtle_canvas, text="X = " + str(xTurtle), fg="black", bg="gray63")
@@ -719,8 +743,8 @@ consoleText.insert(INSERT, "Logorduin. Version 1.0\n")
 consoleText.config(state=DISABLED)
 
 # ScrollBar de la consola
-consoleBar = Scrollbar(console_Frame)
-consoleXBar = Scrollbar(console_Frame, orient=HORIZONTAL)
+consoleBar = Scrollbar(console_Frame, bg="red")
+consoleXBar = Scrollbar(console_Frame, orient=HORIZONTAL, bg="red")
 consoleXBar.config(command=consoleText.xview)
 consoleText.config(xscrollcommand=consoleXBar.set)
 consoleBar.config(command=consoleText.yview)
