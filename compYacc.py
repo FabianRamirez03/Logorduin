@@ -642,8 +642,10 @@ def p_Ejecuta_Parametro(p):
                                     listaFinal.append(func)
                         for inst in listaFinal:
                             if "Repite" not in Entrada and isinstance(Entrada, str):
+                                EntradaTemp = Entrada
                                 Entrada = str(inst)
                                 parser.parse(inst)
+                                Entrada = EntradaTemp
                                 print(inst)
                                 listaEjecuta.append(toDo)
                             if 'Inic' in inst:
@@ -672,9 +674,11 @@ def p_Ejecuta_Funcion(p):
                 if key_exists(Instrucciones[elemento], 0):
                     for instruccion in Instrucciones[elemento][0][1]:
                         if "Repite" not in Entrada and isinstance(Entrada, str):
+                            EntradaTemp = Entrada
                             Entrada = str(instruccion)
                             parser.parse(instruccion)
                             listaEjecuta.append(toDo)
+                            Entrada = EntradaTemp
                     toDo = listaEjecuta
 
 # Función que ejecuta las órdenes
