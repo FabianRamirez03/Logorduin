@@ -558,7 +558,7 @@ def p_Ejecuta_Parametro(p):
             Error = str("No existe la funcion de nombre " + nombre)
         else:
             if not key_exists(Instrucciones[nombre], lenParametros):
-                Error = str("No existe la funcion de nombre " + nombre + " con " + str(lenParametros) + "parámetros")
+                Error = str("No existe la funcion de nombre " + nombre + " con " + str(lenParametros) + " parámetros")
             else:
                 for elemento in Instrucciones:
                     if elemento == nombre:
@@ -588,13 +588,13 @@ def p_Ejecuta_Parametro(p):
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = Instrucciones[elemento][lenParametros][2][pos]
                                     listaValores.append(str(valor))
-                                elif j in str(Instrucciones[elemento][lenParametros][0]) + "," and (temp[0] != "Inic" or j != temp[1]) \
+                                elif j == (str(Instrucciones[elemento][lenParametros][0]) + "," ) and (temp[0] != "Inic" or j != temp[1]) \
                                         and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = str(Instrucciones[elemento][lenParametros][2][pos]) + ","
                                     listaValores.append(str(valor))
-                                elif j in str(Instrucciones[elemento][lenParametros][0]) + "]" and (
+                                elif j == str(Instrucciones[elemento][lenParametros][0]) + "]" and (
                                         temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
