@@ -654,7 +654,6 @@ def p_Ejecuta_Parametro(p):
                         toDo = listaEjecuta
 
 
-# Funcion que ejecuta las Ordenes
 def p_Ejecuta_Funcion(p):
     """
     function :  Ejecuta Space NAME
@@ -663,7 +662,7 @@ def p_Ejecuta_Funcion(p):
     nombre = p[3]
     InicioEjecuta = p[1] + ' ' + nombre
     Ejecutar = True
-    if InicioEjecuta == Entrada[:len[InicioEjecuta]]:
+    if InicioEjecuta == Entrada[:len(InicioEjecuta)]:
         Ejecutar = False
     if nombre not in Instrucciones and Ejecutar:
         Error = str("No existe la funcion de nombre " + nombre)
@@ -678,7 +677,7 @@ def p_Ejecuta_Funcion(p):
                             listaEjecuta.append(toDo)
                     toDo = listaEjecuta
 
-
+# Función que ejecuta las órdenes
 def p_Ejecuta_Ordenes(p):
     """
     function : Ejecuta Space LeftSquareBracket funciones RightSquareBracket

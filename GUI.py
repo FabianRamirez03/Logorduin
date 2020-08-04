@@ -437,6 +437,7 @@ def detenerEjecucion():
 def reiniciar():
     global functionsList, detener, color
     functionsList = []
+    apareceTortuga()
     DrawController.outOfBounds = False
     codeText.tag_remove("comentario", "1.0", 'end')
     reiniciarConsola()
