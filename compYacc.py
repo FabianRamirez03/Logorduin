@@ -247,12 +247,14 @@ def p_Division(p):
     global Error
     num = p[3][1]
     denom = p[5][1]
-    if denom == 0:
-        Error = ("Error, no se puede dividir entre 0")
+    if not Funcion:
+        if denom == 0:
+            Error = ("Error, no se puede dividir entre 0")
+        else:
+            resultado = num / denom
+            p[0] = (p[1], resultado, num, denom)
     else:
-        resultado = num / denom
-        p[0] = (p[1], resultado, num, denom)
-
+        p[0] = (p[1], 0, num, denom)
 
 def p_Resto(p):
     """
