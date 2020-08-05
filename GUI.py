@@ -88,13 +88,17 @@ nombreFunciones = ['Azar',
                    'Para',
                    'Fin']
 
-
 # ______________________________Funciones de la interfaz grafica_______________________________________
+
+ftypes = [
+    ('Text files', '*.txt'),
+]
+
 
 # Abre un archivo de texto en el codigo a compilar
 def open_file():
     Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
-    filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
+    filename = askopenfilename(filetypes=ftypes)  # show an "Open" dialog box and return the path to the selected file
     global file_path
     file_path = filename
     with open(filename, "r") as text_file:
@@ -114,7 +118,7 @@ def save_file():
 
 
 def saveAs_file():
-    file = asksaveasfile(mode="w", defaultextension=".txt")
+    file = asksaveasfile(mode="w", defaultextension=".txt",filetypes=ftypes)
     global file_path
     file_path = file.name
     if file is None:  # asksaveasfile return `None` if dialog closed with "cancel".
@@ -715,7 +719,8 @@ ScrollBarX.pack(side=BOTTOM, fill="x")
 codeText.pack(fill=BOTH)
 
 # Canvas donde la tortuga dibujará
-turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="gray63", bd=0, relief='ridge', borderwidth=0, highlightthickness=0)
+turtle_canvas = Canvas(turtle_Frame, width=xCanvas, height=yCanvas, bg="gray63", bd=0, relief='ridge', borderwidth=0,
+                       highlightthickness=0)
 turtle_canvas.pack(fill="y")
 
 # Imagen de la tortuga
