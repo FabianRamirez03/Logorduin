@@ -97,8 +97,12 @@ ftypes = [
 
 # Abre un archivo de texto en el codigo a compilar
 def open_file():
-    Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
-    filename = askopenfilename(filetypes=ftypes)  # show an "Open" dialog box and return the path to the selected file
+    Tk().withdraw()
+    types = [  # semicolon trick
+        ('Text files', '*.txt'),
+    ]
+    # we don't want a full GUI, so keep the root window from appearing
+    filename = askopenfilename(filetypes=types)  # show an "Open" dialog box and return the path to the selected file
     global file_path
     file_path = filename
     with open(filename, "r") as text_file:
@@ -118,7 +122,10 @@ def save_file():
 
 
 def saveAs_file():
-    file = asksaveasfile(mode="w", defaultextension=".txt",filetypes=ftypes)
+    types = [  # semicolon trick
+        ('Text files', '*.txt'),
+    ]
+    file = asksaveasfile(mode="w", defaultextension=".txt", filetypes=types)
     global file_path
     file_path = file.name
     if file is None:  # asksaveasfile return `None` if dialog closed with "cancel".
@@ -126,7 +133,9 @@ def saveAs_file():
     text2save = str(codeText.get('1.0', END))  # starts from `1.0`, not `0.0`
     file.write(text2save)
     file.close()  # `()` was missing.
-#a
+
+
+# a
 
 def new_file():
     global file_path
