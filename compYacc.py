@@ -539,7 +539,18 @@ def key_exists(elemento, key):
         return True
     except:
         return False
-
+def duplicatedIndex(seq,item):
+    start_at = -1
+    locs = []
+    while True:
+        try:
+            loc = seq.index(item,start_at+1)
+        except ValueError:
+            break
+        else:
+            locs.append(loc)
+            start_at = loc
+    return locs
 
 def p_Ejecuta_Parametro(p):
     """
@@ -584,23 +595,23 @@ def p_Ejecuta_Parametro(p):
                                     pos = Instrucciones[elemento][lenParametros][0].index(var)
                                     variables[var] = Instrucciones[elemento][lenParametros][2][pos]
                                 if j in Instrucciones[elemento][lenParametros][0] and (
-                                        temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
+                                        temp[contador - 1] != "Inic" or j != temp[contador]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = Instrucciones[elemento][lenParametros][2][pos]
                                     listaValores.append(str(valor))
-                                elif j == (str(Instrucciones[elemento][lenParametros][0]) + "," ) and (temp[0] != "Inic" or j != temp[1]) \
+                                elif j == (str(Instrucciones[elemento][lenParametros][0]) + "," ) and (temp[contador - 1] != "Inic" or j != temp[contador]) \
                                         and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = str(Instrucciones[elemento][lenParametros][2][pos]) + ","
                                     listaValores.append(str(valor))
                                 elif j == str(Instrucciones[elemento][lenParametros][0]) + "]" and (
-                                        temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
+                                        temp[contador - 1] != "Inic" or j != temp[contador]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = str(Instrucciones[elemento][lenParametros][2][pos]) + "]"
                                     listaValores.append(str(valor))
-                                elif j in Instrucciones[elemento][lenParametros][0] and (temp[0] == "Inic"):
+                                elif j in Instrucciones[elemento][lenParametros][0] and (temp[contador - 1] == "Inic"):
                                     flag = True
                                     if isinstance(Instrucciones[elemento][lenParametros][0],str):
                                         flag = False
@@ -637,11 +648,13 @@ def p_Ejecuta_Parametro(p):
                             if "Inic" not in func:
                                 listaFinal.append(func)
                             else:
-                                if key_exists(variables,temp[1]) and Instrucciones[elemento][lenParametros][pos] == temp[1]:
-                                    parser.parse(func)
-                                    Instrucciones[elemento][lenParametros][2][pos] = variables[temp[1]]
-                                else:
-                                    listaFinal.append(func)
+                                for i in duplicatedIndex(temp,"Inic"):
+                                    if key_exists(variables,temp[i+1]) and Instrucciones[elemento][lenParametros][pos] == temp[i+1]:
+                                        parser.parse(func)
+                                        Instrucciones[elemento][lenParametros][2][pos] = variables[temp[i+1]]
+                                        listaFinal.append(func)
+                                    else:
+                                        listaFinal.append(func)
                         for inst in listaFinal:
                             if "Repite" not in Entrada and isinstance(Entrada, str):
                                 EntradaTemp = Entrada
