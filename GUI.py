@@ -393,7 +393,10 @@ def Compila():
         consoleText.config(state=NORMAL)
         if not compYacc.variables and not compYacc.Error:
             compYacc.Error = "No hay ninguna variable definida\n"
-        if not compYacc.Error:
+        elif compYacc.Funcion and not compYacc.Error:
+            consoleText.insert(END, "Error de sintaxis. Todo Para debe tener un fin.\n")
+            compYacc.Error = "Error"
+        elif not compYacc.Error:
             consoleText.insert(END, "Compilado correctamente\n")
         else:
             if compYacc.Comentario:
