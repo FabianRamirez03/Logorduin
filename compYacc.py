@@ -63,19 +63,13 @@ def p_statement_assign(p):
     function : Inic Space NAME Space EQUALS Space expression
              | Inic Space NAME Space EQUALS Space function
     """
-    global Funcion, Entrada, Error, Repite, toDo,Instrucciones
+    global Funcion, Entrada, Error, Repite, toDo,Instrucciones, lenPar
     toDo = ""
-    if (Funcion and Repite):
-        for elemento in Instrucciones:
-            ultimoElemento = elemento
-        Instrucciones[ultimoElemento][1] += [Entrada]
-        pass
+    if p[3] not in variables:
+        Error = str("La variable '%s' no ha sido creada" % p[3])
     else:
-        if p[3] not in variables:
-            Error = str("La variable '%s' no ha sido creada" % p[3])
-        else:
-            variables[p[3]] = p[7][1]
-            p[0] = (p[1], p[7][1], p[3], p[7])
+        variables[p[3]] = p[7][1]
+        p[0] = (p[1], p[7][1], p[3], p[7])
 
 
 # Gramatica de una expresion
@@ -665,7 +659,7 @@ def p_Ejecuta_Parametro(p):
                                 Entrada = EntradaTemp
                                 print(inst)
                                 listaEjecuta.append(toDo)
-                            if 'Inic' in inst:
+                            elif 'Inic' in inst:
                                 Entrada = str(inst)
                                 parser.parse(inst)
                                 print(inst)
