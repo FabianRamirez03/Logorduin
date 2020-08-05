@@ -182,12 +182,12 @@ def Ponrumbo(grades):
         if grades == 90:
             turtle = PhotoImage(file=skin_path + "/" + turtle_skin)
             turtle_canvas.itemconfigure(turtleImage, image=turtle)
-            gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
+            gradesLabel.config(text="Rumbo = " + str(int(DrawController.seeingTo)))
             turtle_canvas.update()
         elif gradesToRotate != 0:
             turtle = ImageTk.PhotoImage(image=Image.open(path).rotate(gradesToRotate))
             turtle_canvas.itemconfigure(turtleImage, image=turtle)
-            gradesLabel.config(text="Rumbo = " + str(DrawController.seeingTo))
+            gradesLabel.config(text="Rumbo = " + str(int(DrawController.seeingTo)))
             turtle_canvas.update()
     else:
         pass
@@ -373,7 +373,6 @@ def Compila():
                         if isinstance(compYacc.toDo, str) and compYacc.toDo != "":
                             functionsList.append(compYacc.toDo)
                         elif isinstance(compYacc.toDo, list):
-                            print(compYacc.toDo)
                             for i in compYacc.toDo:
                                 if compYacc.toDo != "":
                                     functionsList.append(i)
