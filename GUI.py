@@ -359,8 +359,8 @@ def Compila():
     if not running:
         running = True
         line_list = codeText.get('1.0', 'end').split('\n')
-        colorComentarios(line_list)
         colorFunciones(line_list)
+        colorComentarios(line_list)
         for line in line_list:
             if line != "":
                 try:
@@ -518,6 +518,10 @@ def pigAux():
     update_skin("pig.png")
 
 
+def pencilAux():
+    update_skin("lapiz.png")
+
+
 # _________________________________Logica de la velocidad________________________________________
 
 def defaultSpeed():
@@ -638,6 +642,7 @@ skinMenu.add_command(label="Pacman", command=pacManAux)
 skinMenu.add_command(label="Flecha", command=arrowAux)
 skinMenu.add_command(label="Dorito", command=doritoAux)
 skinMenu.add_command(label="Cerdo", command=pigAux)
+skinMenu.add_command(label="Lapiz", command=pencilAux)
 
 speedMenu = Menu(viewMenu)
 viewMenu.add_cascade(label="Velocidad", menu=speedMenu)
