@@ -63,19 +63,13 @@ def p_statement_assign(p):
     function : Inic Space NAME Space EQUALS Space expression
              | Inic Space NAME Space EQUALS Space function
     """
-    global Funcion, Entrada, Error, Repite, toDo,Instrucciones
+    global Funcion, Entrada, Error, Repite, toDo,Instrucciones, lenPar
     toDo = ""
-    if (Funcion and Repite):
-        for elemento in Instrucciones:
-            ultimoElemento = elemento
-        Instrucciones[ultimoElemento][1] += [Entrada]
-        pass
+    if p[3] not in variables:
+        Error = str("La variable '%s' no ha sido creada" % p[3])
     else:
-        if p[3] not in variables:
-            Error = str("La variable '%s' no ha sido creada" % p[3])
-        else:
-            variables[p[3]] = p[7][1]
-            p[0] = (p[1], p[7][1], p[3], p[7])
+        variables[p[3]] = p[7][1]
+        p[0] = (p[1], p[7][1], p[3], p[7])
 
 
 # Gramatica de una expresion
@@ -247,12 +241,14 @@ def p_Division(p):
     global Error
     num = p[3][1]
     denom = p[5][1]
-    if denom == 0:
-        Error = ("Error, no se puede dividir entre 0")
+    if not Funcion:
+        if denom == 0:
+            Error = ("Error, no se puede dividir entre 0")
+        else:
+            resultado = num / denom
+            p[0] = (p[1], resultado, num, denom)
     else:
-        resultado = num / denom
-        p[0] = (p[1], resultado, num, denom)
-
+        p[0] = (p[1], 0, num, denom)
 
 def p_Resto(p):
     """
@@ -321,7 +317,7 @@ def p_Elemento(p):
     """
     global Error
     Lista = makeList(p[6])
-    if (p[3] <= len[Lista]):
+    if (p[3][1] <= len(Lista)):
         p[0] = (p[1], Lista[p[3][1] - 1], Lista, p[3])
     else:
         Error = str("El indice que desea acceder esta fuera de rango")
@@ -539,7 +535,18 @@ def key_exists(elemento, key):
         return True
     except:
         return False
-
+def duplicatedIndex(seq,item):
+    start_at = -1
+    locs = []
+    while True:
+        try:
+            loc = seq.index(item,start_at+1)
+        except ValueError:
+            break
+        else:
+            locs.append(loc)
+            start_at = loc
+    return locs
 
 def p_Ejecuta_Parametro(p):
     """
@@ -584,23 +591,23 @@ def p_Ejecuta_Parametro(p):
                                     pos = Instrucciones[elemento][lenParametros][0].index(var)
                                     variables[var] = Instrucciones[elemento][lenParametros][2][pos]
                                 if j in Instrucciones[elemento][lenParametros][0] and (
-                                        temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
+                                        temp[contador - 1] != "Inic" or j != temp[contador]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = Instrucciones[elemento][lenParametros][2][pos]
                                     listaValores.append(str(valor))
-                                elif j == (str(Instrucciones[elemento][lenParametros][0]) + "," ) and (temp[0] != "Inic" or j != temp[1]) \
+                                elif j == (str(Instrucciones[elemento][lenParametros][0]) + "," ) and (temp[contador - 1] != "Inic" or j != temp[contador]) \
                                         and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = str(Instrucciones[elemento][lenParametros][2][pos]) + ","
                                     listaValores.append(str(valor))
                                 elif j == str(Instrucciones[elemento][lenParametros][0]) + "]" and (
-                                        temp[0] != "Inic" or j != temp[1]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
+                                        temp[contador - 1] != "Inic" or j != temp[contador]) and ("[Inc" not in temp and "Inc" not in temp and "[Inic" not in temp):
                                     j = j[0:-1]
                                     pos = Instrucciones[elemento][lenParametros][0].index(j)
                                     valor = str(Instrucciones[elemento][lenParametros][2][pos]) + "]"
                                     listaValores.append(str(valor))
-                                elif j in Instrucciones[elemento][lenParametros][0] and (temp[0] == "Inic"):
+                                elif j in Instrucciones[elemento][lenParametros][0] and (temp[contador - 1] == "Inic"):
                                     flag = True
                                     if isinstance(Instrucciones[elemento][lenParametros][0],str):
                                         flag = False
@@ -637,11 +644,13 @@ def p_Ejecuta_Parametro(p):
                             if "Inic" not in func:
                                 listaFinal.append(func)
                             else:
-                                if key_exists(variables,temp[1]) and Instrucciones[elemento][lenParametros][pos] == temp[1]:
-                                    parser.parse(func)
-                                    Instrucciones[elemento][lenParametros][2][pos] = variables[temp[1]]
-                                else:
-                                    listaFinal.append(func)
+                                for i in duplicatedIndex(temp,"Inic"):
+                                    if key_exists(variables,temp[i+1]) and Instrucciones[elemento][lenParametros][pos] == temp[i+1]:
+                                        parser.parse(func)
+                                        Instrucciones[elemento][lenParametros][2][pos] = variables[temp[i+1]]
+                                        listaFinal.append(func)
+                                    else:
+                                        listaFinal.append(func)
                         for inst in listaFinal:
                             if "Repite" not in Entrada and isinstance(Entrada, str):
                                 EntradaTemp = Entrada
@@ -650,7 +659,7 @@ def p_Ejecuta_Parametro(p):
                                 Entrada = EntradaTemp
                                 print(inst)
                                 listaEjecuta.append(toDo)
-                            if 'Inic' in inst:
+                            elif 'Inic' in inst:
                                 Entrada = str(inst)
                                 parser.parse(inst)
                                 print(inst)
@@ -782,10 +791,10 @@ def y(tupla):
 
 def p_Y(p):
     """
-    function : Y Space function function
+    function : Y Space function Space function
     """
-    res = y((p[3][1], p[4][1]))
-    p[0] = (p[1], res, p[3], p[4])
+    res = y((p[3][1], p[5][1]))
+    p[0] = (p[1], res, p[3], p[5])
     print(p[0])
 
 
@@ -799,10 +808,10 @@ def O(tupla):
 
 def p_O(p):
     """
-    function : O Space function function
+    function : O Space function Space function
     """
-    a = O((p[3][1], p[4][1]))
-    p[0] = (p[1], a, p[3], p[4])
+    a = O((p[3][1], p[5][1]))
+    p[0] = (p[1], a, p[3], p[5])
 
 
 # Funcion que devuelve CIERTO si n > n1
