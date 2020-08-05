@@ -96,6 +96,8 @@ def setSeeingTo(grades):
     global seeingTo
     whereTo = grades - 90
     seeingTo = grades
+    if seeingTo < 0:
+        seeingTo +=360
     if seeingTo == 0:
         seeingTo = 360
     if seeingTo > 360:

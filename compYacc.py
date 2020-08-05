@@ -317,7 +317,7 @@ def p_Elemento(p):
     """
     global Error
     Lista = makeList(p[6])
-    if (p[3] <= len[Lista]):
+    if (p[3][1] <= len(Lista)):
         p[0] = (p[1], Lista[p[3][1] - 1], Lista, p[3])
     else:
         Error = str("El indice que desea acceder esta fuera de rango")
@@ -791,10 +791,10 @@ def y(tupla):
 
 def p_Y(p):
     """
-    function : Y Space function function
+    function : Y Space function Space function
     """
-    res = y((p[3][1], p[4][1]))
-    p[0] = (p[1], res, p[3], p[4])
+    res = y((p[3][1], p[5][1]))
+    p[0] = (p[1], res, p[3], p[5])
     print(p[0])
 
 
@@ -808,10 +808,10 @@ def O(tupla):
 
 def p_O(p):
     """
-    function : O Space function function
+    function : O Space function Space function
     """
-    a = O((p[3][1], p[4][1]))
-    p[0] = (p[1], a, p[3], p[4])
+    a = O((p[3][1], p[5][1]))
+    p[0] = (p[1], a, p[3], p[5])
 
 
 # Funcion que devuelve CIERTO si n > n1

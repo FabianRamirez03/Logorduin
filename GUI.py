@@ -376,6 +376,7 @@ def Compila():
                             for i in compYacc.toDo:
                                 if compYacc.toDo != "":
                                     functionsList.append(i)
+                            compYacc.listaEjecuta = []
                 except Exception as e:
                     print(e)
                     print(compYacc.Error)

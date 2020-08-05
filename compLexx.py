@@ -29,7 +29,7 @@ tokens = [
     'LeftSquareBracket',
     'RightSquareBracket',
     'Var',
-    'Inic',
+    'Inic',#Falta esto
     'Inc',
     'PonColorLapiz',
     'Centro',
